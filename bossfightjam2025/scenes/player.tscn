@@ -1,3 +1,14 @@
-[gd_scene format=3 uid="uid://8aacobwygtvk"]
+[gd_scene load_steps=4 format=3 uid="uid://8aacobwygtvk"]
+
+[ext_resource type="PackedScene" uid="uid://2otkch2dcrtx" path="res://scenes/hitbox_component.tscn" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://dcu6gaeb35568" path="res://scenes/player.gd" id="1_g2els"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g2els"]
 
 [node name="Player" type="Node2D"]
+script = ExtResource("1_g2els")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_3vyb7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("CapsuleShape2D_g2els")
