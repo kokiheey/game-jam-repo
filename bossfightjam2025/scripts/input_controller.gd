@@ -10,6 +10,7 @@ var up_axis : bool
 var down_axis : bool
 
 
+
 func _input(event):
 	if event is InputEventKey:
 		if event.pressed:	

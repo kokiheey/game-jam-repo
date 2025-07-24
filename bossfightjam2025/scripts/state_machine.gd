@@ -10,7 +10,9 @@ func _ready():
 		if child is State:
 			states[child.name.to_lower()] = child
 			child.StateTransitioned.connect(on_state_changed)
-			if child == initial_state: current_state = child
+			if child == initial_state: 
+				current_state = child
+				current_state.Enter()
 
 func _physics_process(delta: float) -> void:
 	Update()

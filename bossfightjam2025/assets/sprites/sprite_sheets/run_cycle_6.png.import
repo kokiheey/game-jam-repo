@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8diq0a1pbv0k"
-path="res://.godot/imported/spritesheet.png-ef76638bcdc105358fe80a92832b61c8.ctex"
+uid="uid://pajnh6cjsols"
+path="res://.godot/imported/run_cycle_6.png-d5ba84ab8d45c2aaef87ded665d6477e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sprite_sheets/spritesheet.png"
-dest_files=["res://.godot/imported/spritesheet.png-ef76638bcdc105358fe80a92832b61c8.ctex"]
+source_file="res://assets/sprites/sprite_sheets/run_cycle_6.png"
+dest_files=["res://.godot/imported/run_cycle_6.png-d5ba84ab8d45c2aaef87ded665d6477e.ctex"]
 
 [params]
 

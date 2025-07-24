@@ -12,9 +12,8 @@ size = Vector2(1920, 48)
 
 [node name="Main" type="Node2D"]
 
-[node name="player" parent="." node_paths=PackedStringArray("inputController") instance=ExtResource("1_glv2v")]
+[node name="player" parent="." instance=ExtResource("1_glv2v")]
 position = Vector2(315, 110)
-inputController = NodePath("../InputController")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(1016, 1080)
