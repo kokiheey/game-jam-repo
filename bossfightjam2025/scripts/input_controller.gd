@@ -2,6 +2,7 @@ extends Node
 class_name InputController
 
 signal primary()
+signal change_phase()
 signal axis(direction: Vector2)
 
 var left_axis : bool
@@ -23,6 +24,8 @@ func _input(event):
 				KEY_D:
 					right_axis = true
 					_emit_axis()
+				KEY_J:
+					change_phase.emit()
 		else:
 			match event.keycode:
 				KEY_A:

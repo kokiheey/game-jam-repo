@@ -4,15 +4,9 @@ class_name PlayerCharacter
 
 @export var SPEED := 300.0
 @export var JUMP_VELOCITY := -400.0
+@onready var input := get_node("/root/Main/InputController")
 
 
-func jump():
-	if is_on_floor():
-		velocity.y = JUMP_VELOCITY
-
-func move(direction: Vector2):
-	velocity.x = direction.x * SPEED
-	
 
 
 func _physics_process(delta: float) -> void:

@@ -1,33 +1,26 @@
 extends Node2D
 
-var velocity := Vector2.ZERO
-var last_parent_pos := Vector2.ZERO
+var prev_velocity: Vector2
 var angle_velocity := 0.0
+@onready var parent := get_parent()
 @export var stiffness := 16.0  # how stiff the "spring" is
-@export var damping := 200.0    # resist swing
-
-func _ready():
-	last_parent_pos = global_position
+@export var damping := 1.0    # resist swing
+@export var gravity := 100.0
+@export var mass := 1000.0
 
 func perpendicular(v: Vector2) -> Vector2:
 	return Vector2(-v.y, v.x)
 
-var gravity_strength := 20.0  # tweak for effect
+func _ready():
+	prev_velocity = parent.velocity
 
 func _process(delta):
-	var parent = get_parent()
 	var parent_velocity = parent.velocity
+	var p_acceleration = (parent_velocity.x - prev_velocity.x) / delta
+	var inertia = p_acceleration / mass
 
-	var offset = position.rotated(rotation)
-	var inertia_force = perpendicular(offset.normalized()).dot(parent_velocity) * offset.length()
-
-	angle_velocity += inertia_force * delta * 0.1
-
-	# Gravity torque pulls rotation to 0 (down)
-	angle_velocity -= rotation * gravity_strength * delta
-
-	angle_velocity -= rotation * stiffness * delta
-	angle_velocity *= exp(-damping * delta)
-	angle_velocity = clamp(angle_velocity, -10, 10)
-
+	angle_velocity += inertia * delta
+	
+	angle_velocity -= rotation * gravity * delta
+	angle_velocity = lerp(angle_velocity, 0.0, delta*damping)
 	rotation += angle_velocity * delta

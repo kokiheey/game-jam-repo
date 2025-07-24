@@ -24,7 +24,7 @@ func Update():
 	if current_state: current_state.Update()
 
 func on_state_changed(state_name: String, new_state_name: String):
-	if state_name != new_state_name:
+	if current_state.name != state_name:
 		return
 	
 	var new_state = states.get(new_state_name.to_lower())
