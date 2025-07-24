@@ -2,8 +2,9 @@ extends State
 class_name Follow
 
 @export var boss: Boss
+@export var minimum_distance: float
 @onready var player := boss.getTargetedPlayer()
-var targetPosition : Vector2
+var targetPosition: Vector2
 
 
 func Enter():
@@ -15,12 +16,8 @@ func Update():
 		player = boss.getTargetedPlayer()
 	targetPosition = Vector2(player.position.x, boss.position.y)
 	var direction :=  targetPosition - boss.position
+	if direction.length_squared() < minimum_distance * minimum_distance:
+		direction = Vector2.ZERO
 	direction = direction.normalized()
 	boss.velocity = direction * boss.SPEED
-	print("kys nigga")
 	boss.move_and_slide()
-	
-func _ready():
-	on_enter = Enter
-	on_exit = Exit
-	on_update = Update

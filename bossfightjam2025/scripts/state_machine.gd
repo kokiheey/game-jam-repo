@@ -19,7 +19,7 @@ func AddStates(state : State):
 	states[state.name] = state
 
 func Update():
-	if current_state: current_state.update()
+	if current_state: current_state.Update()
 
 func on_state_changed(state_name: String, new_state_name: String):
 	if state_name != new_state_name:
@@ -29,6 +29,6 @@ func on_state_changed(state_name: String, new_state_name: String):
 	if !new_state:
 		return
 	
-	if current_state: current_state.exit()
+	if current_state: current_state.Exit()
 	current_state = new_state
-	current_state.enter()
+	current_state.Enter()

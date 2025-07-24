@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://4akif2ja40wi"]
+
+[sub_resource type="Shader" id="Shader_ntjeb"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.4.1.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+uniform float radius;
+uniform vec2 center;
+uniform float width;
+
+void fragment() {
+	vec2 uv = SCREEN_UV - center;
+	float sqdist = dot(uv, uv);
+	if(sqdist < radius*radius || sqdist > (radius+width)*(radius+width)){
+		discard;
+	}
+	COLOR = vec4(1.0, 0.0, 0.0, 1.0);
+}
+"
+
+[resource]
+shader = SubResource("Shader_ntjeb")
+shader_parameter/radius = 0.0
+shader_parameter/center = Vector2(0, 0)
+shader_parameter/width = 0.0

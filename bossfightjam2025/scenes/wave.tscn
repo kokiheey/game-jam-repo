@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dtvh8jaaddwcl"]
+
+[ext_resource type="Script" uid="uid://b2e57j7cnqf0u" path="res://scenes/wave.gd" id="1_y5ysc"]
+[ext_resource type="Texture2D" uid="uid://dhkn7wra70414" path="res://assets/sprites/white_wave.png" id="2_h2l3e"]
+
+[node name="Wave" type="Node2D"]
+script = ExtResource("1_y5ysc")
+
+[node name="WaveSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_h2l3e")

@@ -3,8 +3,8 @@ class_name PlayerCharacter
 @export var inputController : InputController
 @export var _animatedSprite : AnimatedSprite2D
 
-@export var SPEED = 300.0
-@export var JUMP_VELOCITY = -400.0
+@export var SPEED := 300.0
+@export var JUMP_VELOCITY := -400.0
 
 
 func jump():

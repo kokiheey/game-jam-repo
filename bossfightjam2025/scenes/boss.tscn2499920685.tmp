@@ -30,7 +30,7 @@ animations = [{
 
 [node name="Boss" type="CharacterBody2D"]
 script = ExtResource("1_dlmty")
-SPEED = 200.0
+SPEED = 100.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
@@ -48,13 +48,8 @@ position = Vector2(-2.99998, 127)
 scale = Vector2(3.75, 3.875)
 sprite_frames = SubResource("SpriteFrames_r3bxh")
 
-[node name="Hand" type="Node2D" parent="."]
-position = Vector2(113, 119)
-script = ExtResource("5_r3bxh")
-stiffness = 5.245
-damping = 129.8
-
-[node name="HandSprite" type="AnimatedSprite2D" parent="Hand"]
-position = Vector2(1, 167)
+[node name="Hand" type="AnimatedSprite2D" parent="."]
+position = Vector2(129, 255.5)
 scale = Vector2(1, 5.23438)
 sprite_frames = SubResource("SpriteFrames_qnbj4")
+script = ExtResource("5_r3bxh")
