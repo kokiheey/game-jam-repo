@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://0gu438alemv0"]
+
+[ext_resource type="Shader" uid="uid://bgkmyscr7dwe3" path="res://assets/shaders/player_inverted.gdshader" id="1_l0d61"]
+
+[resource]
+shader = ExtResource("1_l0d61")
+shader_parameter/negative = Vector2(0, 0)
+shader_parameter/dissolve = 0.0
+shader_parameter/time = 0.0
+shader_parameter/texture_details = Vector4(0, 0, 0, 0)
+shader_parameter/image_details = Vector2(0, 0)
+shader_parameter/shadow = false
+shader_parameter/burn_colour_1 = Vector4(0, 0, 0, 0)
+shader_parameter/burn_colour_2 = Vector4(0, 0, 0, 0)
+shader_parameter/mouse_screen_pos = Vector2(0, 0)
+shader_parameter/hovering = 0.0
+shader_parameter/screen_scale = 0.0

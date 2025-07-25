@@ -1,13 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtvh8jaaddwcl"]
+[gd_scene load_steps=5 format=3 uid="uid://dtvh8jaaddwcl"]
 
 [ext_resource type="Script" uid="uid://b2e57j7cnqf0u" path="res://scripts/wave.gd" id="1_y5ysc"]
 [ext_resource type="Texture2D" uid="uid://dhkn7wra70414" path="res://assets/sprites/white_wave.png" id="2_h2l3e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h2l3e"]
+radius = 502.673
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sl0wx"]
+radius = 474.207
 
 [node name="Wave" type="Node2D"]
 script = ExtResource("1_y5ysc")
 Width = 1.0
 Speed = 2.0
 MaxScale = 7.005
+damage = 1
 
 [node name="WaveSprite" type="Sprite2D" parent="."]
 texture = ExtResource("2_h2l3e")
+
+[node name="PositiveArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PositiveArea"]
+shape = SubResource("CircleShape2D_h2l3e")
+
+[node name="NegativeArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NegativeArea"]
+shape = SubResource("CircleShape2D_sl0wx")

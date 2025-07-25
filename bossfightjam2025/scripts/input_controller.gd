@@ -25,7 +25,8 @@ func _input(event):
 					right_axis = true
 					_emit_axis()
 				KEY_J:
-					change_phase.emit()
+					if not event.is_echo():
+						change_phase.emit()
 		else:
 			match event.keycode:
 				KEY_A:

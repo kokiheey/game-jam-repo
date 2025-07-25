@@ -1,13 +1,29 @@
-[gd_scene load_steps=10 format=3 uid="uid://bx5am6i22cmw7"]
+[gd_scene load_steps=11 format=3 uid="uid://bx5am6i22cmw7"]
 
 [ext_resource type="Script" uid="uid://b4l1e5jgiq6cp" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ptk3dcp2teqn" path="res://assets/sprites/sprite_sheets/run_idle_sheet.png" id="2_qhqgy"]
+[ext_resource type="Material" uid="uid://0gu438alemv0" path="res://assets/materials/player_inverted.tres" id="2_qlg0r"]
 [ext_resource type="Script" uid="uid://bv02iexisq514" path="res://scripts/state_machine.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://chywbkk87io5q" path="res://scripts/player_states/player_idle.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 radius = 15.2382
 height = 46.9844
+
+[sub_resource type="Animation" id="Animation_dqkch"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
 
 [sub_resource type="Animation" id="Animation_qhqgy"]
 resource_name = "idle"
@@ -25,21 +41,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
-}
-
-[sub_resource type="Animation" id="Animation_dqkch"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
 }
 
 [sub_resource type="Animation" id="Animation_qlg0r"]
@@ -73,6 +74,7 @@ script = ExtResource("1_g2els")
 _sprite2D = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_qlg0r")
 position = Vector2(0.634911, -3.80955)
 scale = Vector2(0.177624, 0.177624)
 texture = ExtResource("2_qhqgy")

@@ -28,8 +28,7 @@ func Attack():
 	get_tree().current_scene.add_child(attack)
 	
 	print("Spawned wave: ", attack.name)
-	attack.tree_exited.connect(func(): print("Wave exited tree"))
-	
+
 	attack_winddown_timer = Timer.new()
 	attack_winddown_timer.one_shot = true
 	attack_winddown_timer.wait_time = attack_winddown
