@@ -6,7 +6,7 @@ class_name WaveAttack
 
 @onready var boss: Boss = get_parent().get_parent()
 
-var wave_attack = preload("res://scenes/wave.tscn")
+var wave_attack = preload("res://scenes/boss/wave.tscn")
 
 var attack_windup_timer: Timer
 var attack_winddown_timer: Timer

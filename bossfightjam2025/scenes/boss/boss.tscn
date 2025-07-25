@@ -1,24 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://prixi2sgl0jr"]
+[gd_scene load_steps=8 format=3 uid="uid://prixi2sgl0jr"]
 
 [ext_resource type="Script" uid="uid://dmked8swuhj33" path="res://scripts/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://dbd6g52vr8s2c" path="res://scenes/state_machine.tscn" id="2_neq0i"]
 [ext_resource type="Script" uid="uid://bnh8iwkky0scr" path="res://scripts/boss_states/follow.gd" id="3_jncid"]
 [ext_resource type="Texture2D" uid="uid://u1d5ss5couhj" path="res://icon.png" id="4_qnbj4"]
 [ext_resource type="Script" uid="uid://bgp28220rbems" path="res://scripts/boss_states/wave_attack.gd" id="4_wqpjq"]
-[ext_resource type="Script" uid="uid://bcjijec26vv03" path="res://scripts/hand.gd" id="5_r3bxh"]
+[ext_resource type="PackedScene" uid="uid://84ltevligxy3" path="res://scenes/boss/hand.tscn" id="6_i4fbv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r3bxh"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("4_qnbj4")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_qnbj4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -54,12 +43,5 @@ position = Vector2(-2.99998, 127)
 scale = Vector2(3.75, 3.875)
 sprite_frames = SubResource("SpriteFrames_r3bxh")
 
-[node name="Hand" type="Node2D" parent="."]
-position = Vector2(113, 119)
-script = ExtResource("5_r3bxh")
-stiffness = 5.245
-
-[node name="HandSprite" type="AnimatedSprite2D" parent="Hand"]
-position = Vector2(1, 167)
-scale = Vector2(1, 5.23438)
-sprite_frames = SubResource("SpriteFrames_qnbj4")
+[node name="Hand" parent="." instance=ExtResource("6_i4fbv")]
+position = Vector2(145, 7)
