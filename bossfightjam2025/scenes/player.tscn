@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://chywbkk87io5q" path="res://scripts/player_states/player_idle.gd" id="4_dqkch"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
-radius = 15.2382
-height = 46.9844
+radius = 20.3176
+height = 91.4292
 
 [sub_resource type="Animation" id="Animation_dqkch"]
 length = 0.001
@@ -74,14 +74,14 @@ _sprite2D = NodePath("Sprite2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.634911, -3.80955)
-scale = Vector2(0.177624, 0.177624)
+scale = Vector2(0.33, 0.33)
 texture = ExtResource("2_qhqgy")
 hframes = 6
 vframes = 2
 frame = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2.5397)
+position = Vector2(0, 5.0794)
 shape = SubResource("CapsuleShape2D_3vyb7")
 
 [node name="player_states" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

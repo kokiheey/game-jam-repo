@@ -45,3 +45,8 @@ sprite_frames = SubResource("SpriteFrames_r3bxh")
 
 [node name="Hand" parent="." instance=ExtResource("6_i4fbv")]
 position = Vector2(145, 7)
+
+[node name="Hand2" parent="." instance=ExtResource("6_i4fbv")]
+position = Vector2(-160, 8)
+mass = 1.5
+gravity_scale = 0.5
