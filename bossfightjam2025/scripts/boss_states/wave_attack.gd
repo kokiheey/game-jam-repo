@@ -35,7 +35,6 @@ func Attack():
 	attack_winddown_timer.timeout.connect(Switch)
 	add_child(attack_winddown_timer)
 	attack_winddown_timer.start()
-	
-	
+
 func Switch():
 	StateTransitioned.emit(name, "Follow")
