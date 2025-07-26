@@ -4,7 +4,7 @@ class_name player_airborne
 @onready var player: PlayerCharacter = get_parent().get_parent()
 var input: InputController
 func Enter():
-	#animP.play("rising")
+	anim_s.play("rising")
 	input = get_node("/root/Main/InputController")
 	if input:
 		input.axis.connect(move)
@@ -13,10 +13,12 @@ func Exit():
 	if input:
 		input.axis.disconnect(move)
 
-func _process(delta: float):
-	if player.velocity.y > 0:
-		#anim_s.play("falling")
-		return
+func Update():
+	if player.velocity.y > 100:
+		anim_s.play("falling")
+	elif player.velocity.y < -100:
+		anim_s.play("rising")
+	else: anim_s.play("floating")
 	if player.is_on_floor():
 		StateTransitioned.emit(name, "player_idle")
 

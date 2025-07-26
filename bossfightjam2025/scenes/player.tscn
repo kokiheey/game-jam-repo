@@ -1,16 +1,25 @@
-[gd_scene load_steps=19 format=3 uid="uid://bx5am6i22cmw7"]
+[gd_scene load_steps=23 format=3 uid="uid://bx5am6i22cmw7"]
 
 [ext_resource type="Script" uid="uid://b4l1e5jgiq6cp" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ptk3dcp2teqn" path="res://assets/sprites/sprite_sheets/run_idle_sheet.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://bv02iexisq514" path="res://scripts/state_machine.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://chywbkk87io5q" path="res://scripts/player_states/player_idle.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://cu0a8x3sqep4h" path="res://scripts/player_states/player_airborne.gd" id="4_qlg0r"]
+[ext_resource type="Texture2D" uid="uid://b2dk1tlj5u57q" path="res://assets/sprites/sprite_sheets/player_airborne.png" id="5_tuyoq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 radius = 20.3176
 height = 91.4292
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
+atlas = ExtResource("5_tuyoq")
+region = Rect2(512, 0, 256, 340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
+atlas = ExtResource("5_tuyoq")
+region = Rect2(256, 0, 256, 340)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
 atlas = ExtResource("2_qhqgy")
@@ -27,6 +36,10 @@ region = Rect2(512, 0, 256, 340)
 [sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
 atlas = ExtResource("2_qhqgy")
 region = Rect2(768, 0, 256, 340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
+atlas = ExtResource("5_tuyoq")
+region = Rect2(0, 0, 256, 340)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
 atlas = ExtResource("2_qhqgy")
@@ -56,6 +69,22 @@ region = Rect2(768, 340, 256, 340)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_f1ej7")
+}],
+"loop": true,
+"name": &"falling",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oprun")
+}],
+"loop": true,
+"name": &"floating",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_dqkch")
 }, {
 "duration": 1.0,
@@ -69,6 +98,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ls1")
+}],
+"loop": true,
+"name": &"rising",
 "speed": 5.0
 }, {
 "frames": [{
@@ -114,8 +151,9 @@ script = ExtResource("4_dqkch")
 anim_s = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://chywbkk87io5q"
 
-[node name="player_airborne" type="Node" parent="player_states"]
+[node name="player_airborne" type="Node" parent="player_states" node_paths=PackedStringArray("anim_s")]
 script = ExtResource("4_qlg0r")
+anim_s = NodePath("../../AnimatedSprite2D")
 metadata/_custom_type_script = "uid://cu0a8x3sqep4h"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -123,4 +161,4 @@ material = SubResource("ShaderMaterial_qlg0r")
 position = Vector2(1.26985, -1.26985)
 scale = Vector2(0.283482, 0.283482)
 sprite_frames = SubResource("SpriteFrames_f1ej7")
-animation = &"idle"
+animation = &"falling"
