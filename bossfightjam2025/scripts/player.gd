@@ -2,8 +2,8 @@ extends CharacterBody2D
 class_name PlayerCharacter
 @export var _sprite2D : Sprite2D
 
-@export var SPEED := 300.0
-@export var JUMP_VELOCITY := -400.0
+@export var SPEED := 400.0
+@export var JUMP_VELOCITY := -600.0
 @export var health := 10
 @onready var input := get_node("/root/Main/InputController")
 @onready var sprite = $Sprite2D

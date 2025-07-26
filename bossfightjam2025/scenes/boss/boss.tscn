@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://prixi2sgl0jr"]
+[gd_scene load_steps=9 format=3 uid="uid://prixi2sgl0jr"]
 
 [ext_resource type="Script" uid="uid://dmked8swuhj33" path="res://scripts/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://dbd6g52vr8s2c" path="res://scenes/state_machine.tscn" id="2_neq0i"]
 [ext_resource type="Script" uid="uid://bnh8iwkky0scr" path="res://scripts/boss_states/follow.gd" id="3_jncid"]
 [ext_resource type="Texture2D" uid="uid://u1d5ss5couhj" path="res://icon.png" id="4_qnbj4"]
 [ext_resource type="Script" uid="uid://bgp28220rbems" path="res://scripts/boss_states/wave_attack.gd" id="4_wqpjq"]
+[ext_resource type="Script" uid="uid://bkeo8uik43hbm" path="res://scripts/boss_states/flood_attack.gd" id="5_wf233"]
 [ext_resource type="PackedScene" uid="uid://84ltevligxy3" path="res://scenes/boss/hand.tscn" id="6_i4fbv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r3bxh"]
@@ -37,6 +38,9 @@ metadata/_custom_type_script = "uid://bnh8iwkky0scr"
 [node name="WaveAttack" type="Node" parent="StateMachine"]
 script = ExtResource("4_wqpjq")
 metadata/_custom_type_script = "uid://bgp28220rbems"
+
+[node name="FloodAttack" type="Node" parent="StateMachine"]
+script = ExtResource("5_wf233")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-2.99998, 127)

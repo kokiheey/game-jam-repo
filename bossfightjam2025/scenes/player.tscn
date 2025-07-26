@@ -71,6 +71,8 @@ _data = {
 scale = Vector2(1.57499, 1.57499)
 script = ExtResource("1_g2els")
 _sprite2D = NodePath("Sprite2D")
+SPEED = 400.0
+JUMP_VELOCITY = -600.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0.634911, -3.80955)
