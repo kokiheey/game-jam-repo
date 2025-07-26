@@ -16,7 +16,7 @@ func Exit():
 func _process(delta: float):
 	if player.velocity.y > 0:
 		#anim_s.play("falling")
-		print("falling")
+		return
 	if player.is_on_floor():
 		StateTransitioned.emit(name, "player_idle")
 

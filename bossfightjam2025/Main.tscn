@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cmfqil1osybnf"]
+[gd_scene load_steps=12 format=3 uid="uid://cmfqil1osybnf"]
 
 [ext_resource type="Texture2D" uid="uid://cb4bjpprcgehc" path="res://assets/sprites/background.png" id="1_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://bx5am6i22cmw7" path="res://scenes/player.tscn" id="1_glv2v"]
@@ -6,9 +6,15 @@
 [ext_resource type="PackedScene" uid="uid://prixi2sgl0jr" path="res://scenes/boss/boss.tscn" id="4_cm0pq"]
 [ext_resource type="Script" uid="uid://dwutiqqf8pv82" path="res://scripts/main_cam.gd" id="6_3dxm6"]
 [ext_resource type="AudioStream" uid="uid://caqklka0lfv42" path="res://Bossfight.ogg" id="6_lgr22"]
+[ext_resource type="Texture2D" uid="uid://b1lr0omr8fmmj" path="res://assets/sprites/ui/health_under.png" id="7_03owx"]
+[ext_resource type="Script" uid="uid://qhif4adbfuhl" path="res://scripts/health_bar.gd" id="7_lgr22"]
+[ext_resource type="Texture2D" uid="uid://bx7ask7vttjf8" path="res://assets/sprites/ui/health_progress.png" id="8_wkp8b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glv2v"]
 size = Vector2(1920, 152)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03owx"]
+size = Vector2(46, 1113)
 
 [node name="Main" type="Node2D"]
 
@@ -17,7 +23,7 @@ texture = ExtResource("1_3dxm6")
 centered = false
 
 [node name="player" parent="." instance=ExtResource("1_glv2v")]
-position = Vector2(315, 110)
+position = Vector2(963, 918)
 
 [node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(1016, 1080)
@@ -29,6 +35,7 @@ shape = SubResource("RectangleShape2D_glv2v")
 [node name="InputController" parent="." instance=ExtResource("3_r0du0")]
 
 [node name="Boss" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_cm0pq")]
+position = Vector2(288, 0)
 player = NodePath("../player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -40,3 +47,29 @@ stream = ExtResource("6_lgr22")
 volume_db = -5.0
 autoplay = true
 parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+offset_left = 1392.0
+offset_top = 22.0
+offset_right = 1908.0
+offset_bottom = 67.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_03owx")
+texture_progress = ExtResource("8_wkp8b")
+script = ExtResource("7_lgr22")
+player = NodePath("../../player")
+
+[node name="Wall_Left" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left"]
+position = Vector2(13, 546.5)
+shape = SubResource("RectangleShape2D_03owx")
+
+[node name="Wall_Left2" type="StaticBody2D" parent="."]
+position = Vector2(67, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall_Left2"]
+position = Vector2(1834, 547)
+shape = SubResource("RectangleShape2D_03owx")

@@ -1,0 +1,163 @@
+[gd_scene load_steps=4 format=3 uid="uid://bhim4jtfvoojs"]
+
+[ext_resource type="Script" uid="uid://bmlsyjmr8a2j0" path="res://scripts/string.gd" id="1_o0nmj"]
+[ext_resource type="Texture2D" uid="uid://2f6if64q0ap7" path="res://assets/sprites/string_piece.png" id="2_e67vu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7bu4i"]
+size = Vector2(4, 75)
+
+[node name="String" type="Node2D"]
+script = ExtResource("1_o0nmj")
+
+[node name="S" type="PinJoint2D" parent="."]
+node_b = NodePath("../string_piece_S")
+
+[node name="string_piece_S" type="RigidBody2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_piece_S"]
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_7bu4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="string_piece_S"]
+position = Vector2(1.19209e-07, 37.5)
+scale = Vector2(0.2, 0.375)
+texture = ExtResource("2_e67vu")
+
+[node name="12" type="PinJoint2D" parent="."]
+position = Vector2(0, 75)
+node_a = NodePath("../string_piece_S")
+node_b = NodePath("../string_piece2")
+
+[node name="string_piece2" type="RigidBody2D" parent="."]
+position = Vector2(0, 75)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_piece2"]
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_7bu4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="string_piece2"]
+position = Vector2(1.19209e-07, 37.5)
+scale = Vector2(0.2, 0.375)
+texture = ExtResource("2_e67vu")
+
+[node name="13" type="PinJoint2D" parent="."]
+position = Vector2(0, 149)
+node_a = NodePath("../string_piece2")
+node_b = NodePath("../string_piece3")
+
+[node name="string_piece3" type="RigidBody2D" parent="."]
+position = Vector2(0, 149)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_piece3"]
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_7bu4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="string_piece3"]
+position = Vector2(1.19209e-07, 37.5)
+scale = Vector2(0.2, 0.375)
+texture = ExtResource("2_e67vu")
+
+[node name="14" type="PinJoint2D" parent="."]
+position = Vector2(0, 223)
+node_a = NodePath("../string_piece3")
+node_b = NodePath("../string_piece4")
+
+[node name="string_piece4" type="RigidBody2D" parent="."]
+position = Vector2(0, 223)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_piece4"]
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_7bu4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="string_piece4"]
+position = Vector2(1.19209e-07, 37.5)
+scale = Vector2(0.2, 0.375)
+texture = ExtResource("2_e67vu")
+
+[node name="15" type="PinJoint2D" parent="."]
+position = Vector2(0, 297)
+node_a = NodePath("../string_piece4")
+node_b = NodePath("../string_piece5")
+
+[node name="string_piece5" type="RigidBody2D" parent="."]
+position = Vector2(0, 297)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_piece5"]
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_7bu4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="string_piece5"]
+position = Vector2(1.19209e-07, 37.5)
+scale = Vector2(0.2, 0.375)
+texture = ExtResource("2_e67vu")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="string_piece5"]
+position = Vector2(0, 75)
+node_a = NodePath("..")
+node_b = NodePath("../../string_piece6")
+
+[node name="string_piece6" type="RigidBody2D" parent="."]
+position = Vector2(0, 371)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_piece6"]
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_7bu4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="string_piece6"]
+position = Vector2(1.19209e-07, 37.5)
+scale = Vector2(0.2, 0.375)
+texture = ExtResource("2_e67vu")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="string_piece6"]
+position = Vector2(1, 75)
+node_a = NodePath("..")
+node_b = NodePath("../../string_piece7")
+
+[node name="string_piece7" type="RigidBody2D" parent="."]
+position = Vector2(0, 447)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_piece7"]
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_7bu4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="string_piece7"]
+position = Vector2(1.19209e-07, 37.5)
+scale = Vector2(0.2, 0.375)
+texture = ExtResource("2_e67vu")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="string_piece7"]
+position = Vector2(1, 75)
+node_a = NodePath("..")
+node_b = NodePath("../../string_piece_E")
+
+[node name="string_piece_E" type="RigidBody2D" parent="."]
+position = Vector2(0, 522)
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_piece_E"]
+position = Vector2(0, 37.5)
+shape = SubResource("RectangleShape2D_7bu4i")
+
+[node name="Sprite2D" type="Sprite2D" parent="string_piece_E"]
+position = Vector2(1.19209e-07, 37.5)
+scale = Vector2(0.2, 0.375)
+texture = ExtResource("2_e67vu")
+
+[node name="E" type="PinJoint2D" parent="."]
+position = Vector2(0, 597)
+node_a = NodePath("../string_piece_E")

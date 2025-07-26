@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://84ltevligxy3"]
+[gd_scene load_steps=5 format=3 uid="uid://84ltevligxy3"]
 
 [ext_resource type="Texture2D" uid="uid://b0pp300drfxod" path="res://assets/sprites/boss_hand.png" id="1_83tm2"]
 
@@ -7,7 +7,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3bxh"]
 size = Vector2(61, 190)
 
-[node name="Hand" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gcip5"]
+size = Vector2(25, 37)
+
+[node name="Hand" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="holder" type="StaticBody2D" parent="."]
 
@@ -19,6 +24,7 @@ node_a = NodePath("../holder")
 node_b = NodePath("../hand part")
 
 [node name="hand part" type="RigidBody2D" parent="."]
+mass = 5.043
 
 [node name="Sprite2D" type="Sprite2D" parent="hand part"]
 position = Vector2(8, 96)
@@ -36,6 +42,8 @@ node_b = NodePath("../hand part2")
 
 [node name="hand part2" type="RigidBody2D" parent="."]
 position = Vector2(8, 204)
+mass = 48.228
+gravity_scale = 1.721
 
 [node name="Sprite2D" type="Sprite2D" parent="hand part2"]
 position = Vector2(8, 96)
@@ -45,3 +53,7 @@ texture = ExtResource("1_83tm2")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hand part2"]
 position = Vector2(2, 99)
 shape = SubResource("RectangleShape2D_r3bxh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4, 198)
+shape = SubResource("RectangleShape2D_gcip5")
