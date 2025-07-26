@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cmfqil1osybnf"]
+[gd_scene load_steps=8 format=3 uid="uid://cmfqil1osybnf"]
 
 [ext_resource type="Texture2D" uid="uid://cb4bjpprcgehc" path="res://assets/sprites/background.png" id="1_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://bx5am6i22cmw7" path="res://scenes/player.tscn" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://ubkds85emg8o" path="res://scenes/input_controller.tscn" id="3_r0du0"]
 [ext_resource type="PackedScene" uid="uid://prixi2sgl0jr" path="res://scenes/boss/boss.tscn" id="4_cm0pq"]
 [ext_resource type="Script" uid="uid://dwutiqqf8pv82" path="res://scripts/main_cam.gd" id="6_3dxm6"]
+[ext_resource type="AudioStream" uid="uid://caqklka0lfv42" path="res://Bossfight.ogg" id="6_lgr22"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glv2v"]
-size = Vector2(1920, 112)
+size = Vector2(1920, 152)
 
 [node name="Main" type="Node2D"]
 
@@ -18,11 +19,11 @@ centered = false
 [node name="player" parent="." instance=ExtResource("1_glv2v")]
 position = Vector2(315, 110)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="Ground" type="StaticBody2D" parent="."]
 position = Vector2(1016, 1080)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(-56, -24)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(-56, -44)
 shape = SubResource("RectangleShape2D_glv2v")
 
 [node name="InputController" parent="." instance=ExtResource("3_r0du0")]
@@ -33,3 +34,9 @@ player = NodePath("../player")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
 script = ExtResource("6_3dxm6")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_lgr22")
+volume_db = -5.0
+autoplay = true
+parameters/looping = true
