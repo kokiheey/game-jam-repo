@@ -1,28 +1,53 @@
-[gd_scene load_steps=8 format=3 uid="uid://prixi2sgl0jr"]
+[gd_scene load_steps=12 format=3 uid="uid://prixi2sgl0jr"]
 
 [ext_resource type="Script" uid="uid://dmked8swuhj33" path="res://scripts/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://dbd6g52vr8s2c" path="res://scenes/state_machine.tscn" id="2_neq0i"]
 [ext_resource type="Script" uid="uid://bnh8iwkky0scr" path="res://scripts/boss_states/follow.gd" id="3_jncid"]
-[ext_resource type="Texture2D" uid="uid://u1d5ss5couhj" path="res://icon.png" id="4_qnbj4"]
 [ext_resource type="Script" uid="uid://bgp28220rbems" path="res://scripts/boss_states/wave_attack.gd" id="4_wqpjq"]
+[ext_resource type="Texture2D" uid="uid://crjxirwno8p73" path="res://assets/sprites/sprite_sheets/boss_head.png" id="5_i4fbv"]
 [ext_resource type="PackedScene" uid="uid://84ltevligxy3" path="res://scenes/boss/hand.tscn" id="6_i4fbv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i4fbv"]
+size = Vector2(103, 138)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wf233"]
+atlas = ExtResource("5_i4fbv")
+region = Rect2(0, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dlpkd"]
+atlas = ExtResource("5_i4fbv")
+region = Rect2(600, 0, 600, 600)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kbl1"]
+atlas = ExtResource("5_i4fbv")
+region = Rect2(0, 600, 600, 600)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r3bxh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("4_qnbj4")
+"texture": SubResource("AtlasTexture_wf233")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dlpkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kbl1")
 }],
 "loop": true,
-"name": &"default",
+"name": &"idle",
 "speed": 5.0
 }]
 
 [node name="Boss" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_dlmty")
 SPEED = 200.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(17.5, 97)
+shape = SubResource("RectangleShape2D_i4fbv")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("2_neq0i")]
 initial_state = NodePath("Follow")
@@ -39,14 +64,13 @@ script = ExtResource("4_wqpjq")
 metadata/_custom_type_script = "uid://bgp28220rbems"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(-2.99998, 127)
-scale = Vector2(3.75, 3.875)
+position = Vector2(13, 105)
+scale = Vector2(0.714167, 0.737972)
 sprite_frames = SubResource("SpriteFrames_r3bxh")
+animation = &"idle"
 
 [node name="Hand" parent="." instance=ExtResource("6_i4fbv")]
-position = Vector2(145, 7)
+position = Vector2(179, 7)
 
 [node name="Hand2" parent="." instance=ExtResource("6_i4fbv")]
-position = Vector2(-160, 8)
-mass = 1.5
-gravity_scale = 0.5
+position = Vector2(-164, 8)

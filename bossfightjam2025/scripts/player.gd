@@ -1,12 +1,11 @@
 extends CharacterBody2D
 class_name PlayerCharacter
-@export var _sprite2D : Sprite2D
+@export var _sprite2D : AnimatedSprite2D
 
 @export var SPEED := 300.0
 @export var JUMP_VELOCITY := -400.0
 @export var health := 10
 @onready var input := get_node("/root/Main/InputController")
-@onready var sprite = $Sprite2D
 var invertedMaterial := preload("res://assets/materials/player_inverted.tres")
 var inverted := false
 signal Death
@@ -14,10 +13,10 @@ signal Death
 func _ready():
 	input.change_phase.connect(_change_phase)
 	if inverted:
-		sprite.material = invertedMaterial
-		sprite.material.set_shader_parameter("time", Time.get_ticks_msec())
+		_sprite2D.material = invertedMaterial
+		_sprite2D.material.set_shader_parameter("time", Time.get_ticks_msec())
 	else:
-		sprite.material = null
+		_sprite2D.material = null
 
 func take_damage(damage: int):
 	health -= damage
@@ -27,10 +26,10 @@ func take_damage(damage: int):
 func _change_phase():
 	inverted = not inverted
 	if inverted:
-		sprite.material = invertedMaterial
-		sprite.material.set_shader_parameter("time", Time.get_ticks_msec())
+		_sprite2D.material = invertedMaterial
+		_sprite2D.material.set_shader_parameter("time", Time.get_ticks_msec())
 	else:
-		sprite.material = null
+		_sprite2D.material = null
 
 func _physics_process(delta: float) -> void:
 	if(velocity.x < 0):

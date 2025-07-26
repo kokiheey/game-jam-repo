@@ -1,33 +1,47 @@
 [gd_scene load_steps=4 format=3 uid="uid://84ltevligxy3"]
 
-[ext_resource type="Texture2D" uid="uid://u1d5ss5couhj" path="res://icon.png" id="1_83tm2"]
+[ext_resource type="Texture2D" uid="uid://b0pp300drfxod" path="res://assets/sprites/boss_hand.png" id="1_83tm2"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qnbj4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_83tm2")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_83tm2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r3bxh"]
-size = Vector2(75, 382)
+size = Vector2(61, 190)
 
-[node name="Hand" type="RigidBody2D"]
+[node name="Hand" type="Node2D"]
 
-[node name="HandSprite" type="AnimatedSprite2D" parent="."]
-position = Vector2(9.5, 194.75)
-scale = Vector2(1.26563, 6.10156)
-sprite_frames = SubResource("SpriteFrames_qnbj4")
+[node name="holder" type="StaticBody2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8.5, 192)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="holder"]
+shape = SubResource("RectangleShape2D_83tm2")
+
+[node name="holdjoint" type="PinJoint2D" parent="."]
+node_a = NodePath("../holder")
+node_b = NodePath("../hand part")
+
+[node name="hand part" type="RigidBody2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="hand part"]
+position = Vector2(8, 96)
+scale = Vector2(0.456962, 0.537657)
+texture = ExtResource("1_83tm2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand part"]
+position = Vector2(7.5, 96)
 shape = SubResource("RectangleShape2D_r3bxh")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
-position = Vector2(4, 1)
-node_a = NodePath("../..")
-node_b = NodePath("..")
+position = Vector2(8, 197)
+node_a = NodePath("../hand part")
+node_b = NodePath("../hand part2")
+
+[node name="hand part2" type="RigidBody2D" parent="."]
+position = Vector2(8, 204)
+
+[node name="Sprite2D" type="Sprite2D" parent="hand part2"]
+position = Vector2(8, 96)
+scale = Vector2(0.456962, 0.537657)
+texture = ExtResource("1_83tm2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hand part2"]
+position = Vector2(2, 99)
+shape = SubResource("RectangleShape2D_r3bxh")

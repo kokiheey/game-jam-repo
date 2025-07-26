@@ -120,7 +120,5 @@ metadata/_custom_type_script = "uid://cu0a8x3sqep4h"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_qlg0r")
-position = Vector2(1.26985, -1.26985)
-scale = Vector2(0.283482, 0.283482)
 sprite_frames = SubResource("SpriteFrames_f1ej7")
 animation = &"idle"

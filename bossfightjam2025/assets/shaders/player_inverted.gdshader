@@ -105,13 +105,11 @@ void fragment() {
         tex.a /= 3.0;
 	float ampl = 0.1;
 	float wave = ampl + ampl*sin(UV.x * 20.0 );
-		
+
 	tex.rgb = tex.rgb * vec3(0.8, 0.8, 1.2) + vec3(-0.1, -0.1, 0.2);
-	
-	
+
+
 	COLOR = dissolve_mask(tex * COLOR, UV, uv);
-	
-    
+
+
 }
-
-

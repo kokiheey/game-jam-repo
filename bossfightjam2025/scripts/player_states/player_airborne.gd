@@ -1,6 +1,6 @@
 extends State
 class_name player_airborne
-@export var animP: AnimationPlayer
+@export var anim_s: AnimatedSprite2D
 @onready var player: PlayerCharacter = get_parent().get_parent()
 var input: InputController
 func Enter():
@@ -15,7 +15,7 @@ func Exit():
 
 func _process(delta: float):
 	if player.velocity.y > 0:
-		#animP.play("falling")
+		#anim_s.play("falling")
 		print("falling")
 	if player.is_on_floor():
 		StateTransitioned.emit(name, "player_idle")
