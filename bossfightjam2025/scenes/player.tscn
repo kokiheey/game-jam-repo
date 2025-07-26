@@ -98,7 +98,6 @@ animations = [{
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("_sprite2D")]
 scale = Vector2(1.57499, 1.57499)
 script = ExtResource("1_g2els")
-
 _sprite2D = NodePath("AnimatedSprite2D")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

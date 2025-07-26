@@ -1,5 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://prixi2sgl0jr"]
-
+[gd_scene load_steps=15 format=3 uid="uid://prixi2sgl0jr"]
 
 [ext_resource type="Script" uid="uid://dmked8swuhj33" path="res://scripts/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://dbd6g52vr8s2c" path="res://scenes/state_machine.tscn" id="2_neq0i"]
@@ -8,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://crjxirwno8p73" path="res://assets/sprites/sprite_sheets/boss_head.png" id="5_i4fbv"]
 [ext_resource type="Script" uid="uid://bkeo8uik43hbm" path="res://scripts/boss_states/flood_attack.gd" id="5_wf233"]
 [ext_resource type="PackedScene" uid="uid://84ltevligxy3" path="res://scenes/boss/hand.tscn" id="6_i4fbv"]
+[ext_resource type="PackedScene" uid="uid://bhim4jtfvoojs" path="res://scenes/string.tscn" id="8_dlpkd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4fbv"]
 size = Vector2(103, 138)
@@ -40,6 +40,9 @@ animations = [{
 "name": &"idle",
 "speed": 5.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wf233"]
+size = Vector2(622, 49)
 
 [node name="Boss" type="CharacterBody2D"]
 collision_layer = 0
@@ -74,8 +77,28 @@ scale = Vector2(0.714167, 0.737972)
 sprite_frames = SubResource("SpriteFrames_r3bxh")
 animation = &"idle"
 
-[node name="Hand" parent="." instance=ExtResource("6_i4fbv")]
+[node name="HandR" parent="." instance=ExtResource("6_i4fbv")]
 position = Vector2(179, 7)
 
-[node name="Hand2" parent="." instance=ExtResource("6_i4fbv")]
+[node name="HandL" parent="." instance=ExtResource("6_i4fbv")]
 position = Vector2(-164, 8)
+
+[node name="string_holder" type="StaticBody2D" parent="."]
+position = Vector2(-14, -402)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="string_holder"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_wf233")
+
+[node name="String" parent="string_holder" node_paths=PackedStringArray("body_up", "body_down") instance=ExtResource("8_dlpkd")]
+position = Vector2(-141, 9)
+body_up = NodePath("..")
+body_down = NodePath("../../HandL/hand part2")
+
+[node name="String2" parent="string_holder" node_paths=PackedStringArray("body_up", "body_down") instance=ExtResource("8_dlpkd")]
+position = Vector2(201, 14)
+body_up = NodePath("..")
+body_down = NodePath("../../HandR/hand part2")
+
+[editable path="HandR"]
+[editable path="HandL"]

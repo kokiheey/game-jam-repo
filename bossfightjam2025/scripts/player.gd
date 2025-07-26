@@ -4,7 +4,8 @@ class_name PlayerCharacter
 
 @export var SPEED := 400.0
 @export var JUMP_VELOCITY := -600.0
-@export var health := 10
+@onready var health:int = MaxHealth
+@export var MaxHealth := 10
 @onready var input := get_node("/root/Main/InputController")
 var invertedMaterial := preload("res://assets/materials/player_inverted.tres")
 var inverted := false
