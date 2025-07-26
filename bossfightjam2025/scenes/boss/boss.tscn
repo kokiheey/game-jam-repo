@@ -1,5 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://prixi2sgl0jr"]
-
+[gd_scene load_steps=13 format=3 uid="uid://prixi2sgl0jr"]
 
 [ext_resource type="Script" uid="uid://dmked8swuhj33" path="res://scripts/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://dbd6g52vr8s2c" path="res://scenes/state_machine.tscn" id="2_neq0i"]
@@ -58,7 +57,7 @@ initial_state = NodePath("Follow")
 script = ExtResource("3_jncid")
 boss = NodePath("../..")
 minimum_distance = 10.0
-available_attacks = [NodePath("../WaveAttack")]
+available_attacks = [NodePath("../WaveAttack"), NodePath("../FloodAttack")]
 metadata/_custom_type_script = "uid://bnh8iwkky0scr"
 
 [node name="WaveAttack" type="Node" parent="StateMachine"]
@@ -67,6 +66,7 @@ metadata/_custom_type_script = "uid://bgp28220rbems"
 
 [node name="FloodAttack" type="Node" parent="StateMachine"]
 script = ExtResource("5_wf233")
+metadata/_custom_type_script = "uid://bkeo8uik43hbm"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(13, 105)

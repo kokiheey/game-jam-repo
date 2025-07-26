@@ -1,19 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcvbyaijslfo0"]
+[gd_scene load_steps=4 format=3 uid="uid://dcvbyaijslfo0"]
 
+[ext_resource type="Script" uid="uid://bn48uqyv1prmq" path="res://scripts/attacks/flood.gd" id="1_0bbju"]
 [ext_resource type="Texture2D" uid="uid://v2uspqrkkaow" path="res://assets/sprites/Flood.png" id="1_6wet0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bbju"]
 size = Vector2(1920, 23)
 
-[node name="flood" type="Node2D"]
+[node name="Flood" type="Node2D"]
+scale = Vector2(1, 1e-05)
+script = ExtResource("1_0bbju")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="FloodSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 0.784314)
 texture = ExtResource("1_6wet0")
 centered = false
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Hurtbox" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(960, 12)
 shape = SubResource("RectangleShape2D_0bbju")
