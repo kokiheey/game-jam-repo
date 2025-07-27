@@ -15,7 +15,8 @@ var inverted: bool
 
 func _ready() -> void:
 	randomize()
-	inverted = !flood.inverted
+	if randf_range(0, 100) >= 15: inverted = !flood.inverted
+	else: inverted = flood.inverted
 	if inverted:
 		pillar_sprite.modulate = flood.invertedColor
 	else:
