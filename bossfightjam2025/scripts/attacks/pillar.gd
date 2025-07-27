@@ -25,6 +25,7 @@ func _ready() -> void:
 	var leftToRight: bool = randi_range(0, 1)
 	var screen_w = get_viewport_rect().size.x
 	var screen_h = get_viewport_rect().size.y
+	scale = Vector2(1, 1)
 	if leftToRight:
 		direction = Vector2(-1, 0)
 		position = Vector2(screen_w + margin, screen_h)

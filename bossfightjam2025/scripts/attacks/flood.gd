@@ -35,7 +35,7 @@ func _ready() -> void:
 	add_child(inbetweenAttackTimer)
 	inbetweenAttackTimer.one_shot = true
 	attacksDone = 0
-	global_position = Vector2(0, 1080)
+	global_position = Vector2(0, get_viewport().size.y)
 	scale = Vector2(1, 0)
 	var rise_tween  = create_tween()
 	rise_tween .tween_property(self, "scale", target_scale, scale_up_time)\
@@ -56,12 +56,12 @@ func StartAttack():
 func DoAttack():
 	var pillar = pillar_attack.instantiate()
 	pillar.connect("destroyed", CountAttacks)
-	#POSITION POPRAVITI NIJE DOBRO AAAAAAAAAAAAAAAAAAAAAAAAAAAA
-	pillar.global_position = self.global_position - Vector2(600, 0)
-	print("Flood global_position:", global_position)
-	print("Pillar global_position:", pillar.global_position)
-
+	pillar.position = Vector2(0, 0)
+	pillar.top_level = true
 	add_child(pillar)
+	print("Flood scale:", scale)
+	print("Pillar scale:", pillar.scale)
+	print("Pillar global_scale:", pillar.global_scale)
 
 func CountAttacks():
 	attacksDone += 1
