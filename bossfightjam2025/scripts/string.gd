@@ -7,7 +7,7 @@ class_name BossString
 @onready var bottom: RigidBody2D = $string_piece_E
 
 @onready var top_joint: PinJoint2D = $S
-@onready var bottom_joint: PinJoint2D = $E
+@onready var bottom_joint: PinJoint2D = $string_piece_E/E
 
 signal Cut
 

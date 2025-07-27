@@ -5,7 +5,7 @@ signal primary()
 signal attack()
 signal change_phase()
 signal axis(direction: Vector2)
-
+signal pause()
 var left_axis : bool
 var right_axis : bool
 var up_axis : bool
@@ -31,6 +31,9 @@ func _input(event):
 				KEY_K:
 					if not event.is_echo():
 						attack.emit()
+				KEY_ESCAPE:
+					if not event.is_echo():
+						pause.emit()
 		else:
 			match event.keycode:
 				KEY_A:

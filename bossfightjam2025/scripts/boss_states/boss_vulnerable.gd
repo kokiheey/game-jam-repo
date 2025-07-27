@@ -30,7 +30,7 @@ func _ready():
 	boss.health = strings.size()
 
 func on_string_cut(string: BossString):
-	if string_cut: pass
+	if string_cut: return
 	string.die()
 	boss.health -= 1
 	boss.check_state()

@@ -62,7 +62,7 @@ initial_state = NodePath("Follow")
 script = ExtResource("3_jncid")
 boss = NodePath("../..")
 minimum_distance = 10.0
-available_attacks = [NodePath("../Vulnerable")]
+available_attacks = [NodePath("../WaveAttack"), NodePath("../FloodAttack")]
 metadata/_custom_type_script = "uid://bnh8iwkky0scr"
 
 [node name="WaveAttack" type="Node" parent="StateMachine"]
@@ -90,7 +90,7 @@ position = Vector2(179, 7)
 position = Vector2(-164, 8)
 
 [node name="string_holder" type="StaticBody2D" parent="."]
-position = Vector2(-14, -402)
+position = Vector2(-18, -679)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="string_holder"]
 position = Vector2(0, 1)

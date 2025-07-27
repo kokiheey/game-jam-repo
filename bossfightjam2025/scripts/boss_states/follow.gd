@@ -4,11 +4,14 @@ class_name Follow
 @export var boss: Boss
 @export var minimum_distance: float
 @export var available_attacks: Array[State]
+@export var attacks_before_vuln: int = 2
 @onready var player := boss.getTargetedPlayer()
 
+var attacks_done: int
 var targetPosition: Vector2
 
-
+func _ready():
+	attacks_done = 0
 
 func Enter():
 	#play Idle animation
@@ -33,5 +36,10 @@ func Update():
 	boss.move_and_slide()
 
 func startAttack():
-	var attack_state = available_attacks.pick_random()
-	StateTransitioned.emit(name, attack_state.name)
+	if attacks_done == attacks_before_vuln:
+		attacks_done = 0
+		StateTransitioned.emit(name, "Vulnerable")
+	else:
+		var attack_state = available_attacks.pick_random()
+		attacks_done += 1
+		StateTransitioned.emit(name, attack_state.name)
