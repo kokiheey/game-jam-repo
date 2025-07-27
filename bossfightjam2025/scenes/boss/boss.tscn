@@ -61,7 +61,7 @@ initial_state = NodePath("Follow")
 script = ExtResource("3_jncid")
 boss = NodePath("../..")
 minimum_distance = 10.0
-available_attacks = [NodePath("../FloodAttack")]
+available_attacks = [NodePath("../FloodAttack"), NodePath("../WaveAttack")]
 metadata/_custom_type_script = "uid://bnh8iwkky0scr"
 
 [node name="WaveAttack" type="Node" parent="StateMachine"]

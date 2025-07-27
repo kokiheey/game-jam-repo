@@ -5,6 +5,8 @@ class_name Wave
 @export var Speed: float
 @export var MaxScale: float
 @export var damage: int = 1
+@export var normalColor: Color = Color8(255, 0, 0, 170)
+@export var invertedColor: Color = Color8(38, 88, 140, 170)
 
 @onready var sprite := $WaveSprite as Sprite2D
 @onready var pos_area := $PositiveArea
@@ -14,6 +16,12 @@ var inverted := true
 var invertedMaterial := preload("res://assets/materials/player_inverted.tres")
 func _ready():
 	scale = Vector2.ZERO
+	randomize()
+	inverted = randi_range(0, 1)
+	if inverted:
+		sprite.modulate = invertedColor
+	else:
+		sprite.modulate = normalColor
 	pos_area.body_entered.connect(try_damage)
 	if inverted:
 		sprite.material = invertedMaterial

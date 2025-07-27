@@ -13,10 +13,10 @@ class_name Flood
 @export var normalColor: Color = Color8(255, 0, 0, 170)
 @export var invertedColor: Color = Color8(38, 88, 140, 170)
 
-@onready var inbetweenAttackTimer := Timer.new()
 @onready var hurt_box: Area2D = $Hurtbox
 @onready var flood_spirte: Sprite2D = $FloodSprite
 
+var inbetweenAttackTimer := Timer.new()
 var attackCount : int
 var attacksDone : int = 0
 var inverted: bool
