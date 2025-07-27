@@ -9,6 +9,7 @@ class_name PlayerCharacter
 @export var invincibleTime : float = 0.5
 
 @onready var input := get_node("/root/Main/InputController")
+@onready var hurt_sfx: AudioStreamPlayer = $Damage
 var invertedMaterial := preload("res://assets/materials/player_inverted.tres")
 var inverted := false
 signal Death
@@ -31,6 +32,9 @@ func take_damage(damage: int):
 		return
 	health -= damage
 	damageShake.emit()
+	if not hurt_sfx.playing:
+		hurt_sfx.pitch_scale = randf_range(0.9, 1.1)
+		hurt_sfx.play()
 	if health <= 0:
 		Death.emit()
 	else:

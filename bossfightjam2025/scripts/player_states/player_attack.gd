@@ -10,6 +10,7 @@ func _ready():
 
 func Enter():
 	anim_s.play("attack")
+	attack_sfx.pitch_scale = randf_range(0.8, 1.2)
 	if not attack_sfx.playing: attack_sfx.play()
 	var attack = attack_box.instantiate()
 	attack.position = Vector2.ZERO
