@@ -3,3 +3,4 @@
 [resource]
 Button/font_sizes/font_size = 30
 HeaderLarge/font_sizes/font_size = 100
+Label/font_sizes/font_size = 30
