@@ -6,12 +6,13 @@ class_name PlayerCharacter
 @export var JUMP_VELOCITY := -600.0
 @onready var health : int = MaxHealth
 @export var MaxHealth : int = 10
-@export var invincibleTime : float = 1
+@export var invincibleTime : float = 0.5
 
 @onready var input := get_node("/root/Main/InputController")
 var invertedMaterial := preload("res://assets/materials/player_inverted.tres")
 var inverted := false
 signal Death
+signal damageShake
 
 var _invicibleTimer : Timer
 var visible_state : bool = true
@@ -29,6 +30,7 @@ func take_damage(damage: int):
 	if isInvincible: 
 		return
 	health -= damage
+	damageShake.emit()
 	if health <= 0:
 		Death.emit()
 	else:

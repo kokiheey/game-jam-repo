@@ -40,6 +40,7 @@ player = NodePath("../player")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(960, 540)
+zoom = Vector2(1.025, 1.025)
 script = ExtResource("6_3dxm6")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
