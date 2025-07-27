@@ -31,7 +31,6 @@ func _ready() -> void:
 		flood_spirte.modulate = invertedColor
 	else:
 		flood_spirte.modulate = normalColor
-	hurt_box.body_entered.connect(try_damage)
 	add_child(inbetweenAttackTimer)
 	inbetweenAttackTimer.one_shot = true
 	attacksDone = 0
@@ -77,8 +76,8 @@ func EndAttack():
 	down_tween.tween_callback(Callable(self, "queue_free"))
 	attack_end.emit()
 	
-#Poboljsati damage taking jer ce sada ako jednom bude hitan moci samo da cami u "vodi" ili sta je vec ovo
-#mozda dodati check da svaki put dok je tu primi damage i onda ima neke iframes i onda opet nez mozda sa timerom
-func try_damage(body: Node2D):
-	if body is CharacterBody2D and body.inverted != inverted:
-		body.take_damage(damage)
+func _process(delta: float) -> void:
+	var overlapping_bodies = hurt_box.get_overlapping_bodies()
+	for body in overlapping_bodies:
+		if body is CharacterBody2D and body.inverted != inverted:
+			body.take_damage(damage)

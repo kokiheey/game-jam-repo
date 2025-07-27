@@ -3,10 +3,10 @@ class_name WaveAttack
 
 @export var attack_windup: float = 2.0
 @export var attack_winddown: float = 1.0
-@export var minAttacks: int = 5
-@export var maxAttacks: int = 12
+@export var minAttacks: int = 10
+@export var maxAttacks: int = 20
 @export var minCooldownAttack: float = 0.2
-@export var maxCooldownAttack: float = 1.5
+@export var maxCooldownAttack: float = 0.8
 
 @onready var boss: Boss = get_parent().get_parent()
 
