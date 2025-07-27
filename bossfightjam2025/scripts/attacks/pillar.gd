@@ -8,6 +8,7 @@ signal destroyed
 @onready var flood: Flood = get_parent()
 @onready var hurt_box: Area2D = $Hurtbox
 @onready var pillar_sprite: Sprite2D = $Sprite2D
+@onready var player : PlayerCharacter = $"../../player"
 
 var margin: int = 120
 var direction := Vector2.ZERO
@@ -36,6 +37,10 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	position += direction * speed * delta
+	if player.inverted == inverted:
+		pillar_sprite.modulate.a8 = 40
+	else:
+		pillar_sprite.modulate.a8 = 200
 	var screen_w = get_viewport_rect().size.x
 	if position.x < -margin or position.x > screen_w + margin:
 		emit_signal("destroyed")

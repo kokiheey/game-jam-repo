@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cmfqil1osybnf"]
+[gd_scene load_steps=16 format=3 uid="uid://cmfqil1osybnf"]
 
 [ext_resource type="Texture2D" uid="uid://cb4bjpprcgehc" path="res://assets/sprites/background.png" id="1_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://bx5am6i22cmw7" path="res://scenes/player.tscn" id="1_glv2v"]
@@ -64,6 +64,19 @@ stream = ExtResource("6_lgr22")
 volume_db = -5.0
 autoplay = true
 parameters/looping = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("player")]
+offset_left = 1392.0
+offset_top = 22.0
+offset_right = 1908.0
+offset_bottom = 67.0
+nine_patch_stretch = true
+texture_under = ExtResource("7_03owx")
+texture_progress = ExtResource("8_wkp8b")
+script = ExtResource("7_lgr22")
+player = NodePath("../../player")
 
 [node name="InputController" parent="." instance=ExtResource("3_r0du0")]
 
