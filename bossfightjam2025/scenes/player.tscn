@@ -89,13 +89,13 @@ region = Rect2(768, 340, 256, 340)
 [sub_resource type="SpriteFrames" id="SpriteFrames_f1ej7"]
 animations = [{
 "frames": [{
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_fulsm")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_4r5pv")
 }, {
-"duration": 1.0,
+"duration": 0.5,
 "texture": SubResource("AtlasTexture_60mlk")
 }],
 "loop": true,
@@ -210,3 +210,5 @@ position = Vector2(1.26985, -1.26985)
 scale = Vector2(0.283482, 0.283482)
 sprite_frames = SubResource("SpriteFrames_f1ej7")
 animation = &"attack"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

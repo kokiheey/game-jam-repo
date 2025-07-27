@@ -1,7 +1,7 @@
 extends State
 class_name player_attack
 @export var anim_s: AnimatedSprite2D
-@export var lifespan: float = 1.0
+@export var lifespan: float = 0.4
 
 var attack_box := preload("res://scenes/player_attack_box.tscn")
 func Enter():
