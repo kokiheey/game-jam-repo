@@ -2,7 +2,13 @@ extends State
 class_name player_idle
 @export var anim_s: AnimatedSprite2D
 @onready var player: PlayerCharacter = get_parent().get_parent()
+@onready var walk_sfx: AudioStreamPlayer = $"../../Walk"
+
 var input: InputController
+
+func _ready():
+	walk_sfx.bus = "SFX"
+
 func Enter():
 	if not player.is_on_floor():
 		StateTransitioned.emit(name, "player_airborne")
@@ -20,6 +26,7 @@ func Enter():
 
 func jump():
 	if player.is_on_floor():
+		walk_sfx.stop()
 		player.velocity.y = player.JUMP_VELOCITY
 		StateTransitioned.emit(name, "player_airborne")
 
@@ -28,8 +35,13 @@ func endJump():
 		player.velocity.y /= 1.4
 
 func Update():
-	if(player.velocity.x != 0): anim_s.play("run")
-	else: anim_s.play("idle")
+	if player.velocity.x != 0:
+		walk_sfx.pitch_scale = randf_range(0.8, 1.2)
+		if not walk_sfx.playing: walk_sfx.play()
+		anim_s.play("run")
+	else: 
+		anim_s.play("idle")
+		walk_sfx.stop()
 
 func move(direction: Vector2):
 	player.velocity.x = direction.x * player.SPEED
