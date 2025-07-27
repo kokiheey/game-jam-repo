@@ -8,7 +8,7 @@ var strings: Array[BossString]
 @export var sctime:float = 1.0
 var string_cut:bool = false
 
-
+@onready var hurt_sfx: AudioStreamPlayer = $"../../Hurt"
 
 func Enter():
 	string_cut = false
@@ -31,6 +31,7 @@ func _ready():
 
 func on_string_cut(string: BossString):
 	if string_cut: return
+	hurt_sfx.play()
 	string.die()
 	boss.health -= 1
 	boss.check_state()
