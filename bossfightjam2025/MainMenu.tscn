@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2nxyffr6qqwa"]
+
+[ext_resource type="Script" uid="uid://bsqbka7o5wjlu" path="res://scripts/main_menu.gd" id="1_eiy7p"]
+[ext_resource type="Theme" uid="uid://bbmn13s1lmygc" path="res://themes/MainMenuTheme.tres" id="1_i26rj"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+script = ExtResource("1_eiy7p")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.170597, 0.181876, 0.191432, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_left = 704.0
+offset_top = 448.0
+offset_right = 1216.0
+offset_bottom = -248.0
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_i26rj")
+text = "Start"
+
+[node name="Settings" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_i26rj")
+text = "Options"
+
+[node name="Quit" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+theme = ExtResource("1_i26rj")
+text = "Quit"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 392.0
+theme = ExtResource("1_i26rj")
+theme_type_variation = &"HeaderLarge"
+text = "Game name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_up" from="Control/VBoxContainer/Play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/Quit" to="." method="_on_quit_button_up"]

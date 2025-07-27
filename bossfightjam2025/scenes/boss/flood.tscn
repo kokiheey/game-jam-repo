@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://v2uspqrkkaow" path="res://assets/sprites/Flood.png" id="1_6wet0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0bbju"]
-size = Vector2(1920, 21)
+size = Vector2(1920, 19)
 
 [node name="Flood" type="Node2D"]
 position = Vector2(0, 1080)
@@ -15,17 +15,18 @@ invertedColor = Color(0.150724, 0.345557, 0.548453, 0.666667)
 
 [node name="FloodSprite" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0, 0.666667)
+scale = Vector2(1, 0.958335)
 texture = ExtResource("1_6wet0")
 centered = false
 
 [node name="Hurtbox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(960, 10.5)
+position = Vector2(960, 9.5)
 shape = SubResource("RectangleShape2D_0bbju")
 
 [node name="_debug_hurtbox_view" type="Sprite2D" parent="Hurtbox"]
 visible = false
-position = Vector2(960, 10.5)
-scale = Vector2(1, 0.875001)
+position = Vector2(960, 9.49996)
+scale = Vector2(1, 0.791664)
 texture = ExtResource("1_6wet0")
