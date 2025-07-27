@@ -9,7 +9,7 @@ class_name WaveAttack
 @export var maxCooldownAttack: float = 0.8
 
 @onready var boss: Boss = get_parent().get_parent()
-
+@onready var attack_sfx: AudioStreamPlayer = $"../../Attack"
 var wave_attack = preload("res://scenes/boss/wave.tscn")
 
 var inbetweenAttackTimer := Timer.new()
@@ -40,6 +40,7 @@ func Attack():
 		var attack = wave_attack.instantiate()
 		attack.global_position = boss.global_position
 		get_tree().current_scene.add_child(attack)
+		attack_sfx.play()
 		print("Spawned wave: ", attack.name)
 	
 	attack_winddown_timer = Timer.new()

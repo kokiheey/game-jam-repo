@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://prixi2sgl0jr"]
+[gd_scene load_steps=18 format=3 uid="uid://prixi2sgl0jr"]
 
 [ext_resource type="Script" uid="uid://dmked8swuhj33" path="res://scripts/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://dbd6g52vr8s2c" path="res://scenes/state_machine.tscn" id="2_neq0i"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" uid="uid://b7wrbbkq1uujc" path="res://scripts/boss_states/boss_vulnerable.gd" id="6_7kbl1"]
 [ext_resource type="PackedScene" uid="uid://84ltevligxy3" path="res://scenes/boss/hand.tscn" id="6_i4fbv"]
 [ext_resource type="PackedScene" uid="uid://bhim4jtfvoojs" path="res://scenes/string.tscn" id="8_dlpkd"]
+[ext_resource type="AudioStream" uid="uid://f7gm5yxram8g" path="res://assets/audio/sfx/BossAttack.ogg" id="10_2mupd"]
+[ext_resource type="AudioStream" uid="uid://dsvj8l8m70o07" path="res://assets/audio/sfx/StringSnap.ogg" id="11_p4gry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i4fbv"]
 size = Vector2(103, 138)
@@ -110,6 +112,14 @@ body_down = NodePath("../../HandR/hand part2")
 position = Vector2(26, -230)
 body_up = NodePath("..")
 body_down = NodePath("../..")
+
+[node name="Attack" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_2mupd")
+volume_db = 4.0
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_p4gry")
+volume_db = 4.0
 
 [editable path="HandR"]
 [editable path="HandL"]
