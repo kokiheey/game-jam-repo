@@ -1,6 +1,8 @@
 extends Node
 class_name InputController
 
+
+signal primary_up()
 signal primary()
 signal attack()
 signal change_phase()
@@ -42,6 +44,8 @@ func _input(event):
 				KEY_D:
 					right_axis = false
 					_emit_axis()
+				KEY_SPACE:
+					primary_up.emit()
 
 func _emit_axis():
 	var x := 0

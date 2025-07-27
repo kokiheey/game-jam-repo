@@ -26,11 +26,13 @@ layout_mode = 2
 [node name="Resume" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_myx47")
+theme_override_font_sizes/font_size = 100
 text = "Resume"
 
 [node name="Quit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("2_myx47")
+theme_override_font_sizes/font_size = 100
 text = "Quit"
 
 [connection signal="button_up" from="MarginContainer/VBoxContainer/Resume" to="." method="_on_resume_button_up"]

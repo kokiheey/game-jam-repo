@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cmfqil1osybnf"]
+[gd_scene load_steps=16 format=3 uid="uid://cmfqil1osybnf"]
 
 [ext_resource type="Texture2D" uid="uid://cb4bjpprcgehc" path="res://assets/sprites/background.png" id="1_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://bx5am6i22cmw7" path="res://scenes/player.tscn" id="1_glv2v"]
@@ -10,7 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://b1lr0omr8fmmj" path="res://assets/sprites/ui/health_under.png" id="7_03owx"]
 [ext_resource type="Script" uid="uid://qhif4adbfuhl" path="res://scripts/health_bar.gd" id="7_lgr22"]
 [ext_resource type="Texture2D" uid="uid://bx7ask7vttjf8" path="res://assets/sprites/ui/health_progress.png" id="8_wkp8b"]
+[ext_resource type="PackedScene" uid="uid://dl6duqkg3gvvd" path="res://RestartMenu.tscn" id="11_5vvyt"]
 [ext_resource type="PackedScene" uid="uid://b2q77mbwhlmue" path="res://scenes/pause_menu.tscn" id="11_20pc6"]
+[ext_resource type="PackedScene" uid="uid://b43dkedk4suqs" path="res://win_menu.tscn" id="13_c6i3y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glv2v"]
 size = Vector2(1920, 152)
@@ -78,9 +80,21 @@ player = NodePath("../../player")
 
 [node name="InputController" parent="." instance=ExtResource("3_r0du0")]
 
+[node name="RestartMenu" parent="." instance=ExtResource("11_5vvyt")]
+visible = false
+offset_left = 767.0
+offset_top = 282.0
+offset_right = 767.0
+offset_bottom = 282.0
+scale = Vector2(0.879142, 0.889134)
+
 [node name="PauseMenu" parent="." instance=ExtResource("11_20pc6")]
+visible = false
 offset_left = 961.0
 offset_top = 540.0
 offset_right = 961.0
 offset_bottom = 540.0
-scale = Vector2(2.67335, 2.67335)
+scale = Vector2(0.923879, 0.923879)
+
+[node name="WinMenu" parent="." instance=ExtResource("13_c6i3y")]
+visible = false

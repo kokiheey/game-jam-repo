@@ -97,14 +97,19 @@ position = Vector2(0, 1)
 shape = SubResource("RectangleShape2D_wf233")
 
 [node name="String" parent="string_holder" node_paths=PackedStringArray("body_up", "body_down") instance=ExtResource("8_dlpkd")]
-position = Vector2(-141, 9)
+position = Vector2(-141, -8)
 body_up = NodePath("..")
 body_down = NodePath("../../HandL/hand part2")
 
 [node name="String2" parent="string_holder" node_paths=PackedStringArray("body_up", "body_down") instance=ExtResource("8_dlpkd")]
-position = Vector2(201, 14)
+position = Vector2(198, -12)
 body_up = NodePath("..")
 body_down = NodePath("../../HandR/hand part2")
+
+[node name="String4" parent="string_holder" node_paths=PackedStringArray("body_up", "body_down") instance=ExtResource("8_dlpkd")]
+position = Vector2(26, -230)
+body_up = NodePath("..")
+body_down = NodePath("../..")
 
 [editable path="HandR"]
 [editable path="HandL"]

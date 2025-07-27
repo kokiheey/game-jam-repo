@@ -3,7 +3,7 @@ class_name PlayerCharacter
 @export var _sprite2D : AnimatedSprite2D
 
 @export var SPEED := 400.0
-@export var JUMP_VELOCITY := -600.0
+@export var JUMP_VELOCITY := -700.0
 @onready var health : int = MaxHealth
 @export var MaxHealth : int = 10
 @export var invincibleTime : float = 0.5
