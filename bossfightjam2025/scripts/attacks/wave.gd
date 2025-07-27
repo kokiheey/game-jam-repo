@@ -4,7 +4,7 @@ class_name Wave
 @export var Width: float
 @export var Speed: float
 @export var MaxScale: float
-@export var damage: int
+@export var damage: int = 1
 
 @onready var sprite := $WaveSprite as Sprite2D
 @onready var pos_area := $PositiveArea
@@ -23,8 +23,7 @@ func _process(delta: float):
 	scale = Vector2(radius, radius)
 	if scale.length_squared() > MaxScale * MaxScale:
 		queue_free()
-		
+
 func try_damage(body: Node2D):
-	if body is PlayerCharacter and not neg_area.get_overlapping_bodies().has(body) and body.inverted == inverted:
+	if body is PlayerCharacter and not neg_area.get_overlapping_bodies().has(body) and body.inverted != inverted:
 		body.take_damage(damage)
-		print("sigma")

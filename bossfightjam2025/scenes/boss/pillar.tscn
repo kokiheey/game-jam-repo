@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://eynajf76x4iy"]
+
+[ext_resource type="Texture2D" uid="uid://v2uspqrkkaow" path="res://assets/sprites/Flood.png" id="1_q0rt8"]
+[ext_resource type="Script" uid="uid://c1p7168123yae" path="res://scripts/attacks/pillar.gd" id="1_yb0pe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q0rt8"]
+size = Vector2(32, 528)
+
+[node name="Pillar" type="Node2D"]
+script = ExtResource("1_yb0pe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -264)
+scale = Vector2(0.02, 22)
+texture = ExtResource("1_q0rt8")
+
+[node name="Hurtbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -264)
+shape = SubResource("RectangleShape2D_q0rt8")
