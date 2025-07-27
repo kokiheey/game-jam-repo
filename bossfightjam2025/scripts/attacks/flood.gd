@@ -15,6 +15,7 @@ class_name Flood
 
 @onready var hurt_box: Area2D = $Hurtbox
 @onready var flood_spirte: Sprite2D = $FloodSprite
+@onready var player : PlayerCharacter = $"../player"
 
 var inbetweenAttackTimer := Timer.new()
 var attackCount : int
@@ -78,6 +79,10 @@ func EndAttack():
 	
 func _process(delta: float) -> void:
 	var overlapping_bodies = hurt_box.get_overlapping_bodies()
+	if player.inverted == inverted:
+		flood_spirte.modulate.a8 = 40
+	else:
+		flood_spirte.modulate.a8 = 200
 	for body in overlapping_bodies:
 		if body is CharacterBody2D and body.inverted != inverted:
 			body.take_damage(damage)

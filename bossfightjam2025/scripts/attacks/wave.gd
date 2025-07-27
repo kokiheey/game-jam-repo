@@ -5,12 +5,15 @@ class_name Wave
 @export var Speed: float
 @export var MaxScale: float
 @export var damage: int = 1
-@export var normalColor: Color = Color8(255, 0, 0, 170)
-@export var invertedColor: Color = Color8(38, 88, 140, 170)
+@export var normalColor: Color = Color8(255, 0, 0, 200)
+@export var invertedColor: Color = Color8(38, 88, 140, 200)
 
 @onready var sprite := $WaveSprite as Sprite2D
 @onready var pos_area := $PositiveArea
 @onready var neg_area := $NegativeArea
+
+@onready var player : PlayerCharacter = $"../player"
+
 var radius := 0.0
 var inverted := true
 var invertedMaterial := preload("res://assets/materials/player_inverted.tres")
@@ -29,6 +32,10 @@ func _ready():
 func _process(delta: float):
 	radius += Speed * delta
 	scale = Vector2(radius, radius)
+	if player.inverted == inverted:
+		sprite.modulate.a8 = 40
+	else:
+		sprite.modulate.a8 = 200
 	if scale.length_squared() > MaxScale * MaxScale:
 		queue_free()
 
