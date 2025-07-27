@@ -22,3 +22,9 @@ window/size/viewport_height=1080
 [dotnet]
 
 project/assembly_name="BossFightJam2025"
+
+[file_customization]
+
+folder_colors={
+"res://scripts/": "red"
+}

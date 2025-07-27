@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dr7sp774u6ary"
-path="res://.godot/imported/player_airborne.png-2bc129380e288ff9bd55eba33c8711eb.ctex"
+uid="uid://d2w5wdyy4q5vd"
+path="res://.godot/imported/player_attack.png-7b6d25543066d221635482c49ce5e31e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/sprite_sheets/player_airborne.png"
-dest_files=["res://.godot/imported/player_airborne.png-2bc129380e288ff9bd55eba33c8711eb.ctex"]
+source_file="res://assets/sprites/sprite_sheets/player_attack.png"
+dest_files=["res://.godot/imported/player_attack.png-7b6d25543066d221635482c49ce5e31e.ctex"]
 
 [params]
 
