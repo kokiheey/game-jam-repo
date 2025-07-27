@@ -15,7 +15,10 @@ func Exit():
 
 func Update():
 	if player.velocity.y > 100:
-		anim_s.play("falling")
+		if player.velocity.x != 0:
+			anim_s.play("falling_side")
+		else:
+			anim_s.play("falling_idle")
 	elif player.velocity.y < -100:
 		anim_s.play("rising")
 	else: anim_s.play("floating")

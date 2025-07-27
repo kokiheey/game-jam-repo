@@ -1,11 +1,12 @@
-[gd_scene load_steps=23 format=3 uid="uid://bx5am6i22cmw7"]
+[gd_scene load_steps=29 format=3 uid="uid://bx5am6i22cmw7"]
 
 [ext_resource type="Script" uid="uid://b4l1e5jgiq6cp" path="res://scripts/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://ptk3dcp2teqn" path="res://assets/sprites/sprite_sheets/run_idle_sheet.png" id="2_qhqgy"]
 [ext_resource type="Script" uid="uid://bv02iexisq514" path="res://scripts/state_machine.gd" id="3_qhqgy"]
 [ext_resource type="Script" uid="uid://chywbkk87io5q" path="res://scripts/player_states/player_idle.gd" id="4_dqkch"]
 [ext_resource type="Script" uid="uid://cu0a8x3sqep4h" path="res://scripts/player_states/player_airborne.gd" id="4_qlg0r"]
-[ext_resource type="Texture2D" uid="uid://b2dk1tlj5u57q" path="res://assets/sprites/sprite_sheets/player_airborne.png" id="5_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://dr7sp774u6ary" path="res://assets/sprites/sprite_sheets/player_airborne.png" id="5_tuyoq"]
+[ext_resource type="Texture2D" uid="uid://d2w5wdyy4q5vd" path="res://assets/sprites/sprite_sheets/player_attack.png" id="7_fjrip"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3vyb7"]
 radius = 20.3176
@@ -13,12 +14,31 @@ height = 91.4292
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qlg0r"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_fulsm"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(0, 0, 600, 340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r5pv"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(600, 0, 600, 340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_60mlk"]
+atlas = ExtResource("7_fjrip")
+region = Rect2(0, 340, 600, 340)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_f1ej7"]
 atlas = ExtResource("5_tuyoq")
-region = Rect2(512, 0, 256, 340)
+region = Rect2(256, 340, 256, 340)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qfm1y"]
+atlas = ExtResource("5_tuyoq")
+region = Rect2(0, 340, 256, 340)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fulsm"]
+load_path = "res://.godot/imported/player_airborne.png-2bc129380e288ff9bd55eba33c8711eb.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oprun"]
-atlas = ExtResource("5_tuyoq")
+atlas = SubResource("CompressedTexture2D_fulsm")
 region = Rect2(256, 0, 256, 340)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
@@ -38,7 +58,7 @@ atlas = ExtResource("2_qhqgy")
 region = Rect2(768, 0, 256, 340)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a8ls1"]
-atlas = ExtResource("5_tuyoq")
+atlas = SubResource("CompressedTexture2D_fulsm")
 region = Rect2(0, 0, 256, 340)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_smehm"]
@@ -69,10 +89,32 @@ region = Rect2(768, 340, 256, 340)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_fulsm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r5pv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_60mlk")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_f1ej7")
 }],
 "loop": true,
-"name": &"falling",
+"name": &"falling_idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qfm1y")
+}],
+"loop": true,
+"name": &"falling_side",
 "speed": 5.0
 }, {
 "frames": [{
@@ -161,4 +203,4 @@ material = SubResource("ShaderMaterial_qlg0r")
 position = Vector2(1.26985, -1.26985)
 scale = Vector2(0.283482, 0.283482)
 sprite_frames = SubResource("SpriteFrames_f1ej7")
-animation = &"falling"
+animation = &"attack"
