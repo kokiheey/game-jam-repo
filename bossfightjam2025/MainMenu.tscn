@@ -62,4 +62,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="button_up" from="Control/VBoxContainer/Play" to="." method="_on_play_button_up"]
+[connection signal="button_up" from="Control/VBoxContainer/Settings" to="." method="_on_settings_button_up"]
 [connection signal="button_up" from="Control/VBoxContainer/Quit" to="." method="_on_quit_button_up"]
