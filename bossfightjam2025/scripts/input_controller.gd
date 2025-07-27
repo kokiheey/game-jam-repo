@@ -2,6 +2,7 @@ extends Node
 class_name InputController
 
 signal primary()
+signal attack()
 signal change_phase()
 signal axis(direction: Vector2)
 
@@ -27,6 +28,9 @@ func _input(event):
 				KEY_J:
 					if not event.is_echo():
 						change_phase.emit()
+				KEY_K:
+					if not event.is_echo():
+						attack.emit()
 		else:
 			match event.keycode:
 				KEY_A:

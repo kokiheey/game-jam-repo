@@ -24,6 +24,8 @@ node_a = NodePath("../holder")
 node_b = NodePath("../hand part")
 
 [node name="hand part" type="RigidBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 mass = 5.043
 
 [node name="Sprite2D" type="Sprite2D" parent="hand part"]
@@ -42,6 +44,8 @@ node_b = NodePath("../hand part2")
 
 [node name="hand part2" type="RigidBody2D" parent="."]
 position = Vector2(8, 204)
+collision_layer = 0
+collision_mask = 0
 mass = 48.228
 gravity_scale = 1.721
 

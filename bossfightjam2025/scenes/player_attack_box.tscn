@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bbrvdf8x3gtb0"]
+
+[ext_resource type="Script" uid="uid://dhxgl4qtlrqs7" path="res://scripts/player_states/player_attack_box.gd" id="1_wg5ft"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fjrip"]
+size = Vector2(172.7, 45.7146)
+
+[node name="Player_attack" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_wg5ft")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(4.44447, 1.26985)
+shape = SubResource("RectangleShape2D_fjrip")

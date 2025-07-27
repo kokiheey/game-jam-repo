@@ -16,5 +16,8 @@ func _ready():
 	bottom_joint.node_b = body_down.get_path()
 
 func cut():
-	top_joint.enabled = false
-	Cut.emit()
+	if top_joint.node_a != NodePath(""):
+		Cut.emit(self)
+
+func die():
+	top_joint.node_a = NodePath("")

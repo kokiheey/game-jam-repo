@@ -8,10 +8,12 @@ func Enter():
 	input = get_node("/root/Main/InputController")
 	if input:
 		input.axis.connect(move)
+		input.attack.connect(attack)
 
 func Exit():
 	if input:
 		input.axis.disconnect(move)
+		input.attack.disconnect(attack)
 
 func Update():
 	if player.velocity.y > 100:
@@ -27,3 +29,6 @@ func Update():
 
 func move(direction: Vector2):
 	player.velocity.x = direction.x * player.SPEED
+
+func attack():
+	StateTransitioned.emit(name, "player_attack")

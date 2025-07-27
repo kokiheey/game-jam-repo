@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://prixi2sgl0jr"]
+[gd_scene load_steps=16 format=3 uid="uid://prixi2sgl0jr"]
 
 [ext_resource type="Script" uid="uid://dmked8swuhj33" path="res://scripts/boss.gd" id="1_dlmty"]
 [ext_resource type="PackedScene" uid="uid://dbd6g52vr8s2c" path="res://scenes/state_machine.tscn" id="2_neq0i"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://bgp28220rbems" path="res://scripts/boss_states/wave_attack.gd" id="4_wqpjq"]
 [ext_resource type="Texture2D" uid="uid://crjxirwno8p73" path="res://assets/sprites/sprite_sheets/boss_head.png" id="5_i4fbv"]
 [ext_resource type="Script" uid="uid://bkeo8uik43hbm" path="res://scripts/boss_states/flood_attack.gd" id="5_wf233"]
+[ext_resource type="Script" uid="uid://b7wrbbkq1uujc" path="res://scripts/boss_states/boss_vulnerable.gd" id="6_7kbl1"]
 [ext_resource type="PackedScene" uid="uid://84ltevligxy3" path="res://scenes/boss/hand.tscn" id="6_i4fbv"]
 [ext_resource type="PackedScene" uid="uid://bhim4jtfvoojs" path="res://scenes/string.tscn" id="8_dlpkd"]
 
@@ -61,7 +62,7 @@ initial_state = NodePath("Follow")
 script = ExtResource("3_jncid")
 boss = NodePath("../..")
 minimum_distance = 10.0
-available_attacks = [NodePath("../FloodAttack"), NodePath("../WaveAttack")]
+available_attacks = [NodePath("../Vulnerable")]
 metadata/_custom_type_script = "uid://bnh8iwkky0scr"
 
 [node name="WaveAttack" type="Node" parent="StateMachine"]
@@ -71,6 +72,10 @@ metadata/_custom_type_script = "uid://bgp28220rbems"
 [node name="FloodAttack" type="Node" parent="StateMachine"]
 script = ExtResource("5_wf233")
 metadata/_custom_type_script = "uid://bkeo8uik43hbm"
+
+[node name="Vulnerable" type="Node" parent="StateMachine"]
+script = ExtResource("6_7kbl1")
+metadata/_custom_type_script = "uid://b7wrbbkq1uujc"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(13, 105)
