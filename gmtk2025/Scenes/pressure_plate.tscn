@@ -7,6 +7,9 @@
 size = Vector2(119, 121)
 
 [node name="PressurePlate" type="Area2D"]
+rotation = -0.586431
+scale = Vector2(0.083, 0.083)
+skew = -0.349066
 script = ExtResource("1_fis7i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

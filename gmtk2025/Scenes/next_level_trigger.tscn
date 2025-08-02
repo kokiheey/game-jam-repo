@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dvmnml0gildd2"]
+
+[ext_resource type="Texture2D" uid="uid://dful01lrob178" path="res://Assets/Tilesets/practice iso tiles.png" id="1_6kw55"]
+[ext_resource type="Script" uid="uid://dhp00fvs3gvao" path="res://Scripts/next_level_trigger.gd" id="1_w82wx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w82wx"]
+atlas = ExtResource("1_6kw55")
+region = Rect2(304, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w7gc3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w82wx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="NextLevelTrigger" type="Area2D"]
+script = ExtResource("1_w82wx")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_w7gc3")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(0, 0, -16, 8, 0, 16, 16, 8)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

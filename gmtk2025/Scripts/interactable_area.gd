@@ -5,4 +5,3 @@ class_name InteractableArea
 
 var interact: Callable = func():
 	pass
-

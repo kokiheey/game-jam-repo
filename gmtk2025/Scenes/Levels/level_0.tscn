@@ -1,28 +1,31 @@
-[gd_scene load_steps=4 format=4 uid="uid://8nax41hefnkw"]
+[gd_scene load_steps=6 format=4 uid="uid://8nax41hefnkw"]
 
-[ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="2_0xm2m"]
-[ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://b3u3hisqorwfw" path="res://Scripts/pressure_plate.tscn" id="3_h2yge"]
+[ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_r74qd"]
+[ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="2_um5o3"]
+[ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="3_kj5ij"]
+[ext_resource type="PackedScene" uid="uid://xvmo887oho55" path="res://Scenes/Levels/level_1.tscn" id="3_um5o3"]
+[ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="4_1ih7c"]
 
-[node name="Main" type="Node2D"]
+[node name="Level0" type="Node2D"]
 
 [node name="Floor" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="TileMapLayer" type="TileMapLayer" parent="Floor"]
 tile_map_data = PackedByteArray("AAACAAEAAgAAAAEAAAACAAIAAgAAAAEAAAADAP//AgAAAAEAAAADAAEAAgAAAAEAAAADAAIAAgAAAAEAAAAEAAEAAgAAAAEAAAAEAAIAAgAAAAEAAAAEAAMAAgAAAAEAAAAFAAEAAgABAAEAAAAFAAIAAgABAAEAAAAFAAMAAgABAAEAAAAEAP//AgAAAAEAAAAGAP//AgABAAEAAAAGAAEAAgABAAEAAAAGAAIAAgABAAEAAAAFAP//AgABAAEAAAAFAP7/AgABAAEAAAAHAAIAAgAAAAEAAAAIAAEAAgAAAAEAAAAIAAAAAgAAAAEAAAAHAAAAAgAAAAEAAAAHAAEAAgAAAAEAAAAGAAMAAgABAAEAAAAGAAQAAgABAAEAAAAHAAQAAgAAAAEAAAAHAAMAAgAAAAEAAAAIAAIAAgAAAAEAAAAHAP//AgAAAAEAAAAJAP//AgAAAAEAAAAJAAAAAgAAAAEAAAAJAAEAAgAAAAEAAAAIAAMAAgAAAAEAAAAIAAQAAgAAAAEAAAAJAAMAAgAAAAEAAAAJAAIAAgAAAAEAAAAJAP7/AgAAAAEAAAAIAP//AgAAAAEAAAAIAP7/AgAAAAEAAAAJAAQAAgAAAAEAAAAJAAUAAgAAAAEAAAAGAP7/AgABAAEAAAAGAAUAAgABAAEAAAAFAAQAAgABAAEAAAAFAAUAAgABAAEAAAACAAAAAgAAAAEAAAADAAAAAgAAAAEAAAAEAAAAAgAAAAEAAAAFAAAAAgABAAEAAAAGAAAAAgABAAEAAAACAAMAAgAAAAEAAAADAAMAAgAAAAEAAAADAAQAAgAAAAEAAAADAAUAAgAAAAEAAAAEAAUAAgAAAAEAAAAEAAQAAgAAAAEAAAACAAQAAgAAAAEAAAACAAUAAgAAAAEAAAACAP//AgAAAAEAAAACAP7/AgAAAAEAAAADAP7/AgAAAAEAAAAEAP7/AgAAAAEAAAAHAP7/AgAAAAEAAAAHAAUAAgAAAAEAAAAIAAUAAgAAAAEAAAA=")
-tile_set = ExtResource("2_h2yge")
+tile_set = ExtResource("1_r74qd")
 
-[node name="PressurePlate" parent="." instance=ExtResource("3_h2yge")]
-position = Vector2(113, 56)
-rotation = -0.586431
-scale = Vector2(0.0766899, 0.0827606)
-skew = -0.349066
+[node name="NextLevelTrigger" parent="." instance=ExtResource("2_um5o3")]
+position = Vector2(49, 16)
+scene = ExtResource("3_um5o3")
+
+[node name="PressurePlate2" parent="." instance=ExtResource("3_kj5ij")]
+position = Vector2(112, 56)
 
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Player" parent="Objects" instance=ExtResource("2_0xm2m")]
+[node name="Player" parent="Objects" instance=ExtResource("4_1ih7c")]
 z_index = 0
 position = Vector2(88, 68)
 
@@ -31,6 +34,6 @@ position = Vector2(88, 68)
 [node name="TileMapLayer2" type="TileMapLayer" parent="Objects"]
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAHAAEAAgACAAEAAAA=")
-tile_set = ExtResource("2_h2yge")
+tile_set = ExtResource("1_r74qd")
 y_sort_origin = 6
 x_draw_order_reversed = true
