@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b3u3hisqorwfw"]
 
-[ext_resource type="Script" path="res://pressure_plate.gd" id="1_fis7i"]
+[ext_resource type="Script" uid="uid://v2k7cdf04i65" path="res://pressure_plate.gd" id="1_fis7i"]
 [ext_resource type="Texture2D" uid="uid://frfakw2cppwa" path="res://icon.svg" id="2_mlt0h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_170pp"]
