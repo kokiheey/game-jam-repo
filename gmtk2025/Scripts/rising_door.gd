@@ -12,6 +12,7 @@ func _ready():
 
 func toggle():
 	toggled = not toggled
+	on_toggled.emit(self)
 	if toggled:
 		#tween to raised_position
 		transform = raised_transform
