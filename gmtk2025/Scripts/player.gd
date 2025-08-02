@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 30.0
+const SPEED = 32.0
 
 
 func _physics_process(delta: float) -> void:
@@ -9,7 +9,7 @@ func _physics_process(delta: float) -> void:
 	if direction:
 		self.velocity = direction * SPEED
 		#Implementirati flipovanje karaktera
- 
+		
 		#----------
 	else:
 		self.velocity = Vector2.ZERO

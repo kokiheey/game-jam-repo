@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bakl7kop3dbnx" path="res://Scripts/pressure_plate.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bakl7kop3dbnx" path="res://Scenes/pressure_plate.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,7 +18,7 @@ y_sort_enabled = true
 
 [node name="Player" parent="Objects" instance=ExtResource("2_0xm2m")]
 z_index = 0
-position = Vector2(77, 65.95)
+position = Vector2(94, 81)
 
 [node name="Camera2D" type="Camera2D" parent="Objects/Player"]
 
@@ -26,6 +26,7 @@ position = Vector2(77, 65.95)
 y_sort_enabled = true
 tile_map_data = PackedByteArray("AAAHAAEAAgACAAEAAAA=")
 tile_set = ExtResource("2_h2yge")
+y_sort_origin = 6
 x_draw_order_reversed = true
 
 [node name="PressurePlate" parent="." instance=ExtResource("3_h2yge")]
