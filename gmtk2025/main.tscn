@@ -5,16 +5,24 @@
 
 [node name="Main" type="Node2D"]
 
-[node name="TileMapLayer" type="TileMapLayer" parent="."]
+[node name="Floor" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Floor"]
 position = Vector2(0, 88)
 tile_map_data = PackedByteArray("AAACAAEAAgAAAAEAAAACAAIAAgAAAAEAAAADAP//AgAAAAEAAAADAAEAAgAAAAEAAAADAAIAAgAAAAEAAAAEAAEAAgAAAAEAAAAEAAIAAgAAAAEAAAAEAAMAAgAAAAEAAAAFAAEAAgABAAEAAAAFAAIAAgABAAEAAAAFAAMAAgABAAEAAAAEAP//AgAAAAEAAAAGAP//AgABAAEAAAAGAAEAAgABAAEAAAAGAAIAAgABAAEAAAAFAP//AgABAAEAAAAFAP7/AgABAAEAAAAHAAIAAgAAAAEAAAAIAAEAAgAAAAEAAAAIAAAAAgAAAAEAAAAHAAAAAgAAAAEAAAAHAAEAAgAAAAEAAAAGAAMAAgABAAEAAAAGAAQAAgABAAEAAAAHAAQAAgAAAAEAAAAHAAMAAgAAAAEAAAAIAAIAAgAAAAEAAAAHAP//AgAAAAEAAAAJAP//AgAAAAEAAAAJAAAAAgAAAAEAAAAJAAEAAgAAAAEAAAAIAAMAAgAAAAEAAAAIAAQAAgAAAAEAAAAJAAMAAgAAAAEAAAAJAAIAAgAAAAEAAAAJAP7/AgAAAAEAAAAIAP//AgAAAAEAAAAIAP7/AgAAAAEAAAAJAAQAAgAAAAEAAAAJAAUAAgAAAAEAAAAGAP7/AgABAAEAAAAFAP3/AgABAAEAAAAGAAUAAgABAAEAAAAFAAQAAgABAAEAAAAFAAUAAgABAAEAAAACAAAAAgAAAAEAAAADAAAAAgAAAAEAAAAEAAAAAgAAAAEAAAAFAAAAAgABAAEAAAAGAAAAAgABAAEAAAA=")
 tile_set = ExtResource("2_h2yge")
 
-[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
-z_index = 0
-position = Vector2(73, 116)
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="."]
+[node name="Player" parent="Objects" instance=ExtResource("2_0xm2m")]
+z_index = 0
+position = Vector2(77, 168)
+
+[node name="Camera2D" type="Camera2D" parent="Objects/Player"]
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Objects"]
 y_sort_enabled = true
 position = Vector2(0, 88)
 tile_map_data = PackedByteArray("AAAHAAEAAgACAAEAAAA=")
@@ -22,4 +30,3 @@ tile_set = ExtResource("2_h2yge")
 x_draw_order_reversed = true
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
-y_sort_enabled = true
