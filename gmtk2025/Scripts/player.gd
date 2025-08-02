@@ -30,7 +30,7 @@ func _animation_process(direction: Vector2):
 			animation_player.play(new_animation)
 		current_animation = new_animation
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	_animation_process(direction)
 	if direction:
