@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://d2n852o0en2mh" path="res://Scripts/player.gd" id="1_cvnsp"]
 [ext_resource type="Texture2D" uid="uid://frfakw2cppwa" path="res://icon.svg" id="1_v0iea"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_hqtel"]
-radius = 16.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_vgqql"]
+points = PackedVector2Array(14, 0, -14, 0, 0, -7)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -12,8 +12,9 @@ y_sort_enabled = true
 script = ExtResource("1_cvnsp")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -17)
 scale = Vector2(0.257813, 0.257813)
 texture = ExtResource("1_v0iea")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_hqtel")
+shape = SubResource("ConvexPolygonShape2D_vgqql")
