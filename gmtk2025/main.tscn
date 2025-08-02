@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=4 uid="uid://8nax41hefnkw"]
+[gd_scene load_steps=4 format=4 uid="uid://8nax41hefnkw"]
 
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="2_h2yge"]
+[ext_resource type="PackedScene" uid="uid://bakl7kop3dbnx" path="res://Scripts/pressure_plate.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D"]
 
@@ -30,3 +31,9 @@ tile_set = ExtResource("2_h2yge")
 x_draw_order_reversed = true
 
 [node name="TileMapLayer3" type="TileMapLayer" parent="."]
+
+[node name="PressurePlate" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(112, 128)
+rotation = -0.586431
+scale = Vector2(0.0766899, 0.0827606)
+skew = -0.349066
