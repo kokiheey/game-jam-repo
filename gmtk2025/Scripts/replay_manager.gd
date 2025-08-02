@@ -4,6 +4,7 @@ extends Node
 @onready var objects = $"../Objects"
 @export var replay_toggles: Array[Toggle]
 @export var player: CharacterBody2D
+@onready var player_sprite: AnimatedSprite2D = player.get_node("AnimatedSprite2D")
 @export var spawn_position: Node2D
 @export var MAX_GHOSTS: int = 2
 var toggle_data_on: Dictionary = {}
@@ -12,11 +13,14 @@ var frames: int
 
 var ghost_prefab = preload("res://Scenes/player_sprite.tscn")
 var ghosts_position: Dictionary = {}
+var ghosts_animations: Dictionary = {}
+
 var ghosts: int
 var ghost_bodies: Array[AnimatedSprite2D]
 func _ready():
 	ghosts = 0
 	frames = 0
+	
 	for ob in objects.get_children():
 		if ob is Toggle:
 			var tg = ob as Toggle
@@ -26,6 +30,9 @@ func _ready():
 			tg.on_toggled_off.connect(_on_toggled_off)
 
 func _physics_process(delta: float):
+	if frames == 10:
+		for tg in replay_toggles:
+			tg.on_toggles = 0
 	frames += 1
 	if toggle_data_on.has(frames):
 		toggle_data_on[frames].toggle_on(true)
@@ -34,11 +41,21 @@ func _physics_process(delta: float):
 	
 	if not ghosts_position.has(ghosts): 
 		ghosts_position[ghosts] = {}
+	if not ghosts_animations.has(ghosts):
+		ghosts_animations[ghosts] = {}
+		
+	ghosts_animations[ghosts][frames] = player_sprite.animation
 	ghosts_position[ghosts][frames] = player.global_position
 	for i in ghost_bodies.size():
 		if ghosts_position[i].has(frames): 
 			ghost_bodies[i].global_position = ghosts_position[i][frames]
-	
+		if ghosts_animations[i].has(frames) and frames >= 2:
+			if ghosts_animations[i][frames] != ghosts_animations[i][frames-1]:
+				if ghosts_position[i][frames] != ghosts_position[i][frames-1]:
+					ghost_bodies[i].play(ghosts_animations[i][frames])
+			if ghosts_position[i][frames] == ghosts_position[i][frames-1]:
+				ghost_bodies[i].stop()
+				ghost_bodies[i].frame = 1
 func _on_toggled_on(sender: Toggle):
 	toggle_data_on[frames] = sender
 
@@ -51,7 +68,7 @@ func replay():
 	var new_ghost = ghost_prefab.instantiate()
 	ghost_bodies.append(new_ghost)
 	new_ghost.global_position = spawn_position.position
-	get_tree().get_root().add_child(new_ghost)
+	objects.add_child(new_ghost)
 	
 	player.global_position = spawn_position.global_position
 	for tg in replay_toggles:
