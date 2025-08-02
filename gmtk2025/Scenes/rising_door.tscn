@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://da25bhq3po4eu"]
 
-[ext_resource type="Script" uid="uid://c5e4ol0asax1w" path="res://Scripts/rising_door.gd" id="1_sjyf7"]
+[ext_resource type="Script" path="res://Scripts/rising_door.gd" id="1_sjyf7"]
 
 [node name="RisingDoor" type="Node2D" node_paths=PackedStringArray("door_body")]
 script = ExtResource("1_sjyf7")

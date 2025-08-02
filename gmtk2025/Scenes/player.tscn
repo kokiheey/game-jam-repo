@@ -214,8 +214,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_cvnsp"]
-points = PackedVector2Array(-4, 2, 4, 2, 0, 0)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -229,4 +228,5 @@ animation = &"right"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
-shape = SubResource("ConvexPolygonShape2D_cvnsp")
+scale = Vector2(-0.383706, -0.137066)
+shape = SubResource("CapsuleShape2D_cvnsp")

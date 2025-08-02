@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg3xrofth3s7p"]
+
+[ext_resource type="Texture2D" uid="uid://dful01lrob178" path="res://Assets/Tilesets/practice iso tiles.png" id="1_1vvux"]
+[ext_resource type="Script" uid="uid://b0r4jv0o7b5vl" path="res://Scripts/door.gd" id="1_mw28t"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl81w"]
+atlas = ExtResource("1_1vvux")
+region = Rect2(160, 64, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5rgpn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl81w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Door" type="Node2D"]
+script = ExtResource("1_mw28t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5rgpn")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, -16, 8, 0, 16, 16, 8)
