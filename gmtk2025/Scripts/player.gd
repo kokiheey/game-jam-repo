@@ -2,26 +2,33 @@ extends CharacterBody2D
 
 
 const SPEED = 36.0
+
+var current_animation : String = ""
 @onready var animation_player : AnimatedSprite2D = $AnimatedSprite2D
 
 func _animation_process(direction: Vector2):
 	var x : float = direction.x
 	var y : float = direction.y
-
-	if x == 0 and y == 0:
-		animation_player.stop()
-		animation_player.frame = 1
+	var new_animation : String
+	if x == 0 and y == 0: 
+		new_animation = ""
 	elif x == 0:
-		if y > 0: animation_player.play("down")
-		else: animation_player.play("up")
+		new_animation = "down" if y > 0 else "up"
 	elif y == 0:
-		if x > 0: animation_player.play("right")
-		else: animation_player.play("left")
+		new_animation = "right" if x > 0 else "left"
 	else:
-		if x > 0 and y > 0: animation_player.play("down_right")
-		elif x > 0 and y < 0: animation_player.play("up_right")
-		elif x < 0 and y > 0: animation_player.play("down_left")
-		elif x < 0 and y < 0: animation_player.play("up_left")
+		if x > 0:
+			new_animation = "down_right" if y > 0 else "up_right"
+		else:
+			new_animation = "down_left" if y > 0 else "up_left"
+	if new_animation != current_animation:
+		if new_animation == "":
+			animation_player.stop()
+			animation_player.frame = 1
+		else:
+			animation_player.frame = 0
+			animation_player.play(new_animation)
+		current_animation = new_animation
 
 func _physics_process(delta: float) -> void:
 	var direction = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
