@@ -11,9 +11,9 @@ y_sort_enabled = true
 script = ExtResource("1_cvnsp")
 
 [node name="AnimatedSprite2D" parent="." instance=ExtResource("2_cvnsp")]
-position = Vector2(0, -10)
+frame_progress = 0.137389
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -2)
+position = Vector2(0, 8)
 scale = Vector2(-0.383706, -0.137066)
 shape = SubResource("CapsuleShape2D_cvnsp")

@@ -7,10 +7,10 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	sprite.scale *= 0.88
 	if body is CharacterBody2D: for tg in toggles:
-		tg.toggle()
+		tg.toggle_on(false)
 
 
 func _on_body_exited(body: Node2D) -> void:
 	sprite.scale = Vector2.ONE
 	if body is CharacterBody2D: for tg in toggles:
-		tg.toggle()
+		tg.toggle_off(false)

@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=4 uid="uid://8nax41hefnkw"]
+[gd_scene load_steps=8 format=4 uid="uid://8nax41hefnkw"]
 
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_r74qd"]
 [ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="2_um5o3"]
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="3_kj5ij"]
 [ext_resource type="PackedScene" uid="uid://xvmo887oho55" path="res://Scenes/Levels/level_1.tscn" id="3_um5o3"]
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="4_1ih7c"]
-[ext_resource type="PackedScene" path="res://Scenes/Door.tscn" id="6_kj5ij"]
+[ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="6_kj5ij"]
+[ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="7_1ih7c"]
 
 [node name="Level0" type="Node2D"]
 
@@ -36,7 +37,7 @@ x_draw_order_reversed = true
 
 [node name="Player" parent="Objects" instance=ExtResource("4_1ih7c")]
 z_index = 0
-position = Vector2(96, 96)
+position = Vector2(97, 88)
 startAnimation = "up_left"
 
 [node name="NextLevelTrigger" parent="Objects" instance=ExtResource("2_um5o3")]
@@ -45,3 +46,18 @@ scene = ExtResource("3_um5o3")
 
 [node name="Door" parent="Objects" instance=ExtResource("6_kj5ij")]
 position = Vector2(32, 24)
+
+[node name="ReplayManager" type="Node" parent="." node_paths=PackedStringArray("player", "spawn_position")]
+script = ExtResource("7_1ih7c")
+player = NodePath("../Objects/Player")
+spawn_position = NodePath("../spawnpos")
+metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 8.96
+autostart = true
+
+[node name="spawnpos" type="Node2D" parent="."]
+position = Vector2(97, 88)
+
+[connection signal="timeout" from="Timer" to="ReplayManager" method="_on_timer_timeout"]

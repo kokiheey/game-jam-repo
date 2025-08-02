@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dg3xrofth3s7p"]
+[gd_scene load_steps=5 format=3 uid="uid://bgrb6ir2gx40r"]
 
 [ext_resource type="Texture2D" uid="uid://dful01lrob178" path="res://Assets/Tilesets/practice iso tiles.png" id="1_1vvux"]
 [ext_resource type="Script" uid="uid://b0r4jv0o7b5vl" path="res://Scripts/door.gd" id="1_mw28t"]
