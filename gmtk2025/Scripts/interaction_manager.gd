@@ -39,4 +39,3 @@ func _input(event):
 			label.hide()
 			await active_areas[0].interact.call()
 			label.show()
-

@@ -6,4 +6,7 @@ var toggled: bool
 
 
 func toggle():
-    pass
+	pass
+
+func update():
+	pass

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="3_kj5ij"]
 [ext_resource type="PackedScene" uid="uid://xvmo887oho55" path="res://Scenes/Levels/level_1.tscn" id="3_um5o3"]
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="4_1ih7c"]
-[ext_resource type="PackedScene" uid="uid://dg3xrofth3s7p" path="res://Scenes/Door.tscn" id="6_kj5ij"]
+[ext_resource type="PackedScene" path="res://Scenes/Door.tscn" id="6_kj5ij"]
 
 [node name="Level0" type="Node2D"]
 

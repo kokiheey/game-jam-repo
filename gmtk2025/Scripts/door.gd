@@ -4,6 +4,10 @@ extends Toggle
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 func toggle():
 	toggled = not toggled
+	update()
+
+
+func update():
 	if toggled:
 		#otvori se
 		body.collision_layer = 0
