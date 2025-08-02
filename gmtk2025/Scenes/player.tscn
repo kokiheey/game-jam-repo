@@ -214,9 +214,8 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvnsp"]
-radius = 2.0
-height = 4.0
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_cvnsp"]
+points = PackedVector2Array(-4, 2, 4, 2, 0, 0)
 
 [node name="Player" type="CharacterBody2D"]
 z_index = 1
@@ -227,8 +226,8 @@ script = ExtResource("1_cvnsp")
 position = Vector2(0, -10)
 sprite_frames = SubResource("SpriteFrames_vfarp")
 animation = &"down"
-frame_progress = 0.414771
+frame_progress = 0.381145
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -2)
-shape = SubResource("CapsuleShape2D_cvnsp")
+shape = SubResource("ConvexPolygonShape2D_cvnsp")
