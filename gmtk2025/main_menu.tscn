@@ -1,0 +1,116 @@
+[gd_scene load_steps=2 format=3 uid="uid://cc071tvf8keq2"]
+
+[ext_resource type="Script" uid="uid://bnvyaqjy4hj0n" path="res://main_menu.gd" id="1_06t4h"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_06t4h")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="Play" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PLAY"
+
+[node name="Settings" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Exit" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "EXIT"
+
+[node name="SettingsContainer" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="SettingsContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="SettingsContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="ExitSettings" type="Button" parent="SettingsContainer/PanelContainer/Control"]
+z_index = 2
+layout_mode = 0
+offset_left = 122.0
+offset_top = -12.0
+offset_right = 140.0
+offset_bottom = 19.0
+scale = Vector2(0.669562, 0.398011)
+text = "x"
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SettingsContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="_Spacer" type="Control" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 1.2)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+columns = 2
+
+[node name="Label" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Mute music"
+
+[node name="CheckBox" type="CheckBox" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Label2" type="Label" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+text = "Mute GFX"
+horizontal_alignment = 1
+
+[node name="CheckBox2" type="CheckBox" parent="SettingsContainer/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[connection signal="button_up" from="CenterContainer/VBoxContainer/Play" to="." method="_on_play_button_up"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="CenterContainer" method="hide"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Settings" to="SettingsContainer" method="show"]
+[connection signal="button_up" from="CenterContainer/VBoxContainer/Exit" to="." method="_on_exit_button_up"]
+[connection signal="pressed" from="SettingsContainer/PanelContainer/Control/ExitSettings" to="CenterContainer" method="show"]
+[connection signal="pressed" from="SettingsContainer/PanelContainer/Control/ExitSettings" to="SettingsContainer" method="hide"]

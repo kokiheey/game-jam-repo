@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="2_0xm2m"]
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="2_h2yge"]
-[ext_resource type="PackedScene" uid="uid://bakl7kop3dbnx" path="res://Scenes/pressure_plate.tscn" id="3_h2yge"]
+[ext_resource type="PackedScene" uid="uid://b3u3hisqorwfw" path="res://Scripts/pressure_plate.tscn" id="3_h2yge"]
 
 [node name="Main" type="Node2D"]
 
