@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=4 uid="uid://8nax41hefnkw"]
+
+[ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_r74qd"]
+[ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="2_um5o3"]
+[ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="3_kj5ij"]
+[ext_resource type="PackedScene" uid="uid://xvmo887oho55" path="res://Scenes/Levels/level_1.tscn" id="3_um5o3"]
+[ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="4_1ih7c"]
+[ext_resource type="PackedScene" uid="uid://dg3xrofth3s7p" path="res://Scenes/Door.tscn" id="6_kj5ij"]
+
+[node name="Level0" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(88, 56)
+scale = Vector2(3.01811, 0.0794471)
+
+[node name="Floor" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Floor"]
+tile_map_data = PackedByteArray("AAACAAEAAgAAAAEAAAACAAIAAgAAAAEAAAADAP//AgAAAAEAAAADAAEAAgAAAAEAAAADAAIAAgAAAAEAAAAEAAEAAgAAAAEAAAAEAAIAAgAAAAEAAAAEAAMAAgAAAAEAAAAFAAEAAgAAAAEAAAAFAAIAAgAAAAEAAAAFAAMAAgAAAAEAAAAEAP//AgAAAAEAAAAGAP//AgAAAAEAAAAGAAEAAgAAAAEAAAAGAAIAAgAAAAEAAAAFAP//AgAAAAEAAAAFAP7/AgAAAAEAAAAHAAIAAgAAAAEAAAAIAAEAAgAAAAEAAAAIAAAAAgAAAAEAAAAHAAAAAgAAAAEAAAAHAAEAAgAAAAEAAAAGAAMAAgAAAAEAAAAGAAQAAgAAAAEAAAAHAAQAAgAAAAEAAAAHAAMAAgAAAAEAAAAIAAIAAgAAAAEAAAAHAP//AgAAAAEAAAAJAP//AgAAAAEAAAAJAAAAAgAAAAEAAAAJAAEAAgAAAAEAAAAIAAMAAgACAAEAAAAIAAQAAgAAAAEAAAAJAAMAAgAAAAEAAAAJAAIAAgAAAAEAAAAJAP7/AgAAAAEAAAAIAP//AgAAAAEAAAAIAP7/AgAAAAEAAAAJAAQAAgAAAAEAAAAJAAUAAgAAAAEAAAAGAP7/AgAAAAEAAAAGAAUAAgAAAAEAAAAFAAQAAgAAAAEAAAAFAAUAAgAAAAEAAAACAAAAAgAAAAEAAAADAAAAAgAAAAEAAAAEAAAAAgAAAAEAAAAFAAAAAgAAAAEAAAAGAAAAAgAAAAEAAAACAAMAAgAAAAEAAAADAAMAAgAAAAEAAAADAAQAAgAAAAEAAAADAAUAAgAAAAEAAAAEAAUAAgAAAAEAAAAEAAQAAgAAAAEAAAACAAQAAgAAAAEAAAACAAUAAgAAAAEAAAACAP//AgAAAAEAAAACAP7/AgAAAAEAAAADAP7/AgAAAAEAAAAEAP7/AgAAAAEAAAAHAP7/AgAAAAEAAAAHAAUAAgAAAAEAAAAIAAUAAgAAAAEAAAA=")
+tile_set = ExtResource("1_r74qd")
+
+[node name="NextLevelTrigger" parent="." instance=ExtResource("2_um5o3")]
+position = Vector2(0, 8)
+scene = ExtResource("3_um5o3")
+
+[node name="PressurePlate2" parent="." node_paths=PackedStringArray("toggles") instance=ExtResource("3_kj5ij")]
+position = Vector2(192, 64)
+toggles = [NodePath("../Objects/Door")]
+
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Objects" instance=ExtResource("4_1ih7c")]
+z_index = 0
+position = Vector2(96, 96)
+startAnimation = "up_left"
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Objects"]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAAAAEAAgAEAAEAAAAAAAIAAgAEAAEAAAAAAAMAAgAEAAEAAAAAAAQAAgAEAAEAAAAAAAUAAgAEAAEAAAABAAUAAgAEAAEAAAACAAUAAgAEAAEAAAADAAUAAgAEAAEAAAAEAAUAAgAEAAEAAAAFAAUAAgAEAAEAAAAGAAUAAgAEAAEAAAAHAAUAAgAEAAEAAAAIAAUAAgAEAAEAAAAJAAUAAgAEAAEAAAAKAAUAAgAEAAEAAAAKAAQAAgAEAAEAAAAKAAMAAgAEAAEAAAAKAAIAAgAEAAEAAAAKAAEAAgAEAAEAAAAKAAAAAgAEAAEAAAAKAP//AgAEAAEAAAAKAP7/AgAEAAEAAAAKAP3/AgAEAAEAAAAKAPz/AgAEAAEAAAAJAPz/AgAEAAEAAAAIAPz/AgAEAAEAAAAHAPz/AgAEAAEAAAAGAPz/AgAEAAEAAAAFAPz/AgAEAAEAAAAEAPz/AgAEAAEAAAADAPz/AgAEAAEAAAACAPz/AgAEAAEAAAABAPz/AgAEAAEAAAAAAPz/AgAEAAEAAAAAAP3/AgAEAAEAAAAAAP7/AgAEAAEAAAAAAP//AgAEAAEAAAAHAP3/AgAEAAEAAAAHAP7/AgAEAAEAAAAJAAAAAgAEAAEAAAAIAAAAAgAEAAEAAAAHAAAAAgAEAAEAAAAGAAAAAgAEAAEAAAAFAAAAAgAEAAEAAAAFAP//AgAEAAEAAAAFAP7/AgAEAAEAAAA=")
+tile_set = ExtResource("1_r74qd")
+y_sort_origin = 6
+x_draw_order_reversed = true
+
+[node name="Door" parent="Objects" instance=ExtResource("6_kj5ij")]
+position = Vector2(16, 16)

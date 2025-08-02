@@ -4,7 +4,13 @@ extends CharacterBody2D
 const SPEED = 36.0
 
 var current_animation : String = ""
+@export_enum("up","up_left","up_right","left","right","down","down_left","down_right") var startAnimation : String
 @onready var animation_player : AnimatedSprite2D = $AnimatedSprite2D
+
+func _ready() -> void:
+	animation_player.play(startAnimation)
+	animation_player.stop()
+	animation_player.frame = 1
 
 func _animation_process(direction: Vector2):
 	var x : float = direction.x
