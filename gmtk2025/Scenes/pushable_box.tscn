@@ -32,23 +32,22 @@ polygon = PackedVector2Array(0, 0, 16, 8, 0, 16, -16, 8)
 [node name="up_left" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="up_left"]
-polygon = PackedVector2Array(16, 8, 0, 16, 2, 17, 18, 9)
+polygon = PackedVector2Array(14, 9, 2, 15, 4, 16, 16, 10)
 
 [node name="up_right" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="up_right"]
-polygon = PackedVector2Array(-16, 8, 0, 16, -2, 17, -18, 9)
+polygon = PackedVector2Array(-14, 9, -2, 15, -4, 16, -16, 10)
 
 [node name="down_left" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="down_left"]
-polygon = PackedVector2Array(16, 8, 0, 0, 2, -1, 18, 7)
+polygon = PackedVector2Array(14, 7, 2, 1, 4, 0, 16, 6)
 
 [node name="down_right" type="Area2D" parent="."]
 
 [node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="down_right"]
-polygon = PackedVector2Array(-16, 8, 0, 0, -2, -1, -18, 7)
+polygon = PackedVector2Array(-14, 7, -2, 1, -4, 0, -16, 6)
 
 [connection signal="body_entered" from="up_left" to="." method="_on_up_left_body_entered"]
 [connection signal="body_entered" from="up_right" to="." method="_on_up_right_body_entered"]
