@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="2_167vu"]
 [ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="3_x1k1j"]
 [ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="4_4ahh4"]
-[ext_resource type="PackedScene" uid="uid://bn2yh8tsv6137" path="res://end_screen.tscn" id="4_osqx1"]
+[ext_resource type="PackedScene" uid="uid://yx33vo71klk5" path="res://Scenes/Levels/level_4.tscn" id="4_sy7oa"]
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="5_dl55b"]
 [ext_resource type="PackedScene" uid="uid://cvbqxebbomqd8" path="res://Scenes/pushable_box.tscn" id="6_167vu"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="6_osqx1"]
@@ -44,7 +44,7 @@ y_sort_enabled = true
 
 [node name="NextLevelTrigger" parent="Objects" instance=ExtResource("3_x1k1j")]
 position = Vector2(336, 0)
-scene = ExtResource("4_osqx1")
+scene = ExtResource("4_sy7oa")
 
 [node name="WallLayer" type="TileMapLayer" parent="Objects"]
 y_sort_enabled = true
