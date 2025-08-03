@@ -49,7 +49,7 @@ scene = ExtResource("3_um5o3")
 position = Vector2(32, 24)
 
 [node name="PushableBox" parent="Objects" instance=ExtResource("7_6kmi7")]
-position = Vector2(144, 48)
+position = Vector2(80, 80)
 
 [node name="ReplayManager" type="Node" parent="." node_paths=PackedStringArray("player", "spawn_position")]
 script = ExtResource("7_1ih7c")
