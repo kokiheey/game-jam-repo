@@ -12,5 +12,5 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	sprite.scale = Vector2.ONE
-	if body is CharacterBody2D: for tg in toggles:
+	if body is CharacterBody2D : for tg in toggles:
 		tg.toggle_off(false)

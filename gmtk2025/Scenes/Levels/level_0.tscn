@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://8nax41hefnkw"]
+[gd_scene load_steps=9 format=4 uid="uid://8nax41hefnkw"]
 
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_r74qd"]
 [ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="2_um5o3"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="4_1ih7c"]
 [ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="6_kj5ij"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="7_1ih7c"]
+[ext_resource type="PackedScene" uid="uid://cvbqxebbomqd8" path="res://Scenes/pushable_box.tscn" id="7_6kmi7"]
 
 [node name="Level0" type="Node2D"]
 
@@ -46,6 +47,9 @@ scene = ExtResource("3_um5o3")
 
 [node name="Door" parent="Objects" instance=ExtResource("6_kj5ij")]
 position = Vector2(32, 24)
+
+[node name="PushableBox" parent="Objects" instance=ExtResource("7_6kmi7")]
+position = Vector2(144, 48)
 
 [node name="ReplayManager" type="Node" parent="." node_paths=PackedStringArray("player", "spawn_position")]
 script = ExtResource("7_1ih7c")

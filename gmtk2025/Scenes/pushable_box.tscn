@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvbqxebbomqd8"]
+
+[ext_resource type="Script" uid="uid://bhwuwo2jlxy0v" path="res://Scripts/pushable_box.gd" id="1_82q2f"]
+[ext_resource type="Texture2D" uid="uid://dful01lrob178" path="res://Assets/Tilesets/practice iso tiles.png" id="1_hxb5l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_82q2f"]
+atlas = ExtResource("1_hxb5l")
+region = Rect2(16, 16, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nw7xl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_82q2f")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PushableBox" type="Node2D"]
+script = ExtResource("1_82q2f")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nw7xl")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 0, 16, 8, 0, 16, -16, 8)
+
+[node name="up_left" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="up_left"]
+polygon = PackedVector2Array(16, 8, 0, 16, 2, 17, 18, 9)
+
+[node name="up_right" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="up_right"]
+polygon = PackedVector2Array(-16, 8, 0, 16, -2, 17, -18, 9)
+
+[node name="down_left" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="down_left"]
+polygon = PackedVector2Array(16, 8, 0, 0, 2, -1, 18, 7)
+
+[node name="down_right" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="down_right"]
+polygon = PackedVector2Array(-16, 8, 0, 0, -2, -1, -18, 7)
+
+[connection signal="body_entered" from="up_left" to="." method="_on_up_left_body_entered"]
+[connection signal="body_entered" from="up_right" to="." method="_on_up_right_body_entered"]
+[connection signal="body_entered" from="down_left" to="." method="_on_down_left_body_entered"]
+[connection signal="body_entered" from="down_right" to="." method="_on_down_right_body_entered"]
