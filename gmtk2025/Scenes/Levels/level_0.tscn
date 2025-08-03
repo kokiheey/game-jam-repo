@@ -57,11 +57,5 @@ player = NodePath("../Objects/Player")
 spawn_position = NodePath("../spawnpos")
 metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 8.96
-autostart = true
-
 [node name="spawnpos" type="Node2D" parent="."]
 position = Vector2(97, 88)
-
-[connection signal="timeout" from="Timer" to="ReplayManager" method="_on_timer_timeout"]

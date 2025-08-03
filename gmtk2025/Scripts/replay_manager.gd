@@ -1,10 +1,13 @@
 class_name ReplayManager
 extends Node
 
-@onready var objects = $"../Objects"
+@export var restart_time: float = 5.0
+
+
 @export var replay_toggles: Array[Toggle]
 @export var player: CharacterBody2D
 @onready var player_sprite: AnimatedSprite2D = player.get_node("AnimatedSprite2D")
+@onready var objects = $"../Objects"
 @export var spawn_position: Node2D
 @export var MAX_GHOSTS: int = 3
 var toggle_data_on: Dictionary = {}
@@ -33,6 +36,12 @@ func _ready():
 			print("sigma")
 			tg.on_toggled_on.connect(_on_toggled_on)
 			tg.on_toggled_off.connect(_on_toggled_off)
+	var replay_timer: Timer = Timer.new()
+	replay_timer.wait_time = restart_time
+	replay_timer.one_shot = false
+	replay_timer.timeout.connect(replay)
+	add_child(replay_timer)
+	replay_timer.start()
 
 func _physics_process(delta: float):
 	if frames == 10:
@@ -60,7 +69,6 @@ func _physics_process(delta: float):
 		if not ghosts_position.has(i):
 			ghost_bodies[i].hide()
 			continue
-		#(ghost - i + MAX_GHOSTS) % MAX_GHOSTS
 		ghost_bodies[i].modulate.a = 1.0 - (((ghosts - i + MAX_GHOSTS) % MAX_GHOSTS) / float(MAX_GHOSTS))
 		ghost_bodies[i].show()
 		if ghosts_position[i].has(frames): 
@@ -97,7 +105,3 @@ func replay():
 	player.global_position = spawn_position.global_position
 	for tg in replay_toggles:
 		tg.toggle_off(true)
-
-
-func _on_timer_timeout() -> void:
-	replay()
