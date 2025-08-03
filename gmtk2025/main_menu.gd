@@ -8,6 +8,9 @@ func _ready() -> void:
 func _on_play_button_up() -> void:
 	get_tree().change_scene_to_file("res://Scenes/Levels/level_0.tscn")
 
-
 func _on_exit_button_up() -> void:
 	get_tree().quit()
+
+
+func _on_check_box_toggled(toggled_on: bool) -> void:
+	AudioManager.mute_music(toggled_on)

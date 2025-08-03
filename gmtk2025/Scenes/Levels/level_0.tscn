@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://8nax41hefnkw"]
+[gd_scene load_steps=10 format=4 uid="uid://8nax41hefnkw"]
 
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_r74qd"]
 [ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="2_um5o3"]
@@ -7,56 +7,59 @@
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="4_1ih7c"]
 [ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="6_kj5ij"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="7_1ih7c"]
-[ext_resource type="PackedScene" uid="uid://cvbqxebbomqd8" path="res://Scenes/pushable_box.tscn" id="7_6kmi7"]
+[ext_resource type="PackedScene" uid="uid://be2h6t0jc2w50" path="res://Scenes/music_selector.tscn" id="9_456kb"]
+[ext_resource type="AudioStream" uid="uid://dieyorbawutc8" path="res://Assets/Tracks/level_theme.wav" id="10_fywi0"]
 
 [node name="Level0" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(88, 56)
-scale = Vector2(3.01811, 0.0794471)
 
 [node name="Floor" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="TileMapLayer" type="TileMapLayer" parent="Floor"]
-tile_map_data = PackedByteArray("AAADAP//AgAAAAEAAAAEAAEAAgABAAEAAAAEAAIAAgABAAEAAAAEAAMAAgABAAEAAAAFAAEAAgAAAAEAAAAFAAIAAgAAAAEAAAAFAAMAAgABAAEAAAAEAP//AgABAAEAAAAGAAEAAgAAAAEAAAAGAAIAAgAAAAEAAAAFAP7/AgAAAAEAAAAHAAIAAgAAAAEAAAAIAAEAAgAAAAEAAAAIAAAAAgAAAAEAAAAHAAAAAgAAAAEAAAAHAAEAAgAAAAEAAAAGAAMAAgABAAEAAAAGAAQAAgAAAAEAAAAHAAQAAgAAAAEAAAAHAAMAAgABAAEAAAAIAAIAAgAAAAEAAAAHAP//AgABAAEAAAAJAP//AgAAAAEAAAAJAAAAAgAAAAEAAAAJAAEAAgAAAAEAAAAIAAMAAgACAAEAAAAIAAQAAgAAAAEAAAAJAAMAAgAAAAEAAAAJAAIAAgAAAAEAAAAJAP7/AgAAAAEAAAAJAAQAAgAAAAEAAAAFAAQAAgAAAAEAAAAEAAAAAgABAAEAAAAFAAAAAgAAAAEAAAAGAAAAAgAAAAEAAAADAAMAAgAAAAEAAAADAAQAAgAAAAEAAAAEAAQAAgAAAAEAAAADAP7/AgAAAAEAAAAEAP7/AgAAAAEAAAADAAIAAgAAAAEAAAADAAEAAgABAAEAAAADAAAAAgAAAAEAAAACAAEAAgABAAEAAAAGAP//AgABAAEAAAAGAP7/AgAAAAEAAAAHAP7/AgAAAAEAAAAIAP7/AgAAAAEAAAAFAP//AgABAAEAAAAIAP//AgAFAAEAAAAIAAUAAgAAAAEAAAAHAAUAAgAAAAEAAAAGAAUAAgAAAAEAAAAFAAUAAgAAAAEAAAADAAUAAgAAAAEAAAAEAAUAAgAAAAEAAAAJAAUAAgAAAAEAAAA=")
+[node name="FloorLayer" type="TileMapLayer" parent="Floor"]
+tile_map_data = PackedByteArray("AAADAP//AgAAAAEAAAAEAAEAAgABAAEAAAAEAAIAAgABAAEAAAAEAAMAAgABAAEAAAAFAAEAAgAAAAEAAAAFAAIAAgAAAAEAAAAFAAMAAgABAAEAAAAEAP//AgABAAEAAAAGAAEAAgAAAAEAAAAGAAIAAgAAAAEAAAAFAP7/AgAAAAEAAAAHAAIAAgAAAAEAAAAIAAEAAgAAAAEAAAAIAAAAAgAAAAEAAAAHAAAAAgAAAAEAAAAHAAEAAgAAAAEAAAAGAAMAAgABAAEAAAAGAAQAAgAAAAEAAAAHAAQAAgAAAAEAAAAHAAMAAgABAAEAAAAIAAIAAgAAAAEAAAAHAP//AgABAAEAAAAJAP//AgAAAAEAAAAJAAAAAgAAAAEAAAAJAAEAAgAAAAEAAAAIAAMAAgACAAEAAAAIAAQAAgAAAAEAAAAJAAMAAgAAAAEAAAAJAAIAAgAAAAEAAAAJAP7/AgAAAAEAAAAJAAQAAgAAAAEAAAAFAAQAAgAAAAEAAAAEAAAAAgABAAEAAAAFAAAAAgAAAAEAAAAGAAAAAgAAAAEAAAADAAMAAgAAAAEAAAADAAQAAgAAAAEAAAAEAAQAAgAAAAEAAAADAP7/AgAAAAEAAAAEAP7/AgAAAAEAAAADAAIAAgAAAAEAAAADAAEAAgABAAEAAAADAAAAAgAAAAEAAAAGAP//AgABAAEAAAAGAP7/AgAAAAEAAAAHAP7/AgAAAAEAAAAIAP7/AgAAAAEAAAAFAP//AgABAAEAAAAIAP//AgAFAAEAAAAIAAUAAgAAAAEAAAAHAAUAAgAAAAEAAAAGAAUAAgAAAAEAAAAFAAUAAgAAAAEAAAADAAUAAgAAAAEAAAAEAAUAAgAAAAEAAAAJAAUAAgAAAAEAAAACAAIAAgAAAAEAAAACAAAAAgAAAAEAAAABAAAAAgAAAAEAAAABAAIAAgAAAAEAAAAAAAEAAgAAAAEAAAAAAAIAAgAAAAEAAAD//wAAAgAAAAEAAAD//wEAAgAAAAEAAAD//wIAAgAAAAEAAAABAAEAAgAAAAEAAAAAAAAAAgAAAAEAAAA=")
 tile_set = ExtResource("1_r74qd")
 
-[node name="PressurePlate2" parent="." node_paths=PackedStringArray("toggles") instance=ExtResource("3_kj5ij")]
+[node name="Toggles" type="Node2D" parent="."]
+
+[node name="PressurePlate2" parent="Toggles" node_paths=PackedStringArray("toggles") instance=ExtResource("3_kj5ij")]
 position = Vector2(160, 64)
-toggles = [NodePath("../Objects/Door")]
+toggles = [NodePath("../../Objects/Door")]
 
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="TileMapLayer2" type="TileMapLayer" parent="Objects"]
+[node name="NextLevelTrigger" parent="Objects" instance=ExtResource("2_um5o3")]
+position = Vector2(0, 8)
+scene = ExtResource("3_um5o3")
+
+[node name="WallLayer" type="TileMapLayer" parent="Objects"]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAACAAUAAgAEAAEAAAADAAUAAgAEAAEAAAAEAAUAAgAEAAEAAAAFAAUAAgAEAAEAAAAGAAUAAgAEAAEAAAAHAAUAAgAEAAEAAAAIAAUAAgAEAAEAAAAJAAUAAgAEAAEAAAAKAAUAAgAEAAEAAAAKAAQAAgAEAAEAAAAKAAMAAgAEAAEAAAAKAAIAAgAEAAEAAAAKAAEAAgAEAAEAAAAKAAAAAgAEAAEAAAAKAP//AgAEAAEAAAAKAP7/AgAEAAEAAAAKAP3/AgAEAAEAAAAKAPz/AgAEAAEAAAAJAPz/AgAEAAEAAAAIAPz/AgAEAAEAAAAHAPz/AgAEAAEAAAAGAPz/AgAEAAEAAAAFAPz/AgAEAAEAAAAEAPz/AgAEAAEAAAADAPz/AgAEAAEAAAACAPz/AgAEAAEAAAABAAUAAgAEAAEAAAABAAQAAgAEAAEAAAABAAMAAgAEAAEAAAABAAIAAgAEAAEAAAABAAEAAgAEAAEAAAABAP//AgAEAAEAAAABAP7/AgAEAAEAAAABAP3/AgAEAAEAAAABAPz/AgAEAAEAAAAAAP//AgAEAAEAAAD/////AgAEAAEAAAD//wAAAgAEAAEAAAD//wEAAgAEAAEAAAAAAAEAAgAEAAEAAAAFAAAAAgAEAAEAAAAGAAAAAgAEAAEAAAAHAAAAAgAEAAEAAAAIAAAAAgAEAAEAAAAJAAAAAgAEAAEAAAA=")
+tile_map_data = PackedByteArray("AAACAAUAAgAEAAEAAAADAAUAAgAEAAEAAAAEAAUAAgAEAAEAAAAFAAUAAgAEAAEAAAAGAAUAAgAEAAEAAAAHAAUAAgAEAAEAAAAIAAUAAgAEAAEAAAAJAAUAAgAEAAEAAAAKAAUAAgAEAAEAAAAKAAQAAgAEAAEAAAAKAAMAAgAEAAEAAAAKAAIAAgAEAAEAAAAKAAEAAgAEAAEAAAAKAAAAAgAEAAEAAAAKAP//AgAEAAEAAAAKAP7/AgAEAAEAAAAKAP3/AgAEAAEAAAAKAPz/AgAEAAEAAAAJAPz/AgAEAAEAAAAIAPz/AgAEAAEAAAAHAPz/AgAEAAEAAAAGAPz/AgAEAAEAAAAFAPz/AgAEAAEAAAAEAPz/AgAEAAEAAAADAPz/AgAEAAEAAAACAPz/AgAEAAEAAAABAAUAAgAEAAEAAAABAAQAAgAEAAEAAAABAAMAAgAEAAEAAAABAAIAAgAEAAEAAAABAP7/AgAEAAEAAAABAP3/AgAEAAEAAAABAPz/AgAEAAEAAAAFAAAAAgAEAAEAAAAGAAAAAgAEAAEAAAAHAAAAAgAEAAEAAAAIAAAAAgAEAAEAAAAJAAAAAgAEAAEAAAAAAAIAAgAEAAEAAAD//wIAAgAEAAEAAAD+/wIAAgAEAAEAAAD+//7/AgAEAAEAAAD///7/AgAEAAEAAAAAAP7/AgAEAAEAAAD9//7/AgAEAAEAAAD9////AgAEAAEAAAD9/wAAAgAEAAEAAAD9/wEAAgAEAAEAAAD9/wIAAgAEAAEAAAABAP//AgAEAAEAAAABAAEAAgAEAAEAAAA=")
 tile_set = ExtResource("1_r74qd")
 y_sort_origin = 6
 x_draw_order_reversed = true
+
+[node name="Door" parent="Objects" instance=ExtResource("6_kj5ij")]
+position = Vector2(32, 24)
 
 [node name="Player" parent="Objects" instance=ExtResource("4_1ih7c")]
 z_index = 0
 position = Vector2(97, 88)
 startAnimation = "up_left"
 
-[node name="NextLevelTrigger" parent="Objects" instance=ExtResource("2_um5o3")]
-position = Vector2(16, 16)
-scene = ExtResource("3_um5o3")
+[node name="Camera2D" type="Camera2D" parent="Objects/Player"]
+position = Vector2(-9, -32)
+scale = Vector2(3.01811, 0.0794471)
 
-[node name="Door" parent="Objects" instance=ExtResource("6_kj5ij")]
-position = Vector2(32, 24)
-
-[node name="PushableBox" parent="Objects" instance=ExtResource("7_6kmi7")]
-position = Vector2(80, 80)
+[node name="spawn" type="Node2D" parent="."]
+position = Vector2(97, 88)
 
 [node name="ReplayManager" type="Node" parent="." node_paths=PackedStringArray("player", "spawn_position")]
 script = ExtResource("7_1ih7c")
 restart_time = 8.0
 player = NodePath("../Objects/Player")
-spawn_position = NodePath("../spawnpos")
+spawn_position = NodePath("../spawn")
 metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
 
-[node name="spawnpos" type="Node2D" parent="."]
-position = Vector2(97, 88)
+[node name="MusicSelector" parent="." instance=ExtResource("9_456kb")]
+music = ExtResource("10_fywi0")
