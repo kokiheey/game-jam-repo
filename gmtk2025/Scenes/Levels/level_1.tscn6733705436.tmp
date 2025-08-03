@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://xvmo887oho55"]
+[gd_scene load_steps=8 format=4 uid="uid://xvmo887oho55"]
 
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_cyadu"]
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="2_xgxfi"]
@@ -7,8 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bucjt0odcbt0t" path="res://Scenes/Levels/level_2.tscn" id="5_5f3p6"]
 [ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="5_rb0md"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="6_xgxfi"]
-[ext_resource type="PackedScene" path="res://Scenes/music_selector.tscn" id="8_rb0md"]
-[ext_resource type="AudioStream" uid="uid://dieyorbawutc8" path="res://Assets/Tracks/level_theme.wav" id="9_u5ghp"]
 
 [node name="Level1" type="Node2D"]
 
@@ -65,6 +63,3 @@ restart_time = 8.0
 player = NodePath("../Objects/Player")
 spawn_position = NodePath("../spawn")
 metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
-
-[node name="MusicSelector" parent="." instance=ExtResource("8_rb0md")]
-music = ExtResource("9_u5ghp")
