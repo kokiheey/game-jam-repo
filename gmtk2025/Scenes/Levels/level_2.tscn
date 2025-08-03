@@ -4,10 +4,9 @@
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="2_8qsmg"]
 [ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="3_fphuk"]
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="4_8qsmg"]
+[ext_resource type="PackedScene" uid="uid://dwfjib3nqbbq2" path="res://Scenes/Levels/level_3.tscn" id="4_fphuk"]
 [ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="4_pnnky"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="5_blpqv"]
-
-[sub_resource type="PackedScene" id="PackedScene_8qsmg"]
 
 [node name="Level2" type="Node2D"]
 
@@ -37,7 +36,7 @@ y_sort_enabled = true
 
 [node name="NextLevelTrigger" parent="Objects" instance=ExtResource("3_fphuk")]
 position = Vector2(240, 0)
-scene = SubResource("PackedScene_8qsmg")
+scene = ExtResource("4_fphuk")
 
 [node name="WallLayer" type="TileMapLayer" parent="Objects"]
 y_sort_enabled = true
@@ -67,12 +66,7 @@ position = Vector2(208, 87)
 
 [node name="ReplayManager" type="Node" parent="." node_paths=PackedStringArray("player", "spawn_position")]
 script = ExtResource("5_blpqv")
+restart_time = 10.0
 player = NodePath("../Objects/Player")
 spawn_position = NodePath("../spawn")
 metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 10.0
-autostart = true
-
-[connection signal="timeout" from="Timer" to="ReplayManager" method="_on_timer_timeout"]

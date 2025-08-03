@@ -1,0 +1,71 @@
+[gd_scene load_steps=9 format=4 uid="uid://dwfjib3nqbbq2"]
+
+[ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_yy6i0"]
+[ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="2_167vu"]
+[ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="3_x1k1j"]
+[ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="4_4ahh4"]
+[ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="5_dl55b"]
+[ext_resource type="PackedScene" uid="uid://cvbqxebbomqd8" path="res://Scenes/pushable_box.tscn" id="6_167vu"]
+[ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="6_osqx1"]
+
+[sub_resource type="PackedScene" id="PackedScene_sy7oa"]
+
+[node name="level_3" type="Node2D"]
+
+[node name="Floor" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="FloorLayer" type="TileMapLayer" parent="Floor"]
+tile_map_data = PackedByteArray("AAAIAP//AgAAAAEAAAAJAP//AgABAAEAAAAKAP//AgAFAAEAAAALAP//AgABAAEAAAAMAP//AgAAAAEAAAAMAPr/AgAAAAEAAAALAPr/AgAAAAEAAAAKAPr/AgABAAEAAAAJAPr/AgAAAAEAAAAIAPr/AgAAAAEAAAAIAPv/AgAAAAEAAAAIAPz/AgABAAEAAAAIAP3/AgAAAAEAAAAIAP7/AgAAAAEAAAAJAP7/AgABAAEAAAAKAP7/AgABAAEAAAALAP7/AgABAAEAAAAMAP7/AgAAAAEAAAAMAP3/AgAAAAEAAAAMAPz/AgABAAEAAAAMAPv/AgAAAAEAAAALAPv/AgAAAAEAAAAKAPv/AgABAAEAAAAJAPv/AgAAAAEAAAAJAPz/AgABAAEAAAAJAP3/AgABAAEAAAAKAP3/AgABAAEAAAALAP3/AgABAAEAAAALAPz/AgABAAEAAAAKAPz/AgACAAEAAAAMAPn/AgAAAAEAAAALAPn/AgAAAAEAAAAKAPn/AgABAAEAAAAJAPn/AgAAAAEAAAAIAPn/AgAAAAEAAAANAP3/AgAAAAEAAAANAPz/AgABAAEAAAANAPv/AgAAAAEAAAAOAPv/AgAAAAEAAAAPAPv/AgAAAAEAAAAQAPv/AgAAAAEAAAAQAPz/AgAAAAEAAAAQAP3/AgAAAAEAAAAPAP3/AgAAAAEAAAAOAP3/AgAAAAEAAAAOAPz/AgABAAEAAAAPAPz/AgAFAAEAAAAHAPv/AgAAAAEAAAAHAPz/AgABAAEAAAAHAP3/AgAAAAEAAAAGAP3/AgAAAAEAAAAFAP3/AgAAAAEAAAAEAP3/AgAAAAEAAAAEAPz/AgAAAAEAAAAEAPv/AgAAAAEAAAAFAPv/AgAAAAEAAAAGAPv/AgAAAAEAAAAGAPz/AgABAAEAAAAFAPz/AgAFAAEAAAAMAAAAAgAAAAEAAAAMAAEAAgAAAAEAAAALAAEAAgAAAAEAAAAKAAEAAgAAAAEAAAAJAAEAAgAAAAEAAAAIAAEAAgAAAAEAAAAIAAAAAgAAAAEAAAAJAAAAAgABAAEAAAAKAAAAAgABAAEAAAALAAAAAgABAAEAAAAKAPj/AgAFAAEAAAAKAPf/AgAFAAEAAAA=")
+tile_set = ExtResource("1_yy6i0")
+
+[node name="Toggles" type="Node2D" parent="."]
+
+[node name="PressurePlate1" parent="Toggles" node_paths=PackedStringArray("toggles") instance=ExtResource("2_167vu")]
+position = Vector2(320, 96)
+toggles = [NodePath("../../Objects/Door")]
+
+[node name="PressurePlate2" parent="Toggles" node_paths=PackedStringArray("toggles") instance=ExtResource("2_167vu")]
+position = Vector2(160, 16)
+toggles = [NodePath("../../Objects/Door2")]
+
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="PushableBox" parent="Objects" instance=ExtResource("6_167vu")]
+position = Vector2(192, 72)
+
+[node name="NextLevelTrigger" parent="Objects" instance=ExtResource("3_x1k1j")]
+position = Vector2(336, 0)
+scene = SubResource("PackedScene_sy7oa")
+
+[node name="WallLayer" type="TileMapLayer" parent="Objects"]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAGAPj/AgAEAAEAAAAGAPn/AgAEAAEAAAAGAP3/AgAEAAEAAAAGAP7/AgAEAAEAAAAMAP7/AgAEAAEAAAAMAP3/AgAEAAEAAAAMAPn/AgAEAAEAAAAMAPj/AgAEAAEAAAAMAPf/AgAEAAEAAAAGAPf/AgAEAAEAAAAHAPf/AgAEAAEAAAAIAPf/AgAEAAEAAAAKAPf/AgAEAAEAAAALAPf/AgAEAAEAAAAKAPb/AgAEAAEAAAAKAPX/AgAEAAEAAAAKAPT/AgAEAAEAAAAIAPT/AgAEAAEAAAAIAPX/AgAEAAEAAAAIAPb/AgAEAAEAAAAJAPT/AgAEAAEAAAANAP3/AgAEAAEAAAAOAP3/AgAEAAEAAAAPAP3/AgAEAAEAAAAQAP3/AgAEAAEAAAAQAPz/AgAEAAEAAAAQAPv/AgAEAAEAAAAQAPr/AgAEAAEAAAAQAPn/AgAEAAEAAAAPAPn/AgAEAAEAAAAOAPn/AgAEAAEAAAANAPn/AgAEAAEAAAAFAPn/AgAEAAEAAAAEAPn/AgAEAAEAAAADAPn/AgAEAAEAAAACAPn/AgAEAAEAAAACAPr/AgAEAAEAAAACAPv/AgAEAAEAAAACAPz/AgAEAAEAAAACAP3/AgAEAAEAAAADAP3/AgAEAAEAAAAEAP3/AgAEAAEAAAAFAP3/AgAEAAEAAAAMAP//AgAEAAEAAAAMAAAAAgAEAAEAAAAMAAEAAgAEAAEAAAALAAEAAgAEAAEAAAAKAAEAAgAEAAEAAAAJAAEAAgAEAAEAAAAIAAEAAgAEAAEAAAAHAAEAAgAEAAEAAAAGAAEAAgAEAAEAAAAGAAAAAgAEAAEAAAAGAP//AgAEAAEAAAA=")
+tile_set = ExtResource("1_yy6i0")
+y_sort_origin = 6
+x_draw_order_reversed = true
+
+[node name="Door" parent="Objects" instance=ExtResource("4_4ahh4")]
+position = Vector2(304, 16)
+
+[node name="Door2" parent="Objects" instance=ExtResource("4_4ahh4")]
+position = Vector2(320, 8)
+
+[node name="Player" parent="Objects" instance=ExtResource("5_dl55b")]
+z_index = 0
+position = Vector2(240, 48)
+startAnimation = "up_right"
+
+[node name="Camera2D" type="Camera2D" parent="Objects/Player"]
+
+[node name="spawn" type="Node2D" parent="."]
+position = Vector2(224, 64)
+
+[node name="ReplayManager" type="Node" parent="." node_paths=PackedStringArray("player", "spawn_position")]
+script = ExtResource("6_osqx1")
+restart_time = 14.0
+player = NodePath("../Objects/Player")
+spawn_position = NodePath("../spawn")
+MAX_GHOSTS = 2
+metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
