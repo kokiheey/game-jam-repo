@@ -6,6 +6,12 @@ class_name Box
 @onready var downLeft : Area2D = $down_left
 @onready var downRight : Area2D = $down_right
 
+func _ready():
+	upLeft.body_exited.connect(_on_up_left_body_exited)
+	upRight.body_exited.connect(_on_up_right_body_exited)
+	downLeft.body_exited.connect(_on_down_left_body_exited)
+	downRight.body_exited.connect(_on_down_right_body_exited)
+
 var can_move := true
 var disabled_directions := {
 	"up_left": false,
@@ -17,37 +23,45 @@ var disabled_directions := {
 func move(offset: Vector2):
 	can_move = false
 	position += offset
-	await get_tree().create_timer(0.1).timeout
 	can_move = true
 
 func _on_up_left_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		disabled_directions["down_right"] = true
-	elif body is not TileMapLayer:
-		disabled_directions["down_left"] = false
-		if body is CharacterBody2D and !disabled_directions["up_left"] and can_move:
-			move(Vector2(-16, -8))
+	elif body is CharacterBody2D and !disabled_directions["up_left"] and can_move:
+		move(Vector2(-16, -8))
 
 func _on_up_right_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		disabled_directions["down_left"] = true
-	elif body is not TileMapLayer:
-		disabled_directions["down_left"] = false
-		if body is CharacterBody2D and !disabled_directions["up_right"] and can_move:
-			move(Vector2(16, -8))
+	elif body is CharacterBody2D and !disabled_directions["up_right"] and can_move:
+		move(Vector2(16, -8))
 
 func _on_down_left_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		disabled_directions["up_right"] = true
-	elif body is not TileMapLayer:
-		disabled_directions["down_left"] = false
-		if body is CharacterBody2D and !disabled_directions["down_left"] and can_move:
-			move(Vector2(-16, 8))
+	elif body is CharacterBody2D and !disabled_directions["down_left"] and can_move:
+		move(Vector2(-16, 8))
 
 func _on_down_right_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		disabled_directions["up_left"] = true
-	elif body is not TileMapLayer:
+	elif body is CharacterBody2D and !disabled_directions["down_right"] and can_move:
+		move(Vector2(16, 8))
+
+
+func _on_up_left_body_exited(body: Node2D) -> void:
+	if body is TileMapLayer:
+		disabled_directions["down_right"] = false
+
+func _on_up_right_body_exited(body: Node2D) -> void:
+	if body is TileMapLayer:
 		disabled_directions["down_left"] = false
-		if body is CharacterBody2D and !disabled_directions["down_right"] and can_move:
-			move(Vector2(16, 8))
+
+func _on_down_left_body_exited(body: Node2D) -> void:
+	if body is TileMapLayer:
+		disabled_directions["up_right"] = false
+
+func _on_down_right_body_exited(body: Node2D) -> void:
+	if body is TileMapLayer:
+		disabled_directions["up_left"] = false
