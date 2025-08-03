@@ -14,6 +14,13 @@
 
 [node name="level_3" type="Node2D"]
 
+[node name="Sky" type="ColorRect" parent="."]
+offset_left = -488.0
+offset_top = -248.0
+offset_right = 584.0
+offset_bottom = 288.0
+color = Color(0.732604, 0.909676, 0.985402, 1)
+
 [node name="Floor" type="Node2D" parent="."]
 y_sort_enabled = true
 
@@ -24,11 +31,11 @@ tile_set = ExtResource("1_yy6i0")
 [node name="Toggles" type="Node2D" parent="."]
 
 [node name="PressurePlate1" parent="Toggles" node_paths=PackedStringArray("toggles") instance=ExtResource("2_167vu")]
-position = Vector2(320, 96)
+position = Vector2(320, 104)
 toggles = [NodePath("../../Objects/Door")]
 
 [node name="PressurePlate2" parent="Toggles" node_paths=PackedStringArray("toggles") instance=ExtResource("2_167vu")]
-position = Vector2(160, 16)
+position = Vector2(160, 24)
 toggles = [NodePath("../../Objects/Door2")]
 
 [node name="Objects" type="Node2D" parent="."]
