@@ -12,7 +12,11 @@ extends Node
 @export var MAX_GHOSTS: int = 3
 var toggle_data_on: Dictionary = {}
 var toggle_data_off: Dictionary = {}
+
 var frames: int
+var time_label_scene = preload("res://Scenes/time_label.tscn")
+var time_label: Label
+var replay_timer: Timer
 
 var ghost_prefab = preload("res://Scenes/player_sprite.tscn")
 var ghosts_position: Dictionary = {}
@@ -23,6 +27,7 @@ var ghost_bodies: Array[AnimatedSprite2D]
 func _ready():
 	ghosts = 0
 	frames = 0
+	
 	for index in MAX_GHOSTS:
 		var new_ghost = ghost_prefab.instantiate()
 		ghost_bodies.append(new_ghost)
@@ -36,19 +41,23 @@ func _ready():
 			print("sigma")
 			tg.on_toggled_on.connect(_on_toggled_on)
 			tg.on_toggled_off.connect(_on_toggled_off)
-	var replay_timer: Timer = Timer.new()
+	replay_timer = Timer.new()
 	replay_timer.wait_time = restart_time
 	replay_timer.one_shot = false
 	replay_timer.timeout.connect(replay)
 	add_child(replay_timer)
 	replay_timer.start()
+	time_label = time_label_scene.instantiate()
+	time_label.text = str("%.0f" % ceil(replay_timer.time_left))
+	add_child(time_label)
+	
 
 func _physics_process(delta: float):
 	if frames == 10:
 		for tg in replay_toggles:
 			tg.on_toggles = 0
 	frames += 1
-	
+	time_label.text = str("%.0f" % ceil(replay_timer.time_left))
 	if not toggle_data_on.has(ghosts):
 		toggle_data_on[ghosts] = {}
 	if not toggle_data_off.has(ghosts):
@@ -61,7 +70,7 @@ func _physics_process(delta: float):
 	ghosts_animations[ghosts][frames] = player_sprite.animation
 	ghosts_position[ghosts][frames] = player.global_position
 	
-	
+
 	for i in MAX_GHOSTS:
 		if i == ghosts: 
 			ghost_bodies[i].hide()

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://caci1f0r6yfvw"]
+
+[node name="TimeLabel" type="Label"]
+anchors_preset = -1
+anchor_left = -0.219
+anchor_right = 0.219
+anchor_bottom = 0.128
+offset_left = 0.0800018
+offset_right = -0.0800018
+offset_bottom = -0.0400009
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
