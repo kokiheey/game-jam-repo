@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dnfp8vc5j2t1x"]
+[gd_scene load_steps=11 format=4 uid="uid://dnfp8vc5j2t1x"]
 
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_yy6i0"]
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="2_167vu"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="5_dl55b"]
 [ext_resource type="PackedScene" uid="uid://cvbqxebbomqd8" path="res://Scenes/pushable_box.tscn" id="6_167vu"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="6_osqx1"]
+[ext_resource type="PackedScene" uid="uid://be2h6t0jc2w50" path="res://Scenes/music_selector.tscn" id="8_4ahh4"]
+[ext_resource type="AudioStream" uid="uid://dieyorbawutc8" path="res://Assets/Tracks/level_theme.wav" id="9_dl55b"]
 
 [sub_resource type="PackedScene" id="PackedScene_sy7oa"]
 
@@ -32,9 +34,6 @@ toggles = [NodePath("../../Objects/Door2")]
 [node name="Objects" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="PushableBox" parent="Objects" instance=ExtResource("6_167vu")]
-position = Vector2(192, 72)
-
 [node name="NextLevelTrigger" parent="Objects" instance=ExtResource("3_x1k1j")]
 position = Vector2(336, 0)
 scene = SubResource("PackedScene_sy7oa")
@@ -45,6 +44,9 @@ tile_map_data = PackedByteArray("AAAGAPj/AgAEAAEAAAAGAPn/AgAEAAEAAAAGAP3/AgAEAAE
 tile_set = ExtResource("1_yy6i0")
 y_sort_origin = 6
 x_draw_order_reversed = true
+
+[node name="PushableBox" parent="Objects" instance=ExtResource("6_167vu")]
+position = Vector2(192, 72)
 
 [node name="Door" parent="Objects" instance=ExtResource("4_4ahh4")]
 position = Vector2(304, 16)
@@ -69,3 +71,6 @@ player = NodePath("../Objects/Player")
 spawn_position = NodePath("../spawn")
 MAX_GHOSTS = 2
 metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
+
+[node name="MusicSelector" parent="." instance=ExtResource("8_4ahh4")]
+music = ExtResource("9_dl55b")
