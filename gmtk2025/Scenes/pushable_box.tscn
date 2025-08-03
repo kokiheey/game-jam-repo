@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvbqxebbomqd8"]
+[gd_scene load_steps=6 format=3 uid="uid://cvbqxebbomqd8"]
 
 [ext_resource type="Script" uid="uid://bhwuwo2jlxy0v" path="res://Scripts/pushable_box.gd" id="1_82q2f"]
 [ext_resource type="Texture2D" uid="uid://dful01lrob178" path="res://Assets/Tilesets/practice iso tiles.png" id="1_hxb5l"]
+[ext_resource type="AudioStream" uid="uid://c8bcbro4lujmn" path="res://Assets/sfx/box_push.wav" id="3_nw7xl"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_82q2f"]
 atlas = ExtResource("1_hxb5l")
@@ -20,6 +21,7 @@ animations = [{
 
 [node name="PushableBox" type="Node2D"]
 script = ExtResource("1_82q2f")
+push_sound = ExtResource("3_nw7xl")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_nw7xl")
@@ -55,6 +57,9 @@ polygon = PackedVector2Array(-14, 7, -2, 1, -4, 0, -16, 6)
 position = Vector2(-2.38419e-07, 1)
 scale = Vector2(0.929687, 0.890625)
 polygon = PackedVector2Array(0, 0, 16, 8, 0, 16, -16, 8)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_nw7xl")
 
 [connection signal="body_entered" from="up_left" to="." method="_on_up_left_body_entered"]
 [connection signal="body_entered" from="up_right" to="." method="_on_up_right_body_entered"]

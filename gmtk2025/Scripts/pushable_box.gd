@@ -5,6 +5,7 @@ class_name Box
 @onready var upRight : Area2D = $up_right
 @onready var downLeft : Area2D = $down_left
 @onready var downRight : Area2D = $down_right
+@export var push_sound : AudioStream
 
 func _ready():
 	upLeft.body_exited.connect(_on_up_left_body_exited)
@@ -30,6 +31,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		print(offset)
 		move(offset)
+		AudioManager.play_sfx(push_sound)
 
 func _on_up_left_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
