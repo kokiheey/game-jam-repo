@@ -73,7 +73,7 @@ position = Vector2(224, 64)
 
 [node name="ReplayManager" type="Node" parent="." node_paths=PackedStringArray("time_label", "player", "spawn_position")]
 script = ExtResource("6_osqx1")
-restart_time = 14.0
+restart_time = 15.0
 time_label = NodePath("../Objects/Player/TimeLabel")
 player = NodePath("../Objects/Player")
 spawn_position = NodePath("../spawn")
