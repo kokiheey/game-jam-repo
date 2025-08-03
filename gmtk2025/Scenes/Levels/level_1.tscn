@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bucjt0odcbt0t" path="res://Scenes/Levels/level_2.tscn" id="5_5f3p6"]
 [ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="5_rb0md"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="6_xgxfi"]
-[ext_resource type="PackedScene" path="res://Scenes/music_selector.tscn" id="8_rb0md"]
+[ext_resource type="PackedScene" uid="uid://be2h6t0jc2w50" path="res://Scenes/music_selector.tscn" id="8_rb0md"]
 [ext_resource type="AudioStream" uid="uid://dieyorbawutc8" path="res://Assets/Tracks/level_theme.wav" id="9_u5ghp"]
 
 [node name="Level1" type="Node2D"]
