@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://xvmo887oho55"]
+[gd_scene load_steps=12 format=4 uid="uid://xvmo887oho55"]
 
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_cyadu"]
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="2_xgxfi"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://caci1f0r6yfvw" path="res://Scenes/time_label.tscn" id="7_u5ghp"]
 [ext_resource type="PackedScene" uid="uid://be2h6t0jc2w50" path="res://Scenes/music_selector.tscn" id="8_rb0md"]
 [ext_resource type="AudioStream" uid="uid://dieyorbawutc8" path="res://Assets/Tracks/level_theme.wav" id="9_u5ghp"]
+[ext_resource type="PackedScene" uid="uid://qbpsn4l14ph3" path="res://game_manager.tscn" id="11_hwvp3"]
 
 [node name="Level1" type="Node2D"]
 
@@ -18,7 +19,7 @@ offset_left = -488.0
 offset_top = -248.0
 offset_right = 584.0
 offset_bottom = 288.0
-color = Color(0.732604, 0.909676, 0.985402, 1)
+color = Color(0, 0, 0, 1)
 
 [node name="Floor" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -84,3 +85,5 @@ metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
 
 [node name="MusicSelector" parent="." instance=ExtResource("8_rb0md")]
 music = ExtResource("9_u5ghp")
+
+[node name="GameManager" parent="." instance=ExtResource("11_hwvp3")]

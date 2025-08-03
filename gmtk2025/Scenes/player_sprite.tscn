@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://d3k8pdji525cu"]
+[gd_scene load_steps=28 format=3 uid="uid://d3k8pdji525cu"]
 
 [ext_resource type="Texture2D" uid="uid://bm424k1xhtf4d" path="res://Assets/Spritesheets/Small-8-Direction-Characters_by_AxulArt.png" id="1_yxjnn"]
 
@@ -213,6 +213,15 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yxjnn"]
+
+[node name="PlayerSprite" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_vfarp")
 animation = &"right"
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 8)
+scale = Vector2(-0.383706, -0.137066)
+shape = SubResource("CapsuleShape2D_yxjnn")
