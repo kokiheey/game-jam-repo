@@ -31,7 +31,8 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("interact"):
 		print(offset)
 		move(offset)
-		AudioManager.play_sfx(push_sound)
+		if offset != Vector2.ZERO:
+			AudioManager.play_sfx(push_sound)
 
 func _on_up_left_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
