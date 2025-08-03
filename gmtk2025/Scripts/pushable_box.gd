@@ -23,23 +23,31 @@ func move(offset: Vector2):
 func _on_up_left_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		disabled_directions["down_right"] = true
-	elif body is CharacterBody2D and !disabled_directions["up_left"] and can_move:
-		move(Vector2(-16, -8))
+	elif body is not TileMapLayer:
+		disabled_directions["down_left"] = false
+		if body is CharacterBody2D and !disabled_directions["up_left"] and can_move:
+			move(Vector2(-16, -8))
 
 func _on_up_right_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		disabled_directions["down_left"] = true
-	elif body is CharacterBody2D and !disabled_directions["up_right"] and can_move:
-		move(Vector2(16, -8))
+	elif body is not TileMapLayer:
+		disabled_directions["down_left"] = false
+		if body is CharacterBody2D and !disabled_directions["up_right"] and can_move:
+			move(Vector2(16, -8))
 
 func _on_down_left_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		disabled_directions["up_right"] = true
-	elif body is CharacterBody2D and !disabled_directions["down_left"] and can_move:
-		move(Vector2(-16, 8))
+	elif body is not TileMapLayer:
+		disabled_directions["down_left"] = false
+		if body is CharacterBody2D and !disabled_directions["down_left"] and can_move:
+			move(Vector2(-16, 8))
 
 func _on_down_right_body_entered(body: Node2D) -> void:
 	if body is TileMapLayer:
 		disabled_directions["up_left"] = true
-	elif body is CharacterBody2D and !disabled_directions["down_right"] and can_move:
-		move(Vector2(16, 8))
+	elif body is not TileMapLayer:
+		disabled_directions["down_left"] = false
+		if body is CharacterBody2D and !disabled_directions["down_right"] and can_move:
+			move(Vector2(16, 8))
