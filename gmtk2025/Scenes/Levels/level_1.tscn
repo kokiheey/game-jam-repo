@@ -64,7 +64,7 @@ spawn_position = NodePath("../spawn")
 metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 8.0
+wait_time = 10.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="ReplayManager" method="_on_timer_timeout"]
