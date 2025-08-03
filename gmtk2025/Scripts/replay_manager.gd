@@ -2,7 +2,7 @@ class_name ReplayManager
 extends Node
 
 @export var restart_time: float = 5.0
-
+@export var time_label: Label
 
 @export var replay_toggles: Array[Toggle]
 @export var player: CharacterBody2D
@@ -15,7 +15,6 @@ var toggle_data_off: Dictionary = {}
 
 var frames: int
 var time_label_scene = preload("res://Scenes/time_label.tscn")
-var time_label: Label
 var replay_timer: Timer
 
 var ghost_prefab = preload("res://Scenes/player_sprite.tscn")
@@ -47,7 +46,6 @@ func _ready():
 	replay_timer.timeout.connect(replay)
 	add_child(replay_timer)
 	replay_timer.start()
-	time_label = time_label_scene.instantiate()
 	time_label.text = str("%.0f" % ceil(replay_timer.time_left))
 	add_child(time_label)
 	
