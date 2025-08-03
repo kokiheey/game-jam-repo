@@ -1,12 +1,14 @@
-[gd_scene load_steps=8 format=4 uid="uid://bucjt0odcbt0t"]
+[gd_scene load_steps=10 format=4 uid="uid://bucjt0odcbt0t"]
 
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_ovj6s"]
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="2_8qsmg"]
 [ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="3_fphuk"]
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="4_8qsmg"]
-[ext_resource type="PackedScene" path="res://Scenes/Levels/level_3.tscn" id="4_fphuk"]
+[ext_resource type="PackedScene" uid="uid://dnfp8vc5j2t1x" path="res://Scenes/Levels/level_3.tscn" id="4_fphuk"]
 [ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="4_pnnky"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="5_blpqv"]
+[ext_resource type="PackedScene" uid="uid://be2h6t0jc2w50" path="res://Scenes/music_selector.tscn" id="8_blpqv"]
+[ext_resource type="AudioStream" uid="uid://dieyorbawutc8" path="res://Assets/Tracks/level_theme.wav" id="9_1jlnc"]
 
 [node name="Level2" type="Node2D"]
 
@@ -70,3 +72,6 @@ restart_time = 10.0
 player = NodePath("../Objects/Player")
 spawn_position = NodePath("../spawn")
 metadata/_custom_type_script = "uid://hy2gnb8ff6s7"
+
+[node name="MusicSelector" parent="." instance=ExtResource("8_blpqv")]
+music = ExtResource("9_1jlnc")
