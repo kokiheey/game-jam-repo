@@ -112,5 +112,5 @@ func replay():
 	
 	
 	player.global_position = spawn_position.global_position
-	for tg in replay_toggles:
-		tg.toggle_off(true)
+	#for tg in replay_toggles:
+	#	tg.toggle_off(true)

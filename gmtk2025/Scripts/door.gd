@@ -12,6 +12,7 @@ func toggle_on(echo: bool):
 
 func toggle_off(echo: bool):
 	on_toggles -= 1
+	on_toggles = max(0, on_toggles)
 	print("tg ", on_toggles)
 	if on_toggles <= 0:
 		if not echo: on_toggled_off.emit(self)
