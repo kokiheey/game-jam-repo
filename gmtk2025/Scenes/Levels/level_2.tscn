@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://dcqee2htxhio6" path="res://Scenes/player.tscn" id="2_8qsmg"]
 [ext_resource type="PackedScene" uid="uid://dvmnml0gildd2" path="res://Scenes/next_level_trigger.tscn" id="3_fphuk"]
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="4_8qsmg"]
-[ext_resource type="PackedScene" uid="uid://dwfjib3nqbbq2" path="res://Scenes/Levels/level_3.tscn" id="4_fphuk"]
+[ext_resource type="PackedScene" path="res://Scenes/Levels/level_3.tscn" id="4_fphuk"]
 [ext_resource type="PackedScene" uid="uid://bgrb6ir2gx40r" path="res://Scenes/Door.tscn" id="4_pnnky"]
 [ext_resource type="Script" uid="uid://hy2gnb8ff6s7" path="res://Scripts/replay_manager.gd" id="5_blpqv"]
 

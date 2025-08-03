@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=4 uid="uid://dwfjib3nqbbq2"]
+[gd_scene load_steps=9 format=4 uid="uid://dnfp8vc5j2t1x"]
 
 [ext_resource type="TileSet" uid="uid://dyvx4k03sa6nf" path="res://Assets/Tilesets/TempTiles.tres" id="1_yy6i0"]
 [ext_resource type="PackedScene" uid="uid://jvvwlchxqf8d" path="res://Scenes/pressure_plate.tscn" id="2_167vu"]
