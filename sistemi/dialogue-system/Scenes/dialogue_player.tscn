@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxaso8m6gpvtj"]
+[gd_scene load_steps=8 format=3 uid="uid://dxaso8m6gpvtj"]
 
 [ext_resource type="Script" uid="uid://bsrf5a50jdjni" path="res://Scripts/dialogue_player.gd" id="1_nuiy1"]
 [ext_resource type="Texture2D" uid="uid://dxk5s3tq3shws" path="res://Assets/Sprites/Screenshot 2025-08-06 015724.png" id="1_pyoyb"]
@@ -12,6 +12,9 @@ spacing_space = 1
 [sub_resource type="LabelSettings" id="LabelSettings_dw6y1"]
 line_spacing = 2.0
 font = SubResource("FontVariation_nuiy1")
+
+[sub_resource type="Theme" id="Theme_nuiy1"]
+default_font = ExtResource("3_1kp1f")
 
 [node name="DialoguePlayer" type="CanvasLayer"]
 process_mode = 3
@@ -40,10 +43,10 @@ position = Vector2(170, 117)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_pyoyb")
 
-[node name="TextLabel" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 offset_left = 46.0
 offset_top = 170.0
 offset_right = 286.0
-offset_bottom = 204.0
-label_settings = SubResource("LabelSettings_dw6y1")
-autowrap_mode = 3
+offset_bottom = 228.0
+theme = SubResource("Theme_nuiy1")
+bbcode_enabled = true

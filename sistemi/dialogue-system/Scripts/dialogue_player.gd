@@ -10,7 +10,7 @@ var next_node_id : String
 var caller : Node
 
 @onready var background : TextureRect = $Background
-@onready var text_label : Label = $TextLabel 
+@onready var text_label : RichTextLabel = $Label 
 
 func _ready():
 	json_parser = JSON.new()
