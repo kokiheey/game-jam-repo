@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://kllqxo57di8h"]
+
+[ext_resource type="Texture2D" uid="uid://d2d1m0x1430so" path="res://Assets/Sprites/undertale_sign.png" id="1_fmf1u"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m6mpx"]
+size = Vector2(24, 16)
+
+[node name="Sign" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_m6mpx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_fmf1u")

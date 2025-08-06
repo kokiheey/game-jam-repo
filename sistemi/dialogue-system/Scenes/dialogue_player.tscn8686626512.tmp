@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxaso8m6gpvtj"]
+
+[ext_resource type="Script" uid="uid://bsrf5a50jdjni" path="res://Scripts/dialogue_player.gd" id="1_nuiy1"]
+[ext_resource type="Texture2D" uid="uid://dxk5s3tq3shws" path="res://Assets/Sprites/Screenshot 2025-08-06 015724.png" id="1_pyoyb"]
+[ext_resource type="Texture2D" uid="uid://jmc6vwnxwix8" path="res://Assets/Sprites/undertale_text_box (1).png" id="2_1kp1f"]
+[ext_resource type="FontFile" uid="uid://btf2wun5j4bc6" path="res://Assets/Fonts/8bitoperator_jve.ttf" id="3_1kp1f"]
+
+[sub_resource type="FontVariation" id="FontVariation_nuiy1"]
+base_font = ExtResource("3_1kp1f")
+spacing_space = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_dw6y1"]
+line_spacing = 2.0
+font = SubResource("FontVariation_nuiy1")
+
+[node name="DialoguePlayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_nuiy1")
+
+[node name="Background" type="TextureRect" parent="."]
+visible = false
+offset_left = 16.0
+offset_top = 160.0
+offset_right = 305.0
+offset_bottom = 236.0
+texture = ExtResource("2_1kp1f")
+
+[node name="AsteriksSymbol" type="Label" parent="Background"]
+offset_left = 14.0
+offset_top = 10.0
+offset_right = 24.0
+offset_bottom = 26.0
+text = "*"
+label_settings = SubResource("LabelSettings_dw6y1")
+autowrap_mode = 3
+
+[node name="Screenshot2025-08-06015724" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(170, 117)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_pyoyb")
+
+[node name="TextLabel" type="Label" parent="."]
+offset_left = 46.0
+offset_top = 170.0
+offset_right = 286.0
+offset_bottom = 204.0
+label_settings = SubResource("LabelSettings_dw6y1")
+autowrap_mode = 3
