@@ -18,7 +18,6 @@ process_mode = 3
 script = ExtResource("1_nuiy1")
 
 [node name="Background" type="TextureRect" parent="."]
-visible = false
 offset_left = 16.0
 offset_top = 160.0
 offset_right = 305.0
@@ -26,6 +25,7 @@ offset_bottom = 236.0
 texture = ExtResource("2_1kp1f")
 
 [node name="AsteriksSymbol" type="Label" parent="Background"]
+layout_mode = 0
 offset_left = 14.0
 offset_top = 10.0
 offset_right = 24.0
