@@ -1,21 +1,21 @@
 extends Area2D
 
-@export var dialogue_keys : Array[String] = [""]
+@export var dialogue_key : String = ""
 var area_active : bool = false
-var dialogue_index : int = 0
-var dialogue_size : int
+var current_node_id : String = ""
 
 func _ready() -> void:
-	dialogue_index = 0
-	dialogue_size = dialogue_keys.size()
-	SignalBus.connect("dialogue_finish", Callable(self, "update_index"))
+	current_node_id = ""
+	SignalBus.connect("dialogue_finish", Callable(self, "update_node_id"))
 
 func _input(event):
+	if current_node_id == "-1": return
 	if area_active and event.is_action_pressed("interact"):
-		SignalBus.emit_signal("display_dialogue", dialogue_keys[dialogue_index])
+		SignalBus.emit_signal("display_dialogue", dialogue_key, current_node_id, self)
 
-func update_index():
-	dialogue_index = min(dialogue_index + 1, dialogue_size - 1)
+func update_node_id(caller, new_node_id):
+	if caller == self:
+		current_node_id = new_node_id
 
 func _on_area_entered(area: Area2D) -> void:
 	area_active = true

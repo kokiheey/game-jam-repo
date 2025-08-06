@@ -6,6 +6,8 @@ var scene_text : Dictionary = {}
 var selected_text : Array = []
 var in_progress : bool = false
 var json_parser : JSON
+var next_node_id : String
+var caller : Node
 
 @onready var background : TextureRect = $Background
 @onready var text_label : Label = $TextLabel 
@@ -48,31 +50,42 @@ func finish():
 	background.visible = false
 	in_progress = false
 	get_tree().paused = false
-	SignalBus.emit_signal("dialogue_finish")
+	SignalBus.emit_signal("dialogue_finish", caller, next_node_id)
 
-func on_display_dialogue(text_key:String) -> void:
+func on_display_dialogue(text_key: String, node_id: String, caller: Node) -> void:
 	if in_progress:
 		next_line()
 		return
-
+	
+	next_node_id = ""
+	self.caller = caller
+	
 	if not scene_text.has(text_key):
-		push_error("Ne postoji dialog pod kljucem: ", text_key)
+		push_error("No dialogue under key: ", text_key)
 		return
-
-	# Pull out the raw data:
-	var raw = scene_text[text_key]
-
-	var lines: Array
-	match typeof(raw):
-		TYPE_ARRAY:
-			lines = raw.duplicate()
-		TYPE_STRING:
-			lines = [ raw ]
-		_:
-			push_error("Tip promenljive ", text_key," nije String ni Array nego je: ", typeof(raw))
-			return
-	get_tree().paused = true
-	background.visible = true
+	
+	var dialogue_data = scene_text[text_key]
+	
+	if not dialogue_data.has("start") or not dialogue_data.has("nodes"):
+		push_error("Brt popravi JSON fali ti start ili nodes: ", text_key)
+		return
+	
+	if node_id == "":
+		node_id = dialogue_data["start"]
+	
 	in_progress = true
-	selected_text = lines
-	show_text()
+	background.visible = true
+	get_tree().paused = true
+	start_node(dialogue_data["nodes"], node_id)
+
+func start_node(dialogue_data: Dictionary, node_id : String):
+	# Za sada napravicu 2 choice system ako treba jos idk moramo da provalimo kasnije
+	if dialogue_data[node_id].has("choices"):
+		print("TODO: show choices")
+		finish()
+		return
+	
+	if dialogue_data[node_id].has("line"):
+		selected_text = dialogue_data[node_id]["line"].duplicate()
+		next_node_id = dialogue_data[node_id]["next_id"]
+		show_text()

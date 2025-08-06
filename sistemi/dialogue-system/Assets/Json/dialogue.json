@@ -1,16 +1,51 @@
 {
-	"sign":[
-		"( How does Toby fox do this bro i hate these font settings )",
-		"Yessirski radi"
-	],
-	"sign2":[
-		"Thank you for checking it twice"
-	],
-	"sign3":[
-		"No need to check it again"
-	],
-	"wall_sign":[
-		"Jedan ostrozni gang gang za dialogue sistem",
-		"ALO GANG GANG"
-	],
+	"sign": {
+		"start": "1",
+		"nodes": {
+			"1": {
+				"line": ["Hey this is a pretty cool sign yeah?", "Pretty neat huh"],
+				"next_id": "2"
+			},
+			"2": {
+				"line": ["( Why are they still looking at me )"],
+				"next_id": "3"
+			},
+			"3": {
+				"line": ["( This is getting awkward now )"],
+				"next_id": "4"
+			},
+			"4": {
+				"line": ["Nothing to see here"],
+				"next_id": "4"
+			}
+		}
+	},
+	"wall sign": {
+		"start": "1",
+		"nodes": {
+			"1": {
+				"line": ["Reading is important"],
+				"choices": [
+					{
+						"text": "Of course it is <3",
+						"next": "yippie",
+						"next_id": "after_given"
+					},
+					{
+						"text": "Kys",
+						"next": "kys_choice",
+						"next_id": "after_rejected"
+					}
+				]
+			},
+			"yippie": {
+				"line": [":D"],
+				"next_id": "yippie"
+			},
+			"kys_choice": {
+				"line": ["You're not gonna read me again then"],
+				"next_id": "-1"
+			}
+		}
+	}
 }

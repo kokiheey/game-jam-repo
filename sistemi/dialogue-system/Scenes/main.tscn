@@ -401,14 +401,14 @@ tile_set = SubResource("TileSet_h2yge")
 
 [node name="WallSign" parent="Dialogues" instance=ExtResource("6_21xkr")]
 position = Vector2(110, 50)
-dialogue_keys = Array[String](["wall_sign"])
+dialogue_key = "wall sign"
 
 [node name="CollisionShape2D" parent="Dialogues/WallSign" index="0"]
 shape = SubResource("RectangleShape2D_344ge")
 
 [node name="Sign" parent="Dialogues" instance=ExtResource("6_21xkr")]
 position = Vector2(140, 130)
-dialogue_keys = Array[String](["sign", "sign2", "sign3"])
+dialogue_key = "sign"
 
 [node name="CollisionShape2D" parent="Dialogues/Sign" index="0"]
 shape = SubResource("RectangleShape2D_6bp64")

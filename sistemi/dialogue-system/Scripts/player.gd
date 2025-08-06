@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var SPEED : float = 60
+@export var SPEED : float = 4000
 
 @onready var animationPlayer : AnimatedSprite2D = $AnimatedSprite2D
 
@@ -24,7 +24,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		_stop_animation()
 
-	velocity = direction * SPEED
+	velocity = direction * SPEED * delta
 	move_and_slide()
 
 func _stop_animation():
