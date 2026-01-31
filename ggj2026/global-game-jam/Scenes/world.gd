@@ -60,8 +60,8 @@ func create_chunk(coord: Vector2i) -> FogChunk:
 		c.sprite = Sprite2D.new()
 		c.sprite.texture = c.texture
 		c.sprite.position = Vector2(
-			coord.x * chunk_size,
-			coord.y * chunk_size,
+			(coord.x + 0.5) * chunk_size,
+			(coord.y + 0.5) * chunk_size,
 		) * world_scale
 		c.sprite.z_index = 5
 		add_child(c.sprite)
@@ -131,15 +131,15 @@ func splatter(origin: Vector2, dir: Vector2):
 	var right := Vector2(-forward.y, forward.x)
 	
 	var rng := RandomNumberGenerator.new()
-	rng.seed = 120
+	rng.seed = hash(origin) ^ hash(dir)
 	const MAX_R := 15
 	const MIN_R := 7
-	const SAMPLES := 100
+	const SAMPLES := 50
 	
 	for i in SAMPLES:
 		var u := rng.randf()
-		var theta := rng.randf_range(-PI * 0.125, PI * 0.125)
-		var dist := 128.0 * (1.0 - pow(u, 1.6))
+		var theta := rng.randf_range(-PI * 0.05, PI * 0.05)
+		var dist := 128.0 * (1.0 - pow(u, 1.6)) * (1 + (i/float(SAMPLES) * 1.5))
 		var bias : float = lerp(0.5, 1.0, u)
 		
 		var x := dist * bias * cos(theta)
@@ -150,11 +150,20 @@ func splatter(origin: Vector2, dir: Vector2):
 		
 		var r := int(lerp(MAX_R, MIN_R, u))
 		reveal_disk_world(center, r)
+		await get_tree().create_timer(0.001).timeout
 	
 func _ready() -> void:
 	generate_chunks_from_rect()
-	splatter(Vector2(0,0), Vector2(-2, 0.5))
-	reveal_disk_world(Vector2(player.global_position.x, player.global_position.y), 200)
+	var line = Line2D.new()
+	line.width = 200
+	line.default_color = Color(1,0,0)
+	line.z_index = 999
+	line.points = [Vector2(0,0), Vector2(-0.3,0.8).normalized() * 10]
+	print(line)
+	add_child(line)
+	splatter(Vector2(0,0), Vector2(-0.3, 0.8))
+	#reveal_disk_world(Vector2(player.global_position.x, player.global_position.y), 200)
+
 
 func _process(delta: float) -> void:
 	for chunk in chunks.values():
@@ -166,7 +175,7 @@ func _process(delta: float) -> void:
 				var i := y * chunk_size + x
 				if chunk.buffer[i] == 1:
 					chunk.image.set_pixel(x, y, Color(
-						x/float(chunk_size), y/float(chunk_size), 0, 0.6
+						0,0, 0, 0
 					))
 		chunk.texture.update(chunk.image)
 		chunk.dirty = false
