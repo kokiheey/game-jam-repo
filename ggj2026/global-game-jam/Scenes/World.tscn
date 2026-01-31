@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://dtcehcko360mh"]
+
+[ext_resource type="PackedScene" uid="uid://cpyrsjrwbmxpt" path="res://player.tscn" id="1_5cjrv"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5cjrv"]
+load_path = "res://.godot/imported/world_tile.png-62334401d58a4d78a0b47dc56a1c41f1.ctex"
+
+[node name="World" type="Node2D" unique_id=1974683642]
+
+[node name="Player" parent="." unique_id=1179617544 instance=ExtResource("1_5cjrv")]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2042674583]
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(-11.000122, -7)
+scale = Vector2(43.04687, 14.350004)
+texture = SubResource("CompressedTexture2D_5cjrv")
+region_enabled = true
+region_rect = Rect2(-0.078575134, 1.145, 32.070183, 30.623028)
