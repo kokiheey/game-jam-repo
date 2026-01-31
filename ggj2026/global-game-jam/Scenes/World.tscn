@@ -1,15 +1,27 @@
 [gd_scene format=3 uid="uid://dtcehcko360mh"]
 
 [ext_resource type="PackedScene" uid="uid://cpyrsjrwbmxpt" path="res://player.tscn" id="1_5cjrv"]
+[ext_resource type="Script" uid="uid://bqc6rm41uw5yt" path="res://Scenes/world.gd" id="1_j0p05"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5cjrv"]
 load_path = "res://.godot/imported/world_tile.png-62334401d58a4d78a0b47dc56a1c41f1.ctex"
 
-[node name="World" type="Node2D" unique_id=1974683642]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5cjrv"]
+size = Vector2(142, 104)
+
+[node name="World" type="Node2D" unique_id=1974683642 node_paths=PackedStringArray("player")]
+script = ExtResource("1_j0p05")
+player = NodePath("Player")
+chunk_size = 256
+world_scale = 1.0
+LOGICAL_PIXEL_SIZE = 8
+fog_bounds = Rect2(-1000, -1000, 2000, 2000)
 
 [node name="Player" parent="." unique_id=1179617544 instance=ExtResource("1_5cjrv")]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2042674583]
+visible = false
+z_index = 200
 texture_filter = 1
 texture_repeat = 2
 position = Vector2(-11.000122, -7)
@@ -17,3 +29,9 @@ scale = Vector2(43.04687, 14.350004)
 texture = SubResource("CompressedTexture2D_5cjrv")
 region_enabled = true
 region_rect = Rect2(-0.078575134, 1.145, 32.070183, 30.623028)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1167346666]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=41411356]
+position = Vector2(-9, -4)
+shape = SubResource("RectangleShape2D_5cjrv")
