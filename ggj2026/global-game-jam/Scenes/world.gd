@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var player : Node2D
+@export var tilemap : TileMapLayer
 @export var chunk_size : int
 @export var world_scale : float
 @export var LOGICAL_PIXEL_SIZE := 2
@@ -40,7 +41,6 @@ func generate_chunks_from_rect():
 		bounds.position.x + bounds.size.x):
 			var coord := Vector2i(x, y)
 			chunks[coord] = create_chunk(coord)
-		
 
 func create_chunk(coord: Vector2i) -> FogChunk:
 		var c := FogChunk.new()
@@ -66,7 +66,7 @@ func create_chunk(coord: Vector2i) -> FogChunk:
 		c.sprite.z_index = 5
 		add_child(c.sprite)
 		return c
-		
+
 func get_chunk(coord: Vector2i) -> FogChunk:
 	if not chunks.has(coord): 
 		chunks[coord] = create_chunk(coord)
@@ -86,37 +86,47 @@ func pixel_to_chunk(p: Vector2i) -> Vector2i:
 
 func pos_mod(a:int, m:int) -> int:
 	return ((a % m) + m) % m
+
 func pixel_in_chunk(p: Vector2i) -> Vector2i:
 	return Vector2i(
 		pos_mod(p.x,  chunk_size),
 		pos_mod(p.y, chunk_size)
 	)
-	
+
 func tile_in_chunk(p: Vector2i) -> Vector2i:
 	return Vector2i(
 		p.x / LOGICAL_PIXEL_SIZE,
 		p.y / LOGICAL_PIXEL_SIZE
 	)
-	
+
 func reveal_pixel_world(pos: Vector2):
+	var tile_pos : Vector2 = tilemap.local_to_map(pos)
+	tilemap.get_cell_tile_data(tile_pos).set_custom_data("active", true)
 	var p := world_to_fog_pixel(pos)
 	var ccoord := pixel_to_chunk(p)
 	var local := pixel_in_chunk(p)
-	#print_debug("lc ", ccoord, " ", local)
 	var chunk := get_chunk(ccoord)
 	
 	var tile := tile_in_chunk(local)
-#	var idx := local.y * chunk_size + local.x
-#	if chunk.buffer[idx] == 1: return
-#	chunk.buffer[idx] = 1
-#	chunk.dirty = true
+	
+	var interest: bool = tilemap.get_cell_tile_data(tile_pos).get_custom_data("interest")	
+	if interest:
+		var sp := tilemap.map_to_local(tile_pos)
+		sp = world_to_fog_pixel(sp)
+		sp = pixel_in_chunk(sp)
+		var size := tilemap.tile_set.tile_size
+		for x in range(sp.x - size.x/2, sp.x + size.x/2):
+			for y in range(sp.y - size.y/2, sp.y + size.y/2):
+				var idx := y * chunk_size + x
+				if chunk.buffer[idx] == 1: return
+				chunk.buffer[idx] = 1
+				chunk.dirty = true
 	for x in range(tile.x * LOGICAL_PIXEL_SIZE, (tile.x+1)*LOGICAL_PIXEL_SIZE):
 		for y in range(tile.y * LOGICAL_PIXEL_SIZE, (tile.y+1) * LOGICAL_PIXEL_SIZE):
 			var idx := y * chunk_size + x
 			if chunk.buffer[idx] == 1: return
 			chunk.buffer[idx] = 1
 			chunk.dirty = true
-
 
 func reveal_disk_world(pos: Vector2, radius: int):
 	var c := world_to_fog_pixel(pos)
@@ -126,6 +136,7 @@ func reveal_disk_world(pos: Vector2, radius: int):
 				var px := (c.x + x)
 				var py := (c.y + y)
 				reveal_pixel_world(Vector2i(px, py))
+
 func splatter(origin: Vector2, dir: Vector2):
 	var forward : Vector2 = dir.normalized()
 	var right := Vector2(-forward.y, forward.x)
@@ -151,7 +162,7 @@ func splatter(origin: Vector2, dir: Vector2):
 		var r := int(lerp(MAX_R, MIN_R, u))
 		reveal_disk_world(center, r)
 		await get_tree().create_timer(0.001).timeout
-	
+
 func _ready() -> void:
 	generate_chunks_from_rect()
 	var line = Line2D.new()
@@ -163,7 +174,6 @@ func _ready() -> void:
 	add_child(line)
 	splatter(Vector2(0,0), Vector2(-0.3, 0.8))
 	#reveal_disk_world(Vector2(player.global_position.x, player.global_position.y), 200)
-
 
 func _process(delta: float) -> void:
 	for chunk in chunks.values():
