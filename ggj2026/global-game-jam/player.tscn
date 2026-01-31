@@ -5,12 +5,10 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sh265"]
 
-[node name="Player" type="Node2D" unique_id=1179617544]
+[node name="Player" type="CharacterBody2D" unique_id=1904194563]
 script = ExtResource("1_onrkg")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=806321186]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D" unique_id=2129890242]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2129890242]
 shape = SubResource("CircleShape2D_sh265")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1607158916]
