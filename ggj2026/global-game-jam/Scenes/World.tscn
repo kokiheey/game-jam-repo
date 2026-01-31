@@ -1,9 +1,9 @@
 [gd_scene format=4 uid="uid://dtcehcko360mh"]
 
-
+[ext_resource type="PackedScene" uid="uid://cpyrsjrwbmxpt" path="res://player.tscn" id="1_5cjrv"]
 [ext_resource type="Script" uid="uid://bqc6rm41uw5yt" path="res://Scenes/world.gd" id="1_j0p05"]
 [ext_resource type="TileSet" uid="uid://cqpphp7yk6bch" path="res://Assets/WorldTiles.tres" id="3_5nsto"]
-[ext_resource type="PackedScene" uid="uid://cpyrsjrwbmxpt" path="res://Player/Player.tscn" id="1_5cjrv"]
+[ext_resource type="Script" uid="uid://d2ehwqel3ym7x" path="res://Scenes/map_generator.gd" id="4_gjpho"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5cjrv"]
 load_path = "res://.godot/imported/world_tile.png-62334401d58a4d78a0b47dc56a1c41f1.ctex"
