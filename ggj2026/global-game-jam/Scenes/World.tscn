@@ -35,6 +35,7 @@ script = ExtResource("3_y7y61")
 weapon_to_equip = ExtResource("3_45d1s")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2042674583]
+visible = false
 z_index = 200
 texture_filter = 1
 texture_repeat = 2

@@ -1,7 +1,6 @@
 class_name MeleeWeapon
 extends Weapon
 
-@export var damage : int
 @export var hit_force : float
 
 @onready var anim : AnimationPlayer = $AnimationPlayer
