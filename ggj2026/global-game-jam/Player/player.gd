@@ -5,13 +5,12 @@ class_name Player
 @onready var movement_component = $Movement
 #@onready var attack_component = $Attack
 @onready var state_machine = $StateMachine
+@onready var interaction_component = $Interact
+
 
 func _ready() -> void:
 	movement_component.dash_finished.connect(state_machine.on_dash_finished)
 	input_component.dash_requested.connect(self._on_dash_requested)
-
-
-
 
 func _physics_process(delta):
 	
