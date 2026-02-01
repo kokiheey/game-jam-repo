@@ -46,7 +46,6 @@ _data = {
 
 [node name="Weapon" type="Node2D" unique_id=358283046]
 script = ExtResource("1_o2wld")
-damage = 1
 hit_force = 150.0
 range = 30.0
 

@@ -3,8 +3,12 @@
 [ext_resource type="Script" uid="uid://ce4oid55a8wp8" path="res://Enemy/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://bjw38fors2ayc" path="res://Assets/enemy.png" id="2_qi2p4"]
 [ext_resource type="Script" uid="uid://0klnl3xngkn1" path="res://Components/health_component.gd" id="3_afpow"]
+[ext_resource type="Script" uid="uid://ddhbelh7cgr0w" path="res://Components/hitbox_component.gd" id="4_287tu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iifgy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_287tu"]
+radius = 18.0
 
 [node name="enemy" type="RigidBody2D" unique_id=592757614]
 script = ExtResource("1_4gyqm")
@@ -19,3 +23,11 @@ texture = ExtResource("2_qi2p4")
 [node name="health_component" type="Node" parent="." unique_id=663797773]
 script = ExtResource("3_afpow")
 metadata/_custom_type_script = "uid://0klnl3xngkn1"
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=1670326282 node_paths=PackedStringArray("health")]
+script = ExtResource("4_287tu")
+health = NodePath("../health_component")
+metadata/_custom_type_script = "uid://ddhbelh7cgr0w"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=677952382]
+shape = SubResource("CircleShape2D_287tu")
