@@ -25,9 +25,11 @@ func _sort_by_nearest(area1: Area2D, area2: Area2D) -> bool:
 	return d1 < d2
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	current_interactions.push_back(area)
+	if area is Interactable:
+		current_interactions.push_back(area)
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
-	area.interaction_label.hide()
-	current_interactions.erase(area)
+	if area is Interactable:
+		area.interaction_label.hide()
+		current_interactions.erase(area)
