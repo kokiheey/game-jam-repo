@@ -7,6 +7,7 @@ extends Weapon
 @onready var hit_box : Area2D = $Hitbox
 
 func _use():
+	#spawn hitbox
 	anim.play("attack")
 	
 func  detect_hits():
