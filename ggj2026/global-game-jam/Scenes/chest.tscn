@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://pri7k4onhhjh"]
+
+[ext_resource type="Texture2D" uid="uid://d0801eln1chyx" path="res://icon.svg" id="1_cjfl1"]
+[ext_resource type="PackedScene" uid="uid://db0mw3a236oeg" path="res://Scenes/interactable.tscn" id="2_bagqn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjfl1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pmguq"]
+
+[node name="Chest" type="StaticBody2D" unique_id=580288441]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=719548420]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_cjfl1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1122363202]
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_cjfl1")
+
+[node name="Interactable" parent="." unique_id=1115167616 node_paths=PackedStringArray("interaction_label") instance=ExtResource("2_bagqn")]
+interact_name = "E to open"
+interaction_label = NodePath("Label")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactable" unique_id=1827820323]
+scale = Vector2(10, 10)
+shape = SubResource("CircleShape2D_pmguq")
+
+[node name="Label" type="Label" parent="Interactable" unique_id=1112426618]
+offset_left = -35.0
+offset_top = -58.0
+offset_right = 38.0
+offset_bottom = -35.0

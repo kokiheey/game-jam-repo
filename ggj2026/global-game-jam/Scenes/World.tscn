@@ -7,7 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://cowwsd7bc4fro" path="res://Weapons/weapon.tscn" id="3_45d1s"]
 [ext_resource type="Script" uid="uid://bsbfnpoc0lcys" path="res://Character/player_weapon.gd" id="3_y7y61"]
 [ext_resource type="Script" uid="uid://d2ehwqel3ym7x" path="res://Scenes/map_generator.gd" id="4_gjpho"]
-[ext_resource type="PackedScene" uid="uid://bhl6nuo0kow6j" path="res://Scenes/enemy.tscn" id="5_p70al"]
+[ext_resource type="PackedScene" uid="uid://b73dbowefcv6g" path="res://Scenes/enemy.tscn" id="5_p70al"]
+[ext_resource type="PackedScene" uid="uid://pri7k4onhhjh" path="res://Scenes/chest.tscn" id="9_uo7di"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_5cjrv"]
 load_path = "res://.godot/imported/world_tile.png-62334401d58a4d78a0b47dc56a1c41f1.ctex"
@@ -72,3 +73,12 @@ script = ExtResource("4_gjpho")
 
 [node name="enemy" parent="." unique_id=592757614 instance=ExtResource("5_p70al")]
 script = null
+
+[node name="Chest" parent="." unique_id=580288441 instance=ExtResource("9_uo7di")]
+position = Vector2(1444, 965)
+
+[node name="Chest2" parent="." unique_id=806587729 instance=ExtResource("9_uo7di")]
+position = Vector2(1370, 969)
+
+[node name="Chest3" parent="." unique_id=638064548 instance=ExtResource("9_uo7di")]
+position = Vector2(1409, 849)
