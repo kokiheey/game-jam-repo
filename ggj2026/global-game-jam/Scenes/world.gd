@@ -142,7 +142,7 @@ func splatter(origin: Vector2, dir: Vector2):
 	var right := Vector2(-forward.y, forward.x)
 	
 	var rng := RandomNumberGenerator.new()
-	rng.seed = hash(origin) ^ hash(dir)
+	rng.randomize()
 	const MAX_R := 15
 	const MIN_R := 7
 	const SAMPLES := 50
