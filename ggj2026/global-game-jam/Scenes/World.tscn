@@ -23,9 +23,10 @@ world_scale = 1.0
 LOGICAL_PIXEL_SIZE = 8
 fog_bounds = Rect2(-1000, -1000, 2000, 2000)
 
-[node name="EnemySpawner" parent="." unique_id=779771356 node_paths=PackedStringArray("player", "root") instance=ExtResource("2_45d1s")]
+[node name="EnemySpawner" parent="." unique_id=779771356 node_paths=PackedStringArray("player", "root", "world") instance=ExtResource("2_45d1s")]
 player = NodePath("../Player")
 root = NodePath("..")
+world = NodePath("..")
 
 [node name="Player" parent="." unique_id=1179617544 instance=ExtResource("1_5cjrv")]
 

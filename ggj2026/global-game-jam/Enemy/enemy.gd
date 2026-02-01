@@ -3,8 +3,10 @@ extends RigidBody2D
 @export var movespeed : float = 50
 @onready var health = $health_component
 
+signal death(position: Vector2)
 func onDeath():
-	print("i am dead")
+	death.emit(global_position)
+	queue_free()
 
 func _ready() -> void:
 	health.dead.connect(onDeath)

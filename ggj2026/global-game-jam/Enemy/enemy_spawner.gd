@@ -5,6 +5,7 @@ extends Node2D
 @export var player : CharacterBody2D
 @export var root: Node2D
 @onready var timer = $Timer
+@export var world: World
 @onready var enemy = preload("res://Scenes/enemy.tscn")
 var rng : RandomNumberGenerator
 func _ready():
@@ -23,7 +24,11 @@ func timer_out():
 		player.global_position.x + rng.randf_range(-radius, radius),
 		player.global_position.y + rng.randf_range(-radius, radius)
 	)
+	enemyInstance.death.connect(on_enemy_died)
 	root.add_child(enemyInstance)
 	var time = rng.randf_range(min_time, max_time)
 	timer.wait_time = time
-	
+
+func on_enemy_died(pos: Vector2):
+	var dir:Vector2 = (pos - player.global_position).normalized()
+	world.splatter(pos, dir)

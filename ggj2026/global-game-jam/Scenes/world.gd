@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name World
 @export var player : Node2D
 @export var tilemap : TileMapLayer
 @export var chunk_size : int
