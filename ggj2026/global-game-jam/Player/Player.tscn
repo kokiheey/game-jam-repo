@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://de47d54ye3ym2" path="res://Player/State/attack_state.gd" id="8_0j2ni"]
 [ext_resource type="Script" uid="uid://b0ldml2snd2y0" path="res://Player/State/dash_state.gd" id="9_j23h2"]
 [ext_resource type="PackedScene" uid="uid://m6r0r42jvlrc" path="res://Player/Components/Interaction/interact.tscn" id="10_0j2ni"]
+[ext_resource type="Script" uid="uid://bsbfnpoc0lcys" path="res://Character/player_weapon.gd" id="11_5wa8t"]
+[ext_resource type="PackedScene" uid="uid://cowwsd7bc4fro" path="res://Weapons/weapon.tscn" id="11_v0k0e"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sh265"]
 
@@ -39,3 +41,9 @@ attack_state_script = ExtResource("8_0j2ni")
 dash_state_script = ExtResource("9_j23h2")
 
 [node name="Interact" parent="." unique_id=2021751750 instance=ExtResource("10_0j2ni")]
+
+[node name="PlayerWeapon" type="Node2D" parent="." unique_id=682985625]
+z_index = 10
+position = Vector2(16, 0)
+script = ExtResource("11_5wa8t")
+weapon_to_equip = ExtResource("11_v0k0e")

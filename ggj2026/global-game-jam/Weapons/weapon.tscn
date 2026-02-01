@@ -45,13 +45,13 @@ _data = {
 }
 
 [node name="Weapon" type="Node2D" unique_id=358283046]
+scale = Vector2(2, 2)
 script = ExtResource("1_o2wld")
-damage = 1
 hit_force = 150.0
 range = 30.0
+damage = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=679127187]
-top_level = true
 position = Vector2(-10.000001, 10.318718)
 scale = Vector2(0.02522914, 0.02522914)
 texture = ExtResource("2_8xwfw")
