@@ -10,7 +10,11 @@ func _ready() -> void:
 	movement_component.dash_finished.connect(state_machine.on_dash_finished)
 	input_component.dash_requested.connect(self._on_dash_requested)
 
+
+
+
 func _physics_process(delta):
+	
 	var direction : Vector2 = input_component.direction
 	if state_machine.can_move():
 		if direction.length() > 0 and state_machine.current_state == state_machine.idle_state:
