@@ -11,7 +11,7 @@ func process_interaction() -> void:
 func _process(_delta: float) -> void:
 	if not current_interactions: return
 	for a in current_interactions:
-		pass
+		a.interaction_label.hide()
 	if can_interact:
 		current_interactions.sort_custom(_sort_by_nearest)
 		if current_interactions[0].is_interactable:
@@ -20,13 +20,14 @@ func _process(_delta: float) -> void:
 		current_interactions[0].interaction_label.hide()
 
 func _sort_by_nearest(area1: Area2D, area2: Area2D) -> bool:
-	var area1_dist = global_position.direction_to(area1.global_position)
-	var area2_dist = global_position.direction_to(area2.global_position)
-	return area1_dist < area2_dist
+	var d1 := global_position.distance_squared_to(area1.global_position)
+	var d2 := global_position.distance_squared_to(area2.global_position)
+	return d1 < d2
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	current_interactions.push_back(area)
 
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
+	area.interaction_label.hide()
 	current_interactions.erase(area)

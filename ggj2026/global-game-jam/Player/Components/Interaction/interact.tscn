@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" uid="uid://caw470cq1hepr" path="res://Player/Components/Interaction/interaction.gd" id="1_jhtc2"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_jfsua"]
-radius = 39.012817
+[sub_resource type="CircleShape2D" id="CircleShape2D_jhtc2"]
 
 [node name="Interact" type="Node2D" unique_id=458490740]
 script = ExtResource("1_jhtc2")
@@ -11,7 +10,7 @@ script = ExtResource("1_jhtc2")
 [node name="Area2D" type="Area2D" parent="." unique_id=1164031855]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=557328676]
-shape = SubResource("CircleShape2D_jfsua")
+shape = SubResource("CircleShape2D_jhtc2")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
