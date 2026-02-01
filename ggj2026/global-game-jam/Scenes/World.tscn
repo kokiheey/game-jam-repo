@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bqc6rm41uw5yt" path="res://Scenes/world.gd" id="1_j0p05"]
 [ext_resource type="PackedScene" uid="uid://bfe06js3rqpr4" path="res://Enemy/enemy_spawner.tscn" id="2_45d1s"]
 [ext_resource type="TileSet" uid="uid://cqpphp7yk6bch" path="res://Assets/WorldTiles.tres" id="3_5nsto"]
+[ext_resource type="PackedScene" uid="uid://cowwsd7bc4fro" path="res://Weapons/weapon.tscn" id="3_45d1s"]
+[ext_resource type="Script" uid="uid://bsbfnpoc0lcys" path="res://Character/player_weapon.gd" id="3_y7y61"]
 [ext_resource type="Script" uid="uid://d2ehwqel3ym7x" path="res://Scenes/map_generator.gd" id="4_gjpho"]
 [ext_resource type="PackedScene" uid="uid://bhl6nuo0kow6j" path="res://Scenes/enemy.tscn" id="5_p70al"]
 
@@ -28,8 +30,11 @@ root = NodePath("..")
 
 [node name="Player" parent="." unique_id=1179617544 instance=ExtResource("1_5cjrv")]
 
+[node name="PlayerWeapon" type="Node2D" parent="Player" unique_id=1627494090]
+script = ExtResource("3_y7y61")
+weapon_to_equip = ExtResource("3_45d1s")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2042674583]
-visible = false
 z_index = 200
 texture_filter = 1
 texture_repeat = 2
@@ -64,5 +69,5 @@ tile_map_data = PackedByteArray("AAADAAMAAAAAAAAAAAAFAAIAAAAAAAAAAAAFAAEAAAAAAAA
 tile_set = ExtResource("3_5nsto")
 script = ExtResource("4_gjpho")
 
-[node name="enemy" parent="." unique_id=592757614 node_paths=PackedStringArray("player") instance=ExtResource("5_p70al")]
-player = NodePath("../Player")
+[node name="enemy" parent="." unique_id=592757614 instance=ExtResource("5_p70al")]
+script = null
