@@ -52,16 +52,14 @@ range = 30.0
 damage = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=679127187]
-position = Vector2(-10.000001, 10.318718)
+position = Vector2(12, -12.000001)
 scale = Vector2(0.02522914, 0.02522914)
 texture = ExtResource("2_8xwfw")
-offset = Vector2(396.3672, -396.36707)
 
 [node name="Hitbox" type="Area2D" parent="." unique_id=1833273727]
-position = Vector2(-24, 6.318718)
+position = Vector2(12, -12)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox" unique_id=1115616473]
-position = Vector2(25, -7)
 rotation = 0.79363227
 scale = Vector2(1, 1.1131324)
 shape = SubResource("CapsuleShape2D_0jw1c")
