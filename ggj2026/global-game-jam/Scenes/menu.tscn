@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dl4ykdqeqoswx"]
+
+[ext_resource type="Script" uid="uid://bijb4bchbv38r" path="res://Scenes/main_menu.gd" id="1_1rerr"]
+[ext_resource type="PackedScene" uid="uid://dtcehcko360mh" path="res://Scenes/World.tscn" id="2_xhh6f"]
+
+[node name="Menu" type="Control" unique_id=1306842090]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_1rerr")
+main_scene = ExtResource("2_xhh6f")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=952942848]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=327791255]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="CenterContainer" unique_id=1652486861]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Play
+"
+
+[connection signal="pressed" from="CenterContainer/Play" to="." method="_on_play_pressed"]
