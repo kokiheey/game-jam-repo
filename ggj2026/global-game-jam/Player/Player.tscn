@@ -44,6 +44,5 @@ dash_state_script = ExtResource("9_j23h2")
 
 [node name="PlayerWeapon" type="Node2D" parent="." unique_id=682985625]
 z_index = 10
-position = Vector2(16, 0)
 script = ExtResource("11_5wa8t")
 weapon_to_equip = ExtResource("11_v0k0e")
