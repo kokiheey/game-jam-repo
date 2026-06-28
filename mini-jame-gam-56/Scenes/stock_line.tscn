@@ -2,21 +2,23 @@
 
 [ext_resource type="Script" uid="uid://2h7gnm2fci77" path="res://Scripts/stock_line.gd" id="1_rkyf0"]
 
-[node name="stockLine" type="Node2D" unique_id=1466419768]
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1010152388]
-offset_right = 1152.0
-offset_bottom = 648.0
-color = Color(0.14044744, 0.14044744, 0.14044744, 1)
-
-[node name="Graph" type="Node2D" parent="." unique_id=1772471230]
+[node name="stockLine" type="PanelContainer" unique_id=1753085514]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_rkyf0")
 
-[node name="Delay" type="Timer" parent="Graph" unique_id=1820780778]
+[node name="Delay" type="Timer" parent="." unique_id=1820780778]
 one_shot = true
 
-[node name="Affect" type="Timer" parent="Graph" unique_id=1485276023]
+[node name="Affect" type="Timer" parent="." unique_id=1485276023]
 one_shot = true
 
-[connection signal="timeout" from="Graph/Delay" to="Graph" method="_on_delay_timeout"]
-[connection signal="timeout" from="Graph/Affect" to="Graph" method="_on_affect_timeout"]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1010152388]
+z_index = -1
+layout_mode = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)

@@ -10,6 +10,5 @@ STOCK_LINE_INTERVAL = 0.1
 NEWS_INTERVAL = 10.0
 
 [node name="News" parent="." unique_id=267292009 instance=ExtResource("2_wrm1d")]
-position = Vector2(254.87946, -109.97534)
 
-[node name="Stocks" parent="." unique_id=1452717168 instance=ExtResource("3_3dryh")]
+[node name="Stocks" parent="." unique_id=1299713986 instance=ExtResource("3_3dryh")]

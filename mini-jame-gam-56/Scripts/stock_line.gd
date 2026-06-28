@@ -1,4 +1,4 @@
-extends Node2D
+extends PanelContainer
 
 @onready var news_manager := get_tree().current_scene.get_node("News") as NewsManager
 @onready var game_manager := get_tree().current_scene as GameManager
@@ -8,7 +8,7 @@ extends Node2D
 
 @export var startStockValue : int =  100000000
 @export var defaultPriceRange : Vector2i = Vector2i(-10, 10)
-@export var showLast : int = 16
+@export var showLast : int = 64
 
 var currentPriceRange : Vector2i
 var newsPriceRange : Vector2i
@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 		updateStock()
 
 func _ready() -> void:
+	print(size)
 	currentPriceRange = defaultPriceRange
 	
 	if news_manager is NewsManager:
@@ -65,7 +66,7 @@ func _draw():
 	var coordY = 324 # 1/2 ekrana 
 	var coordX = 864 #3/4 do kraja ekrana
 	for i in range(1, showLast + 1):
-		var currentX = coordX - 54
+		var currentX = coordX - 14
 		var currentY = coordY + (prices[prices.size() - i] - prices[prices.size() - i - 1]) * 5 
 		draw_line(Vector2(coordX,coordY), Vector2(currentX, currentY), Color.GREEN, 5.0)
 		coordX = currentX
