@@ -11,12 +11,12 @@ var testing : bool = false
 
 func _ready() -> void:
 	if news_manager == null:
-		print("WARNING: News manager not connected for stock line!")
+		print_rich("[color=yellow]WARNING: News manager not connected for stock line![/color]")
 	else: news_manager.connect("breaking_news", breakingNews)
 		
 	if game_manager.name != "Game":
 		testing = true
-		print("WARNING: Root node is not game, switching to scene testing!")
+		print_rich("[color=yellow]WARNING: Root node is not game, switching to scene testing![/color]")
 	else: game_manager.connect("update_stock", updateStock)
 	
 	prices.append(rng.randi_range(500, 1000))
