@@ -37,6 +37,67 @@ size_flags_horizontal = 3
 layout_mode = 2
 text = "News"
 
+[node name="TabPanel2" type="PanelContainer" parent="VBoxContainer" unique_id=841744551]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/TabPanel2" unique_id=1028766904]
+layout_mode = 2
+alignment = 1
+
+[node name="begin" type="HBoxContainer" parent="VBoxContainer/TabPanel2/HBoxContainer" unique_id=170306770]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/TabPanel2/HBoxContainer/begin" unique_id=1119331146]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BalanceLbl" type="Label" parent="VBoxContainer/TabPanel2/HBoxContainer/begin/Panel" unique_id=760368027]
+layout_mode = 2
+text = "Balance: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="PanelContainer" parent="VBoxContainer/TabPanel2/HBoxContainer/begin" unique_id=1603645035]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ProfitLbl" type="Label" parent="VBoxContainer/TabPanel2/HBoxContainer/begin/Panel2" unique_id=719860102]
+layout_mode = 2
+text = "Profit: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="center" type="HBoxContainer" parent="VBoxContainer/TabPanel2/HBoxContainer" unique_id=1368546104]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/TabPanel2/HBoxContainer/center" unique_id=806552260]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TimeLbl" type="Label" parent="VBoxContainer/TabPanel2/HBoxContainer/center/PanelContainer" unique_id=694138485]
+layout_mode = 2
+text = "12:00 AM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="end" type="HBoxContainer" parent="VBoxContainer/TabPanel2/HBoxContainer" unique_id=153914884]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/TabPanel2/HBoxContainer/end" unique_id=1720682776]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="VBoxContainer/TabPanel2/HBoxContainer/end/PanelContainer" unique_id=1830989537]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Main area" type="HBoxContainer" parent="VBoxContainer" unique_id=1731715479]
 layout_mode = 2
 size_flags_vertical = 3
@@ -106,10 +167,49 @@ z_index = 10
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Panel" type="Panel" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer" unique_id=884221754]
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer" unique_id=172530537]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 30.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer/Panel" unique_id=503901483]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer/Panel/HBoxContainer" unique_id=38720530]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="SellBtn" type="Button" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer/Panel/HBoxContainer/MarginContainer" unique_id=823649645]
+layout_mode = 2
+text = "Sell"
+
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer/Panel/HBoxContainer" unique_id=1100898810]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="ShortBuyBtn" type="Button" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer/Panel/HBoxContainer/MarginContainer2" unique_id=521086640]
+layout_mode = 2
+text = "Short Buy"
+
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer/Panel/HBoxContainer" unique_id=1051839116]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 12
+theme_override_constants/margin_top = 12
+theme_override_constants/margin_right = 12
+theme_override_constants/margin_bottom = 12
+
+[node name="BuyBtn" type="Button" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer/Panel/HBoxContainer/MarginContainer3" unique_id=1772439384]
+layout_mode = 2
+text = "Buy"
 
 [node name="Panel2" type="Panel" parent="VBoxContainer/Main area/VBoxContainer2/container2/HBoxContainer" unique_id=1495270195]
 layout_mode = 2

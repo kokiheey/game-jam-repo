@@ -11,7 +11,25 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rkyf0")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1010152388]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1186092044]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="VBoxContainer" unique_id=1010152388]
 z_index = -1
 layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 100.0
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="VBoxContainer" unique_id=445445579]
+z_index = -1
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0, 0.55983585, 0.874753, 1)
+
+[node name="ColorRect3" type="ColorRect" parent="VBoxContainer" unique_id=1397669265]
+z_index = -1
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 100.0
 color = Color(0.14044744, 0.14044744, 0.14044744, 1)

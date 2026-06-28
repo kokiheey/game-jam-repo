@@ -3,8 +3,12 @@ class_name StockManager
 
 @onready var news_manager := get_tree().current_scene.get_node("News") as NewsManager
 @onready var game_manager := get_tree().current_scene as GameManager
+
 @onready var delayTimer : Timer = $Delay
 @onready var affectTimer : Timer = $Affect
+@onready var balanceLbl : Label = $VBoxContainer/TabPanel2/HBoxContainer/begin/Panel/BalanceLbl
+@onready var profitLbl : Label = $VBoxContainer/TabPanel2/HBoxContainer/begin/Panel2/ProfitLbl
+@onready var timeLbl : Label = $VBoxContainer/TabPanel2/HBoxContainer/center/PanelContainer/TimeLbl
 
 signal update_graph(pricePoint)
 
@@ -58,7 +62,6 @@ func _on_delay_timeout() -> void:
 
 func _on_affect_timeout() -> void:
 	currentPriceRange = DEFAULT_PRICE_RANGE
-
 
 func _process(delta: float) -> void:
 	if testing:
