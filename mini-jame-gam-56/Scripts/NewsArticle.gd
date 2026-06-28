@@ -5,7 +5,7 @@ var newsArticleTitle: String
 var newsArticleImage: Image
 var newsArticleDescription: String
 
-var newsImpact: Vector2
+var newsImpact: Vector2i
 var affectedTime: float
 var delay: float
 
@@ -27,7 +27,7 @@ func getImage() -> Image:
 func getDescription() -> String:
 	return newsArticleDescription
 	
-func getImpact() -> Vector2:
+func getImpact() -> Vector2i:
 	return newsImpact
 	
 func getAffectedTime() -> float:

@@ -11,3 +11,12 @@ color = Color(0.14044744, 0.14044744, 0.14044744, 1)
 
 [node name="Graph" type="Node2D" parent="." unique_id=1772471230]
 script = ExtResource("1_rkyf0")
+
+[node name="Delay" type="Timer" parent="Graph" unique_id=1820780778]
+one_shot = true
+
+[node name="Affect" type="Timer" parent="Graph" unique_id=1485276023]
+one_shot = true
+
+[connection signal="timeout" from="Graph/Delay" to="Graph" method="_on_delay_timeout"]
+[connection signal="timeout" from="Graph/Affect" to="Graph" method="_on_affect_timeout"]
