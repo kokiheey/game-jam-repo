@@ -21,7 +21,12 @@ func pickNews(n : NewsArticle) -> void:
 	breaking_news.emit(n.getImpact(), n.getAffectedTime(), n.getDelay())
 
 func setNews(n : NewsArticle) -> void:
-	print(n.getTitle())
+	var color := "red"
+	if(n.getTitle()=="Amazing news"):
+		color = "green"
+	elif(n.getTitle()=="Good news"):
+		color = "lime"
+	print_rich("[color=" + color + "]" + n.getTitle() + "[/color]")
 	print(n.getDescription())
 	print(n.getImpact())
 	print(n.getAffectedTime())

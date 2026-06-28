@@ -6,6 +6,7 @@ extends Node2D
 @onready var delayTimer : Timer = $Delay
 @onready var affectTimer : Timer = $Affect
 
+@export var startStockValue : int =  100000000
 @export var defaultPriceRange : Vector2i = Vector2i(-10, 10)
 @export var showLast : int = 16
 
@@ -33,7 +34,7 @@ func _ready() -> void:
 		testing = true
 		print_rich("[color=yellow]WARNING: Root node is not game, switching to scene testing![/color]")
 	
-	prices.append(rng.randi_range(500, 1000))
+	prices.append(startStockValue)
 	for i in showLast:
 		prices.append(max(0, prices[prices.size()-1] + rng.randi_range(currentPriceRange.x, currentPriceRange.y)))
 	pass
