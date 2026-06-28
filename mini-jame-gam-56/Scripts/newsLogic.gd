@@ -2,14 +2,13 @@ extends Node2D
 
 signal breaking_news(newsImpact, affectedTime, delay)
 
+@onready var game_manager = get_tree().current_scene
+
 var listNews: Array[NewsArticle] = NewsDataBase.listNewsArticles
 
 func _ready() -> void:
-	#self.connect("update_news", changeNews)
+	game_manager.connect("update_news", changeNews)
 	pass
-
-func _physics_process(delta: float) -> void:
-	changeNews()
 
 func changeNews() -> void:
 	var i = randi_range(0, listNews.size() - 1);
