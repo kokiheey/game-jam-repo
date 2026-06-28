@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dd3jcf6kdiwnj"]
 
 [ext_resource type="PackedScene" uid="uid://c4pnpvj2i1lfn" path="res://Scenes/stock_line.tscn" id="1_550cu"]
-[ext_resource type="Script" uid="uid://bsd5y0xdncc53" path="res://Scripts/stocks.gd" id="1_h3lwo"]
+[ext_resource type="Script" uid="uid://bsd5y0xdncc53" path="res://Scripts/stockManager.gd" id="1_h3lwo"]
 
 [node name="Stocks" type="Node" unique_id=2056210634]
 script = ExtResource("1_h3lwo")
