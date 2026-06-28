@@ -15,3 +15,6 @@ one_shot = true
 
 [node name="Affect" type="Timer" parent="." unique_id=1485276023]
 one_shot = true
+
+[connection signal="timeout" from="Delay" to="." method="_on_delay_timeout"]
+[connection signal="timeout" from="Affect" to="." method="_on_affect_timeout"]

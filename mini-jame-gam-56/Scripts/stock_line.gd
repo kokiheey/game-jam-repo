@@ -9,7 +9,8 @@ extends PanelContainer
 @export var START_STOCK_VALUE : int =  100000000
 @export var DEFAULT_PRICE_RANGE : Vector2i = Vector2i(-10, 10)
 @export var POINTS_SHOWN : int = 64
-@export var SCALING_FACTOR : int = 5
+@export var SCALING_FACTOR : int = 3
+@export var LINE_WIDTH : float = 3.0
 
 var WINDOW_WIDTH : int
 var WINDOW_HEIGHT : int
@@ -73,6 +74,6 @@ func _draw():
 	for i in range(1, POINTS_SHOWN + 1):
 		var currentX = coordX - deltaX
 		var currentY = coordY + (prices[prices.size() - i] - prices[prices.size() - i - 1]) * SCALING_FACTOR
-		draw_line(Vector2(coordX,coordY), Vector2(currentX, currentY), Color.GREEN, 5.0)
+		draw_line(Vector2(coordX,coordY), Vector2(currentX, currentY), Color.GREEN, LINE_WIDTH)
 		coordX = currentX
 		coordY = currentY
