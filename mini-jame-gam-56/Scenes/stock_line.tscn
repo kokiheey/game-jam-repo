@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://c4pnpvj2i1lfn"]
+
+[ext_resource type="Script" uid="uid://2h7gnm2fci77" path="res://Scripts/stock_line.gd" id="1_rkyf0"]
+[ext_resource type="Texture2D" uid="uid://dg37eergfoywu" path="res://icon.svg" id="2_u4axn"]
+
+[node name="stockLine" type="Node2D" unique_id=1852385758]
+script = ExtResource("1_rkyf0")
+
+[node name="Icon" type="Sprite2D" parent="." unique_id=1677807073]
+position = Vector2(201, 382)
+texture = ExtResource("2_u4axn")
