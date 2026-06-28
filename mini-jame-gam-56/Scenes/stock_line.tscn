@@ -2,23 +2,16 @@
 
 [ext_resource type="Script" uid="uid://2h7gnm2fci77" path="res://Scripts/stock_line.gd" id="1_rkyf0"]
 
-[node name="stockLine" type="PanelContainer" unique_id=1753085514]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
+[node name="stockLine" type="PanelContainer" unique_id=1500776853]
 script = ExtResource("1_rkyf0")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1010152388]
+z_index = -1
+layout_mode = 2
+color = Color(0.14044744, 0.14044744, 0.14044744, 1)
 
 [node name="Delay" type="Timer" parent="." unique_id=1820780778]
 one_shot = true
 
 [node name="Affect" type="Timer" parent="." unique_id=1485276023]
 one_shot = true
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1010152388]
-z_index = -1
-layout_mode = 2
-color = Color(0.14044744, 0.14044744, 0.14044744, 1)

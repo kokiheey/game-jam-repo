@@ -6,9 +6,13 @@ extends PanelContainer
 @onready var delayTimer : Timer = $Delay
 @onready var affectTimer : Timer = $Affect
 
-@export var startStockValue : int =  100000000
-@export var defaultPriceRange : Vector2i = Vector2i(-10, 10)
-@export var showLast : int = 64
+@export var START_STOCK_VALUE : int =  100000000
+@export var DEFAULT_PRICE_RANGE : Vector2i = Vector2i(-10, 10)
+@export var POINTS_SHOWN : int = 64
+@export var SCALING_FACTOR : int = 5
+
+var WINDOW_WIDTH : int
+var WINDOW_HEIGHT : int
 
 var currentPriceRange : Vector2i
 var newsPriceRange : Vector2i
@@ -22,8 +26,7 @@ func _process(delta: float) -> void:
 		updateStock()
 
 func _ready() -> void:
-	print(size)
-	currentPriceRange = defaultPriceRange
+	currentPriceRange = DEFAULT_PRICE_RANGE
 	
 	if news_manager is NewsManager:
 		news_manager.connect("breaking_news", breakingNews)
@@ -35,10 +38,12 @@ func _ready() -> void:
 		testing = true
 		print_rich("[color=yellow]WARNING: Root node is not game, switching to scene testing![/color]")
 	
-	prices.append(startStockValue)
-	for i in showLast:
+	prices.append(START_STOCK_VALUE)
+	for i in POINTS_SHOWN:
 		prices.append(max(0, prices[prices.size()-1] + rng.randi_range(currentPriceRange.x, currentPriceRange.y)))
-	pass
+	await get_tree().process_frame
+	WINDOW_WIDTH = size.x
+	WINDOW_HEIGHT = size.y
 
 
 func updateStock() -> void:
@@ -58,16 +63,16 @@ func _on_delay_timeout() -> void:
 	currentPriceRange = newsPriceRange
 
 func _on_affect_timeout() -> void:
-	currentPriceRange = defaultPriceRange
-
+	currentPriceRange = DEFAULT_PRICE_RANGE
 
 
 func _draw():
-	var coordY = 324 # 1/2 ekrana 
-	var coordX = 864 #3/4 do kraja ekrana
-	for i in range(1, showLast + 1):
-		var currentX = coordX - 14
-		var currentY = coordY + (prices[prices.size() - i] - prices[prices.size() - i - 1]) * 5 
+	var coordY = 0.5 * WINDOW_HEIGHT
+	var coordX = 0.75 * WINDOW_WIDTH
+	var deltaX = ceil(coordX / POINTS_SHOWN)
+	for i in range(1, POINTS_SHOWN + 1):
+		var currentX = coordX - deltaX
+		var currentY = coordY + (prices[prices.size() - i] - prices[prices.size() - i - 1]) * SCALING_FACTOR
 		draw_line(Vector2(coordX,coordY), Vector2(currentX, currentY), Color.GREEN, 5.0)
 		coordX = currentX
 		coordY = currentY

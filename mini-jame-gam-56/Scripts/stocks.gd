@@ -1,4 +1,4 @@
-extends Control
+extends Node
 
 #stocks skripta upravlja novcem ali mora nekako da 
 #komunicira sa graphom jer on ima podatke o cenama

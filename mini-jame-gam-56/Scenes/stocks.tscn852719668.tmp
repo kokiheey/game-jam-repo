@@ -39,10 +39,15 @@ z_index = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="stockLine" parent="VBoxContainer/HBoxContainer" unique_id=1382580836 instance=ExtResource("1_550cu")]
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/HBoxContainer" unique_id=445234249]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 80.0
+
+[node name="stockLine" parent="VBoxContainer/HBoxContainer/PanelContainer" unique_id=1382580836 instance=ExtResource("1_550cu")]
+startStockValue = null
+defaultPriceRange = null
+showLast = null
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1077558568]
 z_index = 10
