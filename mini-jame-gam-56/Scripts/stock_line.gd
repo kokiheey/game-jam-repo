@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var news_manager : Node2D
-@onready var game_manager : Node2D = get_tree().current_scene
+@onready var news_manager := get_tree().current_scene.get_node("News") as NewsManager
+@onready var game_manager = get_tree().current_scene as GameManager
 
 @export var showLast : int = 16
 var prices : Array
@@ -10,14 +10,15 @@ var rng = RandomNumberGenerator.new()
 var testing : bool = false
 
 func _ready() -> void:
-	if news_manager == null:
-		print_rich("[color=yellow]WARNING: News manager not connected for stock line![/color]")
-	else: news_manager.connect("breaking_news", breakingNews)
+	if news_manager is NewsManager:
+		news_manager.connect("breaking_news", breakingNews)
+	else: print_rich("[color=yellow]WARNING: News manager not connected for stock line![/color]")
 		
-	if game_manager.name != "Game":
+	if game_manager is GameManager:
+		game_manager.connect("update_stock", updateStock)
+	else: 
 		testing = true
 		print_rich("[color=yellow]WARNING: Root node is not game, switching to scene testing![/color]")
-	else: game_manager.connect("update_stock", updateStock)
 	
 	prices.append(rng.randi_range(500, 1000))
 	for i in showLast:

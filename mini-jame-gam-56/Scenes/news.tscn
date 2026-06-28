@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" uid="uid://bp6px0tw7oleb" path="res://Scripts/newsLogic.gd" id="1_spxe5"]
 
-[node name="news" type="Node2D" unique_id=267292009]
+[node name="News" type="Node2D" unique_id=267292009]
 script = ExtResource("1_spxe5")

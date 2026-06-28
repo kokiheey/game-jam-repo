@@ -1,4 +1,5 @@
 extends Node2D
+class_name NewsManager
 
 signal breaking_news(newsImpact, affectedTime, delay)
 

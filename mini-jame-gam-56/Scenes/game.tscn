@@ -8,6 +8,7 @@
 script = ExtResource("1_ebmjs")
 STOCK_LINE_INTERVAL = 0.1
 
-[node name="news" parent="." unique_id=267292009 instance=ExtResource("2_wrm1d")]
+[node name="News" parent="." unique_id=267292009 instance=ExtResource("2_wrm1d")]
+position = Vector2(254.87946, -109.97534)
 
 [node name="Stocks" parent="." unique_id=1452717168 instance=ExtResource("3_3dryh")]
