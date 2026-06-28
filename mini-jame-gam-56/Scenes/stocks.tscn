@@ -1,3 +1,9 @@
 [gd_scene format=3 uid="uid://dd3jcf6kdiwnj"]
 
+[ext_resource type="PackedScene" uid="uid://c4pnpvj2i1lfn" path="res://Scenes/stock_line.tscn" id="1_550cu"]
+
 [node name="Stocks" type="Node2D" unique_id=1452717168]
+
+[node name="stockLine" parent="." unique_id=1382580836 instance=ExtResource("1_550cu")]
+position = Vector2(296, 152)
+scale = Vector2(0.5, 0.5)
