@@ -70,7 +70,7 @@ func _on_affect_timeout() -> void:
 func _draw():
 	var coordY = 0.5 * WINDOW_HEIGHT
 	var coordX = 0.75 * WINDOW_WIDTH
-	var deltaX = ceil(coordX / POINTS_SHOWN)
+	var deltaX = coordX / POINTS_SHOWN
 	for i in range(1, POINTS_SHOWN + 1):
 		var currentX = coordX - deltaX
 		var currentY = coordY + (prices[prices.size() - i] - prices[prices.size() - i - 1]) * SCALING_FACTOR

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://2h7gnm2fci77" path="res://Scripts/stock_line.gd" id="1_rkyf0"]
 
 [node name="stockLine" type="PanelContainer" unique_id=1500776853]
+clip_contents = true
 script = ExtResource("1_rkyf0")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1010152388]

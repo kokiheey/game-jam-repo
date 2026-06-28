@@ -14,42 +14,78 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Tabs" type="HBoxContainer" parent="VBoxContainer" unique_id=1280842156]
-z_index = 10
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 10.0
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/Tabs" unique_id=528017379]
+[node name="Panel" type="Panel" parent="VBoxContainer/Tabs" unique_id=1021904094]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1731715479]
 layout_mode = 2
 size_flags_vertical = 3
-size_flags_stretch_ratio = 70.0
+size_flags_stretch_ratio = 9.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=913698358]
-z_index = 10
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 20.0
+size_flags_stretch_ratio = 2.0
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=2046433418]
-z_index = 2
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer" unique_id=598465021]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="stockLine" parent="VBoxContainer/HBoxContainer" unique_id=1382580836 instance=ExtResource("1_550cu")]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/HBoxContainer" unique_id=41359925]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_stretch_ratio = 80.0
+size_flags_stretch_ratio = 8.0
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer" unique_id=1077558568]
-z_index = 10
+[node name="Panel" type="PanelContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=777856613]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 8.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Panel" unique_id=1575063069]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Panel/VBoxContainer" unique_id=1379327897]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 15.0
+
+[node name="stockLine" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer" unique_id=1382580836 instance=ExtResource("1_550cu")]
+layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 30.0
 
-[node name="ColorRect" type="ColorRect" parent="VBoxContainer/HBoxContainer2" unique_id=1165539028]
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer" unique_id=1238025590]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Panel/VBoxContainer" unique_id=240691282]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer2" unique_id=1883204657]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 30.0
+
+[node name="Panel2" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer2/Panel/VBoxContainer/HBoxContainer2" unique_id=878964639]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/HBoxContainer/VBoxContainer2" unique_id=1077558568]
+z_index = 10
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="Panel" type="Panel" parent="VBoxContainer/HBoxContainer/VBoxContainer2/HBoxContainer2" unique_id=884221754]
 layout_mode = 2
 size_flags_horizontal = 3
