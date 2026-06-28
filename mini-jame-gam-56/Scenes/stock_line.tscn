@@ -4,18 +4,14 @@
 
 [node name="stockLine" type="PanelContainer" unique_id=1500776853]
 clip_contents = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_rkyf0")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1010152388]
 z_index = -1
 layout_mode = 2
 color = Color(0.14044744, 0.14044744, 0.14044744, 1)
-
-[node name="Delay" type="Timer" parent="." unique_id=1820780778]
-one_shot = true
-
-[node name="Affect" type="Timer" parent="." unique_id=1485276023]
-one_shot = true
-
-[connection signal="timeout" from="Delay" to="." method="_on_delay_timeout"]
-[connection signal="timeout" from="Affect" to="." method="_on_affect_timeout"]

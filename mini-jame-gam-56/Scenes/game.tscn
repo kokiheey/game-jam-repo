@@ -6,7 +6,7 @@
 
 [node name="Game" type="Node2D" unique_id=1682834830]
 script = ExtResource("1_ebmjs")
-STOCK_LINE_INTERVAL = 0.1
+STOCK_LINE_INTERVAL = 0.2
 NEWS_INTERVAL = 10.0
 
 [node name="News" parent="." unique_id=267292009 instance=ExtResource("2_wrm1d")]
