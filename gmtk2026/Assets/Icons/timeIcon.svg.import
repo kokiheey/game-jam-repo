@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgnhwvn7h7exk"
-path="res://.godot/imported/SpaceShip.webp-2209a8d2888c920320e0b69c8025da2a.ctex"
+uid="uid://bjn8wkp2buk88"
+path="res://.godot/imported/timeIcon.svg-6018e47a572353109c538c833471ea04.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Icons/SpaceShip.webp"
-dest_files=["res://.godot/imported/SpaceShip.webp-2209a8d2888c920320e0b69c8025da2a.ctex"]
+source_file="res://Assets/Icons/timeIcon.svg"
+dest_files=["res://.godot/imported/timeIcon.svg-6018e47a572353109c538c833471ea04.ctex"]
 
 [params]
 
@@ -38,3 +38,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false
