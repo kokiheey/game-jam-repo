@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://demcgqsqh7jh1"]
+
+[ext_resource type="Script" uid="uid://dtepcdyiq0fwh" path="res://Scripts/PlayerMovement.gd" id="1_kyqiw"]
+[ext_resource type="Texture2D" uid="uid://bgnhwvn7h7exk" path="res://Icons/SpaceShip.webp" id="1_rpqav"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_033pi"]
+
+[node name="Player" type="CharacterBody2D" unique_id=1991330775]
+script = ExtResource("1_kyqiw")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1065110296]
+position = Vector2(-4.7683716e-07, 4.7683716e-07)
+rotation = 1.3962634
+scale = Vector2(0.100003906, 0.100003906)
+texture = ExtResource("1_rpqav")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1699651721]
+scale = Vector2(1.2799985, 1.2799985)
+shape = SubResource("CircleShape2D_033pi")
