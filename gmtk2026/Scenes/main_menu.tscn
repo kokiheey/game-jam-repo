@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://lroibhdnwi5o"]
 
+[ext_resource type="Script" uid="uid://cndm17p4pw28b" path="res://Scripts/main_menu.gd" id="1_28flt"]
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpvet"]
 bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 16
@@ -16,6 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_28flt")
 
 [node name="Panel" type="Panel" parent="." unique_id=1345450678]
 layout_mode = 1
@@ -40,7 +43,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="Button" type="Button" parent="VBoxContainer" unique_id=2090315873]
+[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=2090315873]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -48,7 +51,7 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_tpvet")
 text = "Start game"
 
-[node name="Button2" type="Button" parent="VBoxContainer" unique_id=510495146]
+[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=510495146]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -56,10 +59,12 @@ theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_tpvet")
 text = "Options"
 
-[node name="Button3" type="Button" parent="VBoxContainer" unique_id=863767723]
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=863767723]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 30
 theme_override_styles/normal = SubResource("StyleBoxFlat_tpvet")
 text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
