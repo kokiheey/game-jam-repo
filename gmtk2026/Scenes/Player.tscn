@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://demcgqsqh7jh1"]
 
-[ext_resource type="Script" uid="uid://dtepcdyiq0fwh" path="res://Scripts/PlayerMovement.gd" id="1_kyqiw"]
+[ext_resource type="Script" uid="uid://dtepcdyiq0fwh" path="res://Scripts/player_movement.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://bgnhwvn7h7exk" path="res://Icons/SpaceShip.webp" id="1_rpqav"]
+[ext_resource type="Script" uid="uid://bunqj424ogm8p" path="res://Scripts/camera_follow.gd" id="3_gntrk"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_033pi"]
 
@@ -17,3 +18,6 @@ texture = ExtResource("1_rpqav")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1699651721]
 scale = Vector2(1.2799985, 1.2799985)
 shape = SubResource("CircleShape2D_033pi")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=654693241]
+script = ExtResource("3_gntrk")
