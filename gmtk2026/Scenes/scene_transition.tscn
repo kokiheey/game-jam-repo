@@ -43,6 +43,7 @@ _data = {
 [node name="SceneTransition" type="CanvasLayer" unique_id=73184610]
 process_mode = 3
 process_priority = 100000
+layer = 100
 script = ExtResource("1_crfs3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1989427382]
