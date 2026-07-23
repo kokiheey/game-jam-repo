@@ -3,6 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://ciuxyaoktugh5" path="res://icon.svg" id="1_ebmjs"]
 [ext_resource type="Script" uid="uid://c4nsw28aqw08i" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://demcgqsqh7jh1" path="res://Scenes/Player.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://cv660hn0arvee" path="res://Scenes/pause_menu.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://d28xesm83e88m" path="res://Scenes/game_ui.tscn" id="4_wowpa"]
 
 [node name="Game" type="Node2D" unique_id=794815185]
 script = ExtResource("1_wrm1d")
@@ -13,3 +15,10 @@ scale = Vector2(19.1875, 11.875)
 texture = ExtResource("1_ebmjs")
 
 [node name="Player" parent="." unique_id=1991330775 instance=ExtResource("2_qxrlw")]
+
+[node name="GUI" type="CanvasLayer" parent="." unique_id=888452838]
+
+[node name="GameUI" parent="GUI" unique_id=1239942877 instance=ExtResource("4_wowpa")]
+
+[node name="PauseMenu" parent="GUI" unique_id=1227920337 instance=ExtResource("4_3dryh")]
+visible = false
