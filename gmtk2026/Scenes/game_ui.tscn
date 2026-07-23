@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://d28xesm83e88m"]
 
+[ext_resource type="Script" uid="uid://dcmaqwfi2hp44" path="res://Scripts/game_ui.gd" id="1_gek4i"]
+
 [node name="GameUI" type="Control" unique_id=1239942877]
 layout_mode = 3
 anchors_preset = 15
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_gek4i")
 
 [node name="CountdownPanel" type="Panel" parent="." unique_id=1210577789]
 layout_mode = 1
@@ -21,7 +24,7 @@ offset_right = 116.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Label" type="Label" parent="CountdownPanel" unique_id=1705781480]
+[node name="TimeLabel" type="Label" parent="CountdownPanel" unique_id=1705781480]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -34,4 +37,5 @@ offset_right = 32.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "idk until"
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,17 +1,24 @@
 extends Node2D
 
-@onready var PAUSE_MENU = $GUI/PauseMenu
+@export var MISSION_TIME : float = 20
+
+@onready var PAUSE_MENU    : Control = $GUI/PauseMenu
+@onready var GAME_UI       : Control = $GUI/GameUI
+@onready var MISSION_TIMER : Timer   = $MissionTimer
 
 var paused : bool = false
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	MISSION_TIMER.wait_time = MISSION_TIME
+	MISSION_TIMER.start()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(MISSION_TIMER.time_left)
+	GAME_UI.update_time(MISSION_TIMER.time_left)
+	
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu()
+
 
 func pause_menu():
 	paused = !paused
