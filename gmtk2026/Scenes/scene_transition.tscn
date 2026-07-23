@@ -4,7 +4,7 @@
 
 [sub_resource type="Animation" id="Animation_vin40"]
 resource_name = "RESET"
-length = 0.009999999999999998
+length = 0.00999999999999999
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,7 +29,7 @@ tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
+"transitions": PackedFloat32Array(1, 0.5),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
@@ -41,6 +41,8 @@ _data = {
 }
 
 [node name="SceneTransition" type="CanvasLayer" unique_id=73184610]
+process_mode = 3
+process_priority = 100000
 script = ExtResource("1_crfs3")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1989427382]

@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://demcgqsqh7jh1" path="res://Scenes/Player.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://cv660hn0arvee" path="res://Scenes/pause_menu.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://d28xesm83e88m" path="res://Scenes/game_ui.tscn" id="4_wowpa"]
-[ext_resource type="PackedScene" uid="uid://dsy4ipt0t1ehj" path="res://Scenes/black_hole.tscn" id="6_i6g32"]
 
 [node name="Game" type="Node2D" unique_id=794815185]
 script = ExtResource("1_wrm1d")
@@ -23,7 +22,4 @@ texture = ExtResource("1_ebmjs")
 
 [node name="PauseMenu" parent="GUI" unique_id=1227920337 node_paths=PackedStringArray("GAME") instance=ExtResource("4_3dryh")]
 visible = false
-
-[node name="BlackHole" parent="." unique_id=1896945040 instance=ExtResource("6_i6g32")]
-position = Vector2(809, 258)
 GAME = NodePath("../..")

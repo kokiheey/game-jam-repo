@@ -68,3 +68,4 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_tpvet")
 text = "Exit"
 
 [connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
