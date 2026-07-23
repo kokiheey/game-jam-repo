@@ -1,9 +1,11 @@
 [gd_scene format=3 uid="uid://d1qgofjw5l5ys"]
 
 [ext_resource type="Texture2D" uid="uid://ciuxyaoktugh5" path="res://icon.svg" id="1_ebmjs"]
+[ext_resource type="Script" uid="uid://c4nsw28aqw08i" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://demcgqsqh7jh1" path="res://Scenes/Player.tscn" id="2_qxrlw"]
 
 [node name="Game" type="Node2D" unique_id=794815185]
+script = ExtResource("1_wrm1d")
 
 [node name="Icon" type="Sprite2D" parent="." unique_id=147276396]
 position = Vector2(864.00006, 248.00003)
