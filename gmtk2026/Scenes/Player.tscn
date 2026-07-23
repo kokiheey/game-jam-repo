@@ -11,7 +11,7 @@ script = ExtResource("1_kyqiw")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1065110296]
 position = Vector2(-4.7683716e-07, 4.7683716e-07)
-rotation = 1.3962634
+rotation = 2.0943952
 scale = Vector2(0.100003906, 0.100003906)
 texture = ExtResource("1_rpqav")
 
