@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dsy4ipt0t1ehj"]
+
+[ext_resource type="Script" uid="uid://b6fb0om4atqrk" path="res://Scripts/gravity_source_component.gd" id="1_yqibl"]
+
+[node name="BlackHole" type="Node2D" unique_id=1896945040]
+
+[node name="GravitySourceComponent" type="StaticBody2D" parent="." unique_id=1121287010]
+script = ExtResource("1_yqibl")
+metadata/_custom_type_script = "uid://b6fb0om4atqrk"
