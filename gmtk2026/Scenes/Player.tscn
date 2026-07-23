@@ -3,11 +3,13 @@
 [ext_resource type="Script" uid="uid://dtepcdyiq0fwh" path="res://Scripts/player_movement.gd" id="1_kyqiw"]
 [ext_resource type="Texture2D" uid="uid://bgnhwvn7h7exk" path="res://Assets/Icons/SpaceShip.webp" id="1_rpqav"]
 [ext_resource type="Script" uid="uid://bunqj424ogm8p" path="res://Scripts/camera_follow.gd" id="3_gntrk"]
+[ext_resource type="Script" uid="uid://bf2ikf8fnn5g6" path="res://Scripts/gravity_component.gd" id="4_dewec"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_033pi"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1991330775]
+[node name="Player" type="CharacterBody2D" unique_id=1991330775 node_paths=PackedStringArray("gravComponent")]
 script = ExtResource("1_kyqiw")
+gravComponent = NodePath("GravityComponent")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1065110296]
 position = Vector2(-4.7683716e-07, 4.7683716e-07)
@@ -21,3 +23,13 @@ shape = SubResource("CircleShape2D_033pi")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=654693241]
 script = ExtResource("3_gntrk")
+
+[node name="GravityComponent" type="Area2D" parent="." unique_id=975190835]
+script = ExtResource("4_dewec")
+maxAcceleration = 5000.0
+gravityStrength = 100.0
+metadata/_custom_type_script = "uid://bf2ikf8fnn5g6"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GravityComponent" unique_id=1058997800]
+scale = Vector2(1.2799985, 1.2799985)
+shape = SubResource("CircleShape2D_033pi")
