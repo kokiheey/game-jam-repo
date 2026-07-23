@@ -23,7 +23,7 @@ texture = ExtResource("1_ebmjs")
 
 [node name="PauseMenu" parent="GUI" unique_id=1227920337 node_paths=PackedStringArray("GAME") instance=ExtResource("4_3dryh")]
 visible = false
+GAME = NodePath("../..")
 
 [node name="BlackHole" parent="." unique_id=1896945040 instance=ExtResource("6_i6g32")]
 position = Vector2(809, 258)
-GAME = NodePath("../..")
