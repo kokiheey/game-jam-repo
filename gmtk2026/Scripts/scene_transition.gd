@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 func change_scene(target: String) -> void:
+	Engine.time_scale = 1
 	get_tree().paused = true
 	
 	$AnimationPlayer.play("dissolve")

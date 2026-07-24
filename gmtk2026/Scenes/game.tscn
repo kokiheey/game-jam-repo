@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://demcgqsqh7jh1" path="res://Scenes/Player.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://cv660hn0arvee" path="res://Scenes/pause_menu.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://d28xesm83e88m" path="res://Scenes/game_ui.tscn" id="4_wowpa"]
+[ext_resource type="PackedScene" uid="uid://dua6in6dh6dwl" path="res://Scenes/game_over.tscn" id="6_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://dsy4ipt0t1ehj" path="res://Scenes/black_hole.tscn" id="6_i6g32"]
 
 [node name="Game" type="Node2D" unique_id=794815185]
@@ -21,6 +22,7 @@ texture = ExtResource("1_ebmjs")
 [node name="Player" parent="." unique_id=1991330775 instance=ExtResource("2_qxrlw")]
 
 [node name="GUI" type="CanvasLayer" parent="." unique_id=888452838]
+process_mode = 3
 
 [node name="GameUI" parent="GUI" unique_id=1239942877 instance=ExtResource("4_wowpa")]
 
@@ -28,5 +30,10 @@ texture = ExtResource("1_ebmjs")
 visible = false
 GAME = NodePath("../..")
 
+[node name="GameOver" parent="GUI" unique_id=529693644 instance=ExtResource("6_1l0tm")]
+visible = false
+
 [node name="BlackHole" parent="." unique_id=1896945040 instance=ExtResource("6_i6g32")]
 position = Vector2(809, 258)
+
+[connection signal="timeout" from="MissionTimer" to="." method="_on_mission_timer_timeout"]
