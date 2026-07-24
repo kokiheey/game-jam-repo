@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var MISSION_TIME : float = 5
+@export var MISSION_TIME : float = 1000
 
 @onready var GAME_OVER_UI  : Control = $GUI/GameOver
 @onready var PAUSE_MENU    : Control = $GUI/PauseMenu
@@ -18,7 +18,6 @@ func _process(delta: float) -> void:
 	if isGameOver : 
 		return
 	
-	print(MISSION_TIMER.time_left)
 	GAME_UI.update_time(MISSION_TIMER.time_left)
 	
 	if Input.is_action_just_pressed("Pause"):

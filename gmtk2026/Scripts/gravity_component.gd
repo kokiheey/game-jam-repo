@@ -2,7 +2,7 @@ class_name GravityComponent
 extends Area2D
 
 @export var maxAcceleration = 4000.0
-@export var gravityStrength : float = 1000000.0
+@export var gravityStrength : float = 10000000.0
 var acceleration : Vector2
 var bodies : Array[GravitySourceComponent]
 
@@ -27,4 +27,3 @@ func _process(delta: float):
 		var dist : Vector2 = body.global_position - global_position
 		acceleration += gravityStrength * dist.normalized() * body.mass / dist.length()
 		acceleration = acceleration.clampf(-maxAcceleration, maxAcceleration)
-		print("sup", acceleration, "yarayara ", dist.length_squared(), dist.normalized())
