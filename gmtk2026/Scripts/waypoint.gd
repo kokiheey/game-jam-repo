@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	if screen_inset_rectangle.has_point(screen_coordinates):
 		target_display_position = TARGET_POSITION + ON_SCREEN_OFFSET
 		
-		var vector_to_target : Vector2 = TARGET_POSITION - target_display_position
+		var vector_to_target : Vector2 = TARGET_POSITION - camera_position
 		target_display_rotation = vector_to_target.angle() - PI * 0.5
 		
 		scale = Vector2(MAX_SCALE, MAX_SCALE)
