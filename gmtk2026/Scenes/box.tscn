@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d0ayeleb7entu"]
 
 [ext_resource type="Texture2D" uid="uid://t3aluc6f7jy2" path="res://Assets/Icons/Box.png" id="1_g2tbl"]
+[ext_resource type="Texture2D" uid="uid://w04xglnees7r" path="res://Assets/Icons/white_circle.png" id="2_2jyye"]
 [ext_resource type="Script" uid="uid://k0vuiwad3fel" path="res://Scripts/box.gd" id="2_oq5cr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ego7h"]
@@ -10,6 +11,10 @@ radius = 25.819008
 scale = Vector2(1.240002, 1.240002)
 script = ExtResource("2_oq5cr")
 
+[node name="Circle_Timer" type="Sprite2D" parent="." unique_id=975188766]
+scale = Vector2(0.003, 0.003)
+texture = ExtResource("2_2jyye")
+
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=2060481861]
 scale = Vector2(-0.06443436, -0.06443436)
 texture = ExtResource("1_g2tbl")
@@ -17,6 +22,7 @@ texture = ExtResource("1_g2tbl")
 [node name="Area2D" type="Area2D" parent="." unique_id=1138479644]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2026825813]
+scale = Vector2(1.0057826, 1)
 shape = SubResource("CircleShape2D_ego7h")
 debug_color = Color(0.7801711, 0.43759573, 0, 0.41960785)
 
@@ -24,3 +30,4 @@ debug_color = Color(0.7801711, 0.43759573, 0, 0.41960785)
 one_shot = true
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
