@@ -2,7 +2,7 @@ class_name GravityComponent
 extends Area2D
 
 @export var maxAcceleration = 4000.0
-@export var gravityStrength : float = 1000000.0
+@export var gravityStrength : float = 10000000.0
 var acceleration : Vector2
 var bodies : Array[GravitySourceComponent]
 

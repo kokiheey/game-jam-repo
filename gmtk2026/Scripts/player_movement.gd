@@ -22,7 +22,11 @@ func _physics_process(delta):
 		if velocity.length() > 0:
 			velocity = velocity.move_toward(Vector2.ZERO, drag * delta)
 	
-	acceleration += gravComponent.acceleration
+	print("wft ",gravComponent.acceleration * (0.5 + gravComponent.acceleration.dot(forward)\
+	/ acceleration.length() / forward.length()))
+	if(gravComponent.acceleration != Vector2.ZERO):
+		acceleration += gravComponent.acceleration * (0.5 + gravComponent.acceleration.dot(forward)\
+		 / gravComponent.acceleration.length())
 	
 	velocity += acceleration * delta
 	move_and_slide()
