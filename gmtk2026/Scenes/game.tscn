@@ -10,6 +10,7 @@
 
 [node name="Game" type="Node2D" unique_id=794815185]
 script = ExtResource("1_wrm1d")
+MISSION_TIME = 100.0
 
 [node name="MissionTimer" type="Timer" parent="." unique_id=1495338434]
 one_shot = true
