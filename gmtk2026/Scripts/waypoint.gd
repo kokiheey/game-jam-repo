@@ -3,8 +3,8 @@ extends Sprite2D
 @export var ON_SCREEN_OFFSET : Vector2 = Vector2(0, 0)
 @export var SCREEN_MARGIN    : float   = 12.0
 @export var SMOOTHING_SPEED  : float   = 50.0
-@export var MIN_SCALE        : float   = 0.03
-@export var MAX_SCALE        : float   = 0.1
+@export var MIN_SCALE        : float   = 0.1
+@export var MAX_SCALE        : float   = 0.2
 @export var SCALING_FACTOR   : float   = 500000
 
 var CAMERA_NODE     : Camera2D
