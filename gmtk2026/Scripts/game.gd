@@ -1,16 +1,18 @@
 extends Node2D
 
-@export var MISSION_TIME : float = 1000
-
 @onready var GAME_OVER_UI  : Control = $GUI/GameOver
 @onready var PAUSE_MENU    : Control = $GUI/PauseMenu
 @onready var GAME_UI       : Control = $GUI/GameUI
 @onready var MISSION_TIMER : Timer   = $MissionTimer
 @onready var PLAYER : CharacterBody2D = $Player
 @onready var WAYPOINT : Sprite2D = $Waypoint
+@onready var PARTICLES : GPUParticles2D = $GPUParticles2D
+
+@export var MISSION_TIME : float = 1000
 @export var celestialBodies : Array[PackedScene]
 @export var CBtoSpawn : int = 10
 @export var package : PackedScene
+
 var currentPackage : Box
 var activeBodies : Array[Node2D]
 
@@ -50,6 +52,8 @@ func generate():
 	call_deferred("add_child", currentPackage)
 	
 func _process(delta: float) -> void:
+	PARTICLES.global_position = PLAYER.global_position
+
 	if isGameOver : 
 		return
 	

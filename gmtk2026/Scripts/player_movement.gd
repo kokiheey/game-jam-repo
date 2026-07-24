@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@export var shipColor : Color = Color("ffffff")
 @export var acc: float = 700
 @export var capSpeed: float = 500
 @export var drag: float = 0.003
@@ -7,7 +8,10 @@ extends CharacterBody2D
 @export var gravComponent : GravityComponent
 @export var sideGravityStrengh : float = 0.4
 
+@onready var shipSprite : Polygon2D = $Polygon2D
+
 func _ready():
+	shipSprite.color = shipColor
 	add_to_group("player")
 
 func _physics_process(delta):

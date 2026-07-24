@@ -25,19 +25,6 @@ script = ExtResource("1_wrm1d")
 celestialBodies = Array[PackedScene]([ExtResource("6_i6g32")])
 package = ExtResource("3_h4fw4")
 
-[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1377915276]
-top_level = true
-position = Vector2(795, 284)
-rotation = 3.1415927
-scale = Vector2(1873.7238, 1092.6556)
-amount = 14
-process_material = SubResource("ParticleProcessMaterial_61tkn")
-
-[node name="MissionTimer" type="Timer" parent="." unique_id=1495338434]
-one_shot = true
-
-[node name="Player" parent="." unique_id=1991330775 instance=ExtResource("2_qxrlw")]
-
 [node name="GUI" type="CanvasLayer" parent="." unique_id=888452838]
 process_mode = 3
 
@@ -49,6 +36,19 @@ GAME = NodePath("../..")
 
 [node name="GameOver" parent="GUI" unique_id=529693644 instance=ExtResource("6_1l0tm")]
 visible = false
+
+[node name="MissionTimer" type="Timer" parent="." unique_id=1495338434]
+one_shot = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1377915276]
+top_level = true
+position = Vector2(6.7472465e-05, 2.6226044e-06)
+rotation = -3.1415925
+scale = Vector2(1873.7238, 1092.6556)
+amount = 14
+process_material = SubResource("ParticleProcessMaterial_61tkn")
+
+[node name="Player" parent="." unique_id=1991330775 instance=ExtResource("2_qxrlw")]
 
 [node name="BlackHole" parent="." unique_id=1896945040 instance=ExtResource("6_i6g32")]
 position = Vector2(1078, 489)
