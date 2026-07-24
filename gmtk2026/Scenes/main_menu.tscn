@@ -1,15 +1,33 @@
 [gd_scene format=3 uid="uid://lroibhdnwi5o"]
 
 [ext_resource type="Script" uid="uid://cndm17p4pw28b" path="res://Scripts/main_menu.gd" id="1_28flt"]
+[ext_resource type="PackedScene" uid="uid://dsy4ipt0t1ehj" path="res://Scenes/black_hole.tscn" id="2_48xlc"]
+[ext_resource type="FontFile" uid="uid://dqyivnqn0dqde" path="res://Assets/Fonts/SpaceMono/SpaceMono-Bold.ttf" id="3_1ehe0"]
+[ext_resource type="FontFile" uid="uid://chx6lfifiste" path="res://Assets/Fonts/SpaceMono/SpaceMono-Regular.ttf" id="4_n45e2"]
+[ext_resource type="StyleBox" uid="uid://bofjv2mbykoyl" path="res://Textures/MenuButton.tres" id="5_opfnp"]
+[ext_resource type="StyleBox" uid="uid://tjwwhgv1ciy7" path="res://Textures/MenuButtonPress.tres" id="6_cp0ys"]
+[ext_resource type="StyleBox" uid="uid://byp3xh7y8akw2" path="res://Textures/MenuButtonHover.tres" id="6_opfnp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tpvet"]
-bg_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 15
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_size = 1
-shadow_offset = Vector2(0, 3)
+[sub_resource type="Environment" id="Environment_28flt"]
+background_mode = 3
+glow_enabled = true
+glow_normalized = true
+glow_intensity = 3.09
+glow_strength = 0.83
+glow_bloom = 0.1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_28flt"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0.35, 0.2, 1)
+angular_velocity_min = -100.000015
+angular_velocity_max = 99.999985
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 39.999977
+gravity = Vector3(0, 0, 0)
+scale_max = 10.0
+hue_variation_min = -0.010000022
+hue_variation_max = 0.009999977
 
 [node name="MainMenu" type="Control" unique_id=1029789575]
 layout_mode = 3
@@ -20,52 +38,92 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_28flt")
 
-[node name="Panel" type="Panel" parent="." unique_id=1345450678]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=199695165]
+environment = SubResource("Environment_28flt")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1136937881]
-layout_mode = 1
+[node name="BlackHole" parent="." unique_id=1896945040 instance=ExtResource("2_48xlc")]
+visible = false
+position = Vector2(112, 168)
+
+[node name="BlackHole2" parent="." unique_id=446489357 instance=ExtResource("2_48xlc")]
+visible = false
+position = Vector2(1184, 368)
+
+[node name="BlackHole3" parent="." unique_id=676605934 instance=ExtResource("2_48xlc")]
+visible = false
+position = Vector2(384, 720)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1543599066]
+top_level = true
+position = Vector2(640, 360)
+rotation = -3.1415925
+scale = Vector2(2000, 2000)
+amount = 50
+lifetime = 5.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_28flt")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=476751113]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1136937881]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -222.875
-offset_top = -171.375
-offset_right = 222.875
-offset_bottom = 171.375
+offset_left = -183.5
+offset_top = -168.5
+offset_right = 183.5
+offset_bottom = 168.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 16
+theme_override_constants/separation = 32
 
-[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=2090315873]
+[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1547448924]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_1ehe0")
+theme_override_font_sizes/font_size = 60
+text = "Game title"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer" unique_id=1940969195]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=2090315873]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.9843137, 0.9843137, 0.95686275, 1)
+theme_override_fonts/font = ExtResource("4_n45e2")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_tpvet")
+theme_override_styles/normal = ExtResource("5_opfnp")
+theme_override_styles/pressed = ExtResource("6_cp0ys")
+theme_override_styles/hover = ExtResource("6_opfnp")
 text = "Start game"
 
-[node name="OptionsButton" type="Button" parent="VBoxContainer" unique_id=510495146]
+[node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=510495146]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.9843137, 0.9843137, 0.95686275, 1)
+theme_override_fonts/font = ExtResource("4_n45e2")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_tpvet")
+theme_override_styles/normal = ExtResource("5_opfnp")
+theme_override_styles/pressed = ExtResource("6_cp0ys")
+theme_override_styles/hover = ExtResource("6_opfnp")
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=863767723]
+[node name="ExitButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=863767723]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0.9843137, 0.9843137, 0.95686275, 1)
+theme_override_fonts/font = ExtResource("4_n45e2")
 theme_override_font_sizes/font_size = 30
-theme_override_styles/normal = SubResource("StyleBoxFlat_tpvet")
+theme_override_styles/normal = ExtResource("5_opfnp")
+theme_override_styles/pressed = ExtResource("6_cp0ys")
+theme_override_styles/hover = ExtResource("6_opfnp")
 text = "Exit"
 
-[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
