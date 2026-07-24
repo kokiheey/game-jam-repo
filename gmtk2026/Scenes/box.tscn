@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c0oxyi1kon7vv" path="res://Textures/ProgressCircle.tres" id="2_ego7h"]
 [ext_resource type="Script" uid="uid://k0vuiwad3fel" path="res://Scripts/box.gd" id="2_oq5cr"]
+[ext_resource type="Texture2D" uid="uid://ggwmdblmelw5" path="res://Textures/Circle.tres" id="3_2jyye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ego7h"]
 radius = 128.29019
@@ -15,21 +16,19 @@ texture = ExtResource("2_ego7h")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=604393040]
 scale = Vector2(1, 1.0052093)
-color = Color(0.64705884, 0.79607844, 0.8509804, 1)
+color = Color(0.9843137, 0.9843137, 0.95686275, 1)
 polygon = PackedVector2Array(-12.903205, -12.836337, 12.903205, -12.836337, 12.903205, 12.836337, -12.903205, 12.836337)
 uv = PackedVector2Array(-12.903205, -12.836337, 12.903205, -12.836337, 12.903205, 12.836337, -12.903205, 12.836337)
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1138479644]
 
+[node name="PickupArea" type="Sprite2D" parent="Area2D" unique_id=1082360406]
+texture = ExtResource("3_2jyye")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2026825813]
 scale = Vector2(1.0057826, 1)
 shape = SubResource("CircleShape2D_ego7h")
 debug_color = Color(0.7801711, 0.43759573, 0, 0.41960785)
-
-[node name="Timer" type="Timer" parent="." unique_id=1226923448]
-one_shot = true
-
-[node name="Circle_Timer2" type="Sprite2D" parent="." unique_id=1082360406]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
