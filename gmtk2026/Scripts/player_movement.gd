@@ -38,6 +38,6 @@ func _physics_process(delta):
 		acceleration += gravComponent.acceleration * (1.0 + gravComponent.acceleration.dot(forward)\
 		 / gravComponent.acceleration.length() / 1.25)
 	
-	print("speed", velocity.length_squared())
+	# print("speed", velocity.length_squared())
 	velocity += acceleration * delta
 	move_and_slide()

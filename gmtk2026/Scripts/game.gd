@@ -28,7 +28,7 @@ func _ready() -> void:
 	MISSION_TIMER.wait_time = MISSION_TIME
 	generate()
 	MISSION_TIMER.start()
-	
+
 func generate():
 	if(currentPackage != null):
 		currentPackage.picked_up.disconnect(_on_picked_up)
