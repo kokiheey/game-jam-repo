@@ -5,6 +5,7 @@ extends CharacterBody2D
 @export var drag: float = 500
 @export var rotationSpeed: float = 10
 @export var gravComponent : GravityComponent
+@export var sideGravityStrengh : float = 0.4
 func _physics_process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var angle = (mouse_pos - global_position).angle()
@@ -22,9 +23,13 @@ func _physics_process(delta):
 		if velocity.length() > 0:
 			velocity = velocity.move_toward(Vector2.ZERO, drag * delta)
 	
-	print("wft ",gravComponent.acceleration * (0.5 + gravComponent.acceleration.dot(forward)\
-	/ acceleration.length() / forward.length()))
 	if(gravComponent.acceleration != Vector2.ZERO):
+		print(forward.angle_to(gravComponent.acceleration))
+		if(forward.angle_to(gravComponent.acceleration) > 0):
+			#draw_line(position, position + 0.1 * gravComponent.acceleration.orthogonal(), Color.AQUA)
+			acceleration += sideGravityStrengh * gravComponent.acceleration.orthogonal()
+		else:
+			acceleration += sideGravityStrengh * gravComponent.acceleration.orthogonal().reflect(gravComponent.acceleration.normalized())
 		acceleration += gravComponent.acceleration * (0.5 + gravComponent.acceleration.dot(forward)\
 		 / gravComponent.acceleration.length())
 	

@@ -27,4 +27,3 @@ func _process(delta: float):
 		var dist : Vector2 = body.global_position - global_position
 		acceleration += gravityStrength * dist.normalized() * body.mass / dist.length()
 		acceleration = acceleration.clampf(-maxAcceleration, maxAcceleration)
-		print("sup", acceleration, "yarayara ", dist.length_squared(), dist.normalized())
