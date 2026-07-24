@@ -7,7 +7,6 @@ var acceleration : Vector2
 var bodies : Array[GravitySourceComponent]
 
 func _on_area_entered(area):
-	print("hi")
 	if area is GravitySourceComponent:
 		bodies.append(area as GravitySourceComponent)
 
