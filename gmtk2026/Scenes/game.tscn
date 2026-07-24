@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://demcgqsqh7jh1" path="res://Scenes/Player.tscn" id="2_qxrlw"]
 [ext_resource type="PackedScene" uid="uid://d0ayeleb7entu" path="res://Scenes/box.tscn" id="3_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://cv660hn0arvee" path="res://Scenes/pause_menu.tscn" id="4_3dryh"]
+[ext_resource type="PackedScene" uid="uid://bia30vh7j8ovg" path="res://Scenes/ShopUI.tscn" id="4_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://d28xesm83e88m" path="res://Scenes/game_ui.tscn" id="4_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dua6in6dh6dwl" path="res://Scenes/game_over.tscn" id="6_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://dsy4ipt0t1ehj" path="res://Scenes/black_hole.tscn" id="6_i6g32"]
@@ -33,6 +34,11 @@ package = ExtResource("3_h4fw4")
 process_mode = 3
 
 [node name="GameUI" parent="GUI" unique_id=1239942877 instance=ExtResource("4_wowpa")]
+
+[node name="ShopUI" parent="GUI" unique_id=568548661 instance=ExtResource("4_h4fw4")]
+visible = false
+offset_left = 3.0
+offset_right = 3.0
 
 [node name="PauseMenu" parent="GUI" unique_id=1227920337 node_paths=PackedStringArray("GAME") instance=ExtResource("4_3dryh")]
 visible = false
@@ -67,5 +73,7 @@ shape = SubResource("CircleShape2D_61tkn")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838893143]
 environment = SubResource("Environment_tpvet")
 
+[connection signal="pressedSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_pressed_speed"]
 [connection signal="timeout" from="MissionTimer" to="." method="_on_mission_timer_timeout"]
 [connection signal="body_entered" from="Ship" to="." method="_on_ship_body_entered"]
+[connection signal="body_exited" from="Ship" to="." method="_on_ship_body_exited"]
