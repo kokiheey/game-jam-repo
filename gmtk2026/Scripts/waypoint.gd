@@ -1,6 +1,6 @@
 extends Sprite2D
 
-@export var ON_SCREEN_OFFSET : Vector2 = Vector2(0.5, -5.0)
+@export var ON_SCREEN_OFFSET : Vector2 = Vector2(0, 0)
 @export var SCREEN_MARGIN    : float   = 0.0
 @export var SMOOTHING_SPEED  : float   = 50.0
 @export var MIN_SCALE        : float   = 0.03
@@ -8,7 +8,7 @@ extends Sprite2D
 @export var SCALING_FACTOR   : float   = 500000
 
 var CAMERA_NODE     : Camera2D
-@export var TARGET_POSITION : Vector2 = Vector2(100, 100)
+@export var TARGET_POSITION : Vector2 = Vector2(800.0, 250.0)
 
 func _ready() -> void:
 	CAMERA_NODE = get_viewport().get_camera_2d()
