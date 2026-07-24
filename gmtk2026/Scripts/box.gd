@@ -1,3 +1,4 @@
+class_name Box
 extends Node2D
 
 @export var follow_distance := 60
@@ -5,6 +6,7 @@ extends Node2D
 
 @onready var area = $Area2D
 @onready var timer = $Timer
+signal picked_up
 
 var player: Node2D = null
 var following := false
@@ -32,6 +34,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	print("yo")
 
 	if body.is_in_group("player"):
+		picked_up.emit()
 		print("yo")
 		player = body
 		timer.start()

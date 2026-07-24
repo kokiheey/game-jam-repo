@@ -7,14 +7,18 @@ extends Node2D
 @onready var GAME_UI       : Control = $GUI/GameUI
 @onready var MISSION_TIMER : Timer   = $MissionTimer
 @onready var PLAYER : CharacterBody2D = $Player
-
+@onready var WAYPOINT : Sprite2D = $Waypoint
 @export var celestialBodies : Array[PackedScene]
 @export var CBtoSpawn : int = 10
 @export var package : PackedScene
+var currentPackage : Box
 var activeBodies : Array[Node2D]
 
 var isGameOver : bool = false
 var paused : bool = false
+
+func _on_picked_up() -> void:
+	generate()
 
 func _ready() -> void:
 	MISSION_TIMER.wait_time = MISSION_TIME
@@ -22,9 +26,15 @@ func _ready() -> void:
 	MISSION_TIMER.start()
 	
 func generate():
-	var pkg = package.instantiate() as Node2D
+	if(currentPackage != null):
+		currentPackage.picked_up.disconnect(_on_picked_up)
+	
+	currentPackage = package.instantiate() as Box
+	currentPackage.picked_up.connect(_on_picked_up)
 	var randomDir : Vector2 = Vector2.RIGHT.rotated(randf_range(-PI, PI))
-	pkg.global_position = PLAYER.global_position + randomDir * randf_range(200, 5000)
+	currentPackage.global_position = PLAYER.global_position + randomDir * randf_range(200, 5000)
+	WAYPOINT.TARGET_POSITION = currentPackage.global_position
+	
 	for body in activeBodies:
 		body.queue_free()
 	activeBodies.clear()
@@ -32,8 +42,8 @@ func generate():
 	for i in range(CBtoSpawn):
 		var body = celestialBodies.pick_random().instantiate() as Node2D
 		body.global_position = PLAYER.global_position + randomDir.rotated(randf_range(-PI/4, PI/4))*randf_range(200, 5000)
-		add_child(body)
-	add_child(pkg)
+		call_deferred("add_child", body)
+	call_deferred("add_child", currentPackage)
 	
 func _process(delta: float) -> void:
 	if isGameOver : 

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c4nsw28aqw08i" path="res://Scripts/game.gd" id="1_wrm1d"]
 [ext_resource type="PackedScene" uid="uid://bis5lbgg0hhrr" path="res://Scenes/icon.tscn" id="2_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://demcgqsqh7jh1" path="res://Scenes/Player.tscn" id="2_qxrlw"]
+[ext_resource type="PackedScene" uid="uid://d0ayeleb7entu" path="res://Scenes/box.tscn" id="3_h4fw4"]
 [ext_resource type="PackedScene" uid="uid://cv660hn0arvee" path="res://Scenes/pause_menu.tscn" id="4_3dryh"]
 [ext_resource type="PackedScene" uid="uid://d28xesm83e88m" path="res://Scenes/game_ui.tscn" id="4_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dua6in6dh6dwl" path="res://Scenes/game_over.tscn" id="6_1l0tm"]
@@ -20,7 +21,7 @@ scale_max = 30.769999
 [node name="Game" type="Node2D" unique_id=794815185]
 script = ExtResource("1_wrm1d")
 celestialBodies = Array[PackedScene]([ExtResource("6_i6g32")])
-package = ExtResource("2_1l0tm")
+package = ExtResource("3_h4fw4")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1377915276]
 top_level = true
@@ -29,7 +30,6 @@ rotation = 3.1415927
 scale = Vector2(1873.7238, 1092.6556)
 amount = 14
 process_material = SubResource("ParticleProcessMaterial_61tkn")
-MISSION_TIME = 100.0
 
 [node name="MissionTimer" type="Timer" parent="." unique_id=1495338434]
 one_shot = true
