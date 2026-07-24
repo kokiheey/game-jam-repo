@@ -14,11 +14,15 @@ particle_flag_disable_z = true
 emission_shape = 1
 emission_sphere_radius = 1.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.0
-scale_max = 30.769999
+scale_max = 10.0
+hue_variation_min = -0.010000022
+hue_variation_max = 0.009999977
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_61tkn"]
 radius = 173.10402
+
+[sub_resource type="Environment" id="Environment_tpvet"]
+background_mode = 3
 
 [node name="Game" type="Node2D" unique_id=794815185]
 script = ExtResource("1_wrm1d")
@@ -44,8 +48,8 @@ one_shot = true
 top_level = true
 position = Vector2(6.7472465e-05, 2.6226044e-06)
 rotation = -3.1415925
-scale = Vector2(1873.7238, 1092.6556)
-amount = 14
+scale = Vector2(2000, 2000)
+amount = 12
 process_material = SubResource("ParticleProcessMaterial_61tkn")
 
 [node name="Player" parent="." unique_id=1991330775 instance=ExtResource("2_qxrlw")]
@@ -59,6 +63,9 @@ position = Vector2(1078, 489)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ship" unique_id=129631988]
 shape = SubResource("CircleShape2D_61tkn")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838893143]
+environment = SubResource("Environment_tpvet")
 
 [connection signal="timeout" from="MissionTimer" to="." method="_on_mission_timer_timeout"]
 [connection signal="body_entered" from="Ship" to="." method="_on_ship_body_entered"]
