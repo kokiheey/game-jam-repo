@@ -29,7 +29,10 @@ func _process(delta: float) -> void:
 	
 	if screen_inset_rectangle.has_point(screen_coordinates):
 		target_display_position = TARGET_POSITION + ON_SCREEN_OFFSET
-		target_display_rotation = 0.0
+		
+		var vector_to_target : Vector2 = TARGET_POSITION - target_display_position
+		target_display_rotation = vector_to_target.angle() - PI * 0.5
+		
 		scale = Vector2(MAX_SCALE, MAX_SCALE)
 	else:
 		var clamped_x = clamp(screen_coordinates.x, SCREEN_MARGIN, viewport_dimensions.x - SCREEN_MARGIN)
