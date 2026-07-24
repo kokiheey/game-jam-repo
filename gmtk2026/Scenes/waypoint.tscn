@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://doa8auaya5o28"]
 
-[ext_resource type="Texture2D" uid="uid://diwij6eolawfk" path="res://Assets/Icons/targetWaypoint.svg" id="1_r8xf6"]
+[ext_resource type="Texture2D" uid="uid://cmqk13x1f7jt0" path="res://Assets/Icons/select.svg" id="1_r8xf6"]
 [ext_resource type="Script" uid="uid://blvx021r5hqp8" path="res://Scripts/waypoint.gd" id="1_rkwik"]
 
 [node name="Waypoint" type="Sprite2D" unique_id=1682428063]

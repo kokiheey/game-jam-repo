@@ -7,6 +7,7 @@ extends Node2D
 @onready var area = $Area2D
 @onready var timer = $Timer
 @onready var circle = $Circle_Timer
+@onready var PickupArea = $Area2D/PickupArea
 
 @export var COLLECTION_TIME : float = 2.0
 
@@ -30,6 +31,7 @@ func _ready():
 	
 	grad_texture = circle.texture as GradientTexture2D
 	circle.hide()
+	PickupArea.show()
 
 func _process(delta):
 	if charging and !following:
@@ -44,7 +46,9 @@ func _process(delta):
 	
 	if !following or player == null:
 		return
-
+	
+	PickupArea.hide()
+	
 	var behind = player.global_position - Vector2.RIGHT.rotated(player.rotation) * follow_distance
 	global_position = global_position.lerp(behind, follow_speed * delta)
 
