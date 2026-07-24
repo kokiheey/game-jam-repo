@@ -4,6 +4,8 @@ extends Node2D
 @onready var PAUSE_MENU    : Control = $GUI/PauseMenu
 @onready var GAME_UI       : Control = $GUI/GameUI
 @onready var MISSION_TIMER : Timer   = $MissionTimer
+@onready var SHOP_UI	   : Control = $GUI/ShopUI
+
 @onready var PLAYER : CharacterBody2D = $Player
 @onready var WAYPOINT : Sprite2D = $Waypoint
 @onready var PARTICLES : GPUParticles2D = $GPUParticles2D
@@ -15,6 +17,8 @@ extends Node2D
 
 var currentPackage : Box
 var activeBodies : Array[Node2D]
+var isInTheShip : bool = false
+var shopBindPressed : bool = false
 
 
 var carryingPackage : bool = false
@@ -61,6 +65,15 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu()
+		
+	if Input.is_action_just_pressed("openShop") and isInTheShip and !shopBindPressed:
+		SHOP_UI.show()
+		pause_game(true)
+		shopBindPressed = true
+	elif Input.is_action_just_pressed("openShop") and isInTheShip and shopBindPressed:
+		SHOP_UI.hide()
+		pause_game(false)
+		shopBindPressed = false	
 
 func pause_menu():
 	paused = !paused
@@ -87,7 +100,16 @@ func _on_mission_timer_timeout() -> void:
 
 
 func _on_ship_body_entered(body: Node2D) -> void:
+	isInTheShip = true
 	if  body.is_in_group("player") and carryingPackage:
 		currentPackage.queue_free()
 		carryingPackage = false
 		generate()
+
+
+func _on_ship_body_exited(body: Node2D) -> void:
+	isInTheShip = false
+
+
+func _on_shop_ui_pressed_speed() -> void:
+	PLAYER.acc *= 1.1
