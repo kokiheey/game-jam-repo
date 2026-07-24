@@ -14,13 +14,7 @@ func _physics_process(delta):
 	var acceleration : Vector2 = Vector2.ZERO
 	var forward = Vector2.RIGHT.rotated(rotation)
 	
-	var moveInput : bool = Input.is_action_pressed("moveForward")
-	
-	if OS.has_feature("mobile"):
-		if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			moveInput = true
-	
-	if moveInput:
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || Input.is_action_pressed("moveForward"):
 		acceleration += acc * forward
 		if velocity.length() > capSpeed:
 			velocity = velocity.normalized() * capSpeed
