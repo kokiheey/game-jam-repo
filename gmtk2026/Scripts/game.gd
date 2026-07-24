@@ -14,11 +14,15 @@ extends Node2D
 var currentPackage : Box
 var activeBodies : Array[Node2D]
 
+
+var carryingPackage : bool = false
 var isGameOver : bool = false
 var paused : bool = false
 
 func _on_picked_up() -> void:
-	generate()
+	WAYPOINT.TARGET_POSITION = Vector2(0, 0)
+	carryingPackage = true
+
 
 func _ready() -> void:
 	MISSION_TIMER.wait_time = MISSION_TIME
@@ -74,3 +78,12 @@ func _on_mission_timer_timeout() -> void:
 	isGameOver = true
 	pause_game(true)
 	GAME_OVER_UI.show()
+
+
+
+
+func _on_ship_body_entered(body: Node2D) -> void:
+	if  body.is_in_group("player") and carryingPackage:
+		currentPackage.queue_free()
+		carryingPackage = false
+		generate()
