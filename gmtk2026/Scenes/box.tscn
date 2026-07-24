@@ -30,8 +30,5 @@ scale = Vector2(1.0057826, 1)
 shape = SubResource("CircleShape2D_ego7h")
 debug_color = Color(0.7801711, 0.43759573, 0, 0.41960785)
 
-[node name="Timer" type="Timer" parent="." unique_id=1226923448]
-one_shot = true
-
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
