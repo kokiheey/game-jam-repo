@@ -1,25 +1,31 @@
 [gd_scene format=3 uid="uid://dsy4ipt0t1ehj"]
 
+[ext_resource type="Script" uid="uid://b7liy827e386y" path="res://Scripts/black_hole.gd" id="1_qcnit"]
 [ext_resource type="Script" uid="uid://b6fb0om4atqrk" path="res://Scripts/gravity_source_component.gd" id="1_yqibl"]
 
 [sub_resource type="Gradient" id="Gradient_yqibl"]
-offsets = PackedFloat32Array(0, 0.53614455, 0.686747, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0.3254902, 0.3254902, 0.3254902, 0, 1, 1, 1, 0)
+offsets = PackedFloat32Array(0, 0.31111112, 0.36888888, 0.4, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0.21960784, 1, 1, 1, 0.1254902, 0.08078336, 0.080783345, 0.0807833, 0)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_61tkn"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_20dos"]
 gradient = SubResource("Gradient_yqibl")
+width = 128
+height = 128
 fill = 1
-fill_from = Vector2(0.4869565, 0.49565217)
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_61tkn"]
 radius = 396.00504
 
 [node name="BlackHole" type="Node2D" unique_id=1896945040]
+script = ExtResource("1_qcnit")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1862046045]
-texture = SubResource("GradientTexture2D_61tkn")
+texture = SubResource("GradientTexture2D_20dos")
 
 [node name="GravitySourceComponent" type="Area2D" parent="." unique_id=158190955]
+visible = false
 script = ExtResource("1_yqibl")
 metadata/_custom_type_script = "uid://b6fb0om4atqrk"
 
