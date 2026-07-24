@@ -6,6 +6,10 @@ extends CharacterBody2D
 @export var rotationSpeed: float = 10
 @export var gravComponent : GravityComponent
 @export var sideGravityStrengh : float = 0.4
+
+func _ready():
+	add_to_group("player")
+
 func _physics_process(delta):
 	var mouse_pos = get_global_mouse_position()
 	var angle = (mouse_pos - global_position).angle()

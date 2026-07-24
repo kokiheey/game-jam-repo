@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d28xesm83e88m" path="res://Scenes/game_ui.tscn" id="4_wowpa"]
 [ext_resource type="PackedScene" uid="uid://dua6in6dh6dwl" path="res://Scenes/game_over.tscn" id="6_1l0tm"]
 [ext_resource type="PackedScene" uid="uid://dsy4ipt0t1ehj" path="res://Scenes/black_hole.tscn" id="6_i6g32"]
+[ext_resource type="PackedScene" uid="uid://doa8auaya5o28" path="res://Scenes/waypoint.tscn" id="8_v158k"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61tkn"]
 particle_flag_disable_z = true
@@ -18,7 +19,6 @@ scale_max = 30.769999
 
 [node name="Game" type="Node2D" unique_id=794815185]
 script = ExtResource("1_wrm1d")
-MISSION_TIME = 5000.0
 celestialBodies = Array[PackedScene]([ExtResource("6_i6g32")])
 package = ExtResource("2_1l0tm")
 
@@ -29,6 +29,7 @@ rotation = 3.1415927
 scale = Vector2(1873.7238, 1092.6556)
 amount = 14
 process_material = SubResource("ParticleProcessMaterial_61tkn")
+MISSION_TIME = 100.0
 
 [node name="MissionTimer" type="Timer" parent="." unique_id=1495338434]
 one_shot = true
@@ -53,6 +54,8 @@ GAME = NodePath("../..")
 visible = false
 
 [node name="BlackHole" parent="." unique_id=1896945040 instance=ExtResource("6_i6g32")]
-position = Vector2(809, 258)
+position = Vector2(800, 250)
+
+[node name="Waypoint" parent="." unique_id=1682428063 instance=ExtResource("8_v158k")]
 
 [connection signal="timeout" from="MissionTimer" to="." method="_on_mission_timer_timeout"]

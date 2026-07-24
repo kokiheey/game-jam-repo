@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var MISSION_TIME : float = 5
+@export var MISSION_TIME : float = 1000
 
 @onready var GAME_OVER_UI  : Control = $GUI/GameOver
 @onready var PAUSE_MENU    : Control = $GUI/PauseMenu
