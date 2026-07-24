@@ -8,29 +8,39 @@ extends Node2D
 @onready var timer = $Timer
 @onready var circle = $Circle_Timer
 
-@export var timer_time := 2
-@export var circle_size := 0.035
+@export var COLLECTION_TIME : float = 2.0
 
+var grad_texture : GradientTexture2D
 var player: Node2D = null
 var following := false
 var charging := false
 
+@export var off0 : float = 0.8
+@export var off1 : float = 0.94
+@export var off2 : float = 0.99
+@export var off3 : float = 1.0
+
 signal picked_up
 
 func _ready():
-	timer.wait_time = timer_time
-	timer.one_shot = true
+	timer.wait_time = COLLECTION_TIME
 	
 	area.body_entered.connect(_on_body_entered)
 	timer.timeout.connect(_on_timer_timeout)
-
-	circle.scale = Vector2.ZERO
+	
+	grad_texture = circle.texture as GradientTexture2D
+	circle.hide()
 
 func _process(delta):
 	if charging and !following:
-		var progress = 1.0 - (timer.time_left / timer.wait_time)
-		var scale_amount = lerp(0.0, float(circle_size), progress)
-		circle.scale = Vector2.ONE * scale_amount
+		var progress = (timer.time_left / COLLECTION_TIME)
+		var larp = lerp(0.0, 1.0, progress)
+		var grad = grad_texture.gradient
+		grad.set_offset(0, off0 - progress)
+		grad.set_offset(1, off1 - progress)
+		grad.set_offset(2, off2 - progress)
+		grad.set_offset(3, off3 - progress)
+		circle.show()
 	
 	if !following or player == null:
 		return

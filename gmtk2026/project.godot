@@ -46,3 +46,4 @@ Pause={
 [rendering]
 
 rendering_device/driver.windows="d3d12"
+environment/defaults/default_clear_color=Color(0.08235294, 0, 0.101960786, 1)

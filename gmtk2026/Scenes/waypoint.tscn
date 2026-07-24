@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://blvx021r5hqp8" path="res://Scripts/waypoint.gd" id="1_rkwik"]
 
 [node name="Waypoint" type="Sprite2D" unique_id=1682428063]
+z_index = 10
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_r8xf6")
 script = ExtResource("1_rkwik")
