@@ -10,6 +10,8 @@ extends CharacterBody2D
 
 @onready var shipSprite : Polygon2D = $Polygon2D
 
+var isMoving : bool = false
+
 func _ready():
 	shipSprite.color = shipColor
 	add_to_group("player")
@@ -23,6 +25,8 @@ func _physics_process(delta):
 	var acceleration : Vector2 = Vector2.ZERO
 	var forward = Vector2.RIGHT.rotated(rotation)
 	
+	isMoving = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || Input.is_action_pressed("moveForward")
+	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || Input.is_action_pressed("moveForward"):
 		acceleration += acc * forward
 		if velocity.length() > capSpeed:
@@ -30,9 +34,8 @@ func _physics_process(delta):
 			#velocity = velocity.normalized() * capSpeed
 			#acceleration += acc * forward
 	
-		
 	if velocity.length() > 0:
-			velocity = velocity.move_toward(Vector2.ZERO, drag * delta * maxf(1000,velocity.length_squared()))
+		velocity = velocity.move_toward(Vector2.ZERO, drag * delta * maxf(1000,velocity.length_squared()))
 	if(gravComponent.acceleration != Vector2.ZERO):
 		if(forward.angle_to(gravComponent.acceleration) > 0):
 			#draw_line(position, position + 0.1 * gravComponent.acceleration.orthogonal(), Color.AQUA)

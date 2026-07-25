@@ -12,7 +12,9 @@ extends Node2D
 @onready var SHIPWAYPOINT : Sprite2D = $ShipWaypoint
 @onready var PARTICLES : GPUParticles2D = $GPUParticles2D
 
-@export var MISSION_TIME : float = 1000
+@export var MAX_FUEL : float = 120
+@export var FUEL_PER_SECOND_STILL : float = 0.5
+@export var FUEL_PER_SECOND_MOVING : float = 1
 @export var celestialBodies : Array[PackedScene]
 @export var CBtoSpawn : int = 10
 @export var maxCelestialBodies : int = 30
@@ -24,8 +26,8 @@ var activeBodies : Array[Node2D]
 var isInTheShip : bool = false
 var shopBindPressed : bool = false
 
-#ovo je uzasno
-var pickupSpeed : float = 2.0
+var BoxPrice : int = 10
+var fuel : float = 0
 var numOfPackagesCarry : int = 0
 var isGameOver : bool = false
 var paused : bool = false
@@ -41,9 +43,8 @@ func _on_picked_up() -> void:
 
 func _ready() -> void:
 	SHIPWAYPOINT.TARGET_POSITION = Vector2(0, 0)
-	MISSION_TIMER.wait_time = MISSION_TIME
+	fuel = MAX_FUEL
 	generate()
-	MISSION_TIMER.start()
 
 func generate():
 	if currentPackage != null:
@@ -83,12 +84,21 @@ func generate():
 			activeBodies.remove_at(i)
 
 func _process(delta: float) -> void:
+	if fuel <= 0:
+		GameOver()
+		return
+	
+	if PLAYER.isMoving:
+		fuel -= FUEL_PER_SECOND_MOVING * delta
+	else:
+		fuel -= FUEL_PER_SECOND_STILL * delta
+	
 	PARTICLES.global_position = PLAYER.global_position
 
 	if isGameOver : 
 		return
 	
-	GAME_UI.update_time(MISSION_TIMER.time_left)
+	GAME_UI.update_fuel(MAX_FUEL, fuel)
 	
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu()
@@ -127,7 +137,7 @@ func pause_game(pause : bool):
 
 
 # GAME OVER - kada istekne timer
-func _on_mission_timer_timeout() -> void:
+func GameOver() -> void:
 	isGameOver = true
 	pause_game(true)
 	GAME_OVER_UI.updateStatistics(0, 0, _totalPackagesDelivered)
@@ -143,7 +153,8 @@ func _on_ship_body_entered(body: Node2D) -> void:
 			i.queue_free()
 		pickedUpPackages = []
 		_totalPackagesDelivered += numOfPackagesCarry
-		SHOP_UI.money += numOfPackagesCarry
+		SHOP_UI.money += numOfPackagesCarry * BoxPrice
+		GAME_UI.update_money(SHOP_UI.money)
 		numOfPackagesCarry = 0
 
 func _on_ship_body_exited(body: Node2D) -> void:
@@ -155,8 +166,10 @@ func _on_shop_ui_bought_speed() -> void:
 
 func _on_shop_ui_bought_waypoint_distance() -> void:
 	pass
-	
-
 
 func _on_shop_ui_bought_pickup_speed() -> void:
 	pass # Replace with function body.
+
+
+func _on_shop_ui_money_changed(newMoney: int) -> void:
+	GAME_UI.update_money(newMoney)

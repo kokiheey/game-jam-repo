@@ -1,12 +1,12 @@
 extends Control
 
-@onready var TIME_LABEL : Label    = $CountdownPanel/TimeLabel
+@onready var MONEY_LABEL : Label       = $CountdownPanel/MoneyLabel
+@onready var FUEL_BAR    : ProgressBar = $FuelBar
+@onready var HEALTH_BAR  : ProgressBar = $HealthBar
 
-func _ready() -> void:
-	pass
 
-func _process(delta: float) -> void:
-	pass
+func update_money(money : int) -> void:
+	MONEY_LABEL.text = str(money) + "$"
 
-func update_time(time : float) -> void:
-	TIME_LABEL.text = str(snapped(time, 0.1))
+func update_fuel(maxFuel : float, fuel : float) -> void:
+	FUEL_BAR.value = fuel / maxFuel * 100
