@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://c0oxyi1kon7vv" path="res://Textures/ProgressCircle.tres" id="2_ego7h"]
 [ext_resource type="Script" uid="uid://k0vuiwad3fel" path="res://Scripts/box.gd" id="2_oq5cr"]
-[ext_resource type="Texture2D" uid="uid://ggwmdblmelw5" path="res://Textures/Circle.tres" id="3_2jyye"]
+[ext_resource type="Texture2D" uid="uid://ggwmdblmelw5" path="res://Textures/circle.tres" id="3_2jyye"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ego7h"]
 radius = 128.29019

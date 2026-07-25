@@ -99,7 +99,9 @@ texture = SubResource("GradientTexture2D_ldgsr")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838893143]
 environment = SubResource("Environment_tpvet")
 
-[connection signal="pressedSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_pressed_speed"]
+[connection signal="boughtPickupSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_pickup_speed"]
+[connection signal="boughtSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_speed"]
+[connection signal="boughtWaypointDistance" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_waypoint_distance"]
 [connection signal="timeout" from="MissionTimer" to="." method="_on_mission_timer_timeout"]
 [connection signal="body_entered" from="Ship" to="." method="_on_ship_body_entered"]
 [connection signal="body_exited" from="Ship" to="." method="_on_ship_body_exited"]

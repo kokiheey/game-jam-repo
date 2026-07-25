@@ -23,6 +23,8 @@ var activeBodies : Array[Node2D]
 var isInTheShip : bool = false
 var shopBindPressed : bool = false
 
+#ovo je uzasno
+var pickupSpeed : float = 2.0
 var numOfPackagesCarry : int = 0
 var isGameOver : bool = false
 var paused : bool = false
@@ -69,6 +71,16 @@ func generate():
 		call_deferred("add_child", body)
 	call_deferred("add_child", currentPackage)
 	
+	#ako crash onda 
+	for i in range(activeBodies.size() - 1, -1, -1):
+		var body = activeBodies[i]
+		if not is_instance_valid(body):
+			activeBodies.remove_at(i)
+			continue
+		if body.global_position.distance_squared_to(currentPackage.global_position) < 2000:
+			body.queue_free()
+			activeBodies.remove_at(i)
+
 func _process(delta: float) -> void:
 	PARTICLES.global_position = PLAYER.global_position
 
@@ -121,13 +133,22 @@ func _on_ship_body_entered(body: Node2D) -> void:
 	if  body.is_in_group("player") and numOfPackagesCarry > 0:
 		for i in pickedUpPackages:
 			i.queue_free()
-		_totalPackagesDelivered += numOfPackagesCarry
-		numOfPackagesCarry = 0
 		pickedUpPackages = []
+		_totalPackagesDelivered += numOfPackagesCarry
+		SHOP_UI.money += numOfPackagesCarry
+		numOfPackagesCarry = 0
 
 func _on_ship_body_exited(body: Node2D) -> void:
 	isInTheShip = false
 
-
-func _on_shop_ui_pressed_speed() -> void:
+func _on_shop_ui_bought_speed() -> void:
 	PLAYER.acc *= 1.1
+
+
+func _on_shop_ui_bought_waypoint_distance() -> void:
+	pass
+	
+
+
+func _on_shop_ui_bought_pickup_speed() -> void:
+	pass # Replace with function body.

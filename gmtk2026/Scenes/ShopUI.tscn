@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bia30vh7j8ovg"]
 
+[ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="1_jpcid"]
 [ext_resource type="Script" uid="uid://chm20826u5ui" path="res://Scripts/shop.gd" id="1_l044j"]
 
 [node name="Control" type="Control" unique_id=568548661]
@@ -9,9 +10,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_jpcid")
 script = ExtResource("1_l044j")
 
-[node name="Speed" type="Button" parent="." unique_id=1919763186]
+[node name="SpeedButton" type="Button" parent="." unique_id=1919763186]
 layout_mode = 0
 offset_left = 522.00006
 offset_top = 303.0
@@ -20,4 +22,22 @@ offset_bottom = 334.0
 scale = Vector2(4.277216, 3.038133)
 text = "Speed"
 
-[connection signal="pressed" from="Speed" to="." method="_on_speed_pressed"]
+[node name="CollectionSpeed" type="Button" parent="." unique_id=1470090849]
+layout_mode = 0
+offset_left = 44.00001
+offset_top = 152.0
+offset_right = 148.50723
+offset_bottom = 240.0
+scale = Vector2(4.277216, 3.038133)
+text = "Pickup Speed +25%"
+autowrap_mode = 2
+
+[node name="WaypointDistButton" type="Button" parent="." unique_id=1870222863]
+layout_mode = 0
+offset_left = 822.0
+offset_top = 239.0
+offset_right = 915.0
+offset_bottom = 299.0
+scale = Vector2(4.277216, 3.038133)
+text = "Waypoint
+Distance"
