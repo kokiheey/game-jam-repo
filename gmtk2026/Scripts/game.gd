@@ -14,6 +14,7 @@ extends Node2D
 @export var MISSION_TIME : float = 1000
 @export var celestialBodies : Array[PackedScene]
 @export var CBtoSpawn : int = 10
+@export var maxCelestialBodies : int = 30
 @export var package : PackedScene
 
 var currentPackage : Box
@@ -49,16 +50,22 @@ func generate():
 	currentPackage = package.instantiate() as Box
 	currentPackage.picked_up.connect(_on_picked_up)
 	var randomDir : Vector2 = Vector2.RIGHT.rotated(randf_range(-PI, PI))
-	currentPackage.global_position = PLAYER.global_position + randomDir * randf_range(200, 5000)
+	var randomDist : float = randf_range(400, 3500)
+	currentPackage.global_position = PLAYER.global_position + randomDir * randomDist
 	WAYPOINT.TARGET_POSITION = currentPackage.global_position
 	
-	for body in activeBodies:
-		body.queue_free()
-	activeBodies.clear()
+	while activeBodies.size() > maxCelestialBodies:
+		activeBodies.front().queue_free()
+		activeBodies.pop_front()
 	
-	for i in range(CBtoSpawn):
+	var currentPos : float = 0
+	while currentPos < 1.2*randomDist:
+		currentPos +=  randf_range(350, 1000)
 		var body = celestialBodies.pick_random().instantiate() as Node2D
-		body.global_position = PLAYER.global_position + randomDir.rotated(randf_range(-PI/4, PI/4))*randf_range(200, 5000)
+		body.global_position = PLAYER.global_position + \
+		currentPos* randomDir+ \
+		randf_range(100, 500)*randomDir.rotated(randf_range(-PI/4, PI/4))
+		activeBodies.append(body)
 		call_deferred("add_child", body)
 	call_deferred("add_child", currentPackage)
 	
