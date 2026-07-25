@@ -17,9 +17,14 @@ boot_splash/bg_color=Color(0.08235294, 0, 0.101960786, 1)
 boot_splash/show_image=false
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bcwnquerwf4bq"
+
 [autoload]
 
 SceneTransition="*uid://tatjwdlslvtg"
+AudioManager="*uid://clncg4uvhsi36"
 
 [display]
 

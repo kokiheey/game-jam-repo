@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://bofjv2mbykoyl" path="res://Textures/MenuButton.tres" id="5_opfnp"]
 [ext_resource type="StyleBox" uid="uid://tjwwhgv1ciy7" path="res://Textures/MenuButtonPress.tres" id="6_cp0ys"]
 [ext_resource type="StyleBox" uid="uid://byp3xh7y8akw2" path="res://Textures/MenuButtonHover.tres" id="6_opfnp"]
+[ext_resource type="PackedScene" uid="uid://dj1e4n1b0j5s" path="res://Scenes/options.tscn" id="8_yhxw7"]
 
 [sub_resource type="Environment" id="Environment_28flt"]
 background_mode = 3
@@ -29,7 +30,7 @@ scale_max = 10.0
 hue_variation_min = -0.010000022
 hue_variation_max = 0.009999977
 
-[node name="MainMenu" type="Control" unique_id=1029789575]
+[node name="MainMenu" type="Control" unique_id=1029789575 node_paths=PackedStringArray("Options")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -37,6 +38,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_28flt")
+Options = NodePath("UI/Options")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=199695165]
 environment = SubResource("Environment_28flt")
@@ -63,9 +65,9 @@ lifetime = 5.0
 randomness = 1.0
 process_material = SubResource("ParticleProcessMaterial_28flt")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=476751113]
+[node name="UI" type="CanvasLayer" parent="." unique_id=476751113]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=1136937881]
+[node name="Menu" type="VBoxContainer" parent="UI" unique_id=1136937881]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -79,7 +81,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 32
 
-[node name="Label" type="Label" parent="CanvasLayer/VBoxContainer" unique_id=1547448924]
+[node name="Label" type="Label" parent="UI/Menu" unique_id=1547448924]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_1ehe0")
@@ -88,11 +90,11 @@ text = "Game title"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/VBoxContainer" unique_id=1940969195]
+[node name="MarginContainer" type="MarginContainer" parent="UI/Menu" unique_id=1940969195]
 layout_mode = 2
 theme_override_constants/margin_top = 50
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=2090315873]
+[node name="PlayButton" type="Button" parent="UI/Menu" unique_id=2090315873]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.9843137, 0.9843137, 0.95686275, 1)
@@ -103,7 +105,7 @@ theme_override_styles/pressed = ExtResource("6_cp0ys")
 theme_override_styles/hover = ExtResource("6_opfnp")
 text = "Start game"
 
-[node name="OptionsButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=510495146]
+[node name="OptionsButton" type="Button" parent="UI/Menu" unique_id=510495146]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.9843137, 0.9843137, 0.95686275, 1)
@@ -114,7 +116,7 @@ theme_override_styles/pressed = ExtResource("6_cp0ys")
 theme_override_styles/hover = ExtResource("6_opfnp")
 text = "Options"
 
-[node name="ExitButton" type="Button" parent="CanvasLayer/VBoxContainer" unique_id=863767723]
+[node name="ExitButton" type="Button" parent="UI/Menu" unique_id=863767723]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0.9843137, 0.9843137, 0.95686275, 1)
@@ -125,5 +127,8 @@ theme_override_styles/pressed = ExtResource("6_cp0ys")
 theme_override_styles/hover = ExtResource("6_opfnp")
 text = "Exit"
 
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
-[connection signal="pressed" from="CanvasLayer/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="Options" parent="UI" unique_id=1973293453 instance=ExtResource("8_yhxw7")]
+
+[connection signal="pressed" from="UI/Menu/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="UI/Menu/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="pressed" from="UI/Menu/ExitButton" to="." method="_on_exit_button_pressed"]

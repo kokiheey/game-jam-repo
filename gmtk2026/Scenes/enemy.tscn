@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://4r3ak0yviq0g"]
+
+[ext_resource type="Script" uid="uid://bvmsarj7xtqx2" path="res://Scripts/enemy.gd" id="1_1f0kj"]
+[ext_resource type="Script" uid="uid://bf2ikf8fnn5g6" path="res://Scripts/gravity_component.gd" id="1_hghv2"]
+
+[node name="Enemy" type="CharacterBody2D" unique_id=1699865079 node_paths=PackedStringArray("gravComponent")]
+motion_mode = 1
+script = ExtResource("1_1f0kj")
+gravComponent = NodePath("GravityComponent")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=310112604]
+color = Color(1, 0, 0, 1)
+polygon = PackedVector2Array(-16, -16, 16, 0, -16, 16, -8, 0)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=12171636]
+visible = false
+rotation = 0.0033521652
+polygon = PackedVector2Array(-16.053545, -15.946276, 15.99991, -0.053634543, -15.946276, 16.053545, -8, 0)
+
+[node name="GravityComponent" type="Area2D" parent="." unique_id=595520630]
+visible = false
+script = ExtResource("1_hghv2")
+maxAcceleration = 5000.0
+gravityStrength = 100.0
+metadata/_custom_type_script = "uid://bf2ikf8fnn5g6"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="GravityComponent" unique_id=365032469]
+visible = false
+rotation = 0.0033521652
+polygon = PackedVector2Array(-16.053545, -15.946276, 15.99991, -0.053634543, -15.946276, 16.053545, -8, 0)
