@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://dj1e4n1b0j5s"]
+
+[ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="1_prnvy"]
+[ext_resource type="StyleBox" uid="uid://bne1cq6fgt7be" path="res://Textures/PanelBorder.tres" id="2_4tmxy"]
+[ext_resource type="Script" uid="uid://cfo4m2xd5jd6f" path="res://Scripts/options.gd" id="2_qyyw6"]
+
+[node name="Options" type="Control" unique_id=1973293453]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_prnvy")
+script = ExtResource("2_qyyw6")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2051082453]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.95000005)
+
+[node name="Panel" type="Panel" parent="." unique_id=1366349790]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -207.0
+offset_top = -207.0
+offset_right = 207.0
+offset_bottom = 207.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_4tmxy")
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel" unique_id=506213547]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer" unique_id=237737528]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="Panel/MarginContainer/VBoxContainer" unique_id=256958841]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 24
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=2039197535]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 5.0
+
+[node name="AllSoundsOption" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=405754149]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption" unique_id=85852476]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "All sound:"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption" unique_id=981408605]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="AllSoundsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption/HBoxContainer2" unique_id=2038633427]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100%"
+
+[node name="AllSounds" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption/HBoxContainer2" unique_id=1961584686]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+value = 100.0
+rounded = true
+
+[node name="MusicOption" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1372641421]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption" unique_id=253620446]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption" unique_id=541449609]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="MusicLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption/HBoxContainer" unique_id=42140953]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100%"
+
+[node name="Music" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption/HBoxContainer" unique_id=1379547981]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+value = 100.0
+rounded = true
+
+[node name="SFXOption" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1530273176]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption" unique_id=1549277498]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX:"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption" unique_id=1601756786]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+
+[node name="SFXLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption/HBoxContainer" unique_id=480299057]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100%"
+
+[node name="SFX" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption/HBoxContainer" unique_id=1300447524]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+value = 100.0
+rounded = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=398009164]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer" unique_id=675880547]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DiscardButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=748258714]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Discard"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1379709452]
+layout_mode = 2
+theme_override_constants/margin_left = 25
+
+[node name="SaveButton" type="Button" parent="Panel/MarginContainer/VBoxContainer/HBoxContainer" unique_id=1796657781]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Save"
+
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption/HBoxContainer2/AllSounds" to="." method="_on_all_sounds_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption/HBoxContainer/Music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption/HBoxContainer/SFX" to="." method="_on_sfx_value_changed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/DiscardButton" to="." method="_on_discard_button_pressed"]
+[connection signal="pressed" from="Panel/MarginContainer/VBoxContainer/HBoxContainer/SaveButton" to="." method="_on_save_button_pressed"]
