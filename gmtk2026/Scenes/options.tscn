@@ -4,6 +4,19 @@
 [ext_resource type="StyleBox" uid="uid://bne1cq6fgt7be" path="res://Textures/PanelBorder.tres" id="2_4tmxy"]
 [ext_resource type="Script" uid="uid://cfo4m2xd5jd6f" path="res://Scripts/options.gd" id="2_qyyw6"]
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qyyw6"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(0.35, 0.2, 1)
+angular_velocity_min = -100.000015
+angular_velocity_max = 99.999985
+radial_velocity_min = -2.2351742e-05
+radial_velocity_max = 39.999977
+gravity = Vector3(0, 0, 0)
+scale_max = 10.0
+hue_variation_min = -0.010000022
+hue_variation_max = 0.009999977
+
 [node name="Options" type="Control" unique_id=1973293453]
 layout_mode = 3
 anchors_preset = 15
@@ -21,7 +34,17 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.95000005)
+color = Color(0, 0, 0, 0.98)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=635655693]
+top_level = true
+position = Vector2(640, 360)
+rotation = -3.1415925
+scale = Vector2(2000, 2000)
+amount = 50
+lifetime = 5.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_qyyw6")
 
 [node name="Panel" type="Panel" parent="." unique_id=1366349790]
 layout_mode = 1
@@ -30,10 +53,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -207.0
-offset_top = -207.0
-offset_right = 207.0
-offset_bottom = 207.0
+offset_left = -261.75
+offset_top = -275.75
+offset_right = 261.75
+offset_bottom = 275.75
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_4tmxy")
@@ -75,6 +98,7 @@ size_flags_vertical = 3
 [node name="AllSoundsText" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption" unique_id=85852476]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "All sound:"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption" unique_id=981408605]
@@ -85,6 +109,7 @@ size_flags_stretch_ratio = 2.0
 [node name="AllSoundsLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption/HBoxContainer2" unique_id=2038633427]
 layout_mode = 2
 size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 20
 text = "100%"
 
 [node name="AllSounds" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/AllSoundsOption/HBoxContainer2" unique_id=1961584686]
@@ -102,6 +127,7 @@ size_flags_vertical = 3
 [node name="MusicText" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption" unique_id=253620446]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "Music:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption" unique_id=541449609]
@@ -112,6 +138,7 @@ size_flags_stretch_ratio = 2.0
 [node name="MusicLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption/HBoxContainer" unique_id=42140953]
 layout_mode = 2
 size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 20
 text = "100%"
 
 [node name="Music" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/MusicOption/HBoxContainer" unique_id=1379547981]
@@ -129,6 +156,7 @@ size_flags_vertical = 3
 [node name="SFXText" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption" unique_id=1549277498]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 20
 text = "SFX:"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption" unique_id=1601756786]
@@ -139,6 +167,7 @@ size_flags_stretch_ratio = 2.0
 [node name="SFXLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption/HBoxContainer" unique_id=480299057]
 layout_mode = 2
 size_flags_horizontal = 2
+theme_override_font_sizes/font_size = 20
 text = "100%"
 
 [node name="SFX" type="HSlider" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer/SFXOption/HBoxContainer" unique_id=1300447524]
