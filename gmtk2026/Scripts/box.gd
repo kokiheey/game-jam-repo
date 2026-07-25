@@ -2,7 +2,7 @@ class_name Box
 extends Node2D
 
 @export var LoadingColor : Color = Color("e9e9e9")
-@export var BorderColor : Color = Color("e9e9e9")
+#@export var BorderColor : Color = Color("e9e9e9")
 @export var follow_distance := 60
 @export var follow_speed := 6
 
@@ -28,11 +28,11 @@ signal picked_up
 func _ready():
 	circle.hide()
 	PickupArea.show()
-	var pickup_texture = PickupArea.texture as GradientTexture2D
-	pickup_texture.gradient.set_color(0, "00000000")
-	pickup_texture.gradient.set_color(1, BorderColor)
-	pickup_texture.gradient.set_color(2, BorderColor)
-	pickup_texture.gradient.set_color(3, "00000000")
+	#var pickup_texture = PickupArea.texture as GradientTexture2D
+	#pickup_texture.gradient.set_color(0, "00000000")
+	#pickup_texture.gradient.set_color(1, BorderColor)
+	#pickup_texture.gradient.set_color(2, BorderColor)
+	#pickup_texture.gradient.set_color(3, "00000000")
 	#PickupArea.hide()
 	grad_texture = circle.texture as GradientTexture2D
 	changePickupProgress(1)

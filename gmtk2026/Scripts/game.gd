@@ -4,7 +4,7 @@ extends Node2D
 @onready var PAUSE_MENU    : Control = $GUI/PauseMenu
 @onready var GAME_UI       : Control = $GUI/GameUI
 @onready var MISSION_TIMER : Timer   = $MissionTimer
-@onready var SHOP_UI	   : Control = $GUI/ShopUI
+@onready var SHOP_UI       : Control = $GUI/ShopUI
 
 @onready var PLAYER : CharacterBody2D = $Player
 @onready var WAYPOINT : Sprite2D = $BoxWaypoint

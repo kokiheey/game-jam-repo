@@ -23,6 +23,18 @@ hue_variation_max = 0.009999977
 [sub_resource type="CircleShape2D" id="CircleShape2D_61tkn"]
 radius = 173.10402
 
+[sub_resource type="Gradient" id="Gradient_sm0og"]
+offsets = PackedFloat32Array(0.95, 0.96, 0.99, 1)
+colors = PackedColorArray(0.9843137, 0.9843137, 0.95686275, 0, 0.9844546, 0.9844546, 0.95702064, 0.1, 0.9844546, 0.9844546, 0.95702064, 0.1, 0.9843137, 0.9843137, 0.95686275, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ldgsr"]
+gradient = SubResource("Gradient_sm0og")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
 [sub_resource type="Environment" id="Environment_tpvet"]
 background_mode = 3
 
@@ -70,11 +82,19 @@ position = Vector2(1078, 489)
 [node name="ShipWaypoint" parent="." unique_id=606746514 instance=ExtResource("8_v158k")]
 scale = Vector2(0.010000001, 0.010000001)
 texture = ExtResource("10_ldgsr")
+SCREEN_MARGIN = 42.0
+MIN_SCALE = 0.05
+SCALING_FACTOR = 100000.0
 
 [node name="Ship" type="Area2D" parent="." unique_id=1190897467]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ship" unique_id=129631988]
 shape = SubResource("CircleShape2D_61tkn")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ship" unique_id=1701790862]
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(1.40625, 1.40625)
+texture = SubResource("GradientTexture2D_ldgsr")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838893143]
 environment = SubResource("Environment_tpvet")
