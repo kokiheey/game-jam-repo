@@ -7,6 +7,7 @@ extends Node2D
 @onready var SHOP_UI       : Control = $GUI/ShopUI
 
 @onready var PLAYER : CharacterBody2D = $Player
+@onready var SHOP_LABEL : Label = $Ship/ShopLabel
 @onready var WAYPOINT : Sprite2D = $BoxWaypoint
 @onready var SHIPWAYPOINT : Sprite2D = $ShipWaypoint
 @onready var PARTICLES : GPUParticles2D = $GPUParticles2D
@@ -91,12 +92,19 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu()
-		
+	
+	if isInTheShip:
+		SHOP_LABEL.show()
+	else:
+		SHOP_LABEL.hide()
+	
 	if Input.is_action_just_pressed("openShop") and isInTheShip and !shopBindPressed:
+		SHOP_LABEL.hide()
 		SHOP_UI.show()
 		pause_game(true)
 		shopBindPressed = true
 	elif Input.is_action_just_pressed("openShop") and isInTheShip and shopBindPressed:
+		SHOP_LABEL.show()
 		SHOP_UI.hide()
 		pause_game(false)
 		shopBindPressed = false
