@@ -28,7 +28,6 @@ background_mode = 3
 
 [node name="Game" type="Node2D" unique_id=794815185]
 script = ExtResource("1_wrm1d")
-MISSION_TIME = 120.0
 celestialBodies = Array[PackedScene]([ExtResource("6_i6g32")])
 package = ExtResource("3_h4fw4")
 

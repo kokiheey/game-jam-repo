@@ -7,7 +7,8 @@ extends Node2D
 @onready var SHOP_UI	   : Control = $GUI/ShopUI
 
 @onready var PLAYER : CharacterBody2D = $Player
-@onready var WAYPOINT : Sprite2D = $Waypoint
+@onready var WAYPOINT : Sprite2D = $BoxWaypoint
+@onready var SHIPWAYPOINT : Sprite2D = $ShipWaypoint
 @onready var PARTICLES : GPUParticles2D = $GPUParticles2D
 
 @export var MISSION_TIME : float = 1000
@@ -16,28 +17,34 @@ extends Node2D
 @export var package : PackedScene
 
 var currentPackage : Box
+var pickedUpPackages : Array[Box]
 var activeBodies : Array[Node2D]
 var isInTheShip : bool = false
 var shopBindPressed : bool = false
 
-
-var carryingPackage : bool = false
+var numOfPackagesCarry : int = 0
 var isGameOver : bool = false
 var paused : bool = false
 
+# Statistics
+var _totalPackagesDelivered = 0
+
 func _on_picked_up() -> void:
 	WAYPOINT.TARGET_POSITION = Vector2(0, 0)
-	carryingPackage = true
+	numOfPackagesCarry += 1
+	generate()
 
 
 func _ready() -> void:
+	SHIPWAYPOINT.TARGET_POSITION = Vector2(0, 0)
 	MISSION_TIMER.wait_time = MISSION_TIME
 	generate()
 	MISSION_TIMER.start()
 
 func generate():
-	if(currentPackage != null):
+	if currentPackage != null:
 		currentPackage.picked_up.disconnect(_on_picked_up)
+		pickedUpPackages.append(currentPackage)
 	
 	currentPackage = package.instantiate() as Box
 	currentPackage.picked_up.connect(_on_picked_up)
@@ -73,7 +80,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_pressed("openShop") and isInTheShip and shopBindPressed:
 		SHOP_UI.hide()
 		pause_game(false)
-		shopBindPressed = false	
+		shopBindPressed = false
 
 func pause_menu():
 	paused = !paused
@@ -90,10 +97,13 @@ func pause_game(pause : bool):
 	else:
 		Engine.time_scale = 1
 
+
+
 # GAME OVER - kada istekne timer
 func _on_mission_timer_timeout() -> void:
 	isGameOver = true
 	pause_game(true)
+	GAME_OVER_UI.updateStatistics(0, 0, _totalPackagesDelivered)
 	GAME_OVER_UI.show()
 
 
@@ -101,11 +111,12 @@ func _on_mission_timer_timeout() -> void:
 
 func _on_ship_body_entered(body: Node2D) -> void:
 	isInTheShip = true
-	if  body.is_in_group("player") and carryingPackage:
-		currentPackage.queue_free()
-		carryingPackage = false
-		generate()
-
+	if  body.is_in_group("player") and numOfPackagesCarry > 0:
+		for i in pickedUpPackages:
+			i.queue_free()
+		_totalPackagesDelivered += numOfPackagesCarry
+		numOfPackagesCarry = 0
+		pickedUpPackages = []
 
 func _on_ship_body_exited(body: Node2D) -> void:
 	isInTheShip = false
