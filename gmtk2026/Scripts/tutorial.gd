@@ -15,21 +15,22 @@ var money_label
 var waypoint
 
 enum Steps{
-	INTRO,
-	SHIP,
+	#INTRO,
+	#SHIP,
 	PLAYER,
 	FUEL,
 	BLACKHOLE,
 	MONEY,
-	WAYPOINT,
-	PACKAGE,
+	#WAYPOINT,
+	#PACKAGE,
 	DELIVERING,
-	SHOP,
+	#SHOP,
 	END
 }
 
 func start():
 	visible = true
+	self.show()
 	Engine.time_scale = 0
 	current_step = 0
 	show_step()
@@ -62,56 +63,57 @@ func _input(event: InputEvent) -> void:
 
 func show_step():
 	match current_step:
-		Steps.INTRO:
-			title.text = "Welcome"
-			description.text = "Your goal is to deliver packages, explore the galaxy, and survive the dangers you encounter along the way.\nManage your resources carefully and make smart decisions to complete your missions."
-			con.text = "SPACE - next step"
+		#Steps.INTRO:
+		#	title.text = "Welcome"
+		#	description.text = "Your goal is to deliver packages, explore the galaxy, and survive the dangers you encounter along the way.\nManage your resources carefully and make smart decisions to complete your missions."
+		#	con.text = "SPACE - next step"
 
-		Steps.SHIP:
-			title.text = "Your Ship"
-			description.text = "This is your main ship and your safe location. Return here after completing deliveries to unload packages, prepare for your next mission, and manage your equipment."
-			con.text = "SPACE - next step"
+		#Steps.SHIP:
+		#	title.text = "Your Ship"
+		#	description.text = "This is your main ship and your safe location. Return here after completing deliveries to unload packages, prepare for your next mission, and manage your equipment."
+		#	con.text = "SPACE - next step"
 
 		Steps.PLAYER:
 			title.text = "Movement"
-			description.text = "Control your ship using the mouse. Move around the galaxy, avoid obstacles, and carefully navigate through dangerous areas to reach your destinations."
+			description.text = "Move your mouse around the screen to steer the ship\n\n Hold W or LMB to move."
 			con.text = "SPACE - next step"
 
 		Steps.FUEL:
 			title.text = "Fuel"
-			description.text = "Your ship requires fuel to travel through space. Keep an eye on your fuel level and make sure to manage it carefully, because running out of fuel will end your journey."
+			description.text = "You lose fuel constantly\n When you are moving you are losing more fuel\n\n DON'T RUN OUT OF FUEL"
 			con.text = "SPACE - next step"
 			
 		Steps.BLACKHOLE:
 			shouldStop = true
 			title.text = "Blackhole"
-			description.text = "Blackholes pull nearby objects with their gravity. Entering the center will damage your ship.\n\nGo close to it to unlock the next step!!!"
+			description.text = "Black holes move you to them\n\n If you touch the center you lose health"
 			con.text = "SPACE - next step"
-			
+		
 		Steps.MONEY:
 			title.text = "Money"
-			description.text = "Delivering packages earns money.\nSpend it in the Shop to buy useful upgrades."
-			con.text = "SPACE - Next Step"
-
-		Steps.WAYPOINT:
-			title.text = "Waypoint"
-			description.text = "The waypoint always points toward your current package.\nFollow it whenever you're lost."
-			con.text = "SPACE - Next Step"
-
-		Steps.PACKAGE:
-			title.text = "Packages"
-			description.text = "Fly close to a package to collect it.\nAfter collecting it, return to your ship."
+			description.text = "Delivering packages earns money.\n\nSpend it in the Shop to buy useful upgrades."
 			con.text = "SPACE - Next Step"
 
 		Steps.DELIVERING:
 			title.text = "Delivering"
-			description.text = "Entering your ship automatically delivers every collected package and rewards you with money."
+			description.text = "Entering your ship automatically delivers every collected package and rewards you with money.\n\n Enemies CAN'T enter that area"
 			con.text = "SPACE - Next Step"
 
-		Steps.SHOP:
-			title.text = "Shop"
-			description.text = "Press the Shop key while inside your ship to open the Shop.\nBuy upgrades to improve your abilities."
-			con.text = "SPACE - Next Step"
+
+		#Steps.WAYPOINT:
+		#	title.text = "Waypoint"
+		#	description.text = "The waypoint always points toward your current package.\nFollow it whenever you're lost."
+		#	con.text = "SPACE - Next Step"
+
+		#Steps.PACKAGE:
+		#	title.text = "Packages"
+		#	description.text = "Fly close to a package to collect it.\nAfter collecting it, return to your ship."
+		#	con.text = "SPACE - Next Step"
+
+		#Steps.SHOP:
+		#	title.text = "Shop"
+		#	description.text = "Press the Shop key while inside your ship to open the Shop.\nBuy upgrades to improve your abilities."
+		#	con.text = "SPACE - Next Step"
 
 		Steps.END:
 			title.text = "Tutorial Complete!"

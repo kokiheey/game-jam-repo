@@ -3,6 +3,7 @@ class_name player
 
 @export var shipColor : Color = Color("ffffff")
 @export var acc: float = 700
+@export var BASE_ACC: float = 700
 @export var capSpeed: float = 500
 @export var drag: float = 0.003
 @export var rotationSpeed: float = 10

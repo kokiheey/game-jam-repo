@@ -128,6 +128,7 @@ theme_override_styles/hover = ExtResource("6_opfnp")
 text = "Exit"
 
 [node name="Options" parent="UI" unique_id=1973293453 instance=ExtResource("8_yhxw7")]
+visible = false
 
 [connection signal="pressed" from="UI/Menu/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="UI/Menu/OptionsButton" to="." method="_on_options_button_pressed"]

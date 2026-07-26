@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b3gxntk4kish7" path="res://Scripts/tutorial.gd" id="1_p8jf4"]
 [ext_resource type="StyleBox" uid="uid://bne1cq6fgt7be" path="res://Textures/PanelBorder.tres" id="2_feyax"]
 
-[node name="Tutorial" type="CanvasLayer" unique_id=1984499269]
+[node name="Tutorial" type="CanvasLayer" unique_id=1829906819]
 script = ExtResource("1_p8jf4")
 
 [node name="DarkBackground" type="ColorRect" parent="." unique_id=759799035]

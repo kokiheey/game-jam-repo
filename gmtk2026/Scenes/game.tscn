@@ -72,6 +72,7 @@ amount = 12
 process_material = SubResource("ParticleProcessMaterial_61tkn")
 
 [node name="Player" parent="." unique_id=1991330775 instance=ExtResource("2_qxrlw")]
+position = Vector2(-42, 0)
 
 [node name="BlackHole" parent="." unique_id=1896945040 instance=ExtResource("6_i6g32")]
 position = Vector2(1078, 489)
@@ -112,14 +113,6 @@ text = "E - Open shop"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838893143]
 environment = SubResource("Environment_tpvet")
-
-[node name="Enemy" parent="." unique_id=1699865079 node_paths=PackedStringArray("Player") instance=ExtResource("12_rku1e")]
-position = Vector2(287, -214)
-Player = NodePath("../Player")
-
-[node name="Enemy2" parent="." unique_id=1530103623 node_paths=PackedStringArray("Player") instance=ExtResource("12_rku1e")]
-position = Vector2(-128, -304)
-Player = NodePath("../Player")
 
 [node name="EnemySpawner" type="Node" parent="." unique_id=1930006484]
 script = ExtResource("13_rfjv2")
