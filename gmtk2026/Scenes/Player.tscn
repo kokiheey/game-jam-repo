@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://djigywybiqud1" path="res://Scripts/hurtbox_component.gd" id="5_nn08x"]
 
 [node name="Player" type="CharacterBody2D" unique_id=1991330775 node_paths=PackedStringArray("gravComponent", "HealthComp")]
-position = Vector2(-42, 0)
 script = ExtResource("1_kyqiw")
 gravComponent = NodePath("GravityComponent")
 HealthComp = NodePath("HealthComponent")

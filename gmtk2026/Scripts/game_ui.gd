@@ -11,4 +11,5 @@ func update_fuel(maxFuel : float, fuel : float) -> void:
 	FUEL_BAR.value = fuel / maxFuel * 100
 
 func update_health(maxHealth : float, health : float) -> void:
-	HEALTH_BAR.value = health / maxHealth * 100
+	#HEALTH_BAR.value = health / maxHealth * 100
+	HEALTH_BAR.material.set_shader_parameter("health_percent", health / maxHealth)
