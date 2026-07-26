@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://boff388h7ib2y" path="res://Assets/Icons/spoutnik.svg" id="10_ldgsr"]
 [ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="11_o5yvi"]
 [ext_resource type="PackedScene" uid="uid://4r3ak0yviq0g" path="res://Scenes/enemy.tscn" id="12_rku1e"]
+[ext_resource type="Script" uid="uid://cg8sl32ogv7u3" path="res://Scripts/object_spawner.gd" id="13_rfjv2"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61tkn"]
 particle_flag_disable_z = true
@@ -120,6 +121,16 @@ Player = NodePath("../Player")
 position = Vector2(-128, -304)
 Player = NodePath("../Player")
 
+[node name="EnemySpawner" type="Node" parent="." unique_id=1930006484]
+script = ExtResource("13_rfjv2")
+spawnableObject = ExtResource("12_rku1e")
+randomDistance = 3000.0
+minSpawnTime = 8.0
+maxSpawnTime = 20.0
+minObjectsToSpawn = 1
+maxObjectsToSpawn = 4
+metadata/_custom_type_script = "uid://cg8sl32ogv7u3"
+
 [connection signal="boughtPickupSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_pickup_speed"]
 [connection signal="boughtSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_speed"]
 [connection signal="boughtWaypointDistance" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_waypoint_distance"]
@@ -127,3 +138,4 @@ Player = NodePath("../Player")
 [connection signal="moneyChanged" from="GUI/ShopUI" to="." method="_on_shop_ui_money_changed"]
 [connection signal="body_entered" from="Ship" to="." method="_on_ship_body_entered"]
 [connection signal="body_exited" from="Ship" to="." method="_on_ship_body_exited"]
+[connection signal="objectCreated" from="EnemySpawner" to="." method="_on_enemy_spawner_object_created"]

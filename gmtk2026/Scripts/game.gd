@@ -10,15 +10,15 @@ extends Node2D
 @onready var WAYPOINT : Sprite2D = $BoxWaypoint
 @onready var SHIPWAYPOINT : Sprite2D = $ShipWaypoint
 @onready var PARTICLES : GPUParticles2D = $GPUParticles2D
-
+@onready var ENEMY_SPAWNER : ObjectSpawner = $EnemySpawner
 @export var MAX_FUEL : float = 120
 @export var FUEL_PER_SECOND_STILL : float = 0.5
 @export var FUEL_PER_SECOND_MOVING : float = 1
+
 @export var celestialBodies : Array[PackedScene]
 @export var CBtoSpawn : int = 10
 @export var maxCelestialBodies : int = 30
 @export var package : PackedScene
-
 var currentPackage : Box
 var pickedUpPackages : Array[Box]
 var activeBodies : Array[Node2D]
@@ -169,6 +169,9 @@ func _on_ship_body_entered(body: Node2D) -> void:
 		_totalMoneyEarned += earnedMoney
 		GAME_UI.update_money(SHOP_UI.money)
 		numOfPackagesCarry = 0
+		
+		if not ENEMY_SPAWNER._active:
+			ENEMY_SPAWNER.Activate()
 
 func _on_ship_body_exited(body: Node2D) -> void:
 	if !body.is_in_group("player"):
@@ -192,3 +195,9 @@ func _on_shop_ui_money_changed(newMoney: int) -> void:
 
 func _on_shop_ui_bought_fuel(amount: float) -> void:
 	fuel += amount
+
+
+func _on_enemy_spawner_object_created(object: Node) -> void:
+	var enemy = object as CharacterBody2D
+	enemy.Player = PLAYER
+	call_deferred("add_child", enemy)
