@@ -33,7 +33,10 @@ var isGameOver : bool = false
 var paused : bool = false
 
 # Statistics
-var _totalPackagesDelivered = 0
+var _timePlayed : float = 0
+var _totalFuelSpent : float = 0
+var _totalMoneyEarned : int = 0
+var _totalPackagesDelivered : int = 0
 
 func _on_picked_up() -> void:
 	WAYPOINT.TARGET_POSITION = Vector2(0, 0)
@@ -84,14 +87,18 @@ func generate():
 			activeBodies.remove_at(i)
 
 func _process(delta: float) -> void:
+	_timePlayed += delta
+	
 	if fuel <= 0:
 		GameOver()
 		return
 	
 	if PLAYER.isMoving:
 		fuel -= FUEL_PER_SECOND_MOVING * delta
+		_totalFuelSpent += FUEL_PER_SECOND_MOVING * delta
 	else:
 		fuel -= FUEL_PER_SECOND_STILL * delta
+		_totalFuelSpent += FUEL_PER_SECOND_STILL * delta
 	
 	PARTICLES.global_position = PLAYER.global_position
 
@@ -140,10 +147,8 @@ func pause_game(pause : bool):
 func GameOver() -> void:
 	isGameOver = true
 	pause_game(true)
-	GAME_OVER_UI.updateStatistics(0, 0, _totalPackagesDelivered)
+	GAME_OVER_UI.updateStatistics(_timePlayed, _totalFuelSpent, _totalMoneyEarned, _totalPackagesDelivered)
 	GAME_OVER_UI.show()
-
-
 
 
 func _on_ship_body_entered(body: Node2D) -> void:
@@ -153,7 +158,9 @@ func _on_ship_body_entered(body: Node2D) -> void:
 			i.queue_free()
 		pickedUpPackages = []
 		_totalPackagesDelivered += numOfPackagesCarry
-		SHOP_UI.money += numOfPackagesCarry * BoxPrice
+		var earnedMoney = numOfPackagesCarry * BoxPrice
+		SHOP_UI.money += earnedMoney
+		_totalMoneyEarned += earnedMoney
 		GAME_UI.update_money(SHOP_UI.money)
 		numOfPackagesCarry = 0
 
