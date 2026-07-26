@@ -48,6 +48,8 @@ func _on_picked_up() -> void:
 
 
 func _ready() -> void:
+	if OS.has_feature("mobile"):
+		$Ship/ShopButton.show()
 	PLAYER_HEALTH.healthChanged.connect(_on_player_health_changed)
 	PLAYER_HEALTH.died.connect(GameOver)
 	SHIPWAYPOINT.TARGET_POSITION = Vector2(0, 0)
@@ -207,8 +209,16 @@ func _on_shop_ui_bought_fuel(amount: float) -> void:
 func _on_enemy_spawner_object_created(object: Node) -> void:
 	var enemy = object as CharacterBody2D
 	enemy.Player = PLAYER
+	enemy.ANGLE_DIFF = Vector2(randf_range(0, 50), randf_range(0, 50))
 	call_deferred("add_child", enemy)
 
 
 func _on_shop_ui_bought_package_price() -> void:
 	BoxPrice += 10
+
+
+func _on_shop_button_pressed() -> void:
+	SHOP_UI.open(MAX_FUEL, fuel)
+	$Ship/ShopButton.hide()
+	pause_game(true)
+	shopBindPressed = true
