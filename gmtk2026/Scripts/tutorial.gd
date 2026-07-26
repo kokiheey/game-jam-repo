@@ -80,13 +80,13 @@ func show_step():
 
 		Steps.FUEL:
 			title.text = "Fuel"
-			description.text = "You lose fuel constantly\n When you are moving you are losing more fuel\n\n DON'T RUN OUT OF FUEL"
+			description.text = "You lose fuel constantly.\n While moving you lose more fuel.\n\n DON'T RUN OUT OF FUEL"
 			con.text = "SPACE - next step"
 			
 		Steps.BLACKHOLE:
 			shouldStop = true
 			title.text = "Blackhole"
-			description.text = "Black holes move you to them\n\n If you touch the center you lose health"
+			description.text = "Black holes move you to them.\n\n If you touch the center you lose health."
 			con.text = "SPACE - next step"
 		
 		Steps.MONEY:
@@ -96,7 +96,7 @@ func show_step():
 
 		Steps.DELIVERING:
 			title.text = "Delivering"
-			description.text = "Entering your ship automatically delivers every collected package and rewards you with money.\n\n Enemies CAN'T enter that area"
+			description.text = "Entering your ship automatically delivers every collected package and rewards you with money.\n\n Enemies cannot enter this area."
 			con.text = "SPACE - Next Step"
 
 
