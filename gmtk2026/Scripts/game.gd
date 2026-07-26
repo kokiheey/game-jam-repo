@@ -108,7 +108,6 @@ func _process(delta: float) -> void:
 	if isGameOver : 
 		return
 	
-	print(fuel)
 	GAME_UI.update_fuel(MAX_FUEL, fuel)
 	
 	if Input.is_action_just_pressed("Pause"):
@@ -192,5 +191,4 @@ func _on_shop_ui_money_changed(newMoney: int) -> void:
 
 
 func _on_shop_ui_bought_fuel(amount: float) -> void:
-	print("AAAA")
 	fuel += amount
