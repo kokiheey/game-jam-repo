@@ -38,6 +38,7 @@ var _totalFuelSpent : float = 0
 var _totalMoneyEarned : int = 0
 var _totalPackagesDelivered : int = 0
 
+
 func _on_picked_up() -> void:
 	WAYPOINT.TARGET_POSITION = Vector2(0, 0)
 	numOfPackagesCarry += 1

@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://djtxppsf6o1t0"]
+
+[ext_resource type="Script" uid="uid://b3gxntk4kish7" path="res://Scripts/tutorial.gd" id="1_p8jf4"]
+
+[node name="Tutorial" type="CanvasLayer" unique_id=1984499269]
+script = ExtResource("1_p8jf4")
+
+[node name="DarkBackground" type="ColorRect" parent="." unique_id=759799035]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.62352943)
+
+[node name="Panel" type="Panel" parent="." unique_id=373132909]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1792614020]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -27.0
+offset_right = 20.0
+offset_bottom = 27.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Panel/VBox" unique_id=234990315]
+layout_mode = 2
+
+[node name="Description" type="RichTextLabel" parent="Panel/VBox" unique_id=1656215872]
+layout_mode = 2
+
+[node name="Continue" type="Label" parent="Panel/VBox" unique_id=1352374189]
+layout_mode = 2

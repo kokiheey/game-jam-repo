@@ -1,0 +1,103 @@
+[gd_scene format=3 uid="uid://nockd7xcgp76"]
+
+[ext_resource type="PackedScene" uid="uid://doa8auaya5o28" path="res://Scenes/waypoint.tscn" id="1_0fgi7"]
+[ext_resource type="Script" uid="uid://cukdqjyeov0de" path="res://Scripts/tutorial_game.gd" id="1_k2q0y"]
+[ext_resource type="Texture2D" uid="uid://boff388h7ib2y" path="res://Assets/Icons/spoutnik.svg" id="2_k2q0y"]
+[ext_resource type="PackedScene" uid="uid://djtxppsf6o1t0" path="res://Scenes/tutorial.tscn" id="2_ox8p2"]
+[ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="3_drhtg"]
+[ext_resource type="PackedScene" uid="uid://demcgqsqh7jh1" path="res://Scenes/Player.tscn" id="4_g7fia"]
+[ext_resource type="PackedScene" uid="uid://dsy4ipt0t1ehj" path="res://Scenes/black_hole.tscn" id="5_drhtg"]
+[ext_resource type="PackedScene" uid="uid://d0ayeleb7entu" path="res://Scenes/box.tscn" id="7_g7fia"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0fgi7"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, 0, 0)
+scale_max = 10.0
+hue_variation_min = -0.010000022
+hue_variation_max = 0.009999977
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v83ub"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ox8p2"]
+radius = 173.10402
+
+[sub_resource type="Gradient" id="Gradient_o5yvi"]
+offsets = PackedFloat32Array(0.95, 0.96, 0.99, 1)
+colors = PackedColorArray(0.9843137, 0.9843137, 0.95686275, 0, 0.9844546, 0.9844546, 0.95702064, 0.1, 0.9844546, 0.9844546, 0.95702064, 0.1, 0.9843137, 0.9843137, 0.95686275, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_v83ub"]
+gradient = SubResource("Gradient_o5yvi")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Tutorial_game" type="Node2D" unique_id=1811176077]
+script = ExtResource("1_k2q0y")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=867208131]
+top_level = true
+position = Vector2(6.7472465e-05, 2.6226044e-06)
+rotation = -3.1415925
+scale = Vector2(2000, 2000)
+amount = 12
+process_material = SubResource("ParticleProcessMaterial_0fgi7")
+
+[node name="Player" parent="." unique_id=1991330775 instance=ExtResource("4_g7fia")]
+shipColor = Color(1, 1, 1, 1)
+acc = 700.0
+capSpeed = 500.0
+drag = 0.003
+rotationSpeed = 10.0
+sideGravityStrengh = 0.4
+
+[node name="ShipWaypoint" parent="." unique_id=1682428063 instance=ExtResource("1_0fgi7")]
+scale = Vector2(0.010000001, 0.010000001)
+texture = ExtResource("2_k2q0y")
+SCREEN_MARGIN = 42.0
+MIN_SCALE = 0.05
+SCALING_FACTOR = 100000.0
+
+[node name="BoxWaypoint" parent="." unique_id=468883735 instance=ExtResource("1_0fgi7")]
+
+[node name="BlackHole" parent="." unique_id=1896945040 instance=ExtResource("5_drhtg")]
+position = Vector2(-448, 0)
+
+[node name="BlackHoleTrigger" type="Area2D" parent="." unique_id=2001316599]
+position = Vector2(-448, 0)
+scale = Vector2(8.400001, 8.400001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlackHoleTrigger" unique_id=536587526]
+shape = SubResource("CircleShape2D_v83ub")
+
+[node name="Box" parent="." unique_id=1030628812 instance=ExtResource("7_g7fia")]
+position = Vector2(512, 0)
+
+[node name="Ship" type="Area2D" parent="." unique_id=2066434233]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ship" unique_id=699141721]
+shape = SubResource("CircleShape2D_ox8p2")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ship" unique_id=1594039968]
+position = Vector2(-9.536743e-07, -9.536743e-07)
+scale = Vector2(1.40625, 1.40625)
+texture = SubResource("GradientTexture2D_v83ub")
+
+[node name="ShopLabel" type="Label" parent="Ship" unique_id=357045598]
+offset_left = -96.0
+offset_top = -256.0
+offset_right = 94.0
+offset_bottom = -220.0
+theme = ExtResource("3_drhtg")
+theme_override_font_sizes/font_size = 24
+text = "E - Open shop"
+
+[node name="Tutorial" parent="." unique_id=1984499269 instance=ExtResource("2_ox8p2")]
+
+[connection signal="body_entered" from="BlackHoleTrigger" to="." method="_on_black_hole_trigger_body_entered"]
+[connection signal="picked_up" from="Box" to="." method="_on_box_picked_up"]
+[connection signal="body_entered" from="Ship" to="." method="_on_ship_body_entered"]
+[connection signal="body_exited" from="Ship" to="." method="_on_ship_body_exited"]

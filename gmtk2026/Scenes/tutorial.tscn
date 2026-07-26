@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://djtxppsf6o1t0"]
+
+[ext_resource type="Script" uid="uid://b3gxntk4kish7" path="res://Scripts/tutorial.gd" id="1_p8jf4"]
+[ext_resource type="StyleBox" uid="uid://bne1cq6fgt7be" path="res://Textures/PanelBorder.tres" id="2_feyax"]
+
+[node name="Tutorial" type="CanvasLayer" unique_id=1984499269]
+script = ExtResource("1_p8jf4")
+
+[node name="DarkBackground" type="ColorRect" parent="." unique_id=759799035]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 0.96000004)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=405300832]
+custom_minimum_size = Vector2(400, 300)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="Panel" type="Panel" parent="MarginContainer" unique_id=1253429035]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("2_feyax")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel" unique_id=769179530]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="VBox" type="VBoxContainer" parent="MarginContainer/Panel/MarginContainer" unique_id=1792614020]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/Panel/MarginContainer/VBox" unique_id=234990315]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/Panel/MarginContainer/VBox" unique_id=1778870242]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_bottom = 8
+
+[node name="Description" type="RichTextLabel" parent="MarginContainer/Panel/MarginContainer/VBox" unique_id=1656215872]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+
+[node name="Continue" type="Label" parent="MarginContainer/Panel/MarginContainer/VBox" unique_id=1352374189]
+layout_mode = 2
+horizontal_alignment = 1
+vertical_alignment = 1
