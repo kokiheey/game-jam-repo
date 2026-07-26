@@ -7,11 +7,14 @@ extends Node2D
 @onready var SHOP_UI       : Control = $GUI/ShopUI
 
 @onready var PLAYER : CharacterBody2D = $Player
+@onready var SHOP_LABEL : Label = $Ship/ShopLabel
 @onready var WAYPOINT : Sprite2D = $BoxWaypoint
 @onready var SHIPWAYPOINT : Sprite2D = $ShipWaypoint
 @onready var PARTICLES : GPUParticles2D = $GPUParticles2D
 
-@export var MISSION_TIME : float = 1000
+@export var MAX_FUEL : float = 120
+@export var FUEL_PER_SECOND_STILL : float = 0.5
+@export var FUEL_PER_SECOND_MOVING : float = 1
 @export var celestialBodies : Array[PackedScene]
 @export var CBtoSpawn : int = 10
 @export var maxCelestialBodies : int = 30
@@ -23,14 +26,17 @@ var activeBodies : Array[Node2D]
 var isInTheShip : bool = false
 var shopBindPressed : bool = false
 
-#ovo je uzasno
-var pickupSpeed : float = 2.0
+var BoxPrice : int = 10
+var fuel : float = 0
 var numOfPackagesCarry : int = 0
 var isGameOver : bool = false
 var paused : bool = false
 
 # Statistics
-var _totalPackagesDelivered = 0
+var _timePlayed : float = 0
+var _totalFuelSpent : float = 0
+var _totalMoneyEarned : int = 0
+var _totalPackagesDelivered : int = 0
 
 func _on_picked_up() -> void:
 	WAYPOINT.TARGET_POSITION = Vector2(0, 0)
@@ -40,9 +46,8 @@ func _on_picked_up() -> void:
 
 func _ready() -> void:
 	SHIPWAYPOINT.TARGET_POSITION = Vector2(0, 0)
-	MISSION_TIMER.wait_time = MISSION_TIME
+	fuel = MAX_FUEL
 	generate()
-	MISSION_TIMER.start()
 
 func generate():
 	if currentPackage != null:
@@ -82,21 +87,41 @@ func generate():
 			activeBodies.remove_at(i)
 
 func _process(delta: float) -> void:
+	_timePlayed += delta
+	
+	if fuel <= 0:
+		GameOver()
+		return
+	
+	if PLAYER.isMoving:
+		fuel -= FUEL_PER_SECOND_MOVING * delta
+		_totalFuelSpent += FUEL_PER_SECOND_MOVING * delta
+	else:
+		fuel -= FUEL_PER_SECOND_STILL * delta
+		_totalFuelSpent += FUEL_PER_SECOND_STILL * delta
+	
 	PARTICLES.global_position = PLAYER.global_position
 
 	if isGameOver : 
 		return
 	
-	GAME_UI.update_time(MISSION_TIMER.time_left)
+	GAME_UI.update_fuel(MAX_FUEL, fuel)
 	
 	if Input.is_action_just_pressed("Pause"):
 		pause_menu()
-		
+	
+	if isInTheShip:
+		SHOP_LABEL.show()
+	else:
+		SHOP_LABEL.hide()
+	
 	if Input.is_action_just_pressed("openShop") and isInTheShip and !shopBindPressed:
+		SHOP_LABEL.hide()
 		SHOP_UI.show()
 		pause_game(true)
 		shopBindPressed = true
 	elif Input.is_action_just_pressed("openShop") and isInTheShip and shopBindPressed:
+		SHOP_LABEL.show()
 		SHOP_UI.hide()
 		pause_game(false)
 		shopBindPressed = false
@@ -119,13 +144,11 @@ func pause_game(pause : bool):
 
 
 # GAME OVER - kada istekne timer
-func _on_mission_timer_timeout() -> void:
+func GameOver() -> void:
 	isGameOver = true
 	pause_game(true)
-	GAME_OVER_UI.updateStatistics(0, 0, _totalPackagesDelivered)
+	GAME_OVER_UI.updateStatistics(_timePlayed, _totalFuelSpent, _totalMoneyEarned, _totalPackagesDelivered)
 	GAME_OVER_UI.show()
-
-
 
 
 func _on_ship_body_entered(body: Node2D) -> void:
@@ -135,7 +158,10 @@ func _on_ship_body_entered(body: Node2D) -> void:
 			i.queue_free()
 		pickedUpPackages = []
 		_totalPackagesDelivered += numOfPackagesCarry
-		SHOP_UI.money += numOfPackagesCarry
+		var earnedMoney = numOfPackagesCarry * BoxPrice
+		SHOP_UI.money += earnedMoney
+		_totalMoneyEarned += earnedMoney
+		GAME_UI.update_money(SHOP_UI.money)
 		numOfPackagesCarry = 0
 
 func _on_ship_body_exited(body: Node2D) -> void:
@@ -147,8 +173,10 @@ func _on_shop_ui_bought_speed() -> void:
 
 func _on_shop_ui_bought_waypoint_distance() -> void:
 	pass
-	
-
 
 func _on_shop_ui_bought_pickup_speed() -> void:
 	Box.COLLECTION_TIME *= 0.75
+
+
+func _on_shop_ui_money_changed(newMoney: int) -> void:
+	GAME_UI.update_money(newMoney)

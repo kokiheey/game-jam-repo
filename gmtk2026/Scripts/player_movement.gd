@@ -9,10 +9,13 @@ extends CharacterBody2D
 @export var sideGravityStrengh : float = 0.4
 
 @onready var shipSprite : Polygon2D = $Polygon2D
+var isMoving : bool = false
+
 
 func _on_attacked(attackData : AttackData):
 	pass
 	#velocity += attackData.knockback_force * (global_position - knock)
+
 
 func _ready():
 	$HurtBoxComponent.attackReceived.connect(_on_attacked)
@@ -28,6 +31,8 @@ func _physics_process(delta):
 	var acceleration : Vector2 = Vector2.ZERO
 	var forward = Vector2.RIGHT.rotated(rotation)
 	
+	isMoving = Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || Input.is_action_pressed("moveForward")
+	
 	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT) || Input.is_action_pressed("moveForward"):
 		acceleration += acc * forward
 		if velocity.length() > capSpeed:
@@ -35,9 +40,8 @@ func _physics_process(delta):
 			#velocity = velocity.normalized() * capSpeed
 			#acceleration += acc * forward
 	
-		
 	if velocity.length() > 0:
-			velocity = velocity.move_toward(Vector2.ZERO, drag * delta * maxf(1000,velocity.length_squared()))
+		velocity = velocity.move_toward(Vector2.ZERO, drag * delta * maxf(1000,velocity.length_squared()))
 	if(gravComponent.acceleration != Vector2.ZERO):
 		if(forward.angle_to(gravComponent.acceleration) > 0):
 			#draw_line(position, position + 0.1 * gravComponent.acceleration.orthogonal(), Color.AQUA)

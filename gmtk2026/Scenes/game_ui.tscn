@@ -3,6 +3,32 @@
 [ext_resource type="Script" uid="uid://dcmaqwfi2hp44" path="res://Scripts/game_ui.gd" id="1_gek4i"]
 [ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="2_xjnnq"]
 [ext_resource type="StyleBox" uid="uid://bne1cq6fgt7be" path="res://Textures/PanelBorder.tres" id="3_x63ue"]
+[ext_resource type="StyleBox" uid="uid://bnfu15j5j2kth" path="res://Textures/healthBarBackground.tres" id="4_gjn1n"]
+[ext_resource type="Texture2D" uid="uid://ciiwr0v3n2yla" path="res://Assets/Icons/gas-pump.svg" id="4_x63ue"]
+[ext_resource type="StyleBox" uid="uid://cun3k5sgwpg1s" path="res://Textures/healthBarFill.tres" id="5_1t2s1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t1kc"]
+bg_color = Color(0.39875868, 0, 0, 0)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 100
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxsu6"]
+bg_color = Color(0.5402028, 0.40571323, 1, 0.8)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 6
+border_width_bottom = 4
+border_color = Color(0.8, 0.8, 0.8, 0)
+corner_radius_top_left = 6
+corner_radius_top_right = 100
+corner_radius_bottom_left = 6
 
 [node name="GameUI" type="Control" unique_id=1239942877]
 layout_mode = 3
@@ -11,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("2_xjnnq")
 script = ExtResource("1_gek4i")
 
 [node name="CountdownPanel" type="Panel" parent="." unique_id=1210577789]
@@ -28,7 +55,7 @@ grow_vertical = 0
 theme = ExtResource("2_xjnnq")
 theme_override_styles/panel = ExtResource("3_x63ue")
 
-[node name="TimeLabel" type="Label" parent="CountdownPanel" unique_id=1705781480]
+[node name="MoneyLabel" type="Label" parent="CountdownPanel" unique_id=1705781480]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,6 +69,78 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 24
-text = "9999"
+text = "0$"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="FuelBar" type="ProgressBar" parent="." unique_id=1608271257]
+layout_mode = 0
+offset_left = 704.0
+offset_top = 680.0
+offset_right = 952.0
+offset_bottom = 707.0
+theme_override_styles/background = SubResource("StyleBoxFlat_3t1kc")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rxsu6")
+value = 100.0
+show_percentage = false
+
+[node name="HealthBar" type="ProgressBar" parent="." unique_id=550258906]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 680.0
+offset_right = 576.0
+offset_bottom = 707.0
+theme_override_styles/background = ExtResource("4_gjn1n")
+theme_override_styles/fill = ExtResource("5_1t2s1")
+value = 100.0
+fill_mode = 1
+show_percentage = false
+
+[node name="FuelLabel" type="Label" parent="." unique_id=1425777551]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 64.0
+offset_top = -64.0
+offset_right = 104.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Fuel"
+
+[node name="HealthLabel" type="Label" parent="." unique_id=406759918]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -64.0
+offset_right = -64.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Health"
+horizontal_alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=671627498]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 320.0
+offset_top = -56.0
+offset_right = 368.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_x63ue")
+expand_mode = 1

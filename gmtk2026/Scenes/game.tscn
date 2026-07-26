@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dsy4ipt0t1ehj" path="res://Scenes/black_hole.tscn" id="6_i6g32"]
 [ext_resource type="PackedScene" uid="uid://doa8auaya5o28" path="res://Scenes/waypoint.tscn" id="8_v158k"]
 [ext_resource type="Texture2D" uid="uid://boff388h7ib2y" path="res://Assets/Icons/spoutnik.svg" id="10_ldgsr"]
+[ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="11_o5yvi"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61tkn"]
 particle_flag_disable_z = true
@@ -40,7 +41,7 @@ background_mode = 3
 
 [node name="Game" type="Node2D" unique_id=794815185]
 script = ExtResource("1_wrm1d")
-MISSION_TIME = 120.0
+MAX_FUEL = 10.0
 celestialBodies = Array[PackedScene]([ExtResource("6_i6g32")])
 package = ExtResource("3_h4fw4")
 
@@ -60,9 +61,6 @@ GAME = NodePath("../..")
 
 [node name="GameOver" parent="GUI" unique_id=529693644 instance=ExtResource("6_1l0tm")]
 visible = false
-
-[node name="MissionTimer" type="Timer" parent="." unique_id=1495338434]
-one_shot = true
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="." unique_id=1377915276]
 top_level = true
@@ -96,12 +94,21 @@ position = Vector2(-9.536743e-07, -9.536743e-07)
 scale = Vector2(1.40625, 1.40625)
 texture = SubResource("GradientTexture2D_ldgsr")
 
+[node name="ShopLabel" type="Label" parent="Ship" unique_id=1893777138]
+offset_left = -96.0
+offset_top = -256.0
+offset_right = 94.0
+offset_bottom = -220.0
+theme = ExtResource("11_o5yvi")
+theme_override_font_sizes/font_size = 24
+text = "E - Open shop"
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838893143]
 environment = SubResource("Environment_tpvet")
 
 [connection signal="boughtPickupSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_pickup_speed"]
 [connection signal="boughtSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_speed"]
 [connection signal="boughtWaypointDistance" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_waypoint_distance"]
-[connection signal="timeout" from="MissionTimer" to="." method="_on_mission_timer_timeout"]
+[connection signal="moneyChanged" from="GUI/ShopUI" to="." method="_on_shop_ui_money_changed"]
 [connection signal="body_entered" from="Ship" to="." method="_on_ship_body_entered"]
 [connection signal="body_exited" from="Ship" to="." method="_on_ship_body_exited"]

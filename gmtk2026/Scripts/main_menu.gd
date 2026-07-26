@@ -9,4 +9,4 @@ func _on_options_button_pressed() -> void:
 	Options.open()
 
 func _on_exit_button_pressed() -> void:
-	SceneTransition.quit_game()
+	get_tree().quit()

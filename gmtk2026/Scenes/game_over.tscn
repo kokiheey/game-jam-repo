@@ -90,7 +90,14 @@ layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.64705884, 0.79607844, 0.8509804, 1)
 theme_override_font_sizes/font_size = 20
-text = "Score: "
+text = "Time played: "
+
+[node name="Label4" type="Label" parent="Panel/MarginContainer/VBoxContainer/Stats/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=868967135]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.64705884, 0.79607844, 0.8509804, 1)
+theme_override_font_sizes/font_size = 20
+text = "Fuel spent: "
 
 [node name="Label2" type="Label" parent="Panel/MarginContainer/VBoxContainer/Stats/HBoxContainer/MarginContainer/VBoxContainer2" unique_id=576847748]
 layout_mode = 2
@@ -112,7 +119,14 @@ size_flags_horizontal = 3
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="ScoreLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/Stats/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1162270653]
+[node name="TimeLabel" type="Label" parent="Panel/MarginContainer/VBoxContainer/Stats/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=1162270653]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0.9607843, 0.8901961, 0.8392157, 1)
+theme_override_font_sizes/font_size = 20
+text = "0"
+
+[node name="Fuel Spent" type="Label" parent="Panel/MarginContainer/VBoxContainer/Stats/HBoxContainer/MarginContainer2/VBoxContainer" unique_id=730610143]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_colors/font_color = Color(0.9607843, 0.8901961, 0.8392157, 1)
