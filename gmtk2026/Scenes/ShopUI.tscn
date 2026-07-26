@@ -35,17 +35,17 @@ theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 128
 theme_override_constants/margin_bottom = 64
 
-[node name="BoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=246742358]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=246742358]
 layout_mode = 2
 theme_override_constants/separation = 60
 
-[node name="ShopBorder" type="Panel" parent="MarginContainer/BoxContainer" unique_id=22245421]
+[node name="ShopBorder" type="Panel" parent="MarginContainer/HBoxContainer" unique_id=22245421]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 3.0
 theme_override_styles/panel = ExtResource("3_vovli")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/BoxContainer/ShopBorder" unique_id=965019185]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ShopBorder" unique_id=965019185]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -57,35 +57,103 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer" unique_id=1686831781]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer" unique_id=1686831781]
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="Label" type="Label" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer" unique_id=1970883188]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer" unique_id=1970883188]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
 text = "Upgrades:"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer" unique_id=921356195]
+[node name="Panel" type="Panel" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer" unique_id=1460966752]
+custom_minimum_size = Vector2(1, 2)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("3_vovli")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer" unique_id=921356195]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="SpeedUpgradeLayout2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1038443228]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2" unique_id=1740009365]
+layout_mode = 2
+text = "Ship speed : +10% faster movement"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2" unique_id=377065882]
 layout_mode = 2
 
-[node name="SpeedButton" type="Button" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1919763186]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2" unique_id=34335861]
 layout_mode = 2
-text = "Speed"
 
-[node name="CollectionSpeed" type="Button" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1470090849]
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer" unique_id=2014197534]
 layout_mode = 2
-text = "Pickup Speed +25%"
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+max_value = 10.0
+value = 1.0
+show_percentage = false
+
+[node name="Cost" type="Label" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer" unique_id=1250209535]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cost: 10"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SpeedButton" type="Button" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer" unique_id=638703673]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy"
+
+[node name="PickupUpgardeLayout" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=581054846]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout" unique_id=1487258672]
+layout_mode = 2
+text = "Pickup Speed : +25% faster package pickup"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout" unique_id=1920854223]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout" unique_id=571776137]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer" unique_id=698691989]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+max_value = 10.0
+value = 1.0
+show_percentage = false
+
+[node name="Cost" type="Label" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer" unique_id=349390183]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cost: 30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CollectionSpeed" type="Button" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer" unique_id=1470090849]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy"
 autowrap_mode = 2
 
-[node name="PumpBorder" type="Panel" parent="MarginContainer/BoxContainer" unique_id=1174480143]
+[node name="PumpBorder" type="Panel" parent="MarginContainer/HBoxContainer" unique_id=1174480143]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = ExtResource("3_vovli")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/BoxContainer/PumpBorder" unique_id=861338688]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/PumpBorder" unique_id=861338688]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -97,35 +165,35 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer" unique_id=1195510017]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PumpBorder/MarginContainer" unique_id=1195510017]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=298794540]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=298794540]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 32
 text = "Fuel"
 
-[node name="FuelSlider" type="VSlider" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=1464963872]
+[node name="FuelSlider" type="VSlider" parent="MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=1464963872]
 layout_mode = 2
 size_flags_horizontal = 1
 size_flags_vertical = 3
 size_flags_stretch_ratio = 7.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=1610066065]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=1610066065]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="Label2" type="Label" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=870065879]
+[node name="Label2" type="Label" parent="MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=870065879]
 layout_mode = 2
 text = "Total : "
 
-[node name="Button" type="Button" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=357099398]
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=357099398]
 layout_mode = 2
 size_flags_vertical = 3
 text = "Buy"
 
-[connection signal="value_changed" from="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/FuelSlider" to="." method="_on_fuel_slider_value_changed"]
-[connection signal="pressed" from="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer/FuelSlider" to="." method="_on_fuel_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
