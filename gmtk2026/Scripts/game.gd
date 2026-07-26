@@ -3,7 +3,6 @@ extends Node2D
 @onready var GAME_OVER_UI  : Control = $GUI/GameOver
 @onready var PAUSE_MENU    : Control = $GUI/PauseMenu
 @onready var GAME_UI       : Control = $GUI/GameUI
-@onready var MISSION_TIMER : Timer   = $MissionTimer
 @onready var SHOP_UI       : Control = $GUI/ShopUI
 
 @onready var PLAYER : CharacterBody2D = $Player
@@ -11,15 +10,15 @@ extends Node2D
 @onready var WAYPOINT : Sprite2D = $BoxWaypoint
 @onready var SHIPWAYPOINT : Sprite2D = $ShipWaypoint
 @onready var PARTICLES : GPUParticles2D = $GPUParticles2D
-
+@onready var ENEMY_SPAWNER : ObjectSpawner = $EnemySpawner
 @export var MAX_FUEL : float = 120
 @export var FUEL_PER_SECOND_STILL : float = 0.5
 @export var FUEL_PER_SECOND_MOVING : float = 1
+
 @export var celestialBodies : Array[PackedScene]
 @export var CBtoSpawn : int = 10
 @export var maxCelestialBodies : int = 30
 @export var package : PackedScene
-
 var currentPackage : Box
 var pickedUpPackages : Array[Box]
 var activeBodies : Array[Node2D]
@@ -46,9 +45,13 @@ func _on_picked_up() -> void:
 
 
 func _ready() -> void:
+	$Player/HealthComponent.healthChanged.connect(_on_player_health_changed)
 	SHIPWAYPOINT.TARGET_POSITION = Vector2(0, 0)
 	fuel = MAX_FUEL
 	generate()
+
+func _on_player_health_changed(newHealth : float) -> void:
+	GAME_UI.update_health(PLAYER.HealthComp.MAX_HEALTH, newHealth)
 
 func generate():
 	if currentPackage != null:
@@ -118,7 +121,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("openShop") and isInTheShip and !shopBindPressed:
 		SHOP_LABEL.hide()
-		SHOP_UI.show()
+		SHOP_UI.open(MAX_FUEL, fuel)
 		pause_game(true)
 		shopBindPressed = true
 	elif Input.is_action_just_pressed("openShop") and isInTheShip and shopBindPressed:
@@ -153,6 +156,9 @@ func GameOver() -> void:
 
 
 func _on_ship_body_entered(body: Node2D) -> void:
+	if !body.is_in_group("player"):
+		return
+	
 	isInTheShip = true
 	if  body.is_in_group("player") and numOfPackagesCarry > 0:
 		for i in pickedUpPackages:
@@ -164,12 +170,17 @@ func _on_ship_body_entered(body: Node2D) -> void:
 		_totalMoneyEarned += earnedMoney
 		GAME_UI.update_money(SHOP_UI.money)
 		numOfPackagesCarry = 0
+		
+		if not ENEMY_SPAWNER._active:
+			ENEMY_SPAWNER.Activate()
 
 func _on_ship_body_exited(body: Node2D) -> void:
+	if !body.is_in_group("player"):
+		return
 	isInTheShip = false
 
 func _on_shop_ui_bought_speed() -> void:
-	PLAYER.acc *= 10
+	PLAYER.acc *= 1.1
 
 
 func _on_shop_ui_bought_waypoint_distance() -> void:
@@ -181,3 +192,13 @@ func _on_shop_ui_bought_pickup_speed() -> void:
 
 func _on_shop_ui_money_changed(newMoney: int) -> void:
 	GAME_UI.update_money(newMoney)
+
+
+func _on_shop_ui_bought_fuel(amount: float) -> void:
+	fuel += amount
+
+
+func _on_enemy_spawner_object_created(object: Node) -> void:
+	var enemy = object as CharacterBody2D
+	enemy.Player = PLAYER
+	call_deferred("add_child", enemy)

@@ -1,0 +1,130 @@
+[gd_scene format=3 uid="uid://bia30vh7j8ovg"]
+
+[ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="1_jpcid"]
+[ext_resource type="Script" uid="uid://chm20826u5ui" path="res://Scripts/shop.gd" id="1_l044j"]
+[ext_resource type="StyleBox" uid="uid://bne1cq6fgt7be" path="res://Textures/PanelBorder.tres" id="3_vovli"]
+
+[node name="Control" type="Control" unique_id=568548661]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jpcid")
+script = ExtResource("1_l044j")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1535079787]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.90000004)
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=428303323]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 128
+theme_override_constants/margin_top = 64
+theme_override_constants/margin_right = 128
+theme_override_constants/margin_bottom = 64
+
+[node name="BoxContainer" type="HBoxContainer" parent="MarginContainer" unique_id=246742358]
+layout_mode = 2
+theme_override_constants/separation = 60
+
+[node name="ShopBorder" type="Panel" parent="MarginContainer/BoxContainer" unique_id=22245421]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+theme_override_styles/panel = ExtResource("3_vovli")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/BoxContainer/ShopBorder" unique_id=965019185]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer" unique_id=1686831781]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="Label" type="Label" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer" unique_id=1970883188]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "Upgrades:"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer" unique_id=921356195]
+layout_mode = 2
+
+[node name="SpeedButton" type="Button" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1919763186]
+layout_mode = 2
+text = "Speed"
+
+[node name="CollectionSpeed" type="Button" parent="MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1470090849]
+layout_mode = 2
+text = "Pickup Speed +25%"
+autowrap_mode = 2
+
+[node name="PumpBorder" type="Panel" parent="MarginContainer/BoxContainer" unique_id=1174480143]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = ExtResource("3_vovli")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/BoxContainer/PumpBorder" unique_id=861338688]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer" unique_id=1195510017]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=298794540]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 32
+text = "Fuel"
+
+[node name="FuelSlider" type="VSlider" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=1464963872]
+layout_mode = 2
+size_flags_horizontal = 1
+size_flags_vertical = 3
+size_flags_stretch_ratio = 7.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer" unique_id=1610066065]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label2" type="Label" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=870065879]
+layout_mode = 2
+text = "Total : "
+
+[node name="Button" type="Button" parent="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=357099398]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Buy"
+
+[connection signal="value_changed" from="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/FuelSlider" to="." method="_on_fuel_slider_value_changed"]

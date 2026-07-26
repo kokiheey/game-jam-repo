@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b7liy827e386y" path="res://Scripts/black_hole.gd" id="1_qcnit"]
 [ext_resource type="Script" uid="uid://b6fb0om4atqrk" path="res://Scripts/gravity_source_component.gd" id="1_yqibl"]
+[ext_resource type="Script" uid="uid://cs72pfo61f0xg" path="res://Scripts/attack.gd" id="3_hjqa0"]
+[ext_resource type="Script" uid="uid://4iai0ioh3uk4" path="res://Scripts/attack_data.gd" id="4_cv587"]
 
 [sub_resource type="Gradient" id="Gradient_yqibl"]
 offsets = PackedFloat32Array(0, 0.31111112, 0.36888888, 0.4, 1)
@@ -18,6 +20,15 @@ fill_to = Vector2(0.5, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_61tkn"]
 radius = 396.00504
 
+[sub_resource type="Resource" id="Resource_cv587"]
+script = ExtResource("4_cv587")
+attack_damage = 10.0
+knockback_force = -100.0
+metadata/_custom_type_script = "uid://4iai0ioh3uk4"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tpvet"]
+radius = 8.0
+
 [node name="BlackHole" type="Node2D" unique_id=1896945040]
 script = ExtResource("1_qcnit")
 
@@ -31,3 +42,11 @@ metadata/_custom_type_script = "uid://b6fb0om4atqrk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GravitySourceComponent" unique_id=365062709]
 shape = SubResource("CircleShape2D_61tkn")
+
+[node name="Attack" type="Area2D" parent="." unique_id=465138782]
+script = ExtResource("3_hjqa0")
+attackData = SubResource("Resource_cv587")
+metadata/_custom_type_script = "uid://cs72pfo61f0xg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1223925215]
+shape = SubResource("CircleShape2D_tpvet")
