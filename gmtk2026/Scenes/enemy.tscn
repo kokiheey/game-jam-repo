@@ -4,6 +4,8 @@
 [ext_resource type="Script" uid="uid://bf2ikf8fnn5g6" path="res://Scripts/gravity_component.gd" id="1_hghv2"]
 [ext_resource type="Script" uid="uid://cs72pfo61f0xg" path="res://Scripts/attack.gd" id="3_afpow"]
 [ext_resource type="Script" uid="uid://4iai0ioh3uk4" path="res://Scripts/attack_data.gd" id="4_287tu"]
+[ext_resource type="Script" uid="uid://djigywybiqud1" path="res://Scripts/hurtbox_component.gd" id="5_0830c"]
+[ext_resource type="Script" uid="uid://cxtfk2alsxxmf" path="res://Scripts/health_component.gd" id="6_ghaa6"]
 
 [sub_resource type="Resource" id="Resource_nuxp2"]
 script = ExtResource("4_287tu")
@@ -44,8 +46,27 @@ polygon = PackedVector2Array(-16.053545, -15.946276, 15.99991, -0.053634543, -15
 [node name="Attack" type="Area2D" parent="." unique_id=1971248378]
 script = ExtResource("3_afpow")
 attackData = SubResource("Resource_nuxp2")
+team = 1
 metadata/_custom_type_script = "uid://cs72pfo61f0xg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1016115173]
 position = Vector2(8, 0)
 shape = SubResource("RectangleShape2D_61tkn")
+
+[node name="HurtBoxComponent" type="Area2D" parent="." unique_id=247195821 node_paths=PackedStringArray("healthComponent")]
+script = ExtResource("5_0830c")
+healthComponent = NodePath("../HealthComponent")
+invulnerabilityTime = 1.0
+team = 1
+metadata/_custom_type_script = "uid://djigywybiqud1"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBoxComponent" unique_id=300255018]
+position = Vector2(0, -9.536743e-07)
+rotation = 0.0033521652
+scale = Vector2(1.4038527, 1.4038528)
+polygon = PackedVector2Array(-16.053545, -15.946276, 15.99991, -0.053634543, -15.946276, 16.053545, -8, 0)
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1668963585]
+script = ExtResource("6_ghaa6")
+MAX_HEALTH = 5.0
+metadata/_custom_type_script = "uid://cxtfk2alsxxmf"

@@ -14,7 +14,12 @@ extends CharacterBody2D
 
 @export var ANGLE_DIFF : Vector2 = Vector2(0, 0)
 
+@onready var healthComp : HealthComponent = $HealthComponent
+
 func _ready():
+	healthComp.died.connect(func():
+		queue_free()
+	)
 	shipSprite.color = shipColor
 	add_to_group("enemy")
 
