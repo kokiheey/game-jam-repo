@@ -123,6 +123,7 @@ Player = NodePath("../Player")
 [connection signal="boughtPickupSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_pickup_speed"]
 [connection signal="boughtSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_speed"]
 [connection signal="boughtWaypointDistance" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_waypoint_distance"]
+[connection signal="bought_fuel" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_fuel"]
 [connection signal="moneyChanged" from="GUI/ShopUI" to="." method="_on_shop_ui_money_changed"]
 [connection signal="body_entered" from="Ship" to="." method="_on_ship_body_entered"]
 [connection signal="body_exited" from="Ship" to="." method="_on_ship_body_exited"]
