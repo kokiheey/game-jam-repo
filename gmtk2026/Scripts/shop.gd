@@ -9,33 +9,44 @@ signal boughtPickupSpeed
 
 var money : int
 @export var fuelPrice : float = 1
-@export var speedUpgradeCost     : int = 1
-@export var waypointDistanceCost : int = 1
-@export var pickupSpeedCost  : int = 1
+@export var speedUpgradeCost : int = 10
+@export var speedCostIncrease : int = 10
+@export var pickupSpeedCost  : int = 30
+@export var pickupCostIncrease  : int = 20
 var MAX_FUEL : float = 100.0
 var current_fuel : float = 0
 var upgrades : Array = []
 var new_fuel_ammount : float = 0.0 
 
-@onready var pump : VSlider = $MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/FuelSlider
-@onready var fuellabel : Label = $MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer/Label2
-@onready var buyFuel : Button = $MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer/Button
+@onready var pump : VSlider = $MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer/FuelSlider
+@onready var fuellabel : Label = $MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer/Label2
+@onready var buyFuel : Button = $MarginContainer/HBoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer/Button
+
+@onready var BuySpeedButton : Button = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer/SpeedButton
+@onready var BuyPickupButton : Button =$MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer/CollectionSpeed
+@onready var SpeedPriceLabel : Label = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer/Cost
+@onready var PickupPriceLabel : Label = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer/Cost
+@onready var SpeedProgress : ProgressBar = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer/ProgressBar
+@onready var PickpuProgress : ProgressBar = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer/ProgressBar
 
 func try_purchase(index : int):
 	var upgrade = upgrades[index]
 	if money >= upgrade["cost"]:
 		money -= upgrade["cost"]
+		upgrade["bar"].value += 1
+		upgrade["cost"] += upgrade["inc"]
+		upgrade["label"].text = "Cost : " + str(upgrade["cost"]) + "$"
 		upgrade["signal"].emit()
 		moneyChanged.emit(money)
 
 func _ready():
 	pump.value = current_fuel
 	upgrades = [
-		{ "cost": speedUpgradeCost    , "signal": boughtSpeed},
-		{ "cost": pickupSpeedCost     , "signal": boughtPickupSpeed },
+		{ "cost": speedUpgradeCost, "inc": speedCostIncrease, "signal": boughtSpeed, "label": SpeedPriceLabel, "bar": SpeedProgress},
+		{ "cost": pickupSpeedCost, "inc": pickupCostIncrease, "signal": boughtPickupSpeed, "label": PickupPriceLabel, "bar": PickpuProgress },
 	]
-	$MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedButton.pressed.connect(try_purchase.bind(0))
-	$MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/CollectionSpeed.pressed.connect(try_purchase.bind(1))
+	BuySpeedButton.pressed.connect(try_purchase.bind(0))
+	BuyPickupButton.pressed.connect(try_purchase.bind(1))
 	
 
 func open(mxfuel : float, fuel : float):
@@ -60,9 +71,12 @@ func update_fuel_shop():
 		buyFuel.disabled = true
 
 func _on_fuel_slider_value_changed(value: float) -> void:
-	var maxAfford = (money / fuelPrice) * 100 / MAX_FUEL
-	pump.value = max(current_fuel, min(value * MAX_FUEL / 100, min(MAX_FUEL, maxAfford + current_fuel))) / MAX_FUEL * 100
-	new_fuel_ammount = max(current_fuel, min(value * MAX_FUEL / 100, min(MAX_FUEL, maxAfford + current_fuel)))
+	#var maxAfford = (float(money) / fuelPrice) * 100 / MAX_FUEL
+	#pump.value = max(current_fuel, min(value * MAX_FUEL / 100, min(MAX_FUEL, maxAfford + current_fuel))) / MAX_FUEL * 100
+	pump.value = max(current_fuel, min(value * MAX_FUEL / 100, MAX_FUEL)) / MAX_FUEL * 100
+	
+	#new_fuel_ammount = max(current_fuel, min(value * MAX_FUEL / 100, min(MAX_FUEL, maxAfford + current_fuel)))
+	new_fuel_ammount = max(current_fuel, min(value * MAX_FUEL / 100, MAX_FUEL))
 	update_fuel_shop()
 
 
@@ -73,3 +87,4 @@ func _on_button_pressed() -> void:
 	bought_fuel.emit(new_fuel_ammount - current_fuel)
 	moneyChanged.emit(money)
 	current_fuel = new_fuel_ammount
+	update_fuel_shop()
