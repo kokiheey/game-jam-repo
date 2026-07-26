@@ -39,6 +39,7 @@ metadata/_custom_type_script = "uid://cxtfk2alsxxmf"
 [node name="HurtBoxComponent" type="Area2D" parent="." unique_id=61099625 node_paths=PackedStringArray("healthComponent")]
 script = ExtResource("5_nn08x")
 healthComponent = NodePath("../HealthComponent")
+team = 2
 metadata/_custom_type_script = "uid://djigywybiqud1"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="HurtBoxComponent" unique_id=1121669465]
