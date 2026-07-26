@@ -1,5 +1,7 @@
 extends Control
 
+signal bought_fuel(amount)
+
 signal moneyChanged(newMoney : int)
 signal boughtSpeed
 signal boughtWaypointDistance
@@ -34,6 +36,7 @@ func _ready():
 	]
 	$MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedButton.pressed.connect(try_purchase.bind(0))
 	$MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/CollectionSpeed.pressed.connect(try_purchase.bind(1))
+	
 
 func open(mxfuel : float, fuel : float):
 	MAX_FUEL = mxfuel
@@ -57,6 +60,17 @@ func update_fuel_shop():
 		buyFuel.disabled = true
 
 func _on_fuel_slider_value_changed(value: float) -> void:
-	pump.value = max(current_fuel, min(value * MAX_FUEL / 100, MAX_FUEL)) / MAX_FUEL * 100
-	new_fuel_ammount = max(current_fuel, min(value * MAX_FUEL / 100, MAX_FUEL))
+	money = 10
+	var maxAfford = (money / fuelPrice - current_fuel) * 100 / MAX_FUEL
+	print(maxAfford)
+	pump.value = max(current_fuel, min(value * MAX_FUEL / 100, min(MAX_FUEL, maxAfford))) / MAX_FUEL * 100
+	new_fuel_ammount = max(current_fuel, min(value * MAX_FUEL / 100, min(MAX_FUEL, maxAfford)))
 	update_fuel_shop()
+
+
+func _on_button_pressed() -> void:
+	var price = (new_fuel_ammount - current_fuel) * fuelPrice
+	current_fuel = new_fuel_ammount
+	money -= price
+	bought_fuel.emit(new_fuel_ammount - current_fuel)
+	moneyChanged.emit(money)

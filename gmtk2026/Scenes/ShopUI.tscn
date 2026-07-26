@@ -128,3 +128,4 @@ size_flags_vertical = 3
 text = "Buy"
 
 [connection signal="value_changed" from="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/FuelSlider" to="." method="_on_fuel_slider_value_changed"]
+[connection signal="pressed" from="MarginContainer/BoxContainer/PumpBorder/MarginContainer/VBoxContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
