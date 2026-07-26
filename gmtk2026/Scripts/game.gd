@@ -205,3 +205,7 @@ func _on_enemy_spawner_object_created(object: Node) -> void:
 	var enemy = object as CharacterBody2D
 	enemy.Player = PLAYER
 	call_deferred("add_child", enemy)
+
+
+func _on_shop_ui_bought_package_price() -> void:
+	BoxPrice += 10

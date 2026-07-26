@@ -6,6 +6,7 @@ signal moneyChanged(newMoney : int)
 signal boughtSpeed
 signal boughtWaypointDistance
 signal boughtPickupSpeed
+signal boughtPackagePrice
 
 var money : int
 @export var fuelPrice : float = 1
@@ -13,6 +14,8 @@ var money : int
 @export var speedCostIncrease : int = 10
 @export var pickupSpeedCost  : int = 30
 @export var pickupCostIncrease  : int = 20
+@export var packagePriceCost : int = 20
+@export var packageCostIncrease : int = 25
 var MAX_FUEL : float = 100.0
 var current_fuel : float = 0
 var upgrades : Array = []
@@ -24,10 +27,15 @@ var new_fuel_ammount : float = 0.0
 
 @onready var BuySpeedButton : Button = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer/SpeedButton
 @onready var BuyPickupButton : Button =$MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer/CollectionSpeed
+@onready var BuyPackageButton : Button = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout/HBoxContainer/Buy
+
 @onready var SpeedPriceLabel : Label = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer/Cost
 @onready var PickupPriceLabel : Label = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer/Cost
+@onready var PackagePriceLabel : Label = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout/HBoxContainer/Cost
+
 @onready var SpeedProgress : ProgressBar = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/SpeedUpgradeLayout2/HBoxContainer/ProgressBar
 @onready var PickpuProgress : ProgressBar = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PickupUpgardeLayout/HBoxContainer/ProgressBar
+@onready var PackageProgress : ProgressBar = $MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout/HBoxContainer/ProgressBar
 
 func try_purchase(index : int):
 	var upgrade = upgrades[index]
@@ -44,10 +52,11 @@ func _ready():
 	upgrades = [
 		{ "cost": speedUpgradeCost, "inc": speedCostIncrease, "signal": boughtSpeed, "label": SpeedPriceLabel, "bar": SpeedProgress},
 		{ "cost": pickupSpeedCost, "inc": pickupCostIncrease, "signal": boughtPickupSpeed, "label": PickupPriceLabel, "bar": PickpuProgress },
+		{ "cost": packagePriceCost, "inc": packageCostIncrease, "signal": boughtPackagePrice, "label": PackagePriceLabel, "bar": PackageProgress },
 	]
 	BuySpeedButton.pressed.connect(try_purchase.bind(0))
 	BuyPickupButton.pressed.connect(try_purchase.bind(1))
-	
+	BuyPackageButton.pressed.connect(try_purchase.bind(2))
 
 func open(mxfuel : float, fuel : float):
 	MAX_FUEL = mxfuel
