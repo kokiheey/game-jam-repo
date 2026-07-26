@@ -6,6 +6,7 @@ extends Node2D
 @onready var SHOP_UI       : Control = $GUI/ShopUI
 
 @onready var PLAYER : CharacterBody2D = $Player
+@onready var PLAYER_HEALTH : HealthComponent = $Player/HealthComponent
 @onready var SHOP_LABEL : Label = $Ship/ShopLabel
 @onready var WAYPOINT : Sprite2D = $BoxWaypoint
 @onready var SHIPWAYPOINT : Sprite2D = $ShipWaypoint
@@ -47,10 +48,12 @@ func _on_picked_up() -> void:
 
 
 func _ready() -> void:
-	$Player/HealthComponent.healthChanged.connect(_on_player_health_changed)
+	PLAYER_HEALTH.healthChanged.connect(_on_player_health_changed)
+	PLAYER_HEALTH.died.connect(GameOver)
 	SHIPWAYPOINT.TARGET_POSITION = Vector2(0, 0)
 	fuel = MAX_FUEL
 	generate()
+	
 
 func _on_player_health_changed(newHealth : float) -> void:
 	GAME_UI.update_health(PLAYER.HealthComp.MAX_HEALTH, newHealth)

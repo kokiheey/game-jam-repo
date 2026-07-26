@@ -30,7 +30,6 @@ func _ready():
 	add_to_group("enemy")
 
 func _physics_process(delta):
-	print("Location : ", global_position)
 	#AKO JE PLAYER BLIZU SAFE ZONA UKLJUCI SAFE ZONE COLLISION ZA ENEMY-e
 	if Player.global_position.length() > 300:
 		set_collision_mask_value(3, false)
