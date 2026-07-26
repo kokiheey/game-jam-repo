@@ -120,7 +120,7 @@ func _process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("openShop") and isInTheShip and !shopBindPressed:
 		SHOP_LABEL.hide()
-		SHOP_UI.show()
+		SHOP_UI.open(MAX_FUEL, fuel)
 		pause_game(true)
 		shopBindPressed = true
 	elif Input.is_action_just_pressed("openShop") and isInTheShip and shopBindPressed:
