@@ -86,7 +86,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("3_1ehe0")
 theme_override_font_sizes/font_size = 60
-text = "Game title"
+text = "Stellivery"
 horizontal_alignment = 1
 vertical_alignment = 1
 

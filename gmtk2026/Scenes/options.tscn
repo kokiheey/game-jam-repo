@@ -82,7 +82,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
-text = "Options"
+text = "Options
+
+theres no sound so its useless :("
 horizontal_alignment = 1
 vertical_alignment = 1
 
