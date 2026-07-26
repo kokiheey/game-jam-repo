@@ -111,6 +111,12 @@ theme = ExtResource("11_o5yvi")
 theme_override_font_sizes/font_size = 24
 text = "E - Open shop"
 
+[node name="ShopButton" type="Button" parent="Ship" unique_id=1291495163]
+visible = false
+offset_right = 8.0
+offset_bottom = 8.0
+text = "ENTER SHOP"
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838893143]
 environment = SubResource("Environment_tpvet")
 
@@ -132,4 +138,5 @@ metadata/_custom_type_script = "uid://cg8sl32ogv7u3"
 [connection signal="moneyChanged" from="GUI/ShopUI" to="." method="_on_shop_ui_money_changed"]
 [connection signal="body_entered" from="Ship" to="." method="_on_ship_body_entered"]
 [connection signal="body_exited" from="Ship" to="." method="_on_ship_body_exited"]
+[connection signal="pressed" from="Ship/ShopButton" to="." method="_on_shop_button_pressed"]
 [connection signal="objectCreated" from="EnemySpawner" to="." method="_on_enemy_spawner_object_created"]

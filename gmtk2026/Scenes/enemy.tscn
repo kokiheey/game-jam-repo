@@ -68,5 +68,5 @@ polygon = PackedVector2Array(-16.053545, -15.946276, 15.99991, -0.053634543, -15
 
 [node name="HealthComponent" type="Node" parent="." unique_id=1668963585]
 script = ExtResource("6_ghaa6")
-MAX_HEALTH = 5.0
+MAX_HEALTH = 10.0
 metadata/_custom_type_script = "uid://cxtfk2alsxxmf"
