@@ -15,8 +15,8 @@ uniform float corner_radius : hint_range(0.0, 40.0) = 10.0;
 
 // r = vec4(topRight, bottomRight, bottomLeft, topLeft)
 float roundedBoxSDF(vec2 p, vec2 b, vec4 r) {
-	r.xy = (p.x > 0.0) ? r.xy : r.zw;
-	r.x  = (p.y > 0.0) ? r.x  : r.y;
+	r.xy = (p.x < 0.0) ? r.xy : r.zw;
+	r.x  = (p.y < 0.0) ? r.x  : r.y;
 	vec2 q = abs(p) - b + r.x;
 	return min(max(q.x, q.y), 0.0) + length(max(q, 0.0)) - r.x;
 }
@@ -40,11 +40,9 @@ void fragment() {
 
 	float vGrad = UV.y;
 	vec3 fillCol = mix(fill_top.rgb, fill_bottom.rgb, vGrad);
-
-	float emptyEdge = 1.0 - health_percent;
 	
 	float aa = fwidth(UV.x);
-	float filled = smoothstep(emptyEdge - aa, emptyEdge + aa, UV.x);
+	float filled = smoothstep(health_percent + aa, health_percent - aa, UV.x);
 
 	col = mix(col, fillCol, filled * innerMask);
 

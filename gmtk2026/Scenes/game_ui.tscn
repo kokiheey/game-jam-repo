@@ -3,31 +3,23 @@
 [ext_resource type="Script" uid="uid://dcmaqwfi2hp44" path="res://Scripts/game_ui.gd" id="1_gek4i"]
 [ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="2_xjnnq"]
 [ext_resource type="StyleBox" uid="uid://bne1cq6fgt7be" path="res://Textures/PanelBorder.tres" id="3_x63ue"]
+[ext_resource type="Shader" uid="uid://v1j07o0vcr8l" path="res://Assets/Shaders/fuel_bar.gdshader" id="4_1t2s1"]
 [ext_resource type="Shader" uid="uid://d3ntil31ba3vh" path="res://Assets/Shaders/health_bar.gdshader" id="4_3t1kc"]
 [ext_resource type="Texture2D" uid="uid://ciiwr0v3n2yla" path="res://Assets/Icons/gas-pump.svg" id="4_x63ue"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t1kc"]
-bg_color = Color(0.39875868, 0, 0, 0)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(1, 1, 1, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 100
-corner_radius_bottom_right = 12
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rxsu6"]
-bg_color = Color(0.5402028, 0.40571323, 1, 0.8)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 6
-border_width_bottom = 4
-border_color = Color(0.8, 0.8, 0.8, 0)
-corner_radius_top_left = 6
-corner_radius_top_right = 100
-corner_radius_bottom_left = 6
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3t1kc"]
+shader = ExtResource("4_1t2s1")
+shader_parameter/health_percent = 1.0
+shader_parameter/fill_top = Color(0.56910795, 0.87804353, 0.99999994, 1)
+shader_parameter/fill_bottom = Color(0.47624046, 0.17337644, 0.9815423, 1)
+shader_parameter/bg_color = Color(0.04, 0.04, 0.04, 1)
+shader_parameter/border_gold = Color(1, 1, 1, 1)
+shader_parameter/sheen_speed = 0.174000008265
+shader_parameter/sheen_width = 0.15
+shader_parameter/sheen_skew = 0.3
+shader_parameter/rect_size = Vector2(300, 34)
+shader_parameter/border_thickness = 2.5
+shader_parameter/corner_radius = 17.13600081396
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ratl1"]
 shader = ExtResource("4_3t1kc")
@@ -87,13 +79,12 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="FuelBar" type="ProgressBar" parent="." unique_id=1608271257]
+material = SubResource("ShaderMaterial_3t1kc")
 layout_mode = 0
 offset_left = 704.0
 offset_top = 680.0
 offset_right = 952.0
 offset_bottom = 707.0
-theme_override_styles/background = SubResource("StyleBoxFlat_3t1kc")
-theme_override_styles/fill = SubResource("StyleBoxFlat_rxsu6")
 value = 100.0
 show_percentage = false
 

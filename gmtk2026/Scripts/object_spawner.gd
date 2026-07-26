@@ -8,7 +8,7 @@ extends Node
 @export var minObjectsToSpawn : int
 @export var maxObjectsToSpawn : int
 @export var _active : bool = false
-var targetLocation : Vector2
+var targetLocation : Vector2 = Vector2.ZERO
 var spawnTimer : Timer
 
 signal objectCreated(object: Node)
