@@ -10,7 +10,9 @@ var invulnerabilityTimer : Timer
 
 
 func _ready():
+	
 	invulnerabilityTimer = Timer.new()
+	add_child(invulnerabilityTimer)
 	invulnerabilityTimer.one_shot = true
 	invulnerabilityTimer.timeout.connect(func(): 
 		vulnerable = true

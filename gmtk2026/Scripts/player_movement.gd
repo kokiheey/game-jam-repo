@@ -13,8 +13,7 @@ var isMoving : bool = false
 
 
 func _on_attacked(attackData : AttackData):
-	pass
-	#velocity += attackData.knockback_force * (global_position - knock)
+	velocity += attackData.knockback_force * (global_position - attackData.attack_position).normalized()
 
 
 func _ready():

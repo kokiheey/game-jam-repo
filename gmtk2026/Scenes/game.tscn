@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://doa8auaya5o28" path="res://Scenes/waypoint.tscn" id="8_v158k"]
 [ext_resource type="Texture2D" uid="uid://boff388h7ib2y" path="res://Assets/Icons/spoutnik.svg" id="10_ldgsr"]
 [ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="11_o5yvi"]
+[ext_resource type="PackedScene" uid="uid://4r3ak0yviq0g" path="res://Scenes/enemy.tscn" id="12_rku1e"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_61tkn"]
 particle_flag_disable_z = true
@@ -105,6 +106,10 @@ text = "E - Open shop"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1838893143]
 environment = SubResource("Environment_tpvet")
+
+[node name="Enemy" parent="." unique_id=1699865079 node_paths=PackedStringArray("Player") instance=ExtResource("12_rku1e")]
+position = Vector2(287, -214)
+Player = NodePath("../Player")
 
 [connection signal="boughtPickupSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_pickup_speed"]
 [connection signal="boughtSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_speed"]
