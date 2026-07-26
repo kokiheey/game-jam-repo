@@ -18,6 +18,7 @@ var isMoving : bool = false
 var flickerSpeed = 0.15
 
 func _on_attacked(attackData : AttackData):
+	AudioManager.playHurt()
 	velocity += attackData.knockback_force * (global_position - attackData.attack_position).normalized()
 
 

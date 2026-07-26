@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://cukdqjyeov0de" path="res://Scripts/tutorial_game.gd" id="1_k2q0y"]
 [ext_resource type="Texture2D" uid="uid://boff388h7ib2y" path="res://Assets/Icons/spoutnik.svg" id="2_k2q0y"]
 [ext_resource type="PackedScene" uid="uid://djtxppsf6o1t0" path="res://Scenes/tutorial.tscn" id="2_ox8p2"]
-[ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="3_drhtg"]
 [ext_resource type="PackedScene" uid="uid://demcgqsqh7jh1" path="res://Scenes/Player.tscn" id="4_g7fia"]
 [ext_resource type="PackedScene" uid="uid://dsy4ipt0t1ehj" path="res://Scenes/black_hole.tscn" id="5_drhtg"]
 [ext_resource type="PackedScene" uid="uid://d0ayeleb7entu" path="res://Scenes/box.tscn" id="7_g7fia"]
+[ext_resource type="PackedScene" uid="uid://cv660hn0arvee" path="res://Scenes/pause_menu.tscn" id="9_fgwyh"]
 [ext_resource type="PackedScene" uid="uid://d28xesm83e88m" path="res://Scenes/game_ui.tscn" id="9_v83ub"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0fgi7"]
@@ -81,18 +81,12 @@ position = Vector2(-9.536743e-07, -9.536743e-07)
 scale = Vector2(1.40625, 1.40625)
 texture = SubResource("GradientTexture2D_v83ub")
 
-[node name="ShopLabel" type="Label" parent="Ship" unique_id=357045598]
-offset_left = -96.0
-offset_top = -256.0
-offset_right = 94.0
-offset_bottom = -220.0
-theme = ExtResource("3_drhtg")
-theme_override_font_sizes/font_size = 24
-text = "E - Open shop"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=2110260822]
 
 [node name="GameUI" parent="CanvasLayer" unique_id=1239942877 instance=ExtResource("9_v83ub")]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1227920337 instance=ExtResource("9_fgwyh")]
+visible = false
 
 [node name="Tutorial" parent="." unique_id=1984499269 instance=ExtResource("2_ox8p2")]
 

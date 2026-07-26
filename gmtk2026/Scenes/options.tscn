@@ -82,9 +82,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 24
-text = "Options
-
-theres no sound so its useless :("
+text = "Options"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -123,6 +121,7 @@ value = 100.0
 rounded = true
 
 [node name="MusicOption" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1372641421]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -152,6 +151,7 @@ value = 100.0
 rounded = true
 
 [node name="SFXOption" type="HBoxContainer" parent="Panel/MarginContainer/VBoxContainer/VBoxContainer" unique_id=1530273176]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 
