@@ -6,9 +6,10 @@
 [ext_resource type="Script" uid="uid://bf2ikf8fnn5g6" path="res://Scripts/gravity_component.gd" id="4_dewec"]
 [ext_resource type="Script" uid="uid://djigywybiqud1" path="res://Scripts/hurtbox_component.gd" id="5_nn08x"]
 
-[node name="Player" type="CharacterBody2D" unique_id=1991330775 node_paths=PackedStringArray("gravComponent")]
+[node name="Player" type="CharacterBody2D" unique_id=1991330775 node_paths=PackedStringArray("gravComponent", "HealthComp")]
 script = ExtResource("1_kyqiw")
 gravComponent = NodePath("GravityComponent")
+HealthComp = NodePath("HealthComponent")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1807463950]
 polygon = PackedVector2Array(-16, -16, 16, 0, -16, 16, -8, 0)

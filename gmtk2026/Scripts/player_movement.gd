@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name player
 
 @export var shipColor : Color = Color("ffffff")
 @export var acc: float = 700
@@ -7,6 +8,7 @@ extends CharacterBody2D
 @export var rotationSpeed: float = 10
 @export var gravComponent : GravityComponent
 @export var sideGravityStrengh : float = 0.4
+@export var HealthComp : Node
 
 @onready var shipSprite : Polygon2D = $Polygon2D
 var isMoving : bool = false

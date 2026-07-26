@@ -21,9 +21,7 @@ func try_purchase(index : int):
 func _ready():
 	upgrades = [
 		{ "cost": speedUpgradeCost    , "signal": boughtSpeed},
-		{ "cost": waypointDistanceCost, "signal": boughtWaypointDistance},
 		{ "cost": pickupSpeedCost     , "signal": boughtPickupSpeed },
 	]
-	$SpeedButton.pressed.connect(try_purchase.bind(0))
-	$WaypointDistButton.pressed.connect(try_purchase.bind(1))
-	$CollectionSpeed.pressed.connect(try_purchase.bind(2))
+	$MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/SpeedButton.pressed.connect(try_purchase.bind(0))
+	$MarginContainer/BoxContainer/ShopBorder/MarginContainer/VBoxContainer/CollectionSpeed.pressed.connect(try_purchase.bind(1))

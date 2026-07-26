@@ -44,9 +44,13 @@ func _on_picked_up() -> void:
 
 
 func _ready() -> void:
+	$Player/HealthComponent.healthChanged.connect(_on_player_health_changed)
 	SHIPWAYPOINT.TARGET_POSITION = Vector2(0, 0)
 	fuel = MAX_FUEL
 	generate()
+
+func _on_player_health_changed(newHealth : float) -> void:
+	GAME_UI.update_health(PLAYER.HealthComp.MAX_HEALTH, newHealth)
 
 func generate():
 	if currentPackage != null:
@@ -151,6 +155,9 @@ func GameOver() -> void:
 
 
 func _on_ship_body_entered(body: Node2D) -> void:
+	if !body.is_in_group("player"):
+		return
+	
 	isInTheShip = true
 	if  body.is_in_group("player") and numOfPackagesCarry > 0:
 		for i in pickedUpPackages:
@@ -164,10 +171,12 @@ func _on_ship_body_entered(body: Node2D) -> void:
 		numOfPackagesCarry = 0
 
 func _on_ship_body_exited(body: Node2D) -> void:
+	if !body.is_in_group("player"):
+		return
 	isInTheShip = false
 
 func _on_shop_ui_bought_speed() -> void:
-	PLAYER.acc *= 10
+	PLAYER.acc *= 1.1
 
 
 func _on_shop_ui_bought_waypoint_distance() -> void:
