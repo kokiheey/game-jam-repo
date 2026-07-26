@@ -142,7 +142,7 @@ func _on_ship_body_exited(body: Node2D) -> void:
 	isInTheShip = false
 
 func _on_shop_ui_bought_speed() -> void:
-	PLAYER.acc *= 1.1
+	PLAYER.acc *= 10
 
 
 func _on_shop_ui_bought_waypoint_distance() -> void:
@@ -151,4 +151,4 @@ func _on_shop_ui_bought_waypoint_distance() -> void:
 
 
 func _on_shop_ui_bought_pickup_speed() -> void:
-	pass # Replace with function body.
+	Box.COLLECTION_TIME *= 0.75

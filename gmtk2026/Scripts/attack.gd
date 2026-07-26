@@ -1,4 +1,10 @@
 class_name Attack
-extends Node
+extends Area2D
 
-var attack_damage : int
+@export var attackData : AttackData
+
+func _on_area_entered(area):
+	if area is HurtBoxComponent:
+		var hurtBox = area as HurtBoxComponent
+		attackData.attack_position = global_position
+		hurtBox.damage(attackData)

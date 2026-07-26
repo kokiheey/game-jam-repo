@@ -6,9 +6,9 @@ signal boughtWaypointDistance
 signal boughtPickupSpeed
 
 var money : int
-@export var speedUpgradeCost     : int = 4
-@export var waypointDistanceCost : int = 4
-@export var pickupSpeedCost  : int = 4
+@export var speedUpgradeCost     : int = 1
+@export var waypointDistanceCost : int = 1
+@export var pickupSpeedCost  : int = 1
 var upgrades : Array = []
 
 func try_purchase(index : int):

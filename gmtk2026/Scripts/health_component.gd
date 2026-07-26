@@ -9,11 +9,11 @@ var health: float
 func _ready():
 	health = MAX_HEALTH
 
-func take_damage(damage: float):
-	health -= damage
-	healthChanged.emit(damage)
+func take_damage(attackData: AttackData):
+	health -= attackData.attack_damage
+	healthChanged.emit(health)
 	if(health <= 0):
 		died.emit()
 	
 func heal(heal_amount: float):
-	take_damage(-heal_amount)
+	health += heal_amount

@@ -2,6 +2,17 @@
 
 [ext_resource type="Script" uid="uid://bvmsarj7xtqx2" path="res://Scripts/enemy.gd" id="1_1f0kj"]
 [ext_resource type="Script" uid="uid://bf2ikf8fnn5g6" path="res://Scripts/gravity_component.gd" id="1_hghv2"]
+[ext_resource type="Script" uid="uid://cs72pfo61f0xg" path="res://Scripts/attack.gd" id="3_afpow"]
+[ext_resource type="Script" uid="uid://4iai0ioh3uk4" path="res://Scripts/attack_data.gd" id="4_287tu"]
+
+[sub_resource type="Resource" id="Resource_nuxp2"]
+script = ExtResource("4_287tu")
+attack_damage = 5.0
+knockback_force = 100.0
+metadata/_custom_type_script = "uid://4iai0ioh3uk4"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_61tkn"]
+size = Vector2(21, 36)
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1699865079 node_paths=PackedStringArray("gravComponent")]
 motion_mode = 1
@@ -28,3 +39,12 @@ metadata/_custom_type_script = "uid://bf2ikf8fnn5g6"
 visible = false
 rotation = 0.0033521652
 polygon = PackedVector2Array(-16.053545, -15.946276, 15.99991, -0.053634543, -15.946276, 16.053545, -8, 0)
+
+[node name="Attack" type="Area2D" parent="." unique_id=1971248378]
+script = ExtResource("3_afpow")
+attackData = SubResource("Resource_nuxp2")
+metadata/_custom_type_script = "uid://cs72pfo61f0xg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Attack" unique_id=1016115173]
+position = Vector2(15, 0)
+shape = SubResource("RectangleShape2D_61tkn")

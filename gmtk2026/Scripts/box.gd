@@ -10,7 +10,7 @@ extends Node2D
 @onready var circle = $Circle_Timer
 @onready var PickupArea = $Area2D/PickupArea
 
-@export var COLLECTION_TIME : float = 2.0
+static var COLLECTION_TIME : float = 2.0
 
 var grad_texture : GradientTexture2D
 var player: Node2D = null

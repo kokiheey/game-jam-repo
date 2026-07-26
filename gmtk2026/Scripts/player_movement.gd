@@ -10,7 +10,12 @@ extends CharacterBody2D
 
 @onready var shipSprite : Polygon2D = $Polygon2D
 
+func _on_attacked(attackData : AttackData):
+	pass
+	#velocity += attackData.knockback_force * (global_position - knock)
+
 func _ready():
+	$HurtBoxComponent.attackReceived.connect(_on_attacked)
 	shipSprite.color = shipColor
 	add_to_group("player")
 
