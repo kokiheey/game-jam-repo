@@ -7,23 +7,32 @@ class_name player
 @export var drag: float = 0.003
 @export var rotationSpeed: float = 10
 @export var gravComponent : GravityComponent
+
 @export var sideGravityStrengh : float = 0.4
 @export var HealthComp : Node
 
 @onready var shipSprite : Polygon2D = $Polygon2D
+@onready var hurtBoxComponent : HurtBoxComponent = $HurtBoxComponent
 var isMoving : bool = false
-
+var flickerSpeed = 0.15
 
 func _on_attacked(attackData : AttackData):
 	velocity += attackData.knockback_force * (global_position - attackData.attack_position).normalized()
 
 
 func _ready():
-	$HurtBoxComponent.attackReceived.connect(_on_attacked)
+	hurtBoxComponent.attackReceived.connect(_on_attacked)
 	shipSprite.color = shipColor
 	add_to_group("player")
 
 func _physics_process(delta):
+	#uzas
+	if not hurtBoxComponent.vulnerable:
+		shipSprite.modulate.a -= flickerSpeed
+		if shipSprite.modulate.a <= 0.5 or shipSprite.modulate.a >= 1:
+			flickerSpeed = - flickerSpeed
+	else:
+		shipSprite.modulate.a = 1
 	var mouse_pos = get_global_mouse_position()
 	var angle = (mouse_pos - global_position).angle()
 

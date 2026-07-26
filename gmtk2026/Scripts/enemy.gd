@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var rotationSpeed: float = 10
 @export var gravComponent : GravityComponent
 @export var sideGravityStrengh : float = 0.4
+@export var recoil : float = 300.0
 
 @export var Player : CharacterBody2D
 
@@ -15,8 +16,13 @@ extends CharacterBody2D
 @export var ANGLE_DIFF : Vector2 = Vector2(0, 0)
 
 @onready var healthComp : HealthComponent = $HealthComponent
+@onready var attackComp : Attack = $Attack
+
+func _on_attacked_enemy(area : HurtBoxComponent):
+	velocity += recoil * (global_position - area.global_position).normalized()
 
 func _ready():
+	attackComp.attackedEnemy.connect(_on_attacked_enemy)
 	healthComp.died.connect(func():
 		queue_free()
 	)
