@@ -39,6 +39,8 @@ var _totalPackagesDelivered : int = 0
 
 
 func _on_picked_up() -> void:
+	if not ENEMY_SPAWNER._active:
+			ENEMY_SPAWNER.Activate()
 	WAYPOINT.TARGET_POSITION = Vector2(0, 0)
 	numOfPackagesCarry += 1
 	generate()
@@ -76,6 +78,9 @@ func generate():
 		body.global_position = PLAYER.global_position + \
 		currentPos* randomDir+ \
 		randf_range(100, 500)*randomDir.rotated(randf_range(-PI/4, PI/4))
+		
+		while body.global_position.length() < 500:
+			body.global_position *= 1.3
 		activeBodies.append(body)
 		call_deferred("add_child", body)
 	call_deferred("add_child", currentPackage)
@@ -86,12 +91,14 @@ func generate():
 		if not is_instance_valid(body):
 			activeBodies.remove_at(i)
 			continue
-		if body.global_position.distance_squared_to(currentPackage.global_position) < 2000:
+		if body.global_position.distance_squared_to(currentPackage.global_position) < 300*300:
 			body.queue_free()
 			activeBodies.remove_at(i)
 
 func _process(delta: float) -> void:
 	_timePlayed += delta
+	
+	ENEMY_SPAWNER.targetLocation = PLAYER.global_position
 	
 	if fuel <= 0:
 		GameOver()
@@ -170,9 +177,6 @@ func _on_ship_body_entered(body: Node2D) -> void:
 		_totalMoneyEarned += earnedMoney
 		GAME_UI.update_money(SHOP_UI.money)
 		numOfPackagesCarry = 0
-		
-		if not ENEMY_SPAWNER._active:
-			ENEMY_SPAWNER.Activate()
 
 func _on_ship_body_exited(body: Node2D) -> void:
 	if !body.is_in_group("player"):

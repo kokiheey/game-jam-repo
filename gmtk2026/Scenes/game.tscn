@@ -117,7 +117,7 @@ environment = SubResource("Environment_tpvet")
 [node name="EnemySpawner" type="Node" parent="." unique_id=1930006484]
 script = ExtResource("13_rfjv2")
 spawnableObject = ExtResource("12_rku1e")
-randomDistance = 3000.0
+randomDistance = 2000.0
 minSpawnTime = 8.0
 maxSpawnTime = 20.0
 minObjectsToSpawn = 1
