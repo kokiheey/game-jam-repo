@@ -3,9 +3,8 @@
 [ext_resource type="Script" uid="uid://dcmaqwfi2hp44" path="res://Scripts/game_ui.gd" id="1_gek4i"]
 [ext_resource type="Theme" uid="uid://cojmyrq6m3711" path="res://Textures/DefaultTheme.tres" id="2_xjnnq"]
 [ext_resource type="StyleBox" uid="uid://bne1cq6fgt7be" path="res://Textures/PanelBorder.tres" id="3_x63ue"]
-[ext_resource type="StyleBox" uid="uid://bnfu15j5j2kth" path="res://Textures/healthBarBackground.tres" id="4_gjn1n"]
+[ext_resource type="Shader" uid="uid://d3ntil31ba3vh" path="res://Assets/Shaders/health_bar.gdshader" id="4_3t1kc"]
 [ext_resource type="Texture2D" uid="uid://ciiwr0v3n2yla" path="res://Assets/Icons/gas-pump.svg" id="4_x63ue"]
-[ext_resource type="StyleBox" uid="uid://cun3k5sgwpg1s" path="res://Textures/healthBarFill.tres" id="5_1t2s1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3t1kc"]
 bg_color = Color(0.39875868, 0, 0, 0)
@@ -29,6 +28,20 @@ border_color = Color(0.8, 0.8, 0.8, 0)
 corner_radius_top_left = 6
 corner_radius_top_right = 100
 corner_radius_bottom_left = 6
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ratl1"]
+shader = ExtResource("4_3t1kc")
+shader_parameter/health_percent = 1.0
+shader_parameter/fill_top = Color(0.8, 0, 0, 1)
+shader_parameter/fill_bottom = Color(0.6100741, 0, 0.17938125, 1)
+shader_parameter/bg_color = Color(0.1469025, 0.15713355, 0.16009033, 0)
+shader_parameter/border_gold = Color(1, 1, 1, 1)
+shader_parameter/sheen_speed = 0.270000012825
+shader_parameter/sheen_width = 0.15
+shader_parameter/sheen_skew = 0.3
+shader_parameter/rect_size = Vector2(300, 34)
+shader_parameter/border_thickness = 2.494000118465
+shader_parameter/corner_radius = 18.106000860035
 
 [node name="GameUI" type="Control" unique_id=1239942877]
 layout_mode = 3
@@ -85,13 +98,12 @@ value = 100.0
 show_percentage = false
 
 [node name="HealthBar" type="ProgressBar" parent="." unique_id=550258906]
+material = SubResource("ShaderMaterial_ratl1")
 layout_mode = 0
 offset_left = 328.0
 offset_top = 680.0
 offset_right = 576.0
 offset_bottom = 707.0
-theme_override_styles/background = ExtResource("4_gjn1n")
-theme_override_styles/fill = ExtResource("5_1t2s1")
 value = 100.0
 fill_mode = 1
 show_percentage = false
