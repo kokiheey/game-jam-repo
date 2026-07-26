@@ -148,6 +148,42 @@ size_flags_horizontal = 3
 text = "Buy"
 autowrap_mode = 2
 
+[node name="PackageUpgardeLayout" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer" unique_id=2125128599]
+layout_mode = 2
+theme_override_constants/separation = 8
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout" unique_id=2066912642]
+layout_mode = 2
+text = "Package Price : +10$ more valuable packages"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout" unique_id=796121649]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout" unique_id=549639107]
+layout_mode = 2
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout/HBoxContainer" unique_id=2124281350]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 3.0
+max_value = 10.0
+value = 1.0
+show_percentage = false
+
+[node name="Cost" type="Label" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout/HBoxContainer" unique_id=437256914]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Cost: 20"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buy" type="Button" parent="MarginContainer/HBoxContainer/ShopBorder/MarginContainer/VBoxContainer/VBoxContainer/PackageUpgardeLayout/HBoxContainer" unique_id=1039533115]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Buy"
+autowrap_mode = 2
+
 [node name="PumpBorder" type="Panel" parent="MarginContainer/HBoxContainer" unique_id=1174480143]
 layout_mode = 2
 size_flags_horizontal = 3

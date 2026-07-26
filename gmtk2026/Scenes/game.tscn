@@ -124,6 +124,7 @@ minObjectsToSpawn = 1
 maxObjectsToSpawn = 4
 metadata/_custom_type_script = "uid://cg8sl32ogv7u3"
 
+[connection signal="boughtPackagePrice" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_package_price"]
 [connection signal="boughtPickupSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_pickup_speed"]
 [connection signal="boughtSpeed" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_speed"]
 [connection signal="boughtWaypointDistance" from="GUI/ShopUI" to="." method="_on_shop_ui_bought_waypoint_distance"]
